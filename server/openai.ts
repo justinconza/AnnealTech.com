@@ -699,44 +699,57 @@ Ensure all events are from the last 6 hours with accurate timestamps, are realis
     const content = response.choices[0].message.content;
     console.log("Response content preview:", content ? content.substring(0, 100) + "..." : "no content");
 
+    // Define the expected result interface
+    interface ThreatIntelligenceResult {
+      threatEvents: ThreatEvent[];
+      globalThreatLevel: number;
+      topTargetedSectors: string[];
+      activeThreats: string[];
+      trendingThreats: string[];
+    }
+    
+    // Define type for threat events
+    interface ThreatEvent {
+      id: string;
+      type: string;
+      severity: number;
+      location: {
+        country: string;
+        latitude: number;
+        longitude: number;
+      };
+      timestamp: string;
+      targets: string[];
+      actor: string;
+      description: string;
+    }
+    
     // Parse the response safely with error handling
-    let result = {};
+    let result: ThreatIntelligenceResult = {
+      threatEvents: [],
+      globalThreatLevel: 5,
+      topTargetedSectors: ["Unknown"],
+      activeThreats: ["API Error"],
+      trendingThreats: ["Service Unavailable"]
+    };
+    
     try {
       if (content) {
-        result = JSON.parse(content);
+        const parsedResult = JSON.parse(content);
+        result = {
+          ...result,
+          ...parsedResult
+        };
         console.log("Successfully parsed JSON response");
       }
     } catch (parseError) {
       console.error("Error parsing JSON response:", parseError);
       console.error("Response content preview:", content ? `${content.substring(0, 200)}...` : "no content");
-      // Return a minimal valid structure to prevent UI errors
-      return {
-        threatEvents: [],
-        globalThreatLevel: 5,
-        topTargetedSectors: ["Unknown"],
-        activeThreats: ["API Error"],
-        trendingThreats: ["Service Unavailable"]
-      };
+      // Already have a default structure in result
     }
     
     // Add timestamps to the response to show recency
     if (result.threatEvents && Array.isArray(result.threatEvents)) {
-      // Define type for threat events
-      interface ThreatEvent {
-        id: string;
-        type: string;
-        severity: number;
-        location: {
-          country: string;
-          latitude: number;
-          longitude: number;
-        };
-        timestamp: string;
-        targets: string[];
-        actor: string;
-        description: string;
-      }
-      
       // Ensure all threats have very recent timestamps (within the last 6 hours)
       const now = new Date();
       result.threatEvents = result.threatEvents.map((threat: ThreatEvent) => {

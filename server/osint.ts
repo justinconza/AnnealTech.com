@@ -106,7 +106,7 @@ export async function checkHostWithShodan(hostname: string): Promise<ShodanHost 
       return null;
     }
     
-    const resolveData = await response.json();
+    const resolveData: Record<string, string> = await response.json();
     const ip = resolveData[hostname];
     
     if (!ip) {
