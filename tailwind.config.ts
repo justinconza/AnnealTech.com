@@ -5,12 +5,20 @@ export default {
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Inter", "Work Sans", "sans-serif"],
+        display: ["Orbitron", "Exo", "sans-serif"],
+        heading: ["Exo", "Orbitron", "sans-serif"]
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        steel: "#1E2B40",      // Steel Blue
+        orange: "#FF5700",     // Glowing Orange
+        slate: "#121212",      // Slate Gray
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -64,25 +72,42 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
+        "glow": {
+          "0%, 100%": { 
+            textShadow: "0 0 0px rgba(255, 87, 0, 0)",
+            boxShadow: "0 0 0px rgba(255, 87, 0, 0)"
+          },
+          "50%": { 
+            textShadow: "0 0 15px rgba(255, 87, 0, 0.8)",
+            boxShadow: "0 0 15px rgba(255, 87, 0, 0.8)"
+          }
+        },
+        "forge-spark": {
+          "0%": { 
+            transform: "translateY(0) scale(0)",
+            opacity: "0" 
+          },
+          "50%": { 
+            opacity: "1" 
+          },
+          "100%": { 
+            transform: "translateY(-100px) scale(0.2) rotate(360deg)",
+            opacity: "0" 
+          }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "glow": "glow 2s ease-in-out infinite",
+        "forge-spark": "forge-spark 1.5s ease-out forwards",
       },
     },
   },

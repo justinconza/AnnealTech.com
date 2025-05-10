@@ -11,6 +11,10 @@
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
+    "@fontsource/exo": "^5.2.5",
+    "@fontsource/inter": "^5.2.5",
+    "@fontsource/orbitron": "^5.2.5",
+    "@fontsource/work-sans": "^5.2.5",
     "@hookform/resolvers": "^3.10.0",
     "@jridgewell/trace-mapping": "^0.3.25",
     "@neondatabase/serverless": "^0.10.4",

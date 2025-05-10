@@ -1,0 +1,98 @@
+Rebuild and deploy a fully responsive, SEO-optimized, interactive website for AnnealTech.com — a Managed Experience Provider (MEP). Use Next.js on Vercel. Incorporate dynamic components, animated effects, CMS-powered content, and lead gen integrations. The branding theme is futuristic “Forge”-inspired: molten metal, strong geometric layout, and cyberpunk elegance.
+
+🧱 STACK & HOSTING
+Framework: Next.js (App Router preferred)
+UI Framework: TailwindCSS + shadcn/ui
+Deployment: Vercel
+CMS: Sanity or Notion API (for internal management)
+Integrations:
+Zapier form handling
+Calendly (for demo bookings)
+Google Tag Manager
+Crisp or Drift (chat)
+Optional: Notion + Webhooks for auto-updating case studies
+🎨 BRANDING & DESIGN THEME
+Brand: AnnealTech
+Tagline: “Forging Technology. Empowering People.”
+Style: Futuristic Blacksmith meets Cybersecurity
+Design Notes:
+
+Dark mode default
+Animated “Forge sparks” header on homepage
+SVG anvil or blacksmith silhouettes subtly embedded
+Strong use of steel blue (
+#1E2B40), glowing orange (
+#FF5700), and slate gray (
+#121212)
+Fonts:
+
+Headers: Orbitron or Exo
+Body: Inter or Work Sans
+UI Components:
+
+Neon-glow hover cards
+Section transitions with molten effects
+Scrolling marquee for partner logos
+Accordion toggles styled like hammers folding metal
+🗂️ SITE PAGES & CONTENT
+🏠 Home /
+Hero: Bold headline, subhead, animated CTA button
+Tech Stack Overview (icons with hover glow)
+Competitive Differentiators
+“Forge Your IT Strategy” callout (link to contact)
+Testimonials carousel
+Certifications + Partner badges
+💼 Services /services
+Sections:
+Managed IT & Remote Support
+Endpoint Protection & Response (SentinelOne, Huntress)
+Patch & Asset Lifecycle (NinjaOne)
+PSA & Automation (HaloPSA)
+Phishing & SAT (KnowBe4)
+Backup & BCDR (Datto + Microsoft)
+Email Security (MailProtector + Red Sift)
+CTA after each: “Book a Security Assessment”
+🧰 Tools /stack
+Interactive stack diagram
+Tool-by-tool breakdown
+Downloadable onboarding templates (PDF or Markdown)
+📚 Resources /resources
+Downloadable one-pagers & ebooks
+Security Culture Self-Assessment widget
+Blog feed (CMS powered)
+Embedded demo videos
+“Compare Us” competitive cheat sheets
+🛡️ SLAs & Policies /sla
+Table of SLAs with toggle to “Annealed Tier”
+PDF Download (ANNEAL_SLAs.pdf)
+Uptime Calculator
+Response Time Visualizations
+🧠 About /about
+Company mission, values, and team bios
+“Why AnnealTech” – highlight culture and long-term support
+Embedded pitch deck & Go-To-Market strategy (optional)
+Link to Careers (Notion or Lever embed)
+📞 Contact /contact
+Form (Name, Company, Email, Pain Point Dropdown, Preferred Time)
+Zapier + Email integration
+Google Maps Embed
+Live calendar (Calendly)
+📈 PERFORMANCE & SEO
+Lighthouse > 90 on all scores
+Optimized image delivery (next/image)
+Metadata for all pages (Open Graph & Twitter)
+Schema.org JSON-LD on homepage, services, and contact
+🔐 SECURITY & BEST PRACTICES
+HTTPS via Vercel
+Helmet headers
+CSP configured
+reCAPTCHA v3 on contact forms
+GitHub + Vercel integration for continuous deployment
+✅ OPTIONAL FEATURES
+Admin dashboard (protected route) to:
+Edit homepage content
+Add case studies
+Push blog posts (via Notion or Markdown)
+Live status badge or “Forge Temp” uptime visual
+AI-powered chat assistant trained on internal docs
+Ensure mobile-first design, accessibility (WCAG 2.1), and blazing speed.**
