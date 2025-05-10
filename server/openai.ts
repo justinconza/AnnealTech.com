@@ -326,21 +326,72 @@ export async function scanDomainSecurity(domain: string) {
 }
 
 // QR Code security analysis
+import { 
+  checkUrlWithVirusTotal, 
+  getThreatsFromOTX, 
+  checkUrlWithPhishTank, 
+  scanUrlWithURLScan 
+} from './osint';
+
 export async function analyzeQRCodeSecurity(url: string, qrCodeData?: string) {
   try {
     console.log("Analyzing QR code security for URL:", url);
     
+    // Gather real threat data using OSINT tools
+    let virusTotalData = null;
+    let otxData = null;
+    let phishTankData = null;
+    let urlScanData = null;
+    
+    try {
+      // Launch all OSINT queries in parallel for efficiency
+      const [vtData, otxResult, phishTankResult, urlScanResult] = await Promise.all([
+        checkUrlWithVirusTotal(url),
+        getThreatsFromOTX(url, 'url'),
+        checkUrlWithPhishTank(url),
+        scanUrlWithURLScan(url)
+      ]);
+      
+      virusTotalData = vtData;
+      otxData = otxResult;
+      phishTankData = phishTankResult;
+      urlScanData = urlScanResult;
+      
+      console.log("Retrieved OSINT data for QR code URL");
+    } catch (osintError) {
+      console.error("Error gathering OSINT data:", osintError);
+      // Continue with AI analysis even if OSINT fails
+    }
+    
+    // Prepare a summary of the OSINT findings for the AI
+    const osintSummary = JSON.stringify({
+      virusTotalData,
+      otxData,
+      phishTankData,
+      urlScanData
+    });
+    
     const systemPrompt = `You are a cybersecurity expert specializing in QR code security assessment and URL analysis. 
                           Your task is to analyze the security of a URL found in a QR code by evaluating potential phishing attempts, 
-                          malicious redirects, and other security risks. Use your knowledge of domain reputation, common scam techniques, 
-                          and URL analysis to provide a comprehensive security assessment.`;
+                          malicious redirects, and other security risks. 
+                          
+                          I am providing you with real threat intelligence data from multiple OSINT sources including:
+                          - VirusTotal (malware detection)
+                          - AlienVault OTX (threat intelligence)
+                          - PhishTank (phishing detection)
+                          - URLScan.io (website scanning and analysis)
+                          
+                          Use this data to enhance your analysis with factual information about security risks.`;
                           
     const userPrompt = `Perform a security analysis of the following URL that was extracted from a QR code:
                         
                         URL: ${url}
                         ${qrCodeData ? `Additional QR data: ${qrCodeData}` : ''}
                         
-                        Simulate a comprehensive security analysis including:
+                        Here is the real OSINT data from our security tools:
+                        ${osintSummary}
+                        
+                        Using this real security data, perform a comprehensive security analysis including:
                         - Domain age and reputation
                         - WHOIS information
                         - SSL certificate validity
@@ -363,18 +414,19 @@ export async function analyzeQRCodeSecurity(url: string, qrCodeData?: string) {
                           },
                           "osintData": {
                             "virusTotal": {
-                              "detectionRate": detection rate if available,
+                              "detectionRate": detection rate from the VirusTotal data if available,
                               "firstSeen": when first seen in databases,
                               "categoryTags": array of category tags
                             },
-                            "urlScanResults": array of simulated URL scan findings,
+                            "phishTankVerdict": include the PhishTank finding - whether this URL is a known phishing site,
+                            "urlScanResults": include key findings from URLScan.io data,
                             "reputationScore": reputation score from 1-10
                           },
                           "websiteSnapshot": {
-                            "title": page title if available,
+                            "title": page title from URLScan data if available,
                             "description": page meta description if available,
                             "contentPreview": brief text preview of the page content,
-                            "lastScanDate": date of the simulated snapshot,
+                            "lastScanDate": date of the scan if available or current date,
                             "containsAdultContent": boolean indicating if the website contains NSFW/adult content
                           },
                           "redFlags": array of suspicious elements detected,
