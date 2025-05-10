@@ -262,44 +262,94 @@ export default function QRCodeSecurityForm({ onClose }: QRCodeSecurityFormProps)
                           variant="accent"
                           className="bg-accent hover:bg-accent/90 text-white"
                           onClick={async () => {
+                            if (!uploadedImage) return;
+                            
                             try {
                               setIsProcessingImage(true);
-                              // Process the image with HTML5QrCode library
-                              const html5QrCode = new window.Html5Qrcode("qr-reader-upload-hidden");
                               
-                              // Create an Image element to get image dimensions
-                              const image = new Image();
-                              image.src = uploadedImage;
-                              
-                              await new Promise((resolve) => {
-                                image.onload = resolve;
-                              });
-                              
-                              const result = await html5QrCode.scanFileV2(
-                                await (await fetch(uploadedImage)).blob(), 
-                                /* showImage */ false
-                              );
-                              
-                              const decodedText = result.decodedText;
-                              
+                              // Use a simpler approach to handle QR code scanning from images
                               try {
-                                const url = new URL(decodedText);
-                                handleQRCodeDetected(decodedText, decodedText);
-                              } catch (e) {
+                                // Create a file from the data URL for scanning
+                                const blobData = await fetch(uploadedImage).then(r => r.blob());
+                                const fileName = "uploaded-qr-image.png";
+                                const file = new File([blobData], fileName, { type: blobData.type });
+                                
+                                // Initialize the QR code scanner
+                                const html5QrCode = new window.Html5Qrcode("qr-reader-upload-hidden");
+                                
+                                try {
+                                  const result = await html5QrCode.scanFileV2(file, true);
+                                  const decodedText = result.decodedText;
+                                  
+                                  console.log("QR Code decoded successfully:", decodedText);
+                                  
+                                  // Parse as URL to validate
+                                  try {
+                                    new URL(decodedText);
+                                    handleQRCodeDetected(decodedText, decodedText);
+                                    toast({
+                                      title: "QR Code Detected",
+                                      description: "Successfully read QR code. Analyzing URL security...",
+                                    });
+                                  } catch (urlError) {
+                                    console.error("Invalid URL in QR code:", urlError);
+                                    // Even if not a valid URL, allow the user to proceed with the text
+                                    form.setValue("qrCodeData", decodedText);
+                                    toast({
+                                      title: "QR Code Contains Text Data",
+                                      description: "The QR code contains text that is not a valid URL. Added as additional data.",
+                                      variant: "default",
+                                    });
+                                  }
+                                } catch (scanningError) {
+                                  console.error("Failed to scan QR code:", scanningError);
+                                  
+                                  // Fallback: Try with different parameters
+                                  try {
+                                    // Use a more tolerant approach for problematic images
+                                    const result = await html5QrCode.scanFileV2(blobData, false);
+                                    const decodedText = result.decodedText;
+                                    
+                                    try {
+                                      new URL(decodedText);
+                                      handleQRCodeDetected(decodedText, decodedText);
+                                      toast({
+                                        title: "QR Code Detected",
+                                        description: "Successfully read QR code with fallback method. Analyzing URL security...",
+                                      });
+                                    } catch (urlError) {
+                                      form.setValue("qrCodeData", decodedText);
+                                      toast({
+                                        title: "QR Code Contains Text Data",
+                                        description: "The QR code contains text that is not a valid URL. Added as additional data.",
+                                        variant: "default",
+                                      });
+                                    }
+                                  } catch (fallbackError) {
+                                    console.error("Fallback scanning also failed:", fallbackError);
+                                    toast({
+                                      title: "QR Code Detection Failed",
+                                      description: "Could not identify a valid QR code in this image. Please try a clearer image.",
+                                      variant: "destructive",
+                                    });
+                                  }
+                                } finally {
+                                  // Clean up resources
+                                  html5QrCode.clear();
+                                }
+                              } catch (error) {
+                                console.error("QR code processing error:", error);
                                 toast({
-                                  title: "Invalid URL",
-                                  description: "The QR code doesn't contain a valid URL.",
+                                  title: "Processing Error",
+                                  description: "There was a problem processing the image. Please try a different image format.",
                                   variant: "destructive",
                                 });
                               }
-                              
-                              // Clean up
-                              html5QrCode.clear();
                             } catch (error) {
-                              console.error("Error processing QR code image:", error);
+                              console.error("Unexpected error:", error);
                               toast({
-                                title: "Processing Failed",
-                                description: "Could not detect a QR code in the image. Please try another image.",
+                                title: "Something went wrong",
+                                description: "An unexpected error occurred while processing the image.",
                                 variant: "destructive",
                               });
                             } finally {
