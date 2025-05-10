@@ -1,56 +1,62 @@
 export const expertiseAreas = [
   {
-    title: "Mechanical Engineering",
+    title: "Cybersecurity",
     skills: [
-      "3D Modeling & Simulation",
-      "Structural Analysis",
-      "Thermal Management",
-      "Prototyping & Testing"
+      "Endpoint Detection & Response",
+      "Advanced Threat Protection",
+      "Security Monitoring & Alerting",
+      "Vulnerability Management",
+      "Incident Response Planning"
     ]
   },
   {
-    title: "Electrical Engineering",
+    title: "Cloud Services",
     skills: [
-      "Circuit Design & Analysis",
-      "Power Distribution Systems",
-      "Control Systems",
-      "Signal Processing"
+      "Cloud Migration & Architecture",
+      "Microsoft Azure Management",
+      "AWS Infrastructure",
+      "Google Cloud Platform",
+      "Multi-Cloud Strategies"
     ]
   },
   {
-    title: "Software Engineering",
+    title: "Data Protection",
     skills: [
-      "Embedded Systems",
-      "Machine Learning Applications",
-      "Data Analysis & Visualization",
-      "Control System Software"
+      "Automated Backup Systems",
+      "Business Continuity Planning",
+      "Disaster Recovery",
+      "Data Lifecycle Management",
+      "Data Loss Prevention"
     ]
   },
   {
-    title: "Automation & Robotics",
+    title: "Network Infrastructure",
     skills: [
-      "Industrial Automation",
-      "Robotic Process Design",
-      "Integration & Programming",
-      "Autonomous Systems"
+      "Network Design & Implementation",
+      "Network Security & Monitoring",
+      "SD-WAN Solutions",
+      "VPN & Remote Access",
+      "Firewall Management"
     ]
   },
   {
-    title: "Materials Science",
+    title: "Compliance & Governance",
     skills: [
-      "Material Selection & Testing",
-      "Failure Analysis",
-      "Composite Materials",
-      "Corrosion Prevention"
+      "HIPAA Compliance",
+      "PCI DSS Implementation",
+      "SOC 2 Certification",
+      "Security Policy Development",
+      "Regulatory Compliance Management"
     ]
   },
   {
-    title: "Energy Systems",
+    title: "Managed Services",
     skills: [
-      "Renewable Energy Solutions",
-      "Energy Storage Systems",
-      "Grid Integration",
-      "Energy Efficiency Analysis"
+      "24/7 Help Desk Support",
+      "Remote Monitoring & Management",
+      "IT Asset Lifecycle Management",
+      "Patch Management",
+      "Proactive System Maintenance"
     ]
   }
 ];
