@@ -1759,6 +1759,7 @@ const PremiumToolGatedForm = ({ onClose, toolName }: { onClose: () => void; tool
 
 // Main Tools Page Component
 const ToolsPage = () => {
+  const { toast } = useToast();
   const [activeDialog, setActiveDialog] = useState<string | null>(null);
   const [activePremiumTool, setActivePremiumTool] = useState<string>("");
   const [embedToolInfo, setEmbedToolInfo] = useState<{ 
