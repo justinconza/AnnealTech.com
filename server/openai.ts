@@ -28,7 +28,8 @@ export async function analyzeEmailSecurity(emailData: string) {
       temperature: 0.3,
     });
 
-    return JSON.parse(response.choices[0].message.content || "{}");
+    const content = response.choices[0].message.content;
+    return content ? JSON.parse(content) : {};
   } catch (error) {
     console.error("Error analyzing email security:", error);
     throw new Error("Failed to analyze email security");
@@ -48,14 +49,15 @@ export async function detectPhishing(content: string) {
         },
         {
           role: "user",
-          content: content,
+          content,
         }
       ],
       response_format: { type: "json_object" },
       temperature: 0.2,
     });
 
-    return JSON.parse(response.choices[0].message.content || "{}");
+    const messageContent = response.choices[0].message.content;
+    return messageContent ? JSON.parse(messageContent) : {};
   } catch (error) {
     console.error("Error detecting phishing:", error);
     throw new Error("Failed to analyze for phishing threats");
@@ -82,7 +84,8 @@ export async function assessSecurityRisks(organizationData: any) {
       temperature: 0.3,
     });
 
-    return JSON.parse(response.choices[0].message.content || "{}");
+    const messageContent = response.choices[0].message.content;
+    return messageContent ? JSON.parse(messageContent) : {};
   } catch (error) {
     console.error("Error assessing security risks:", error);
     throw new Error("Failed to assess security risks");
@@ -109,7 +112,8 @@ export async function evaluatePasswordStrength(password: string) {
       temperature: 0.2,
     });
 
-    return JSON.parse(response.choices[0].message.content || "{}");
+    const messageContent = response.choices[0].message.content;
+    return messageContent ? JSON.parse(messageContent) : {};
   } catch (error) {
     console.error("Error evaluating password strength:", error);
     throw new Error("Failed to evaluate password strength");
@@ -136,7 +140,8 @@ export async function scanDomainSecurity(domain: string) {
       temperature: 0.3,
     });
 
-    return JSON.parse(response.choices[0].message.content || "{}");
+    const messageContent = response.choices[0].message.content;
+    return messageContent ? JSON.parse(messageContent) : {};
   } catch (error) {
     console.error("Error scanning domain security:", error);
     throw new Error("Failed to scan domain security");
