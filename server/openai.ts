@@ -162,3 +162,60 @@ export async function scanDomainSecurity(domain: string) {
     throw new Error("Failed to scan domain security");
   }
 }
+
+// QR Code security analysis
+export async function analyzeQRCodeSecurity(url: string, qrCodeData?: string) {
+  try {
+    console.log("Analyzing QR code URL:", url);
+    
+    const systemPrompt = "You are a security expert analyzing a URL that was extracted from a QR code. Provide a comprehensive security analysis for potential threats, phishing indicators, and unsafe patterns. Respond with detailed JSON that includes a security score, domain details, classification, and specific recommendations.";
+    
+    const userPrompt = `
+Analyze this URL extracted from a QR code for security threats:
+
+URL: ${url}
+${qrCodeData ? `Additional QR code data: ${qrCodeData}` : ''}
+
+Please respond with valid JSON including these fields:
+- securityScore: a number from 1-10 (10 being safest)
+- summary: a brief overview of the findings
+- isSecure: boolean indicating if the URL appears safe
+- domainDetails: {
+    registrationDate: approximate date if detectable,
+    owner: if publicly available,
+    country: host country if detectable,
+    securityProtocols: list of security measures detected
+  }
+- redFlags: array of suspicious elements detected
+- recommendations: array of security recommendations
+- classification: general classification (safe, suspicious, dangerous, etc.)
+`;
+
+    // Call the OpenAI API
+    const response = await openai.chat.completions.create({
+      model: DEFAULT_MODEL,
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt
+        },
+        {
+          role: "user",
+          content: userPrompt
+        }
+      ],
+      response_format: { type: "json_object" },
+      temperature: 0.3,
+    });
+
+    console.log("QR code analysis response received");
+    const content = response.choices[0].message.content;
+    console.log("Response content preview:", content ? content.substring(0, 100) + "..." : "no content");
+
+    // Parse and return the result
+    return content ? JSON.parse(content) : {};
+  } catch (error) {
+    console.error("Error analyzing QR code URL:", error);
+    throw new Error("Failed to analyze QR code security");
+  }
+}
