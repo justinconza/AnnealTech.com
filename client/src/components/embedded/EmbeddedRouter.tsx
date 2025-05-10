@@ -7,6 +7,7 @@ const EmailSecurityEmbedded = lazy(() => import("@/pages/embedded/EmailSecurity"
 const PhishingDetectionEmbedded = lazy(() => import("@/pages/embedded/PhishingDetection"));
 const PasswordStrengthEmbedded = lazy(() => import("@/pages/embedded/PasswordStrength"));
 const DomainSecurityEmbedded = lazy(() => import("@/pages/embedded/DomainSecurity"));
+const QRCodeSecurityEmbedded = lazy(() => import("@/pages/embedded/QRCodeSecurity"));
 
 // Create a minimal loading spinner for lazy-loaded components
 const EmbeddedLoadingSpinner = () => (
@@ -52,6 +53,14 @@ export function EmbeddedRouter() {
           {() => (
             <Suspense fallback={<EmbeddedLoadingSpinner />}>
               <DomainSecurityEmbedded />
+            </Suspense>
+          )}
+        </Route>
+        
+        <Route path="/embedded/qrcode-security">
+          {() => (
+            <Suspense fallback={<EmbeddedLoadingSpinner />}>
+              <QRCodeSecurityEmbedded />
             </Suspense>
           )}
         </Route>
