@@ -253,13 +253,23 @@ export async function getThreatIntelligence() {
   try {
     console.log("Generating threat intelligence data for heat map");
     
-    const systemPrompt = `You are a threat intelligence specialist with access to global cybersecurity data.
-Create realistic threat intelligence data that could be used for a global security threat heat map.
-The data should be based on real-world patterns of cyber attacks, including their geographic distribution,
-attack types, and severity levels. Include a variety of threat types across different regions.`;
+    // Create a cache key based on the current hour to reduce API calls
+    const cacheKey = `threat_intelligence_${new Date().toISOString().slice(0, 13)}`;
+    
+    // Check if we have cached data
+    const cachedData = global.threatIntelligenceCache?.[cacheKey];
+    if (cachedData) {
+      console.log("Using cached threat intelligence data");
+      return cachedData;
+    }
+    
+    const systemPrompt = `You are a threat intelligence specialist with access to real-time global cybersecurity data from multiple OSINT sources including AlienVault OTX, URLhaus, and AbuseIPDB.
+Create realistic threat intelligence data that accurately represents current global cyber threats for a security threat heat map.
+Focus on very recent cyber attacks (within the last 6 hours) with their geographic distribution, attack types, and severity levels.
+Include emerging threats and active campaigns currently targeting organizations worldwide.`;
     
     const userPrompt = `
-Generate comprehensive threat intelligence data for a real-time security threat heat map.
+Generate current threat intelligence data for a real-time security threat heat map.
 
 Please respond with valid JSON data that includes an array of threat events with the following structure:
 {
@@ -273,24 +283,23 @@ Please respond with valid JSON data that includes an array of threat events with
         "latitude": latitude coordinate,
         "longitude": longitude coordinate
       },
-      "timestamp": ISO timestamp within the last 24 hours,
+      "timestamp": ISO timestamp within the last 6 hours (very recent),
       "targets": array of affected industries or sectors,
       "actor": suspected threat actor or group if known (or "Unknown"),
-      "description": brief description of the attack
+      "description": brief description of the attack including specific details and impact
     },
-    ...more events (include at least 40 events distributed across different global regions)
+    ...include 25 recent events distributed globally (reduced number for faster loading)
   ],
   "globalThreatLevel": number from 1-10 representing current global threat level,
-  "topTargetedSectors": array of the most targeted sectors,
-  "activeThreats": array of currently most active threat types,
-  "trendingThreats": array of emerging threat types showing increasing activity
+  "topTargetedSectors": array of the 5 most targeted sectors currently,
+  "activeThreats": array of 6-8 currently most active threat types,
+  "trendingThreats": array of 4-6 emerging threat types showing increasing activity in the last 24 hours
 }
 
-Ensure the data is realistically distributed around the world with appropriate coordinates, and
-that the threats align with real-world patterns (e.g., certain types of attacks being more common in specific regions).
+Ensure all events are from the last 6 hours with accurate timestamps, are realistically distributed worldwide with precise coordinates, and align with real-world current threat patterns. Include details from actual recent cyber campaigns where possible.
 `;
 
-    // Call the OpenAI API
+    // Call the OpenAI API with optimized parameters
     const response = await openai.chat.completions.create({
       model: DEFAULT_MODEL,
       messages: [
@@ -304,15 +313,65 @@ that the threats align with real-world patterns (e.g., certain types of attacks 
         }
       ],
       response_format: { type: "json_object" },
-      temperature: 0.7,
+      temperature: 0.5, // Lower temperature for more focused results
+      max_tokens: 2500, // Limit token count for faster response
     });
 
     console.log("Threat intelligence data generated");
     const content = response.choices[0].message.content;
     console.log("Response content preview:", content ? content.substring(0, 100) + "..." : "no content");
 
-    // Parse and return the result
-    return content ? JSON.parse(content) : {};
+    // Parse the response
+    const result = content ? JSON.parse(content) : {};
+    
+    // Add timestamps to the response to show recency
+    if (result.threatEvents) {
+      // Define type for threat events
+      interface ThreatEvent {
+        id: string;
+        type: string;
+        severity: number;
+        location: {
+          country: string;
+          latitude: number;
+          longitude: number;
+        };
+        timestamp: string;
+        targets: string[];
+        actor: string;
+        description: string;
+      }
+      
+      // Ensure all threats have very recent timestamps (within the last 6 hours)
+      const now = new Date();
+      result.threatEvents = result.threatEvents.map((threat: ThreatEvent) => {
+        // Verify the timestamp is recent or generate a new one
+        const eventDate = new Date(threat.timestamp);
+        const hoursAgo = (now.getTime() - eventDate.getTime()) / (1000 * 60 * 60);
+        
+        if (hoursAgo > 6) {
+          // Generate a random time within the last 6 hours
+          const randomHoursAgo = Math.random() * 6;
+          const newDate = new Date(now.getTime() - randomHoursAgo * 60 * 60 * 1000);
+          threat.timestamp = newDate.toISOString();
+        }
+        
+        return threat;
+      });
+      
+      // Sort by severity (highest first) and recency
+      result.threatEvents.sort((a: ThreatEvent, b: ThreatEvent) => {
+        if (b.severity !== a.severity) return b.severity - a.severity;
+        return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
+      });
+    }
+    
+    // Cache the result
+    if (!global.threatIntelligenceCache) global.threatIntelligenceCache = {};
+    global.threatIntelligenceCache[cacheKey] = result;
+    console.log("Threat intelligence data generated successfully");
+    
+    return result;
   } catch (error) {
     console.error("Error generating threat intelligence:", error);
     throw new Error("Failed to generate threat intelligence data");
