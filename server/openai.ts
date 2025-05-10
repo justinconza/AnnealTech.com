@@ -247,3 +247,155 @@ Please respond with valid JSON including these fields:
     throw new Error("Failed to analyze QR code security");
   }
 }
+
+// Threat Intelligence for Heat Map
+export async function getThreatIntelligence() {
+  try {
+    console.log("Generating threat intelligence data for heat map");
+    
+    const systemPrompt = `You are a threat intelligence specialist with access to global cybersecurity data.
+Create realistic threat intelligence data that could be used for a global security threat heat map.
+The data should be based on real-world patterns of cyber attacks, including their geographic distribution,
+attack types, and severity levels. Include a variety of threat types across different regions.`;
+    
+    const userPrompt = `
+Generate comprehensive threat intelligence data for a real-time security threat heat map.
+
+Please respond with valid JSON data that includes an array of threat events with the following structure:
+{
+  "threatEvents": [
+    {
+      "id": unique identifier,
+      "type": attack type (e.g., "DDoS", "Ransomware", "Phishing", "SQL Injection", etc.),
+      "severity": number from 1-10 (10 being most severe),
+      "location": {
+        "country": country name,
+        "latitude": latitude coordinate,
+        "longitude": longitude coordinate
+      },
+      "timestamp": ISO timestamp within the last 24 hours,
+      "targets": array of affected industries or sectors,
+      "actor": suspected threat actor or group if known (or "Unknown"),
+      "description": brief description of the attack
+    },
+    ...more events (include at least 40 events distributed across different global regions)
+  ],
+  "globalThreatLevel": number from 1-10 representing current global threat level,
+  "topTargetedSectors": array of the most targeted sectors,
+  "activeThreats": array of currently most active threat types,
+  "trendingThreats": array of emerging threat types showing increasing activity
+}
+
+Ensure the data is realistically distributed around the world with appropriate coordinates, and
+that the threats align with real-world patterns (e.g., certain types of attacks being more common in specific regions).
+`;
+
+    // Call the OpenAI API
+    const response = await openai.chat.completions.create({
+      model: DEFAULT_MODEL,
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt
+        },
+        {
+          role: "user",
+          content: userPrompt
+        }
+      ],
+      response_format: { type: "json_object" },
+      temperature: 0.7,
+    });
+
+    console.log("Threat intelligence data generated");
+    const content = response.choices[0].message.content;
+    console.log("Response content preview:", content ? content.substring(0, 100) + "..." : "no content");
+
+    // Parse and return the result
+    return content ? JSON.parse(content) : {};
+  } catch (error) {
+    console.error("Error generating threat intelligence:", error);
+    throw new Error("Failed to generate threat intelligence data");
+  }
+}
+
+// AI Security Gap Analysis
+export async function analyzeSecurityGaps(organizationData: {
+  industry: string;
+  size: string;
+  existingMeasures: string[];
+  specificConcerns: string;
+  regulatoryRequirements: string[];
+  budget: string;
+}) {
+  try {
+    console.log("Analyzing security gaps for organization");
+    
+    const systemPrompt = `You are a cybersecurity consultant specializing in identifying security gaps for organizations.
+Your task is to analyze the provided organization data and identify potential security vulnerabilities, 
+recommend appropriate security measures, and provide a comprehensive gap analysis based on industry standards, 
+regulatory requirements, and best practices. Use your expertise to provide actionable recommendations 
+that are tailored to the organization's specific context, constraints, and needs.`;
+    
+    const userPrompt = `
+Analyze the security posture of this organization and identify gaps in their security implementation:
+
+Industry: ${organizationData.industry}
+Organization Size: ${organizationData.size}
+Existing Security Measures: ${organizationData.existingMeasures.join(', ')}
+Specific Security Concerns: ${organizationData.specificConcerns}
+Regulatory Requirements: ${organizationData.regulatoryRequirements.join(', ')}
+Available Budget Level: ${organizationData.budget}
+
+Please respond with valid JSON including these fields:
+- overallSecurityScore: a number from 1-10 (10 being most secure)
+- summary: a brief executive summary of findings
+- criticalGaps: array of the most urgent security gaps that need immediate attention
+- industryBenchmark: {
+    averageScore: typical security score for this industry,
+    complianceLevel: how well they meet industry standards (low, medium, high),
+    commonThreats: array of threats commonly faced in this industry
+  }
+- gapAnalysis: {
+    technical: array of technical security gaps,
+    operational: array of operational security gaps,
+    compliance: array of regulatory compliance gaps
+  }
+- recommendations: array of specific recommendations with priority levels (critical, high, medium, low)
+- implementationPlan: {
+    quickWins: array of easy-to-implement measures,
+    shortTerm: array of measures to implement within 3 months,
+    longTerm: array of strategic security initiatives
+  }
+- budgetConsiderations: analysis of how budget constraints affect recommendations
+- riskAssessment: array of identified risks with impact and likelihood ratings
+`;
+
+    // Call the OpenAI API
+    const response = await openai.chat.completions.create({
+      model: DEFAULT_MODEL,
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt
+        },
+        {
+          role: "user",
+          content: userPrompt
+        }
+      ],
+      response_format: { type: "json_object" },
+      temperature: 0.3,
+    });
+
+    console.log("Security gap analysis response received");
+    const content = response.choices[0].message.content;
+    console.log("Response content preview:", content ? content.substring(0, 100) + "..." : "no content");
+
+    // Parse and return the result
+    return content ? JSON.parse(content) : {};
+  } catch (error) {
+    console.error("Error analyzing security gaps:", error);
+    throw new Error("Failed to analyze security gaps");
+  }
+}
