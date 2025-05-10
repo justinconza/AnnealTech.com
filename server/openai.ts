@@ -205,6 +205,12 @@ Please respond with valid JSON including these fields:
     urlScanResults: array of suspicious elements found during simulated URL scan,
     reputationScore: overall reputation from 0-100 based on multiple databases
   }
+- websiteSnapshot: {
+    title: page title if available,
+    description: page meta description if available,
+    contentPreview: brief text preview of the page content,
+    lastScanDate: date of the simulated snapshot
+  }
 - redFlags: array of suspicious elements detected
 - recommendations: array of security recommendations
 - classification: general classification (safe, suspicious, dangerous, etc.)
