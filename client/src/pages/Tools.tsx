@@ -1871,6 +1871,13 @@ const ToolsPage = () => {
             />
             
             <ToolCard 
+              icon={QrCode}
+              title="QR Code Security Analyzer"
+              description="Scan QR codes to detect malicious URLs, analyze linked domains, and identify potential security threats."
+              onOpenTool={() => openTool("qrcode-security")}
+            />
+            
+            <ToolCard 
               icon={Activity}
               title="Uptime & Monitoring Tool"
               description="Monitor website and service availability with alerts and detailed performance metrics."
@@ -2067,6 +2074,19 @@ const ToolsPage = () => {
             </DialogDescription>
           </DialogHeader>
           <RiskAssessmentForm onClose={closeDialog} />
+        </DialogContent>
+      </Dialog>
+      
+      {/* QR Code Security Analyzer Dialog */}
+      <Dialog open={activeDialog === "qrcode-security"} onOpenChange={closeDialog}>
+        <DialogContent className="sm:max-w-[700px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-heading text-2xl">QR Code Security Analyzer</DialogTitle>
+            <DialogDescription>
+              Scan or enter a QR code URL to analyze for security threats, malicious links, and domain reputation.
+            </DialogDescription>
+          </DialogHeader>
+          <QRCodeSecurityForm onClose={closeDialog} />
         </DialogContent>
       </Dialog>
       
