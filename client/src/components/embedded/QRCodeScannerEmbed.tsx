@@ -35,12 +35,26 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
 
   // Initialize scanner and clean up on unmount
   useEffect(() => {
-    // Initialize scanner if needed
-    if (!html5QrCodeRef.current && scannerContainerRef.current) {
-      const scannerId = `qr-reader-init-${Date.now()}`;
-      scannerContainerRef.current.id = scannerId;
-      html5QrCodeRef.current = new Html5Qrcode(scannerId);
-    }
+    const initScanner = () => {
+      try {
+        // Make sure the HTML5QRCode library is loaded
+        if (typeof window !== 'undefined' && window.Html5Qrcode && scannerContainerRef.current) {
+          const scannerId = `qr-reader-init-${Date.now()}`;
+          scannerContainerRef.current.id = scannerId;
+          html5QrCodeRef.current = new Html5Qrcode(scannerId);
+          console.log('QR scanner initialized successfully');
+        } else {
+          console.warn('HTML5QRCode library not available or container not ready');
+          // Retry after a short delay if the library isn't loaded yet
+          setTimeout(initScanner, 500);
+        }
+      } catch (error) {
+        console.error('Error initializing QR scanner:', error);
+      }
+    };
+
+    // Initialize the scanner
+    initScanner();
 
     // Clean up scanner on unmount
     return () => {
@@ -51,7 +65,6 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
               console.error('Error stopping QR scanner:', error);
             });
         }
-        // html5QrCodeRef.current.clear(); // Uncomment if needed for older versions
       }
     };
   }, []);
@@ -66,17 +79,33 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
     setIsScanning(true);
     
     try {
-      const html5QrCode = new Html5Qrcode(scannerId);
-      html5QrCodeRef.current = html5QrCode;
+      // Check if we need to initialize the QR code scanner
+      if (!html5QrCodeRef.current) {
+        html5QrCodeRef.current = new Html5Qrcode(scannerId);
+      } else {
+        // If we already have a scanner but it's running, stop it first
+        if (html5QrCodeRef.current.isScanning) {
+          await html5QrCodeRef.current.stop();
+        }
+      }
       
-      // Use facingMode constraint instead of trying to enumerate cameras
-      // This is more reliable across different browsers and devices
-      await html5QrCode.start(
-        { facingMode: "environment" }, // Use environment camera (rear camera on mobile)
-        {
-          fps: 10,
-          qrbox: { width: qrBoxSize, height: qrBoxSize }
-        },
+      // Create camera config with options that improve iframe compatibility
+      const cameraConfig = {
+        facingMode: "environment", // Use environment camera (rear camera on mobile)
+      };
+      
+      const scannerConfig = {
+        fps: 10,
+        qrbox: { width: qrBoxSize, height: qrBoxSize },
+        aspectRatio: 1.0,
+        formatsToSupport: [0, 1, 2, 3, 4, 5], // Support all standard QR formats
+        disableFlip: false,
+        rememberLastUsedCamera: true,
+      };
+      
+      await html5QrCodeRef.current.start(
+        cameraConfig,
+        scannerConfig,
         (decodedText) => {
           handleQrCodeDetection(decodedText);
         },
@@ -85,13 +114,15 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
           console.log("QR scanning in progress:", errorMessage);
         }
       );
+      
+      console.log("QR scanner started successfully");
     } catch (error) {
       console.error('Error starting QR scanner:', error);
       setIsScanning(false);
       onError?.('Failed to access camera. Please check camera permissions or try uploading a QR code image instead.');
       toast({
         variant: "destructive",
-        description: "Failed to access camera. Please check camera permissions or try uploading an image instead.",
+        description: "Failed to access camera. Please ensure you've granted camera access or try uploading an image instead.",
       });
     }
   };
@@ -129,6 +160,13 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
       if (!html5QrCodeRef.current && scannerContainerRef.current) {
         const scannerId = `qr-reader-img-${Date.now()}`;
         scannerContainerRef.current.id = scannerId;
+        
+        // Check if the HTML5QRCode library is loaded
+        if (typeof window === 'undefined' || !window.Html5Qrcode) {
+          console.error('HTML5QRCode library not available');
+          throw new Error('QR code scanning library not loaded. Please refresh the page and try again.');
+        }
+        
         html5QrCodeRef.current = new Html5Qrcode(scannerId);
       }
       
@@ -136,20 +174,46 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
         throw new Error("QR code scanner not initialized");
       }
       
-      // Convert data URL to File object
-      const file = await fetch(uploadedImage)
-        .then(r => r.blob())
-        .then(blobFile => new File([blobFile], "qrcode.png", { type: "image/png" }));
+      // Extract image type from the data URL
+      let imageType = 'image/png';
+      if (uploadedImage.startsWith('data:image/')) {
+        const typeMatch = uploadedImage.match(/^data:(image\/[a-zA-Z+.-]+);base64,/);
+        if (typeMatch) {
+          imageType = typeMatch[1];
+        }
+      }
       
-      // Use scanFileV2 for better compatibility
+      // Convert data URL to Blob
+      const base64Data = uploadedImage.split(',')[1];
+      const byteCharacters = atob(base64Data);
+      const byteArrays = [];
+      
+      for (let i = 0; i < byteCharacters.length; i += 512) {
+        const slice = byteCharacters.slice(i, i + 512);
+        const byteNumbers = new Array(slice.length);
+        
+        for (let j = 0; j < slice.length; j++) {
+          byteNumbers[j] = slice.charCodeAt(j);
+        }
+        
+        const byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+      }
+      
+      const blob = new Blob(byteArrays, { type: imageType });
+      const file = new File([blob], "qrcode." + imageType.split('/')[1], { type: imageType });
+      
+      console.log('Scanning QR code from uploaded image');
+      // Use scanFileV2 with verbose logging to debug any issues
       const result = await html5QrCodeRef.current.scanFileV2(file, true);
+      console.log('QR code scan successful:', result);
       handleQrCodeDetection(result.decodedText);
     } catch (error) {
       console.error('Error scanning uploaded QR code:', error);
       onError?.('Could not detect a valid QR code in the uploaded image.');
       toast({
         variant: "destructive",
-        description: "Could not detect a valid QR code in the uploaded image.",
+        description: "Could not detect a valid QR code in the uploaded image. Please try another image or scan with camera.",
       });
     } finally {
       setIsAnalyzing(false);
