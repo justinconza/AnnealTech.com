@@ -1887,12 +1887,36 @@ const ToolsPage = () => {
               onOpenTool={() => openPremiumTool("culture-assessment", "Security Culture Assessment")}
             />
             
-            <ToolCard 
-              icon={QrCode}
-              title="QR Code Security Analyzer"
-              description="Scan QR codes to detect malicious URLs, analyze linked domains, and identify potential security threats."
-              onOpenTool={() => openTool("qrcode-security")}
-            />
+            <div className="relative group">
+              <ToolCard 
+                icon={QrCode}
+                title="QR Code Security Analyzer"
+                description="Scan QR codes to detect malicious URLs, analyze linked domains, and identify potential security threats."
+                onOpenTool={() => openTool("qrcode-security")}
+              />
+              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-background/90 border-accent/20"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEmbedInstructions("QR Code Security Analyzer", "qrcode-security");
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 text-accent" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Embed this tool on your site</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
             
             <ToolCard 
               icon={Activity}
@@ -2117,6 +2141,30 @@ const ToolsPage = () => {
             </DialogDescription>
           </DialogHeader>
           <PremiumToolGatedForm onClose={closeDialog} toolName={activePremiumTool} />
+        </DialogContent>
+      </Dialog>
+      
+      {/* Embedding Instructions Dialog */}
+      <Dialog 
+        open={embedToolInfo.open} 
+        onOpenChange={(open) => !open && setEmbedToolInfo(prev => ({...prev, open: false}))}
+      >
+        <DialogContent className="sm:max-w-[700px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-heading text-2xl flex items-center">
+              <Share2 className="w-5 h-5 mr-2 text-accent" />
+              Embed {embedToolInfo.name}
+            </DialogTitle>
+            <DialogDescription>
+              Add this security tool to your own website with these embedding instructions.
+            </DialogDescription>
+          </DialogHeader>
+          <EmbeddingInstructions 
+            toolName={embedToolInfo.name}
+            toolPath={embedToolInfo.path}
+            recommendedWidth={650}
+            recommendedHeight={700}
+          />
         </DialogContent>
       </Dialog>
     </>
