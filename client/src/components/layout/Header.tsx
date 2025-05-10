@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Hammer, ArrowUpRight } from "lucide-react";
-import ATLogo from "@/assets/annealtech-logo.svg";
 
 // Spark component for the animated forge effect
 const ForgeSpark = ({ delay = 0 }) => {
@@ -107,12 +106,8 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="group flex items-center">
-            <div className="mr-3 flex items-center">
-              <img 
-                src={ATLogo} 
-                alt="AnnealTech Logo" 
-                className="h-10 w-auto group-hover:animate-glow transition-all duration-300" 
-              />
+            <div className="mr-3 text-accent">
+              <Hammer className="w-7 h-7 group-hover:animate-glow transition-all duration-300" />
             </div>
             <div className="flex flex-col">
               <span className="text-foreground text-2xl font-display font-bold tracking-wider">
