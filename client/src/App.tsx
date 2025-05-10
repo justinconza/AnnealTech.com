@@ -9,6 +9,13 @@ import Home from "@/pages/Home";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
+// Lazy load pages
+const Services = lazy(() => import("./pages/Services"));
+const About = lazy(() => import("./pages/About"));
+const Tools = lazy(() => import("./pages/Tools"));
+const Faq = lazy(() => import("./pages/Faq"));
+const Contact = lazy(() => import("./pages/Contact"));
+
 // Create a loading spinner for lazy-loaded components
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center min-h-[60vh]">
@@ -21,42 +28,45 @@ function Router() {
     <>
       <Header />
       <main>
-        <Suspense fallback={<LoadingSpinner />}>
-          <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/services">
-              {() => {
-                const ServicesPage = lazy(() => import("./pages/Services"));
-                return <ServicesPage />;
-              }}
-            </Route>
-            <Route path="/about">
-              {() => {
-                const AboutPage = lazy(() => import("./pages/About"));
-                return <AboutPage />;
-              }}
-            </Route>
-            <Route path="/tools">
-              {() => {
-                const ToolsPage = lazy(() => import("./pages/Tools"));
-                return <ToolsPage />;
-              }}
-            </Route>
-            <Route path="/faq">
-              {() => {
-                const FaqPage = lazy(() => import("./pages/Faq"));
-                return <FaqPage />;
-              }}
-            </Route>
-            <Route path="/contact">
-              {() => {
-                const ContactPage = lazy(() => import("./pages/Contact"));
-                return <ContactPage />;
-              }}
-            </Route>
-            <Route component={NotFound} />
-          </Switch>
-        </Suspense>
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/services">
+            {() => (
+              <Suspense fallback={<LoadingSpinner />}>
+                <Services />
+              </Suspense>
+            )}
+          </Route>
+          <Route path="/about">
+            {() => (
+              <Suspense fallback={<LoadingSpinner />}>
+                <About />
+              </Suspense>
+            )}
+          </Route>
+          <Route path="/tools">
+            {() => (
+              <Suspense fallback={<LoadingSpinner />}>
+                <Tools />
+              </Suspense>
+            )}
+          </Route>
+          <Route path="/faq">
+            {() => (
+              <Suspense fallback={<LoadingSpinner />}>
+                <Faq />
+              </Suspense>
+            )}
+          </Route>
+          <Route path="/contact">
+            {() => (
+              <Suspense fallback={<LoadingSpinner />}>
+                <Contact />
+              </Suspense>
+            )}
+          </Route>
+          <Route component={NotFound} />
+        </Switch>
       </main>
       <Footer />
     </>
