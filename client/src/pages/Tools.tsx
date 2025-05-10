@@ -18,9 +18,12 @@ import {
   Copy,
   ClipboardCheck,
   Code,
-  Share2
+  Share2,
+  QrCode,
+  Scan
 } from "lucide-react";
 import { EmbeddingInstructions } from "@/components/tools/EmbeddingInstructions";
+import QRCodeSecurityForm from "@/components/tools/QRCodeSecurityForm";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
