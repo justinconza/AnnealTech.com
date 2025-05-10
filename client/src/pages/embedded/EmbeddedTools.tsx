@@ -6,11 +6,11 @@ import { cn } from '@/lib/utils';
 // Formal, modern theme styles - more corporate, clean design
 const formalThemeStyles = {
   background: 'bg-white dark:bg-slate-950',
-  text: 'text-slate-900 dark:text-slate-100',
-  heading: 'text-slate-900 dark:text-slate-100 font-semibold',
+  text: 'text-black dark:text-white',
+  heading: 'text-blue-800 dark:text-blue-100 font-semibold',
   card: 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm',
   button: 'bg-blue-600 hover:bg-blue-700 text-white',
-  accent: 'text-blue-600 dark:text-blue-400',
+  accent: 'text-blue-700 dark:text-blue-300',
   navbar: 'bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800'
 };
 
@@ -91,8 +91,26 @@ const tools: Tool[] = [
 ];
 
 function EmbeddedTools() {
+  // Map tool IDs to their proper embedded paths
+  const getToolPath = (toolId: string): string => {
+    const pathMap: Record<string, string> = {
+      'qrcode-scanner': 'qrcode-security',
+      'email-breach': 'email-breach-check',
+      'domain-scan': 'domain-security',
+      'password-strength': 'password-strength',
+      'phishing-scan': 'phishing-detection',
+      'email-security': 'email-security',
+      'threat-map': 'threat-heatmap',
+      'security-gaps': 'security-gap-analysis',
+      'security-assessment': 'security-assessment'
+    };
+    
+    return pathMap[toolId] || toolId;
+  };
+  
   const navigateToTool = (toolId: string) => {
-    window.location.href = `/embedded/${toolId}`;
+    const path = getToolPath(toolId);
+    window.location.href = `/embedded/${path}`;
   };
   return (
     <div className={cn('min-h-screen flex flex-col', formalThemeStyles.background)}>
