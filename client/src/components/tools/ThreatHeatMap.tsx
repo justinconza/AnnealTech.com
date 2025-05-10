@@ -90,7 +90,7 @@ export default function ThreatHeatMap() {
     
     // Define world map data - we'll use a simplified placeholder
     g.append('path')
-      .attr('d', path({ type: 'Sphere' }) as string)
+      .attr('d', path({ type: 'Sphere' } as d3.GeoSphere) as string)
       .attr('fill', '#f0f0f0')
       .attr('stroke', '#ccc')
       .attr('stroke-width', 1);
@@ -98,8 +98,8 @@ export default function ThreatHeatMap() {
     // Add grid lines
     const graticule = d3.geoGraticule();
     g.append('path')
-      .datum(graticule)
-      .attr('d', path as any)
+      .datum(graticule() as d3.GeoPermissibleObjects)
+      .attr('d', path as unknown as string)
       .attr('fill', 'none')
       .attr('stroke', '#ddd')
       .attr('stroke-width', 0.5);
@@ -119,29 +119,29 @@ export default function ThreatHeatMap() {
       .data(filteredEvents)
       .enter()
       .append('circle')
-      .attr('cx', d => {
+      .attr('cx', (d: ThreatEvent) => {
         const coords = projection([d.location.longitude, d.location.latitude]);
         return coords ? coords[0] : 0;
       })
-      .attr('cy', d => {
+      .attr('cy', (d: ThreatEvent) => {
         const coords = projection([d.location.longitude, d.location.latitude]);
         return coords ? coords[1] : 0;
       })
-      .attr('r', d => Math.min(Math.max(d.severity * 1.2, 3), 10))
-      .attr('fill', d => {
+      .attr('r', (d: ThreatEvent) => Math.min(Math.max(d.severity * 1.2, 3), 10))
+      .attr('fill', (d: ThreatEvent) => {
         // Color based on severity
         if (d.severity >= 8) return 'rgba(220, 38, 38, 0.7)'; // High severity
         if (d.severity >= 5) return 'rgba(234, 179, 8, 0.7)';  // Medium severity
         return 'rgba(34, 197, 94, 0.7)';  // Low severity
       })
-      .attr('stroke', d => {
+      .attr('stroke', (d: ThreatEvent) => {
         if (d.severity >= 8) return '#dc2626'; // High severity
         if (d.severity >= 5) return '#eab308';  // Medium severity
         return '#22c55e';  // Low severity
       })
       .attr('stroke-width', 1)
       .attr('class', 'threat-point')
-      .on('mouseover', function(event, d) {
+      .on('mouseover', function(event: MouseEvent, d: ThreatEvent) {
         if (!tooltipRef.current) return;
         
         const tooltip = d3.select(tooltipRef.current);
@@ -165,13 +165,13 @@ export default function ThreatHeatMap() {
       });
     
     // Add zoom functionality
-    const zoom = d3.zoom()
+    const zoom = d3.zoom<SVGSVGElement, unknown>()
       .scaleExtent([1, 8])
-      .on('zoom', (event) => {
-        g.attr('transform', event.transform);
+      .on('zoom', (event: d3.D3ZoomEvent<SVGSVGElement, unknown>) => {
+        g.attr('transform', event.transform.toString());
       });
     
-    svg.call(zoom as any);
+    svg.call(zoom);
   };
 
   const filteredEvents = () => {
