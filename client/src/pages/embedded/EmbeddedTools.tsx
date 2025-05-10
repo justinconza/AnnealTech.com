@@ -128,13 +128,16 @@ function EmbeddedTools() {
           </div>
           <div>
             <a 
-              href="/embedded/tools" 
-              className={cn('px-4 py-2 rounded-md border font-medium text-sm', 
+              href="https://www.annealtech.com" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn('px-4 py-2 rounded-md border font-medium text-sm flex items-center', 
                 formalThemeStyles.accent, 
                 'border-blue-200 hover:bg-blue-50 dark:border-blue-800 dark:hover:bg-blue-900/30'
               )}
             >
-              Tools Wix Test
+              <ExternalLink className="h-4 w-4 mr-2" />
+              Go Back To Main Site
             </a>
           </div>
         </div>
