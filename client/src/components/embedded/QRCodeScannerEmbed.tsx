@@ -250,7 +250,7 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
         )}
 
         {uploadedImage && (
-          <div className={cn("rounded-lg p-4 text-center mb-4", formalThemeStyles.card)}>
+          <div className={cn("rounded-lg p-4 text-center mb-4", modernThemeStyles.card)}>
             <div className="space-y-4">
               <div className="relative mx-auto w-full max-w-xs aspect-square overflow-hidden rounded-md border bg-black">
                 <img 
@@ -264,7 +264,7 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
                 <Button
                   type="button"
                   variant="outline"
-                  className={cn("border", formalThemeStyles.outlineButton)}
+                  className={cn("border", modernThemeStyles.outlineButton)}
                   onClick={() => {
                     setUploadedImage(null);
                     if (fileInputRef.current) {
@@ -278,7 +278,7 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
                 
                 <Button
                   type="button"
-                  className={cn(formalThemeStyles.button)}
+                  className={cn(modernThemeStyles.button)}
                   onClick={scanUploadedImage}
                   disabled={isAnalyzing}
                 >
