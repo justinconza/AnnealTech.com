@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Hammer, ArrowUpRight } from "lucide-react";
 
@@ -26,6 +26,35 @@ const ForgeSpark = ({ delay = 0 }) => {
         bottom: '0',
       }}
     />
+  );
+};
+
+// Nav link component
+const NavLink = ({ 
+  href, 
+  children, 
+  onClick 
+}: { 
+  href: string; 
+  children: React.ReactNode; 
+  onClick?: () => void;
+}) => {
+  const [location] = useLocation();
+  const isActive = location === href;
+  
+  return (
+    <Link 
+      href={href} 
+      onClick={onClick}
+      className={`text-foreground font-heading hover:text-accent/90 transition-all relative group py-1 ${
+        isActive ? "text-accent" : ""
+      }`}
+    >
+      <span>{children}</span>
+      <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all duration-300 ${
+        isActive ? "w-full" : "w-0 group-hover:w-full"
+      }`}></span>
+    </Link>
   );
 };
 
@@ -93,47 +122,25 @@ const Header = () => {
         
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-8">
-          <a href="/" 
-            className="text-foreground font-heading hover:text-accent/90 transition-all relative group py-1"
-          >
-            <span>Home</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#services" 
-            className="text-foreground font-heading hover:text-accent/90 transition-all relative group py-1"
-          >
-            <span>Services</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#about" 
-            className="text-foreground font-heading hover:text-accent/90 transition-all relative group py-1"
-          >
-            <span>About</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#stack" 
-            className="text-foreground font-heading hover:text-accent/90 transition-all relative group py-1"
-          >
-            <span>Tools</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#contact" 
-            className="text-foreground font-heading hover:text-accent/90 transition-all relative group py-1"
-          >
-            <span>Contact</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-          </a>
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/services">Services</NavLink>
+          <NavLink href="/about">About</NavLink>
+          <NavLink href="/tools">Tools</NavLink>
+          <NavLink href="/faq">FAQ</NavLink>
+          <NavLink href="/contact">Contact</NavLink>
         </nav>
         
         {/* Contact Button (Desktop) */}
         <div className="hidden md:block">
-          <Button 
-            variant="default" 
-            className="bg-accent hover:bg-accent/80 text-white font-heading flex items-center gap-2 group"
-          >
-            <span>Book Demo</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Button>
+          <Link href="/contact">
+            <Button 
+              variant="default" 
+              className="bg-accent hover:bg-accent/80 text-white font-heading flex items-center gap-2 group"
+            >
+              <span>Book Demo</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Button>
+          </Link>
         </div>
         
         {/* Mobile Menu Button */}
@@ -151,50 +158,22 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-slate border-t border-accent/10 px-4 py-3">
           <nav className="flex flex-col space-y-4">
-            <a 
-              href="/" 
-              className="text-foreground font-heading hover:text-accent transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Home
-            </a>
-            <a 
-              href="#services" 
-              className="text-foreground font-heading hover:text-accent transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Services
-            </a>
-            <a 
-              href="#about" 
-              className="text-foreground font-heading hover:text-accent transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About
-            </a>
-            <a 
-              href="#stack" 
-              className="text-foreground font-heading hover:text-accent transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Tools
-            </a>
-            <a 
-              href="#contact" 
-              className="text-foreground font-heading hover:text-accent transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contact
-            </a>
+            <NavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
+            <NavLink href="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</NavLink>
+            <NavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>About</NavLink>
+            <NavLink href="/tools" onClick={() => setIsMobileMenuOpen(false)}>Tools</NavLink>
+            <NavLink href="/faq" onClick={() => setIsMobileMenuOpen(false)}>FAQ</NavLink>
+            <NavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</NavLink>
             
-            <Button 
-              variant="default" 
-              className="bg-accent hover:bg-accent/80 text-white font-heading mt-2 w-full flex items-center justify-center gap-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <span>Book Demo</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Button>
+            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button 
+                variant="default" 
+                className="bg-accent hover:bg-accent/80 text-white font-heading mt-2 w-full flex items-center justify-center gap-2"
+              >
+                <span>Book Demo</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </nav>
         </div>
       )}
