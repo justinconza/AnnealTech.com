@@ -316,7 +316,7 @@ export default function QRCodeSecurityForm({ onClose }: QRCodeSecurityFormProps)
                         <input
                           ref={fileInputRef}
                           type="file"
-                          accept="image/*"
+                          accept="image/png,image/jpeg,image/jpg,image/gif,image/webp,image/svg+xml"
                           className="hidden"
                           onChange={(e) => {
                             const file = e.target.files?.[0];
@@ -343,7 +343,7 @@ export default function QRCodeSecurityForm({ onClose }: QRCodeSecurityFormProps)
                         </Button>
                       </div>
                       <p className="text-xs text-muted-foreground">
-                        Supported formats: PNG, JPEG, GIF, WebP
+                        Supported formats: PNG, JPEG, GIF, WebP, SVG
                       </p>
                     </div>
                   )}
