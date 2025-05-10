@@ -919,6 +919,41 @@ const DomainSecurityForm = ({ onClose }: { onClose: () => void }) => {
             </div>
             <h3 className="text-xl font-heading font-semibold">Domain Security Scan</h3>
             <p className="text-muted-foreground">{form.getValues().domain}</p>
+            <div className="mt-2 flex justify-center">
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-xs border-accent/20 hover-lift px-3 py-1 h-auto"
+                onClick={() => {
+                  const summaryText = `
+Domain Security Scan Results:
+-----------------------------
+Domain: ${form.getValues().domain}
+Security Score: ${results.score}/10
+Security Level: ${results.securityLevel || 'Not Available'}
+
+${results.https ? `HTTPS: ${results.https.enabled ? 'Enabled' : 'Disabled'}` : ''}
+${results.hsts ? `HSTS: ${results.hsts.enabled ? 'Enabled' : 'Disabled'}` : ''}
+${results.dnsSecurity ? `DNS Security: ${results.dnsSecurity.enabled ? 'Enabled' : 'Disabled'}` : ''}
+
+${results.issues && results.issues.length > 0 ? `Security Issues:
+${results.issues.map((issue: string) => `- ${issue}`).join('\n')}` : ''}
+
+${results.recommendations && results.recommendations.length > 0 ? `Recommendations:
+${results.recommendations.map((rec: string) => `- ${rec}`).join('\n')}` : ''}
+                  `.trim();
+                  
+                  navigator.clipboard.writeText(summaryText);
+                  toast({
+                    description: "All results copied to clipboard!",
+                    duration: 2000,
+                  });
+                }}
+              >
+                <Copy className="h-3 w-3 mr-1" />
+                Copy All Results
+              </Button>
+            </div>
           </div>
           
           <div className="space-y-4">
