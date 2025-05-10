@@ -2211,6 +2211,101 @@ const ToolsPage = () => {
         </div>
       </section>
       
+      {/* Embedded Tools Section */}
+      <section className="py-16 bg-foreground/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex mb-2 bg-accent/10 px-4 py-1 rounded-full text-accent text-sm font-medium">
+              For Developers & Partners
+            </div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+              Embed Our Security Tools Suite
+            </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Want to provide these security tools on your own website? We've created a special embeddable version with a modern, corporate theme that can be easily integrated via iframe.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="bg-white/5 border border-accent/10 rounded-lg p-6 shadow-lg">
+              <div className="aspect-video rounded-md bg-steel/50 overflow-hidden shadow-inner">
+                <iframe 
+                  src="/embedded/tools" 
+                  className="w-full h-full border-0"
+                  title="Anneal Tech Embedded Security Tools"
+                ></iframe>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="bg-steel/30 p-6 rounded-lg border border-accent/10">
+                <h3 className="font-heading font-semibold text-xl mb-4 flex items-center">
+                  <Code className="h-5 w-5 mr-2 text-accent" />
+                  Embed the Entire Suite
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  Add our complete collection of security tools to your website with a single iframe. Perfect for security firms, IT consultants, and educational platforms.
+                </p>
+                
+                <div className="bg-slate p-4 rounded-md font-mono text-sm text-muted-foreground mb-4 overflow-x-auto">
+                  &lt;iframe src="{window.location.origin}/embedded/tools" width="100%" height="800" frameborder="0"&gt;&lt;/iframe&gt;
+                </div>
+                
+                <div className="flex space-x-2">
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    className="border-accent/20 bg-steel hover:bg-accent/10 text-accent"
+                    onClick={() => {
+                      navigator.clipboard.writeText(`<iframe src="${window.location.origin}/embedded/tools" width="100%" height="800" frameborder="0"></iframe>`);
+                      toast({
+                        description: "Embed code copied to clipboard!",
+                        duration: 2000,
+                      });
+                    }}
+                  >
+                    <Copy className="h-4 w-4 mr-2" />
+                    Copy Embed Code
+                  </Button>
+                  
+                  <Button 
+                    size="sm"
+                    variant="outline" 
+                    className="border-accent/20"
+                    onClick={() => window.open('/embedded/tools', '_blank')}
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Preview Full Page
+                  </Button>
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="font-medium text-lg mb-3">Key Features:</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mr-2 text-accent shrink-0 mt-0.5" />
+                    <span>Modern, corporate design that integrates with professional websites</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mr-2 text-accent shrink-0 mt-0.5" />
+                    <span>Fully responsive layout that adapts to any screen size</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mr-2 text-accent shrink-0 mt-0.5" />
+                    <span>Access to all our security tools in one centralized interface</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mr-2 text-accent shrink-0 mt-0.5" />
+                    <span>Customizable height and width to fit your specific website layout</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* CTA Section */}
       <section className="py-20 bg-slate relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent"></div>
