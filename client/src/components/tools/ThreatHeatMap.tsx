@@ -34,6 +34,7 @@ interface ThreatIntelligence {
 
 export default function ThreatHeatMap() {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [threatData, setThreatData] = useState<ThreatIntelligence | null>(null);
   const [view, setView] = useState<'map' | 'list'>('map');
   const [filter, setFilter] = useState<'recent' | 'all' | 'critical'>('recent'); // Default to recent for faster loading
@@ -44,24 +45,109 @@ export default function ThreatHeatMap() {
   const autoRefreshTimerRef = useRef<NodeJS.Timeout | null>(null);
   const { toast } = useToast();
 
+  // Sample data for fallback when API fails
+  const getSampleThreatData = (): ThreatIntelligence => ({
+    threatEvents: [
+      {
+        id: "t1",
+        type: "Ransomware",
+        severity: 9,
+        location: { country: "United States", latitude: 37.7749, longitude: -122.4194 },
+        timestamp: new Date(Date.now() - 1000 * 60 * 60).toISOString(),
+        targets: ["Healthcare", "Finance"],
+        actor: "BlackCat",
+        description: "Ransomware attack targeting hospital systems in Western US"
+      },
+      {
+        id: "t2",
+        type: "DDoS",
+        severity: 7,
+        location: { country: "Germany", latitude: 52.5200, longitude: 13.4050 },
+        timestamp: new Date(Date.now() - 1000 * 60 * 30).toISOString(),
+        targets: ["Government", "Banking"],
+        actor: "Anonymous",
+        description: "Distributed denial-of-service attack on banking infrastructure"
+      },
+      {
+        id: "t3",
+        type: "Phishing",
+        severity: 6,
+        location: { country: "Brazil", latitude: -23.5505, longitude: -46.6333 },
+        timestamp: new Date(Date.now() - 1000 * 60 * 120).toISOString(),
+        targets: ["Retail", "E-commerce"],
+        actor: "FIN7",
+        description: "Large-scale credential harvesting campaign targeting online retailers"
+      },
+      {
+        id: "t4",
+        type: "SQL Injection",
+        severity: 8,
+        location: { country: "Japan", latitude: 35.6762, longitude: 139.6503 },
+        timestamp: new Date(Date.now() - 1000 * 60 * 180).toISOString(),
+        targets: ["Banking", "Finance"],
+        actor: "Lazarus Group",
+        description: "Database breach affecting customer financial records"
+      },
+      {
+        id: "t5",
+        type: "Zero-day Exploit",
+        severity: 9,
+        location: { country: "United Kingdom", latitude: 51.5074, longitude: -0.1278 },
+        timestamp: new Date(Date.now() - 1000 * 60 * 45).toISOString(),
+        targets: ["Defense", "Aerospace"],
+        actor: "APT29",
+        description: "Targeted attack exploiting previously unknown vulnerability in VPN software"
+      },
+    ],
+    globalThreatLevel: 7,
+    topTargetedSectors: ["Healthcare", "Finance", "Government", "Energy", "Retail"],
+    activeThreats: ["Ransomware", "Phishing", "Zero-day Exploits", "Supply Chain Attacks", "DDoS", "Data Exfiltration"],
+    trendingThreats: ["IoT Malware", "Double Extortion Ransomware", "Cloud Vulnerabilities", "API Attacks"]
+  });
+
   const fetchThreatData = async (showToast = true) => {
     try {
       setLoading(true);
-      const data = await apiRequest('/api/tools/threat-intelligence');
-      setThreatData(data as ThreatIntelligence);
-      setLastUpdated(new Date());
+      setError(null);
+      // Add a timeout to prevent indefinite loading
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000); // 15-second timeout
       
-      if (showToast) {
-        toast({
-          title: 'Data Updated',
-          description: 'Threat intelligence data has been refreshed.',
-        });
+      try {
+        const data = await apiRequest('/api/tools/threat-intelligence', { signal: controller.signal });
+        clearTimeout(timeoutId);
+        setThreatData(data as ThreatIntelligence);
+        setLastUpdated(new Date());
+        
+        if (showToast) {
+          toast({
+            title: 'Data Updated',
+            description: 'Threat intelligence data has been refreshed.',
+          });
+        }
+      } catch (fetchError: any) {
+        clearTimeout(timeoutId);
+        console.error('Error fetching threat intelligence:', fetchError);
+        
+        // Fall back to sample data
+        setThreatData(getSampleThreatData());
+        setLastUpdated(new Date());
+        setError("Using visualization demo mode - actual threat data unavailable");
+        
+        if (showToast) {
+          toast({
+            title: 'Using Demo Mode',
+            description: 'Unable to fetch live threat data. Using demonstration mode instead.',
+            variant: 'default',
+          });
+        }
       }
     } catch (error) {
-      console.error('Error fetching threat intelligence:', error);
+      console.error('Error in threat data handling:', error);
+      setError("Failed to display threat data");
       toast({
         title: 'Error',
-        description: 'Failed to fetch threat intelligence data. Please try again.',
+        description: 'Failed to display threat intelligence data. Please try again.',
         variant: 'destructive',
       });
     } finally {
@@ -302,7 +388,7 @@ export default function ThreatHeatMap() {
                 </div>
                 
                 <div className="flex space-x-2">
-                  <Select defaultValue="all" onValueChange={(value) => setFilter(value as any)}>
+                  <Select value={filter} onValueChange={(value) => setFilter(value as any)}>
                     <SelectTrigger className="w-[160px] bg-slate border-accent/20">
                       <SelectValue placeholder="Filter Threats" />
                     </SelectTrigger>
@@ -313,7 +399,7 @@ export default function ThreatHeatMap() {
                     </SelectContent>
                   </Select>
                   
-                  <Tabs defaultValue="map" onValueChange={(value) => setView(value as any)}>
+                  <Tabs value={view} onValueChange={(value) => setView(value as any)}>
                     <TabsList>
                       <TabsTrigger value="map">Map View</TabsTrigger>
                       <TabsTrigger value="list">List View</TabsTrigger>
@@ -321,6 +407,13 @@ export default function ThreatHeatMap() {
                   </Tabs>
                 </div>
               </div>
+              
+              {error && (
+                <div className="mb-4 p-2 bg-yellow-500/10 border border-yellow-500/30 rounded-md text-sm text-yellow-200 flex items-center">
+                  <AlertTriangle className="h-4 w-4 mr-2 text-yellow-500" />
+                  {error}
+                </div>
+              )}
               
               <div>
                 {view === 'map' ? (
