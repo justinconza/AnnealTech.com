@@ -2107,6 +2107,37 @@ const ToolsPage = () => {
               </div>
             </div>
             
+            <div className="relative group">
+              <ToolCard 
+                icon={Shield}
+                title="Email Breach Checker"
+                description="Check if your email address or domain has been compromised in known data breaches and get security recommendations."
+                onOpenTool={() => openTool("email-breach-check")}
+              />
+              <div className="absolute top-3 right-3 opacity-100 hover:scale-110 transition-transform">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-accent/10 border-accent/20 shadow-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEmbedInstructions("Email Breach Checker", "email-breach-check");
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 text-accent" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Embed this tool on your site</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
+            
             <ToolCard 
               icon={Activity}
               title="Uptime & Monitoring Tool"
