@@ -30,9 +30,8 @@ const LoadingSpinner = () => (
   </div>
 );
 
-function Router() {
-  const [location] = useLocation();
-  
+// Main site router with full layout
+function MainRouter() {
   return (
     <>
       <Header />
@@ -82,6 +81,25 @@ function Router() {
       <Footer />
     </>
   );
+}
+
+// Lazy load the embedded router
+const EmbeddedRouter = lazy(() => import("@/components/embedded/EmbeddedRouter").then(mod => ({ default: mod.EmbeddedRouter })));
+
+// Conditional router that chooses between main and embedded experiences
+function Router() {
+  const [location] = useLocation();
+  const isEmbedded = location.startsWith('/embedded');
+  
+  if (isEmbedded) {
+    return (
+      <Suspense fallback={<LoadingSpinner />}>
+        <EmbeddedRouter />
+      </Suspense>
+    );
+  }
+  
+  return <MainRouter />;
 }
 
 function App() {
