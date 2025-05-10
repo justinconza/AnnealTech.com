@@ -14,7 +14,9 @@ import {
   Check,
   X,
   Loader2,
-  ArrowRight
+  ArrowRight,
+  Copy,
+  ClipboardCheck
 } from "lucide-react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -67,6 +69,50 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+// Copy to clipboard utility
+const CopyButton = ({ content, label = "Copy" }: { content: string, label?: string }) => {
+  const [copied, setCopied] = useState(false);
+  const { toast } = useToast();
+  
+  const handleCopy = () => {
+    navigator.clipboard.writeText(content).then(() => {
+      setCopied(true);
+      toast({
+        description: "Copied to clipboard!",
+        duration: 2000,
+      });
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+  
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="p-0 h-8 w-8 rounded-full border-accent/20 data-line" 
+            onClick={handleCopy}
+          >
+            {copied ? <ClipboardCheck className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4 text-accent" />}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{label}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
 
 // Interface for tool card props
 interface ToolCardProps {
@@ -248,6 +294,40 @@ const EmailSecurityForm = ({ onClose }: { onClose: () => void }) => {
               <Mail className="w-8 h-8" />
             </div>
             <h3 className="text-xl font-heading font-semibold">Email Security Analysis</h3>
+            <div className="mt-2 flex justify-center">
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-xs border-accent/20 hover-lift px-3 py-1 h-auto"
+                onClick={() => {
+                  const summaryText = `
+Email Security Analysis Results:
+-----------------------------
+Security Score: ${results.securityScore}/10
+
+${results.issues && results.issues.length > 0 ? `Security Issues:
+${results.issues.map((issue: string) => `- ${issue}`).join('\n')}` : ''}
+
+${results.validations ? `Validations:
+- SPF: ${results.validations.spf ? 'Valid' : 'Invalid/Missing'}
+- DKIM: ${results.validations.dkim ? 'Valid' : 'Invalid/Missing'}
+- DMARC: ${results.validations.dmarc ? 'Valid' : 'Invalid/Missing'}` : ''}
+
+${results.recommendations && results.recommendations.length > 0 ? `Recommendations:
+${results.recommendations.map((rec: string) => `- ${rec}`).join('\n')}` : ''}
+                  `.trim();
+                  
+                  navigator.clipboard.writeText(summaryText);
+                  toast({
+                    description: "All results copied to clipboard!",
+                    duration: 2000,
+                  });
+                }}
+              >
+                <Copy className="h-3 w-3 mr-1" />
+                Copy All Results
+              </Button>
+            </div>
           </div>
           
           <div className="space-y-4">
@@ -261,12 +341,21 @@ const EmailSecurityForm = ({ onClose }: { onClose: () => void }) => {
             
             {results.issues && results.issues.length > 0 && (
               <div>
-                <h4 className="text-sm font-medium text-muted-foreground mb-2">Security Issues</h4>
+                <div className="flex justify-between items-center mb-2">
+                <h4 className="text-sm font-medium text-muted-foreground">Security Issues</h4>
+                <CopyButton 
+                  content={results.issues.map((issue: string) => `- ${issue}`).join('\n')}
+                  label="Copy all issues"
+                />
+              </div>
                 <ul className="space-y-2">
                   {results.issues.map((issue: string, i: number) => (
-                    <li key={i} className="flex items-start">
+                    <li key={i} className="flex items-start group">
                       <X className="text-red-500 h-5 w-5 mr-2 flex-shrink-0 mt-0.5" />
                       <span className="text-sm">{issue}</span>
+                      <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                        <CopyButton content={issue} label="Copy this issue" />
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -443,6 +532,36 @@ const PhishingDetectionForm = ({ onClose }: { onClose: () => void }) => {
               <AlertTriangle className="w-8 h-8" />
             </div>
             <h3 className="text-xl font-heading font-semibold">Phishing Analysis</h3>
+            <div className="mt-2 flex justify-center">
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-xs border-accent/20 hover-lift px-3 py-1 h-auto"
+                onClick={() => {
+                  const summaryText = `
+Phishing Analysis Results:
+-----------------------------
+Threat Score: ${results.score}/10
+${results.assessment ? `\nAssessment: ${results.assessment}` : ''}
+
+${results.redFlags && results.redFlags.length > 0 ? `Red Flags:
+${results.redFlags.map((flag: string) => `- ${flag}`).join('\n')}` : ''}
+
+${results.recommendations && results.recommendations.length > 0 ? `Recommendations:
+${results.recommendations.map((rec: string) => `- ${rec}`).join('\n')}` : ''}
+                  `.trim();
+                  
+                  navigator.clipboard.writeText(summaryText);
+                  toast({
+                    description: "All results copied to clipboard!",
+                    duration: 2000,
+                  });
+                }}
+              >
+                <Copy className="h-3 w-3 mr-1" />
+                Copy All Results
+              </Button>
+            </div>
           </div>
           
           <div className="space-y-4">
