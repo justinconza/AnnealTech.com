@@ -17,9 +17,17 @@ export function EmbeddedWrapper({
 }: EmbeddedWrapperProps) {
   return (
     <div className="w-full h-full bg-background text-foreground font-sans p-4 flex flex-col min-h-[300px]">
-      {title && (
-        <h2 className="text-xl font-heading text-accent mb-4">{title}</h2>
-      )}
+      <div className="flex justify-between items-center mb-4">
+        {title && (
+          <h2 className="text-xl font-heading text-accent">{title}</h2>
+        )}
+        <a 
+          href="/embedded/tools" 
+          className="px-3 py-1 rounded-md border border-accent/30 text-accent hover:bg-accent/10 text-sm font-medium transition-colors"
+        >
+          Tools Wix Test
+        </a>
+      </div>
       
       <div className="flex-grow">
         {children}
