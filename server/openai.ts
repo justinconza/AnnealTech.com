@@ -11,24 +11,39 @@ const DEFAULT_MODEL = "gpt-4o";
 // Email security analysis
 export async function analyzeEmailSecurity(emailData: string) {
   try {
+    console.log("Analyzing email headers with length:", emailData.length);
+
+    // Extract first 100 chars for logging
+    const emailPreview = emailData.substring(0, 100).replace(/\n/g, " ") + "...";
+    console.log("Email preview:", emailPreview);
+
+    // Create the prompt with JSON keyword
+    const systemPrompt = "You are an expert email security analyst. Analyze the provided email headers or content for security issues, SPF/DKIM validation, suspicious origins, and potential threats. Provide a security rating from 1-10 and specific recommendations. Respond with JSON including these fields: 'securityScore' (number), 'issues' (array of strings), 'validations' (object with boolean fields: spf, dkim, dmarc), 'recommendations' (array of strings).";
+    const userPrompt = `Analyze the following email headers and respond with JSON format:\n\n${emailData}`;
+    
+    console.log("System prompt:", systemPrompt);
+    console.log("User prompt preview:", userPrompt.substring(0, 100) + "...");
+
     const response = await openai.chat.completions.create({
       model: DEFAULT_MODEL,
       messages: [
         {
           role: "system",
-          content: 
-            "You are an expert email security analyst. Analyze the provided email headers or content for security issues, SPF/DKIM validation, suspicious origins, and potential threats. Provide a security rating from 1-10 and specific recommendations. Respond with JSON including these fields: 'securityScore' (number), 'issues' (array of strings), 'validations' (object with boolean fields: spf, dkim, dmarc), 'recommendations' (array of strings).",
+          content: systemPrompt
         },
         {
           role: "user",
-          content: `Analyze the following email headers and respond with JSON:\n\n${emailData}`,
+          content: userPrompt
         }
       ],
       response_format: { type: "json_object" },
       temperature: 0.3,
     });
 
+    console.log("OpenAI response received");
     const content = response.choices[0].message.content;
+    console.log("Response content preview:", content ? content.substring(0, 100) + "..." : "no content");
+
     return content ? JSON.parse(content) : {};
   } catch (error) {
     console.error("Error analyzing email security:", error);

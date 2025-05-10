@@ -72,11 +72,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Email Security Analysis
   app.post("/api/tools/email-security", async (req: Request, res: Response) => {
     try {
+      console.log("Email security request body:", JSON.stringify(req.body).substring(0, 200) + "...");
       const validatedData = emailSecuritySchema.parse(req.body);
+      console.log("Validated email data length:", validatedData.emailData.length);
       const analysis = await analyzeEmailSecurity(validatedData.emailData);
+      console.log("Email analysis result:", JSON.stringify(analysis).substring(0, 200) + "...");
       res.status(200).json(analysis);
     } catch (error) {
       if (error instanceof z.ZodError) {
+        console.error("Email validation error:", error.errors);
         res.status(400).json({ 
           success: false, 
           message: "Invalid email data", 
