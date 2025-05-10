@@ -16,8 +16,11 @@ import {
   Loader2,
   ArrowRight,
   Copy,
-  ClipboardCheck
+  ClipboardCheck,
+  Code,
+  Share2
 } from "lucide-react";
+import { EmbeddingInstructions } from "@/components/tools/EmbeddingInstructions";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
