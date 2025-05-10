@@ -90,19 +90,28 @@ const ToolCard = ({
   onOpenTool 
 }: ToolCardProps) => {
   return (
-    <Card className="bg-steel/20 border border-accent/10 h-full flex flex-col hover:border-accent/30 hover:shadow-md hover:shadow-accent/5 transition-all duration-300">
+    <Card 
+      interactive 
+      shimmer
+      animated
+      className="bg-steel/20 border border-accent/10 h-full flex flex-col"
+    >
       <CardHeader className="pb-4">
-        <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-3 text-accent">
+        <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-3 text-accent bg-pulse">
           <Icon className="w-6 h-6" />
         </div>
-        <CardTitle className="font-heading text-xl mb-2">{title}</CardTitle>
+        <CardTitle className="font-heading text-xl mb-2 glow-text">{title}</CardTitle>
         <CardDescription className="text-muted-foreground">
           {description}
         </CardDescription>
       </CardHeader>
       <CardFooter className="pt-2 mt-auto">
         {comingSoon ? (
-          <Button variant="outline" className="w-full border-accent/20 text-muted-foreground" disabled>
+          <Button 
+            variant="outline" 
+            className="w-full border-accent/20 text-muted-foreground" 
+            disabled
+          >
             <span className="text-xs font-medium tracking-wide px-2 py-0.5 bg-steel/50 rounded-full mr-2">
               Coming Soon
             </span>
@@ -110,7 +119,7 @@ const ToolCard = ({
           </Button>
         ) : premium ? (
           <Button 
-            variant="default" 
+            variant="glowing" 
             className="w-full bg-gradient-to-r from-accent to-amber-500 hover:from-accent/90 hover:to-amber-500/90 text-white"
             onClick={onOpenTool}
           >
@@ -121,7 +130,7 @@ const ToolCard = ({
           </Button>
         ) : (
           <Button 
-            variant="default" 
+            variant="accent" 
             className="w-full bg-accent hover:bg-accent/90 text-white"
             onClick={onOpenTool}
           >
@@ -210,7 +219,7 @@ const EmailSecurityForm = ({ onClose }: { onClose: () => void }) => {
               <Button 
                 type="button" 
                 variant="outline" 
-                className="border-accent/20"
+                className="border-accent/20 hover-lift"
                 onClick={onClose}
                 disabled={isAnalyzing}
               >
@@ -219,6 +228,7 @@ const EmailSecurityForm = ({ onClose }: { onClose: () => void }) => {
               <Button 
                 type="submit" 
                 disabled={isAnalyzing}
+                variant="accent"
                 className="bg-accent hover:bg-accent/90 text-white"
               >
                 {isAnalyzing ? (
@@ -244,8 +254,8 @@ const EmailSecurityForm = ({ onClose }: { onClose: () => void }) => {
             <div>
               <h4 className="text-sm font-medium text-muted-foreground mb-1">Security Rating</h4>
               <div className="flex items-center space-x-2">
-                <Progress value={results.securityScore ? (results.securityScore * 10) : 50} className="bg-slate h-3" />
-                <span className="font-medium">{results.securityScore || "-"}/10</span>
+                <Progress value={results.securityScore ? (results.securityScore * 10) : 50} className="bg-slate h-3 animate-progress" />
+                <span className="font-medium glow-text">{results.securityScore || "-"}/10</span>
               </div>
             </div>
             

@@ -101,6 +101,68 @@ export default {
             transform: "translateY(-100px) scale(0.2) rotate(360deg)",
             opacity: "0" 
           }
+        },
+        "pulse-ring": {
+          "0%": { 
+            transform: "scale(0.8)",
+            opacity: "0" 
+          },
+          "50%": { 
+            opacity: "0.5" 
+          },
+          "100%": { 
+            transform: "scale(1.5)",
+            opacity: "0" 
+          }
+        },
+        "data-stream": {
+          "0%": { 
+            backgroundPosition: "0% 50%" 
+          },
+          "100%": { 
+            backgroundPosition: "100% 50%" 
+          }
+        },
+        "float": {
+          "0%, 100%": { 
+            transform: "translateY(0)" 
+          },
+          "50%": { 
+            transform: "translateY(-10px)" 
+          }
+        },
+        "cyber-glitch": {
+          "0%, 100%": { 
+            transform: "translate(0)" 
+          },
+          "20%": { 
+            transform: "translate(-2px, 2px)" 
+          },
+          "40%": { 
+            transform: "translate(-2px, -2px)" 
+          },
+          "60%": { 
+            transform: "translate(2px, 2px)" 
+          },
+          "80%": { 
+            transform: "translate(2px, -2px)" 
+          }
+        },
+        "scan": {
+          "0%": { 
+            backgroundPosition: "0 -100%" 
+          },
+          "100%": { 
+            backgroundPosition: "0 100%" 
+          }
+        },
+        "progress-fill": {
+          "0%": { 
+            transform: "scaleX(0)" 
+          },
+          "100%": { 
+            transform: "scaleX(1)" 
+          }
         }
       },
       animation: {
@@ -108,6 +170,12 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "glow": "glow 2s ease-in-out infinite",
         "forge-spark": "forge-spark 1.5s ease-out forwards",
+        "pulse-ring": "pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite",
+        "data-stream": "data-stream 3s linear infinite",
+        "float": "float 3s ease-in-out infinite",
+        "cyber-glitch": "cyber-glitch 0.3s cubic-bezier(.25, .46, .45, .94) both",
+        "scan": "scan 2s linear infinite",
+        "progress-fill": "progress-fill 1s ease-out forwards",
       },
     },
   },

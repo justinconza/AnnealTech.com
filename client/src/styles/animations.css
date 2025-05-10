@@ -323,3 +323,155 @@
   transform: translateX(100%);
   opacity: 1;
 }
+
+/* Binary data scanner effect */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scan-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to bottom, 
+    rgba(255, 87, 0, 0), 
+    rgba(255, 87, 0, 0.3), 
+    rgba(255, 87, 0, 0)
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scan-effect:hover::after {
+  animation: scanline 1.5s ease-in-out infinite;
+  opacity: 1;
+}
+
+/* Digital noise effect */
+@keyframes digitalNoise {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -5% -10%; }
+  20% { background-position: -15% 5%; }
+  30% { background-position: 7% -25%; }
+  40% { background-position: 20% 25%; }
+  50% { background-position: -25% 10%; }
+  60% { background-position: 15% 5%; }
+  70% { background-position: 0% 15%; }
+  80% { background-position: 25% 5%; }
+  90% { background-position: -10% 15%; }
+}
+
+.digital-noise {
+  position: relative;
+}
+
+.digital-noise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.digital-noise:hover::before {
+  opacity: 0.05;
+  animation: digitalNoise 0.5s steps(1) infinite;
+}
+
+/* Holographic text effect */
+.holographic {
+  background-image: linear-gradient(
+    135deg, 
+    rgba(255, 87, 0, 0.8) 0%, 
+    rgba(0, 183, 255, 0.8) 50%,
+    rgba(255, 87, 0, 0.8) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  text-shadow: 0 0 10px rgba(255, 87, 0, 0.3);
+  transition: all 0.5s ease;
+}
+
+.holographic:hover {
+  background-position: 100% 0;
+  text-shadow: 0 0 12px rgba(255, 87, 0, 0.5);
+}
+
+/* Terminal typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent }
+  50% { border-color: #ff5700 }
+}
+
+.terminal-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #ff5700;
+  width: 0;
+  animation: 
+    typing 2s steps(40, end) forwards,
+    blink 0.75s step-end infinite;
+}
+
+/* Energy flux for energy related elements */
+@keyframes energyFlux {
+  0% {
+    filter: brightness(1) drop-shadow(0 0 2px rgba(255, 87, 0, 0.3));
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 0 5px rgba(255, 87, 0, 0.5));
+  }
+  100% {
+    filter: brightness(1) drop-shadow(0 0 2px rgba(255, 87, 0, 0.3));
+  }
+}
+
+.energy-flux {
+  animation: energyFlux 3s ease-in-out infinite;
+}
+
+/* Forge pulsing glow like molten metal */
+@keyframes forgePulse {
+  0% {
+    box-shadow: 0 0 4px 2px rgba(255, 87, 0, 0.2), 
+                inset 0 0 2px 1px rgba(255, 87, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 8px 4px rgba(255, 87, 0, 0.4), 
+                inset 0 0 4px 2px rgba(255, 87, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 4px 2px rgba(255, 87, 0, 0.2), 
+                inset 0 0 2px 1px rgba(255, 87, 0, 0.2);
+  }
+}
+
+.forge-pulse {
+  animation: forgePulse 3s infinite;
+}
