@@ -14,6 +14,8 @@ export const vtApiKey = validateApiKey(process.env.VIRUSTOTAL_API_KEY, 'VirusTot
 export const shodanApiKey = validateApiKey(process.env.SHODAN_API_KEY, 'Shodan');
 export const securityTrailsApiKey = validateApiKey(process.env.SECURITYTRAILS_API_KEY, 'SecurityTrails');
 export const alienVaultApiKey = validateApiKey(process.env.ALIENVAULT_API_KEY, 'AlienVault OTX');
+export const greyNoiseApiKey = validateApiKey(process.env.GREYNOISE_API_KEY, 'GreyNoise');
+export const urlScanApiKey = validateApiKey(process.env.URLSCAN_API_KEY, 'URLScan.io');
 
 // VirusTotal API response schema for URL scanning
 const VTUrlReportSchema = z.object({
@@ -239,6 +241,201 @@ export async function getThreatsFromOTX(indicator: string, indicatorType: 'domai
     return OTXPulseSchema.parse(data);
   } catch (error) {
     console.error('Error getting threats from AlienVault OTX:', error);
+    return null;
+  }
+}
+
+// GreyNoise API response schema for IP intelligence 
+const GreyNoiseIPSchema = z.object({
+  ip: z.string(),
+  noise: z.boolean().optional(),
+  riot: z.boolean().optional(),
+  classification: z.string().optional(),
+  name: z.string().optional(),
+  link: z.string().optional(),
+  last_seen: z.string().optional(),
+  message: z.string().optional()
+});
+
+type GreyNoiseIPResult = z.infer<typeof GreyNoiseIPSchema>;
+
+/**
+ * Get IP intelligence data from GreyNoise
+ */
+export async function checkIPWithGreyNoise(ip: string): Promise<GreyNoiseIPResult | null> {
+  try {
+    const response = await fetch(`https://api.greynoise.io/v3/community/${ip}`, {
+      method: 'GET',
+      headers: {
+        'key': greyNoiseApiKey
+      }
+    });
+    
+    if (!response.ok) {
+      console.error(`GreyNoise API error: ${response.status} - ${await response.text()}`);
+      return null;
+    }
+    
+    const data = await response.json();
+    return GreyNoiseIPSchema.parse(data);
+  } catch (error) {
+    console.error('Error checking IP with GreyNoise:', error);
+    return null;
+  }
+}
+
+// URLScan.io response schema for scanning URLs
+const URLScanSubmitSchema = z.object({
+  message: z.string().optional(),
+  uuid: z.string().optional(),
+  result: z.string().optional(),
+  api: z.string().optional(),
+  visibility: z.string().optional(),
+  options: z.any().optional(),
+  url: z.string().optional(),
+  country: z.string().optional(),
+  task: z.object({
+    uuid: z.string(),
+    time: z.string()
+  }).optional()
+});
+
+const URLScanResultSchema = z.object({
+  task: z.object({
+    uuid: z.string(),
+    url: z.string(),
+    time: z.string()
+  }),
+  page: z.object({
+    url: z.string(),
+    domain: z.string(),
+    ip: z.string().optional(),
+    status: z.string().optional(),
+    title: z.string().optional()
+  }),
+  stats: z.object({
+    malicious: z.number().optional(),
+    suspicious: z.number().optional(),
+    undetected: z.number().optional()
+  }).optional(),
+  verdicts: z.object({
+    overall: z.object({
+      malicious: z.boolean().optional(),
+      score: z.number().optional()
+    }).optional()
+  }).optional()
+});
+
+type URLScanSubmitResult = z.infer<typeof URLScanSubmitSchema>;
+type URLScanResult = z.infer<typeof URLScanResultSchema>;
+
+/**
+ * Scan a URL with URLScan.io and get the results
+ */
+export async function scanUrlWithURLScan(url: string): Promise<URLScanResult | null> {
+  try {
+    // First, submit the URL for scanning
+    const submitResponse = await fetch('https://urlscan.io/api/v1/scan/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': urlScanApiKey
+      },
+      body: JSON.stringify({
+        url: url,
+        visibility: 'private' // Keep the scan private
+      })
+    });
+    
+    if (!submitResponse.ok) {
+      console.error(`URLScan.io Submit API error: ${submitResponse.status} - ${await submitResponse.text()}`);
+      return null;
+    }
+    
+    const submitData = await submitResponse.json();
+    const submitResult = URLScanSubmitSchema.parse(submitData);
+    
+    if (!submitResult.uuid) {
+      console.error('No scan UUID returned from URLScan.io');
+      return null;
+    }
+    
+    // Wait a few seconds for the scan to complete
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    
+    // Fetch the scan results
+    const resultResponse = await fetch(`https://urlscan.io/api/v1/result/${submitResult.uuid}/`, {
+      method: 'GET',
+      headers: {
+        'API-Key': urlScanApiKey
+      }
+    });
+    
+    if (!resultResponse.ok) {
+      // If the scan is still processing, we can return null rather than treating it as an error
+      if (resultResponse.status === 404) {
+        console.log('URLScan.io scan still processing, try again later with the UUID:', submitResult.uuid);
+        return null;
+      }
+      
+      console.error(`URLScan.io Result API error: ${resultResponse.status} - ${await resultResponse.text()}`);
+      return null;
+    }
+    
+    const resultData = await resultResponse.json();
+    return URLScanResultSchema.parse(resultData);
+  } catch (error) {
+    console.error('Error scanning URL with URLScan.io:', error);
+    return null;
+  }
+}
+
+// PhishTank API (no API key needed for checking individual URLs)
+const PhishTankSchema = z.object({
+  url: z.string(),
+  in_database: z.boolean(),
+  phish_id: z.string().optional(),
+  phish_detail_page: z.string().optional(),
+  verified: z.boolean().optional(),
+  verified_at: z.string().optional(),
+  valid: z.boolean().optional()
+});
+
+type PhishTankResult = z.infer<typeof PhishTankSchema>;
+
+/**
+ * Check if a URL is a known phishing site using PhishTank
+ */
+export async function checkUrlWithPhishTank(url: string): Promise<PhishTankResult | null> {
+  try {
+    const formData = new URLSearchParams();
+    formData.append('url', url);
+    formData.append('format', 'json');
+    
+    const response = await fetch('http://checkurl.phishtank.com/checkurl/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'AnnealTech-Security-Tools' // Identify our application
+      },
+      body: formData.toString()
+    });
+    
+    if (!response.ok) {
+      console.error(`PhishTank API error: ${response.status} - ${await response.text()}`);
+      return null;
+    }
+    
+    const data = await response.json();
+    
+    if (!data.results) {
+      console.error('Unexpected response format from PhishTank');
+      return null;
+    }
+    
+    return PhishTankSchema.parse(data.results);
+  } catch (error) {
+    console.error('Error checking URL with PhishTank:', error);
     return null;
   }
 }
