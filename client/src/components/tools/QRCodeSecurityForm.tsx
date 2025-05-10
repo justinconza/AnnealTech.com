@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -71,6 +71,9 @@ export default function QRCodeSecurityForm({ onClose }: QRCodeSecurityFormProps)
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [results, setResults] = useState<QRSecurityResults | null>(null);
   const [activeTab, setActiveTab] = useState("manual");
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+  const [isProcessingImage, setIsProcessingImage] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
   // Create form
@@ -141,9 +144,10 @@ export default function QRCodeSecurityForm({ onClose }: QRCodeSecurityFormProps)
       {!results ? (
         <>
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="manual">Manual Entry</TabsTrigger>
-              <TabsTrigger value="scanner">QR Scanner</TabsTrigger>
+              <TabsTrigger value="scanner">Camera Scanner</TabsTrigger>
+              <TabsTrigger value="upload">Upload Image</TabsTrigger>
             </TabsList>
             
             <TabsContent value="manual" className="mt-4">
@@ -222,6 +226,149 @@ export default function QRCodeSecurityForm({ onClose }: QRCodeSecurityFormProps)
                   variant: "destructive",
                 })}
               />
+            </TabsContent>
+            
+            <TabsContent value="upload" className="mt-4">
+              <div className="space-y-4">
+                <div className="bg-slate rounded-lg border border-border p-6 text-center">
+                  {uploadedImage ? (
+                    <div className="space-y-4">
+                      <div className="relative mx-auto w-full max-w-xs h-64 overflow-hidden rounded-md border border-border bg-black">
+                        <img 
+                          src={uploadedImage} 
+                          alt="Uploaded QR Code" 
+                          className="h-full w-full object-contain"
+                        />
+                      </div>
+                      
+                      <div className="flex justify-center space-x-2">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="border-accent/20 hover-lift"
+                          onClick={() => {
+                            setUploadedImage(null);
+                            if (fileInputRef.current) {
+                              fileInputRef.current.value = '';
+                            }
+                          }}
+                          disabled={isProcessingImage}
+                        >
+                          Clear Image
+                        </Button>
+                        
+                        <Button
+                          type="button"
+                          variant="accent"
+                          className="bg-accent hover:bg-accent/90 text-white"
+                          onClick={async () => {
+                            try {
+                              setIsProcessingImage(true);
+                              // Process the image with HTML5QrCode library
+                              const html5QrCode = new window.Html5Qrcode("qr-reader-upload-hidden");
+                              
+                              // Create an Image element to get image dimensions
+                              const image = new Image();
+                              image.src = uploadedImage;
+                              
+                              await new Promise((resolve) => {
+                                image.onload = resolve;
+                              });
+                              
+                              const result = await html5QrCode.scanFileV2(
+                                await (await fetch(uploadedImage)).blob(), 
+                                /* showImage */ false
+                              );
+                              
+                              const decodedText = result.decodedText;
+                              
+                              try {
+                                const url = new URL(decodedText);
+                                handleQRCodeDetected(decodedText, decodedText);
+                              } catch (e) {
+                                toast({
+                                  title: "Invalid URL",
+                                  description: "The QR code doesn't contain a valid URL.",
+                                  variant: "destructive",
+                                });
+                              }
+                              
+                              // Clean up
+                              html5QrCode.clear();
+                            } catch (error) {
+                              console.error("Error processing QR code image:", error);
+                              toast({
+                                title: "Processing Failed",
+                                description: "Could not detect a QR code in the image. Please try another image.",
+                                variant: "destructive",
+                              });
+                            } finally {
+                              setIsProcessingImage(false);
+                            }
+                          }}
+                          disabled={isProcessingImage}
+                        >
+                          {isProcessingImage ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Processing...
+                            </>
+                          ) : "Scan QR Code"}
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <div 
+                        className="mx-auto flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-accent/40 bg-slate/50 p-12 text-center cursor-pointer hover:bg-slate/80 transition-colors"
+                        onClick={() => fileInputRef.current?.click()}
+                      >
+                        <div className="h-20 w-20 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                          <Scan className="h-10 w-10 text-accent" />
+                        </div>
+                        <h3 className="text-lg font-medium mb-2">Upload QR Code Image</h3>
+                        <p className="text-sm text-muted-foreground max-w-xs">
+                          Upload a screenshot or image containing a QR code to scan
+                        </p>
+                        <input
+                          ref={fileInputRef}
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              const reader = new FileReader();
+                              reader.onload = (e) => {
+                                const result = e.target?.result as string;
+                                setUploadedImage(result);
+                              };
+                              reader.readAsDataURL(file);
+                            }
+                          }}
+                        />
+                        <Button 
+                          type="button"
+                          variant="outline"
+                          className="mt-4 border-accent/20 hover-lift"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            fileInputRef.current?.click();
+                          }}
+                        >
+                          Select File
+                        </Button>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Supported formats: PNG, JPEG, GIF, WebP
+                      </p>
+                    </div>
+                  )}
+                </div>
+                
+                {/* Hidden element for HTML5QrCode to use */}
+                <div id="qr-reader-upload-hidden" className="hidden"></div>
+              </div>
             </TabsContent>
           </Tabs>
         </>
