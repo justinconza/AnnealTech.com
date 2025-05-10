@@ -2001,7 +2001,7 @@ const ToolsPage = () => {
       
       {/* Email Security Analyzer Dialog */}
       <Dialog open={activeDialog === "email-security"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[700px] bg-steel border-accent/20">
+        <DialogContent className="sm:max-w-[700px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-heading text-2xl">Email Security Analyzer</DialogTitle>
             <DialogDescription>
@@ -2053,7 +2053,7 @@ const ToolsPage = () => {
       
       {/* Security Risk Assessment Dialog */}
       <Dialog open={activeDialog === "risk-assessment"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[800px] bg-steel border-accent/20">
+        <DialogContent className="sm:max-w-[800px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-heading text-2xl">Security Risk Calculator</DialogTitle>
             <DialogDescription>
