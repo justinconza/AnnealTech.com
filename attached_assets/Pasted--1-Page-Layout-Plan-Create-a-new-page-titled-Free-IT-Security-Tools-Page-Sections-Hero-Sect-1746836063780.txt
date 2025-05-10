@@ -1,0 +1,44 @@
+🔹 1. Page Layout Plan
+Create a new page titled: Free IT & Security Tools
+
+Page Sections:
+
+Hero Section – Catchy headline + call to action
+
+Tool Cards – One section per tool (title, benefit, “Launch Tool” button)
+
+Why Free? – Short paragraph explaining your mission
+
+Lead Capture – Optional form or gated tools (email to unlock premium ones)
+
+Security Assurance – Note that data is never sold/shared
+
+🔹 2. Design Mockup (Replit/Designer Input)
+Give this to Replit or your designer:
+
+“Build a responsive webpage using TailwindCSS and React or HTML/CSS. Each tool should be displayed in a grid card layout with icons, a short description, and a CTA button. Use a dark theme with orange accent colors to match AnnealTech branding. Include a header, footer, and optional modal for gated tool access.”
+
+🔹 3. Technical Setup
+Host tools on a subdomain (e.g., tools.annealtech.com) or embed in an iframe
+
+Link tools from Wix with either:
+
+External links to Replit-hosted tools
+
+Custom code embeds
+
+Set up basic tracking with Google Analytics or Plausible.io
+
+Optional: Gate advanced tools with Notion forms, Mailchimp, or HubSpot
+
+🚀 FREE TOOL IDEAS TO BUILD (Give These to Replit)
+Tool Name	Description	Value to Users	Replit Dev Tips
+DMARC Lookup Tool	Enter a domain, return SPF/DKIM/DMARC results	Helps assess email security posture	Use DNS queries + API (like dmarcian)
+MX & Port Scanner	Enter a domain → output MX, open ports, protocols	Checks mail server setup & risk	Use dig, nmap, or Node.js wrappers
+Email Header Analyzer	Paste header → shows hops, delays, risk flags	Decodes phishing attempts	Python + regex for parsing
+Phishing Simulation Previewer	Shows sample phishing emails by vertical	Educates users visually	Build an HTML gallery + copyable text
+Risk Score Calculator	Select IT practices → gives risk level & suggestions	Quick self-assessment	Use dropdowns, sliders, and scoring logic
+Breach Check Tool	Enter email/domain → checks for known breaches	Raises awareness on dark web exposure	Use HaveIBeenPwned API
+Security Culture Maturity Quiz	10 questions → outputs a profile with tips	Teases your consulting offer	JavaScript-based quiz logic
+Uptime Monitor	User inputs domain, uptime tested over time	For IT/ops customers	Backend needed (optional webhook alerts)
+Password Strength Tester	Type a password → evaluates strength, entropy	Promotes better hygiene	Use zxcvbn.js library
