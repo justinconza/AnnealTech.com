@@ -1754,6 +1754,15 @@ const PremiumToolGatedForm = ({ onClose, toolName }: { onClose: () => void; tool
 const ToolsPage = () => {
   const [activeDialog, setActiveDialog] = useState<string | null>(null);
   const [activePremiumTool, setActivePremiumTool] = useState<string>("");
+  const [embedToolInfo, setEmbedToolInfo] = useState<{ 
+    open: boolean, 
+    name: string, 
+    path: string 
+  }>({
+    open: false,
+    name: "",
+    path: ""
+  });
   
   const openTool = (toolId: string) => {
     setActiveDialog(toolId);
@@ -1762,6 +1771,14 @@ const ToolsPage = () => {
   const openPremiumTool = (toolId: string, toolName: string) => {
     setActivePremiumTool(toolName);
     setActiveDialog("premium");
+  };
+  
+  const openEmbedInstructions = (toolName: string, toolPath: string) => {
+    setEmbedToolInfo({
+      open: true,
+      name: toolName,
+      path: toolPath
+    });
   };
   
   const closeDialog = () => {
