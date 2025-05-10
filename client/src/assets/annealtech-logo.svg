@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="50" viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
+  <!-- AT Logo - "A" and "T" letters in a stylized design -->
+  <g fill="#FFFFFF">
+    <!-- A -->
+    <path d="M30,10 L45,40 L38,40 L35,34 L25,34 L22,40 L15,40 L30,10 Z M30,18 L26,28 L34,28 L30,18 Z" />
+    <!-- T -->
+    <path d="M50,10 L80,10 L80,16 L70,16 L70,40 L60,40 L60,16 L50,16 L50,10 Z" />
+  </g>
+</svg>
