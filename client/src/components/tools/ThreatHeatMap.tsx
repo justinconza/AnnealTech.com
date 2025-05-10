@@ -36,16 +36,27 @@ export default function ThreatHeatMap() {
   const [loading, setLoading] = useState(false);
   const [threatData, setThreatData] = useState<ThreatIntelligence | null>(null);
   const [view, setView] = useState<'map' | 'list'>('map');
-  const [filter, setFilter] = useState<'all' | 'critical' | 'recent'>('all');
+  const [filter, setFilter] = useState<'recent' | 'all' | 'critical'>('recent'); // Default to recent for faster loading
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [autoRefresh, setAutoRefresh] = useState<boolean>(false);
   const mapRef = useRef<SVGSVGElement | null>(null);
   const tooltipRef = useRef<HTMLDivElement | null>(null);
+  const autoRefreshTimerRef = useRef<NodeJS.Timeout | null>(null);
   const { toast } = useToast();
 
-  const fetchThreatData = async () => {
+  const fetchThreatData = async (showToast = true) => {
     try {
       setLoading(true);
       const data = await apiRequest('/api/tools/threat-intelligence');
       setThreatData(data as ThreatIntelligence);
+      setLastUpdated(new Date());
+      
+      if (showToast) {
+        toast({
+          title: 'Data Updated',
+          description: 'Threat intelligence data has been refreshed.',
+        });
+      }
     } catch (error) {
       console.error('Error fetching threat intelligence:', error);
       toast({
@@ -58,8 +69,33 @@ export default function ThreatHeatMap() {
     }
   };
 
+  // Setup auto-refresh functionality
   useEffect(() => {
-    fetchThreatData();
+    if (autoRefresh) {
+      // Refresh every 5 minutes
+      autoRefreshTimerRef.current = setInterval(() => {
+        fetchThreatData(false);
+      }, 5 * 60 * 1000);
+      
+      toast({
+        title: 'Auto-Refresh Enabled',
+        description: 'Threat data will refresh every 5 minutes.',
+      });
+    } else if (autoRefreshTimerRef.current) {
+      clearInterval(autoRefreshTimerRef.current);
+      autoRefreshTimerRef.current = null;
+    }
+    
+    return () => {
+      if (autoRefreshTimerRef.current) {
+        clearInterval(autoRefreshTimerRef.current);
+      }
+    };
+  }, [autoRefresh]);
+
+  // Initial data fetch
+  useEffect(() => {
+    fetchThreatData(false);
   }, []);
 
   useEffect(() => {
@@ -210,19 +246,44 @@ export default function ThreatHeatMap() {
             <div>
               <CardTitle className="text-xl font-heading">Real-time Security Threat Heat Map</CardTitle>
               <CardDescription>
-                Global cybersecurity threat intelligence from AlienVault OTX, URLhaus, and AbuseIPDB
+                Live cybersecurity threat intelligence from OSINT sources
               </CardDescription>
+              {lastUpdated && (
+                <p className="text-xs text-muted-foreground mt-1">
+                  Last updated: {lastUpdated.toLocaleTimeString()} ({
+                    Math.floor((new Date().getTime() - lastUpdated.getTime()) / 60000) === 0 
+                      ? 'just now' 
+                      : `${Math.floor((new Date().getTime() - lastUpdated.getTime()) / 60000)} min ago`
+                  })
+                </p>
+              )}
             </div>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="border-accent/20 hover-lift"
-              onClick={fetchThreatData}
-              disabled={loading}
-            >
-              {loading ? <Loader2 className="h-4 w-4 mr-1 animate-spin" /> : <RefreshCw className="h-4 w-4 mr-1" />}
-              Refresh Data
-            </Button>
+            <div className="flex gap-2">
+              <div className="flex items-center mr-2">
+                <label className="text-xs flex items-center cursor-pointer">
+                  <input 
+                    type="checkbox" 
+                    className="mr-1.5 h-3 w-3 rounded"
+                    checked={autoRefresh}
+                    onChange={(e) => setAutoRefresh(e.target.checked)}
+                  />
+                  <span>Auto-refresh</span>
+                </label>
+              </div>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="border-accent/20 hover-lift"
+                onClick={(e) => {
+                  e.preventDefault();
+                  fetchThreatData(true);
+                }}
+                disabled={loading}
+              >
+                {loading ? <Loader2 className="h-4 w-4 mr-1 animate-spin" /> : <RefreshCw className="h-4 w-4 mr-1" />}
+                Refresh
+              </Button>
+            </div>
           </div>
         </CardHeader>
         <CardContent className="pb-2">
