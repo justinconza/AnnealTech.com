@@ -711,6 +711,7 @@ const DomainSecurityForm = ({ onClose }: { onClose: () => void }) => {
       const response = await apiRequest('/api/tools/domain-security', {
         method: 'POST',
         body: JSON.stringify(values),
+        headers: { 'Content-Type': 'application/json' }
       });
       
       setResults(response);
@@ -905,6 +906,7 @@ const RiskAssessmentForm = ({ onClose }: { onClose: () => void }) => {
       const response = await apiRequest('/api/tools/security-assessment', {
         method: 'POST',
         body: JSON.stringify(values),
+        headers: { 'Content-Type': 'application/json' }
       });
       
       setResults(response);
