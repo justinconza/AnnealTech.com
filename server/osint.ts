@@ -17,14 +17,6 @@ export const alienVaultApiKey = validateApiKey(process.env.ALIENVAULT_API_KEY, '
 export const greyNoiseApiKey = validateApiKey(process.env.GREYNOISE_API_KEY, 'GreyNoise');
 export const urlScanApiKey = validateApiKey(process.env.URLSCAN_API_KEY, 'URLScan.io');
 
-/**
- * Helper function to safely parse JSON response with type assertion
- */
-async function safeJsonParse<T>(response: any): Promise<T> {
-  const data = await response.json();
-  return data as T;
-}
-
 // VirusTotal API response schema for URL scanning
 const VTUrlReportSchema = z.object({
   data: z.object({
@@ -436,7 +428,9 @@ export async function checkUrlWithPhishTank(url: string): Promise<PhishTankResul
       return null;
     }
     
-    const data = await safeJsonParse<{ results?: any }>(response);
+    const responseData = await response.json();
+    // Type assertion to ensure we have the expected structure
+    const data = responseData as { results?: any };
     
     if (!data.results) {
       console.error('Unexpected response format from PhishTank');
