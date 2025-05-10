@@ -17,6 +17,12 @@ const Tools = lazy(() => import("./pages/Tools"));
 const Faq = lazy(() => import("./pages/Faq"));
 const Contact = lazy(() => import("./pages/Contact"));
 
+// Lazy load embedded tools
+const EmailSecurityEmbedded = lazy(() => import("./pages/embedded/EmailSecurity"));
+const PhishingDetectionEmbedded = lazy(() => import("./pages/embedded/PhishingDetection"));
+const PasswordStrengthEmbedded = lazy(() => import("./pages/embedded/PasswordStrength"));
+const DomainSecurityEmbedded = lazy(() => import("./pages/embedded/DomainSecurity"));
+
 // Create a loading spinner for lazy-loaded components
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center min-h-[60vh]">
