@@ -178,7 +178,9 @@ Provide a comprehensive security analysis by simulating data from multiple OSINT
 6. DNS configuration databases - for proper DNS security measures
 7. Reputation databases - for known malicious domain tracking
 
-Use this multi-source analysis to detect potential threats, phishing indicators, and unsafe patterns. Respond with detailed JSON that includes a security score, domain intelligence from these sources, classification, and specific recommendations.`;
+Use this multi-source analysis to detect potential threats, phishing indicators, and unsafe patterns. Also analyze whether the site contains adult content or NSFW material, and flag such sites accordingly.
+
+Respond with detailed JSON that includes a security score, domain intelligence from these sources, classification, and specific recommendations.`;
     
     const userPrompt = `
 Analyze this URL extracted from a QR code for security threats using multiple OSINT intelligence sources:
@@ -209,7 +211,8 @@ Please respond with valid JSON including these fields:
     title: page title if available,
     description: page meta description if available,
     contentPreview: brief text preview of the page content,
-    lastScanDate: date of the simulated snapshot
+    lastScanDate: date of the simulated snapshot,
+    containsAdultContent: boolean indicating if the website contains NSFW/adult content
   }
 - redFlags: array of suspicious elements detected
 - recommendations: array of security recommendations

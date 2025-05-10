@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import QRCodeScanner from "./QRCodeScanner";
+import { NSFWWarningImage, getNSFWWarningAsDataURL } from "@/assets/nsfw-warning";
 import { 
   Loader2, 
   Copy, 
@@ -63,6 +64,7 @@ type QRSecurityResults = {
     description?: string;
     contentPreview?: string;
     lastScanDate?: string;
+    containsAdultContent?: boolean;
   };
   redFlags: string[];
   recommendations: string[];
@@ -106,6 +108,14 @@ export default function QRCodeSecurityForm({ onClose }: QRCodeSecurityFormProps)
           qrCodeData: values.qrCodeData
         }),
       });
+      
+      // Add NSFW content to red flags if detected
+      if (response.websiteSnapshot?.containsAdultContent) {
+        if (!response.redFlags) {
+          response.redFlags = [];
+        }
+        response.redFlags.push("Website contains adult content that may be inappropriate or unsafe");
+      }
       
       console.log("QR code security response:", response);
       setResults(response);
@@ -398,9 +408,10 @@ ${results.domainDetails.securityProtocols && results.domainDetails.securityProto
 `- Security Protocols: ${results.domainDetails.securityProtocols.join(', ')}` : ''}
 
 ${results.websiteSnapshot ? `Website Snapshot:
-${results.websiteSnapshot.title ? `- Page Title: ${results.websiteSnapshot.title}` : ''}
-${results.websiteSnapshot.description ? `- Meta Description: ${results.websiteSnapshot.description}` : ''}
-${results.websiteSnapshot.contentPreview ? `- Content Preview: ${results.websiteSnapshot.contentPreview}` : ''}
+${results.websiteSnapshot.containsAdultContent ? `- WARNING: This website contains adult content. Content preview has been blocked.` : ''}
+${!results.websiteSnapshot.containsAdultContent && results.websiteSnapshot.title ? `- Page Title: ${results.websiteSnapshot.title}` : ''}
+${!results.websiteSnapshot.containsAdultContent && results.websiteSnapshot.description ? `- Meta Description: ${results.websiteSnapshot.description}` : ''}
+${!results.websiteSnapshot.containsAdultContent && results.websiteSnapshot.contentPreview ? `- Content Preview: ${results.websiteSnapshot.contentPreview}` : ''}
 ${results.websiteSnapshot.lastScanDate ? `- Snapshot Date: ${results.websiteSnapshot.lastScanDate}` : ''}
 ` : ''}
 
@@ -534,29 +545,44 @@ ${results.recommendations.map(rec => `- ${rec}`).join('\n')}` : ''}
                     </div>
                     
                     <div className="p-4 bg-white dark:bg-slate-darkest">
-                      {results.websiteSnapshot.title && (
-                        <h5 className="text-sm font-semibold mb-2 text-slate-darkest dark:text-slate-lightest">
-                          {results.websiteSnapshot.title}
-                        </h5>
-                      )}
-                      
-                      {results.websiteSnapshot.description && (
-                        <p className="text-xs text-slate-darker dark:text-slate-lighter mb-3">
-                          {results.websiteSnapshot.description}
-                        </p>
-                      )}
-                      
-                      {results.websiteSnapshot.contentPreview && (
+                      {results.websiteSnapshot.containsAdultContent ? (
+                        // Display NSFW warning instead of actual content
                         <div className="space-y-2">
-                          <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-full"></div>
-                          <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-5/6"></div>
-                          <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-4/6"></div>
-                          <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-3/4"></div>
-                          <div className="mt-2 text-xs bg-slate-100 dark:bg-slate-dark p-2 rounded text-slate-dark dark:text-slate-lighter">
-                            <div className="italic">Content preview:</div>
-                            {results.websiteSnapshot.contentPreview}
+                          <div className="relative mx-auto w-full h-48 overflow-hidden rounded-md">
+                            <NSFWWarningImage />
                           </div>
+                          <p className="text-xs text-red-500 dark:text-red-400 font-medium mt-2">
+                            This website contains adult content. Content preview has been blocked for your safety.
+                          </p>
                         </div>
+                      ) : (
+                        // Display normal website content preview
+                        <>
+                          {results.websiteSnapshot.title && (
+                            <h5 className="text-sm font-semibold mb-2 text-slate-darkest dark:text-slate-lightest">
+                              {results.websiteSnapshot.title}
+                            </h5>
+                          )}
+                          
+                          {results.websiteSnapshot.description && (
+                            <p className="text-xs text-slate-darker dark:text-slate-lighter mb-3">
+                              {results.websiteSnapshot.description}
+                            </p>
+                          )}
+                          
+                          {results.websiteSnapshot.contentPreview && (
+                            <div className="space-y-2">
+                              <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-full"></div>
+                              <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-5/6"></div>
+                              <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-4/6"></div>
+                              <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-3/4"></div>
+                              <div className="mt-2 text-xs bg-slate-100 dark:bg-slate-dark p-2 rounded text-slate-dark dark:text-slate-lighter">
+                                <div className="italic">Content preview:</div>
+                                {results.websiteSnapshot.contentPreview}
+                              </div>
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
                   </div>
