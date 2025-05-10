@@ -126,6 +126,14 @@ function EmbeddedTools() {
             <Shield className={cn('h-6 w-6', formalThemeStyles.accent)} />
             <h1 className={cn('text-xl font-semibold', formalThemeStyles.heading)}>Anneal Security Tools</h1>
           </div>
+          <div>
+            <a 
+              href="/embedded/tools" 
+              className={cn('px-4 py-2 rounded-md border font-medium text-sm', formalThemeStyles.accent, 'border-blue-200 hover:bg-blue-50 dark:border-blue-800 dark:hover:bg-blue-900/30')}
+            >
+              Tools Wix Test
+            </a>
+          </div>
         </div>
       </header>
       
