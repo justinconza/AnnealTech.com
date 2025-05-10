@@ -20,10 +20,16 @@ import {
   Code,
   Share2,
   QrCode,
-  Scan
+  Scan,
+  Map,
+  FileBarChart,
+  BarChart3,
+  FileSearch
 } from "lucide-react";
 import { EmbeddingInstructions } from "@/components/tools/EmbeddingInstructions";
 import QRCodeSecurityForm from "@/components/tools/QRCodeSecurityForm";
+import ThreatHeatMap from "@/components/tools/ThreatHeatMap";
+import SecurityGapAnalysis from "@/components/tools/SecurityGapAnalysis";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

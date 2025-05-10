@@ -218,6 +218,63 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Security Threat Heat Map API
+  app.get("/api/tools/threat-intelligence", async (_req: Request, res: Response) => {
+    try {
+      console.log("Generating threat intelligence data for heat map");
+      
+      const threatData = await getThreatIntelligence();
+      
+      console.log("Threat intelligence data generated successfully");
+      
+      res.status(200).json(threatData);
+    } catch (error) {
+      console.error("Error generating threat intelligence data:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to generate threat intelligence data"
+      });
+    }
+  });
+
+  // AI Security Gap Analysis API
+  const securityGapSchema = z.object({
+    industry: z.string().min(1),
+    size: z.string().min(1),
+    existingMeasures: z.array(z.string()),
+    specificConcerns: z.string(),
+    regulatoryRequirements: z.array(z.string()),
+    budget: z.string().min(1)
+  });
+
+  app.post("/api/tools/security-gap-analysis", async (req: Request, res: Response) => {
+    try {
+      console.log("Analyzing security gaps with data:", JSON.stringify(req.body).substring(0, 200) + "...");
+      
+      const validatedData = securityGapSchema.parse(req.body);
+      const analysis = await analyzeSecurityGaps(validatedData);
+      
+      console.log("Security gap analysis completed");
+      
+      res.status(200).json(analysis);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        console.error("Security gap analysis validation error:", error.errors);
+        res.status(400).json({
+          success: false,
+          message: "Invalid security gap analysis data",
+          errors: error.errors
+        });
+      } else {
+        console.error("Error analyzing security gaps:", error);
+        res.status(500).json({
+          success: false,
+          message: "Failed to analyze security gaps"
+        });
+      }
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
