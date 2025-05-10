@@ -23,7 +23,12 @@ import {
   Calendar, 
   User, 
   MapPin, 
-  Lock
+  Lock,
+  Database,
+  Scan,
+  LineChart,
+  Tag,
+  BarChart
 } from "lucide-react";
 
 // Form schema
@@ -43,6 +48,15 @@ type QRSecurityResults = {
     owner?: string;
     country?: string;
     securityProtocols?: string[];
+  };
+  osintData?: {
+    virusTotal?: {
+      detectionRate?: string;
+      firstSeen?: string;
+      categoryTags?: string[];
+    };
+    urlScanResults?: string[];
+    reputationScore?: number;
   };
   redFlags: string[];
   recommendations: string[];
@@ -247,6 +261,14 @@ ${results.domainDetails.country ? `- Country: ${results.domainDetails.country}` 
 ${results.domainDetails.securityProtocols && results.domainDetails.securityProtocols.length > 0 ? 
 `- Security Protocols: ${results.domainDetails.securityProtocols.join(', ')}` : ''}
 
+${results.osintData ? `OSINT Intelligence Data:
+${results.osintData.virusTotal?.detectionRate ? `- VirusTotal Detection Rate: ${results.osintData.virusTotal.detectionRate}` : ''}
+${results.osintData.virusTotal?.firstSeen ? `- First Seen In Database: ${results.osintData.virusTotal.firstSeen}` : ''}
+${results.osintData.virusTotal?.categoryTags && results.osintData.virusTotal.categoryTags.length > 0 ? 
+`- Category Tags: ${results.osintData.virusTotal.categoryTags.join(', ')}` : ''}
+${results.osintData.reputationScore ? `- Overall Reputation Score: ${results.osintData.reputationScore}/100` : ''}
+` : ''}
+
 ${results.redFlags && results.redFlags.length > 0 ? `Red Flags:
 ${results.redFlags.map(flag => `- ${flag}`).join('\n')}` : 'No red flags detected.'}
 
@@ -345,6 +367,116 @@ ${results.recommendations.map(rec => `- ${rec}`).join('\n')}` : ''}
                 </div>
               )}
             </div>
+            
+            {/* OSINT Intelligence Data */}
+            {results.osintData && (
+              <div className="bg-slate rounded-lg p-4 border border-border">
+                <h4 className="text-sm font-medium mb-3 flex items-center">
+                  <Database className="h-4 w-4 mr-2 text-accent" />
+                  OSINT Intelligence Data
+                </h4>
+                
+                <div className="space-y-4">
+                  {/* VirusTotal Data */}
+                  {results.osintData.virusTotal && (
+                    <div className="border-b border-border pb-3">
+                      <div className="flex items-center mb-2">
+                        <Scan className="h-4 w-4 mr-2 text-accent" />
+                        <h5 className="text-sm font-medium">VirusTotal Intelligence</h5>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+                        {results.osintData.virusTotal.detectionRate && (
+                          <div className="flex items-start space-x-2">
+                            <BarChart className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                            <div>
+                              <span className="text-xs text-muted-foreground block">Detection Rate</span>
+                              <span className="text-sm">{results.osintData.virusTotal.detectionRate}</span>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {results.osintData.virusTotal.firstSeen && (
+                          <div className="flex items-start space-x-2">
+                            <Calendar className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                            <div>
+                              <span className="text-xs text-muted-foreground block">First Seen</span>
+                              <span className="text-sm">{results.osintData.virusTotal.firstSeen}</span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      
+                      {results.osintData.virusTotal.categoryTags && results.osintData.virusTotal.categoryTags.length > 0 && (
+                        <div className="mt-3">
+                          <div className="flex items-start space-x-2">
+                            <Tag className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                            <div>
+                              <span className="text-xs text-muted-foreground block">Category Tags</span>
+                              <div className="flex flex-wrap gap-2 mt-1">
+                                {results.osintData.virusTotal.categoryTags.map((tag, i) => (
+                                  <span 
+                                    key={i} 
+                                    className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  
+                  {/* URL Scan Results */}
+                  {results.osintData.urlScanResults && results.osintData.urlScanResults.length > 0 && (
+                    <div className="border-b border-border pb-3">
+                      <div className="flex items-center mb-2">
+                        <Scan className="h-4 w-4 mr-2 text-amber-500" />
+                        <h5 className="text-sm font-medium">URL Scan Findings</h5>
+                      </div>
+                      
+                      <ul className="space-y-1 pl-6 text-sm">
+                        {results.osintData.urlScanResults.map((finding, i) => (
+                          <li key={i} className="list-disc text-muted-foreground">
+                            {finding}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {/* Reputation Score */}
+                  {results.osintData.reputationScore !== undefined && (
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center">
+                          <LineChart className="h-4 w-4 mr-2 text-accent" />
+                          <h5 className="text-sm font-medium">Reputation Score</h5>
+                        </div>
+                        <span className="text-sm font-medium">
+                          {results.osintData.reputationScore}/100
+                        </span>
+                      </div>
+                      
+                      <Progress 
+                        value={results.osintData.reputationScore} 
+                        className={`h-2 ${
+                          results.osintData.reputationScore < 30 ? 'bg-red-500' :
+                          results.osintData.reputationScore < 70 ? 'bg-amber-500' :
+                          'bg-green-500'
+                        }`} 
+                      />
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Based on analysis from multiple OSINT data sources
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
             
             {results.redFlags && results.redFlags.length > 0 && (
               <div>
