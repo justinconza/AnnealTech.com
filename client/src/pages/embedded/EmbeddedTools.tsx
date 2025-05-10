@@ -287,12 +287,23 @@ function EmbeddedTools() {
       <Dialog open={dialogState.isOpen} onOpenChange={(open) => !open && closeToolDialog()}>
         <DialogContent className="max-w-4xl w-[90vw] max-h-[90vh] overflow-y-auto p-0 bg-white border-blue-100">
           <DialogHeader className={cn('p-6 border-b', 'bg-white border-slate-100')}>
-            <DialogTitle className={blueTheme.headingText}>
-              {tools.find(t => t.id === dialogState.toolId)?.name}
-            </DialogTitle>
-            <DialogDescription className={blueTheme.textMuted}>
-              {tools.find(t => t.id === dialogState.toolId)?.description}
-            </DialogDescription>
+            <div className="flex justify-between items-center">
+              <div>
+                <DialogTitle className={blueTheme.headingText}>
+                  {tools.find(t => t.id === dialogState.toolId)?.name}
+                </DialogTitle>
+                <DialogDescription className={blueTheme.textMuted}>
+                  {tools.find(t => t.id === dialogState.toolId)?.description}
+                </DialogDescription>
+              </div>
+              <Button 
+                variant="ghost" 
+                className="p-2 rounded-full h-8 w-8" 
+                onClick={closeToolDialog}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
           </DialogHeader>
           
           <div className="p-6">
@@ -301,6 +312,7 @@ function EmbeddedTools() {
                 src={`/embedded/${getToolPath(dialogState.toolId)}`}
                 className="w-full min-h-[70vh] border-none"
                 title={tools.find(t => t.id === dialogState.toolId)?.name}
+                allow="camera;microphone"
               />
             )}
           </div>
