@@ -157,12 +157,15 @@ const EmailSecurityForm = ({ onClose }: { onClose: () => void }) => {
   const onSubmit = async (values: FormValues) => {
     try {
       setIsAnalyzing(true);
+      console.log("Submitting email data with length:", values.emailData.length);
+      
       const response = await apiRequest('/api/tools/email-security', {
         method: 'POST',
         body: JSON.stringify(values),
         headers: { 'Content-Type': 'application/json' }
       });
       
+      console.log("Email security response:", response);
       setResults(response);
     } catch (error) {
       toast({
