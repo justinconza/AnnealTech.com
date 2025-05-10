@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Lock, Shield, Eye, FileSearch, Database, Send, AlertTriangle, QrCode, Globe, MapPin } from 'lucide-react';
+import { Lock, Shield, Eye, FileSearch, Database, Send, AlertTriangle, QrCode, Globe, MapPin, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // Formal, modern theme styles - more corporate, clean design
@@ -129,7 +129,10 @@ function EmbeddedTools() {
           <div>
             <a 
               href="/embedded/tools" 
-              className={cn('px-4 py-2 rounded-md border font-medium text-sm', formalThemeStyles.accent, 'border-blue-200 hover:bg-blue-50 dark:border-blue-800 dark:hover:bg-blue-900/30')}
+              className={cn('px-4 py-2 rounded-md border font-medium text-sm', 
+                formalThemeStyles.accent, 
+                'border-blue-200 hover:bg-blue-50 dark:border-blue-800 dark:hover:bg-blue-900/30'
+              )}
             >
               Tools Wix Test
             </a>

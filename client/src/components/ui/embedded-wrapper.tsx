@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Shield } from "lucide-react";
+import { Shield, ExternalLink } from "lucide-react";
 
 interface EmbeddedWrapperProps {
   children: React.ReactNode;
@@ -37,14 +37,27 @@ export function EmbeddedWrapper({
             <h2 className={cn('text-xl font-semibold', formalThemeStyles.heading)}>{title}</h2>
           )}
         </div>
-        <a 
-          href="/embedded/tools" 
-          className={cn('px-3 py-1 rounded-md border text-sm font-medium transition-colors', 
-            'border-blue-200 hover:bg-blue-50 dark:border-blue-800 dark:hover:bg-blue-900/30',
-            formalThemeStyles.accent)}
-        >
-          Tools Wix Test
-        </a>
+        <div className="flex items-center space-x-3">
+          <a 
+            href="https://annealtech.com" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn('px-3 py-1 rounded-md border text-sm font-medium transition-colors flex items-center', 
+              'border-blue-200 hover:bg-blue-50 dark:border-blue-800 dark:hover:bg-blue-900/30',
+              formalThemeStyles.accent)}
+          >
+            <ExternalLink className="h-3.5 w-3.5 mr-1.5" />
+            Back to Main Site
+          </a>
+          <a 
+            href="/embedded/tools" 
+            className={cn('px-3 py-1 rounded-md border text-sm font-medium transition-colors', 
+              'border-blue-200 hover:bg-blue-50 dark:border-blue-800 dark:hover:bg-blue-900/30',
+              formalThemeStyles.accent)}
+          >
+            Tools Wix Test
+          </a>
+        </div>
       </div>
       
       <div className="flex-grow">
