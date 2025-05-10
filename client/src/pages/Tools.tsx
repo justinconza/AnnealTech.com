@@ -1836,40 +1836,160 @@ const ToolsPage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ToolCard 
-              icon={Mail}
-              title="Email Security Analyzer"
-              description="Analyze email headers to identify security issues, validate SPF/DKIM/DMARC, and detect potential threats."
-              onOpenTool={() => openTool("email-security")}
-            />
+            <div className="relative group">
+              <ToolCard 
+                icon={Mail}
+                title="Email Security Analyzer"
+                description="Analyze email headers to identify security issues, validate SPF/DKIM/DMARC, and detect potential threats."
+                onOpenTool={() => openTool("email-security")}
+              />
+              <div className="absolute top-3 right-3 opacity-100 hover:scale-110 transition-transform">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-accent/10 border-accent/20 shadow-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEmbedInstructions("Email Security Analyzer", "email-security");
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 text-accent" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Embed this tool on your site</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
             
-            <ToolCard 
-              icon={AlertTriangle}
-              title="Phishing Detection Tool"
-              description="Scan suspicious emails or URLs for signs of phishing attempts and get detailed threat analysis."
-              onOpenTool={() => openTool("phishing-detection")}
-            />
+            <div className="relative group">
+              <ToolCard 
+                icon={AlertTriangle}
+                title="Phishing Detection Tool"
+                description="Scan suspicious emails or URLs for signs of phishing attempts and get detailed threat analysis."
+                onOpenTool={() => openTool("phishing-detection")}
+              />
+              <div className="absolute top-3 right-3 opacity-100 hover:scale-110 transition-transform">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-accent/10 border-accent/20 shadow-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEmbedInstructions("Phishing Detection Tool", "phishing-detection");
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 text-accent" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Embed this tool on your site</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
             
-            <ToolCard 
-              icon={Key}
-              title="Password Strength Tester"
-              description="Evaluate password security with advanced entropy analysis and get recommendations for stronger passwords."
-              onOpenTool={() => openTool("password-strength")}
-            />
+            <div className="relative group">
+              <ToolCard 
+                icon={Key}
+                title="Password Strength Tester"
+                description="Evaluate password security with advanced entropy analysis and get recommendations for stronger passwords."
+                onOpenTool={() => openTool("password-strength")}
+              />
+              <div className="absolute top-3 right-3 opacity-100 hover:scale-110 transition-transform">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-accent/10 border-accent/20 shadow-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEmbedInstructions("Password Strength Tester", "password-strength");
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 text-accent" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Embed this tool on your site</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
             
-            <ToolCard 
-              icon={Globe}
-              title="Domain Security Scanner"
-              description="Check domain configurations for security issues including HTTPS, HSTS, and DNS vulnerabilities."
-              onOpenTool={() => openTool("domain-security")}
-            />
+            <div className="relative group">
+              <ToolCard 
+                icon={Globe}
+                title="Domain Security Scanner"
+                description="Check domain configurations for security issues including HTTPS, HSTS, and DNS vulnerabilities."
+                onOpenTool={() => openTool("domain-security")}
+              />
+              <div className="absolute top-3 right-3 opacity-100 hover:scale-110 transition-transform">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-accent/10 border-accent/20 shadow-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEmbedInstructions("Domain Security Scanner", "domain-security");
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 text-accent" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Embed this tool on your site</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
             
-            <ToolCard 
-              icon={Shield}
-              title="Security Risk Calculator"
-              description="Answer questions about your IT environment to get a customized risk score and recommendations."
-              onOpenTool={() => openTool("risk-assessment")}
-            />
+            <div className="relative group">
+              <ToolCard 
+                icon={Shield}
+                title="Security Risk Calculator"
+                description="Answer questions about your IT environment to get a customized risk score and recommendations."
+                onOpenTool={() => openTool("risk-assessment")}
+              />
+              <div className="absolute top-3 right-3 opacity-100 hover:scale-110 transition-transform">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-accent/10 border-accent/20 shadow-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEmbedInstructions("Security Risk Calculator", "risk-assessment");
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 text-accent" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Embed this tool on your site</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
             
             <ToolCard 
               icon={Network}
@@ -1894,14 +2014,14 @@ const ToolsPage = () => {
                 description="Scan QR codes to detect malicious URLs, analyze linked domains, and identify potential security threats."
                 onOpenTool={() => openTool("qrcode-security")}
               />
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute top-3 right-3 opacity-100 hover:scale-110 transition-transform">
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button
                         variant="outline"
                         size="icon"
-                        className="h-8 w-8 rounded-full bg-background/90 border-accent/20"
+                        className="h-8 w-8 rounded-full bg-accent/10 border-accent/20 shadow-sm"
                         onClick={(e) => {
                           e.stopPropagation();
                           openEmbedInstructions("QR Code Security Analyzer", "qrcode-security");
