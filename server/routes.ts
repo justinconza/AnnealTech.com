@@ -7,7 +7,8 @@ import {
   detectPhishing, 
   assessSecurityRisks, 
   evaluatePasswordStrength,
-  scanDomainSecurity
+  scanDomainSecurity,
+  analyzeQRCodeSecurity
 } from "./openai";
 
 // Contact form validation schema
@@ -37,6 +38,12 @@ const passwordSchema = z.object({
 // Domain security validation schema
 const domainSchema = z.object({
   domain: z.string().min(3)
+});
+
+// QR code security validation schema
+const qrCodeSchema = z.object({
+  url: z.string().url({ message: "Must provide a valid URL" }),
+  qrCodeData: z.string().optional()
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -175,6 +182,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.status(500).json({ 
           success: false, 
           message: "Failed to scan domain security"
+        });
+      }
+    }
+  });
+
+  // QR Code Security Analysis
+  app.post("/api/tools/qrcode-security", async (req: Request, res: Response) => {
+    try {
+      console.log("QR code security request body:", JSON.stringify(req.body).substring(0, 200));
+      const validatedData = qrCodeSchema.parse(req.body);
+      
+      // Call the OpenAI function to analyze the QR code URL
+      const analysis = await analyzeQRCodeSecurity(validatedData.url, validatedData.qrCodeData);
+      console.log("QR code analysis result:", JSON.stringify(analysis).substring(0, 200) + "...");
+      
+      res.status(200).json(analysis);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        console.error("QR code validation error:", error.errors);
+        res.status(400).json({
+          success: false,
+          message: "Invalid QR code data",
+          errors: error.errors
+        });
+      } else {
+        console.error("Error analyzing QR code security:", error);
+        res.status(500).json({
+          success: false,
+          message: "Failed to analyze QR code security"
         });
       }
     }
