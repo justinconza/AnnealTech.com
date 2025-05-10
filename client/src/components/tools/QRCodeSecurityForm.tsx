@@ -58,6 +58,12 @@ type QRSecurityResults = {
     urlScanResults?: string[];
     reputationScore?: number;
   };
+  websiteSnapshot?: {
+    title?: string;
+    description?: string;
+    contentPreview?: string;
+    lastScanDate?: string;
+  };
   redFlags: string[];
   recommendations: string[];
   classification: string;
@@ -497,6 +503,68 @@ ${results.recommendations.map(rec => `- ${rec}`).join('\n')}` : ''}
                 </div>
               )}
             </div>
+
+            {/* Website Snapshot */}
+            {results.websiteSnapshot && (
+              <div className="bg-slate rounded-lg p-4 border border-border mb-4">
+                <h4 className="text-sm font-medium mb-3 flex items-center">
+                  <Globe className="h-4 w-4 mr-2 text-accent" />
+                  Website Snapshot Preview
+                </h4>
+                
+                <div className="space-y-3">
+                  {/* Website visual preview mockup */}
+                  <div className="rounded-md overflow-hidden border border-border">
+                    <div className="bg-slate-darker p-2 flex items-center space-x-2 border-b border-border">
+                      <div className="flex space-x-1.5">
+                        <div className="w-3 h-3 rounded-full bg-red-500/70"></div>
+                        <div className="w-3 h-3 rounded-full bg-amber-500/70"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500/70"></div>
+                      </div>
+                      <div className="flex-1 text-xs text-center font-mono text-muted-foreground truncate">
+                        {form.getValues().url}
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 bg-white dark:bg-slate-darkest">
+                      {results.websiteSnapshot.title && (
+                        <h5 className="text-sm font-semibold mb-2 text-slate-darkest dark:text-slate-lightest">
+                          {results.websiteSnapshot.title}
+                        </h5>
+                      )}
+                      
+                      {results.websiteSnapshot.description && (
+                        <p className="text-xs text-slate-darker dark:text-slate-lighter mb-3">
+                          {results.websiteSnapshot.description}
+                        </p>
+                      )}
+                      
+                      {results.websiteSnapshot.contentPreview && (
+                        <div className="space-y-2">
+                          <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-full"></div>
+                          <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-5/6"></div>
+                          <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-4/6"></div>
+                          <div className="h-2.5 bg-slate-200 dark:bg-slate-darker rounded w-3/4"></div>
+                          <div className="mt-2 text-xs bg-slate-100 dark:bg-slate-dark p-2 rounded text-slate-dark dark:text-slate-lighter">
+                            <div className="italic">Content preview:</div>
+                            {results.websiteSnapshot.contentPreview}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  {results.websiteSnapshot.lastScanDate && (
+                    <div className="flex items-center justify-end">
+                      <Calendar className="h-3 w-3 mr-1 text-muted-foreground" />
+                      <span className="text-xs text-muted-foreground">
+                        Snapshot from: {results.websiteSnapshot.lastScanDate}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
             
             {/* OSINT Intelligence Data */}
             {results.osintData && (
