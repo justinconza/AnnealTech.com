@@ -1,4 +1,12 @@
 import OpenAI from "openai";
+import { 
+  checkUrlWithVirusTotal, 
+  getThreatsFromOTX, 
+  checkUrlWithPhishTank, 
+  scanUrlWithURLScan,
+  checkDomainWithSecurityTrails,
+  checkHostWithShodan
+} from './osint';
 
 // Initialize the OpenAI client
 const openai = new OpenAI({
@@ -246,18 +254,58 @@ export async function evaluatePasswordStrength(password: string) {
 }
 
 // Domain security scanning
+
 export async function scanDomainSecurity(domain: string) {
   try {
     console.log("Scanning domain security for:", domain);
     
+    // Gather real domain security data using OSINT tools
+    let securityTrailsData = null;
+    let otxData = null;
+    let shodanData = null;
+    
+    try {
+      // Launch all OSINT queries in parallel for efficiency
+      const [stData, otxResult, shodanResult] = await Promise.all([
+        checkDomainWithSecurityTrails(domain),
+        getThreatsFromOTX(domain, 'domain'),
+        checkHostWithShodan(domain)
+      ]);
+      
+      securityTrailsData = stData;
+      otxData = otxResult;
+      shodanData = shodanResult;
+      
+      console.log("Retrieved OSINT data for domain security scan");
+    } catch (osintError) {
+      console.error("Error gathering OSINT data for domain:", osintError);
+      // Continue with AI analysis even if OSINT fails
+    }
+    
+    // Prepare a summary of the OSINT findings for the AI
+    const osintSummary = JSON.stringify({
+      securityTrailsData,
+      otxData,
+      shodanData
+    });
+    
     const systemPrompt = `You are a domain security expert with extensive knowledge of DNS configurations, SSL/TLS, SPF, DKIM, DMARC, 
                           domain security best practices, and common vulnerabilities. Your task is to provide a comprehensive security 
-                          assessment for the provided domain.`;
+                          assessment for the provided domain.
+                          
+                          I am providing you with real security data from multiple OSINT sources including:
+                          - SecurityTrails (DNS and domain intelligence)
+                          - AlienVault OTX (threat intelligence)
+                          - Shodan (exposed services and vulnerabilities)
+                          
+                          Use this data to enhance your analysis with factual information about the domain's security posture.`;
                           
     const userPrompt = `Perform a security assessment for the domain: ${domain}
                         
-                        Simulate a full security scan including analysis of:
-                        - DNS security (DNSSEC, potential hijacking risks)
+                        Here is the real OSINT data from our security tools:
+                        ${osintSummary}
+                        
+                        Using this real security data, analyze:
                         - Email security (SPF, DKIM, DMARC)
                         - Web security (HTTPS, HSTS, Content-Security-Policy)
                         - Domain registration details (registration age, privacy protection)
@@ -326,12 +374,6 @@ export async function scanDomainSecurity(domain: string) {
 }
 
 // QR Code security analysis
-import { 
-  checkUrlWithVirusTotal, 
-  getThreatsFromOTX, 
-  checkUrlWithPhishTank, 
-  scanUrlWithURLScan 
-} from './osint';
 
 export async function analyzeQRCodeSecurity(url: string, qrCodeData?: string) {
   try {
@@ -466,7 +508,6 @@ export async function analyzeQRCodeSecurity(url: string, qrCodeData?: string) {
 }
 
 // Email breach check
-import { getThreatsFromOTX, checkDomainWithSecurityTrails } from './osint';
 
 export async function checkEmailBreaches(emailOrDomain: string, isDomain: boolean = false) {
   try {
