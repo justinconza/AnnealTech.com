@@ -14,7 +14,6 @@ import {
   ArrowUpRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ATLogo from "@/assets/annealtech-logo.svg";
 
 const Footer = () => {
   return (
@@ -37,12 +36,8 @@ const Footer = () => {
           {/* Logo and info */}
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center mb-6">
-              <div className="mr-3 flex items-center">
-                <img 
-                  src={ATLogo} 
-                  alt="AnnealTech Logo" 
-                  className="h-8 w-auto" 
-                />
+              <div className="mr-3 text-accent">
+                <Hammer className="w-6 h-6" />
               </div>
               <div className="flex flex-col">
                 <span className="text-foreground text-xl font-display font-bold tracking-wider">
