@@ -1,41 +1,68 @@
 import { 
-  Cog, 
-  LineChart, 
-  Laptop, 
-  CheckSquare, 
-  Search, 
-  Users 
+  Shield, 
+  MonitorCheck, 
+  Database, 
+  Server, 
+  MailWarning, 
+  Clock,
+  CloudCog,
+  Users,
+  Code
 } from "lucide-react";
 
 export const services = [
   {
-    title: "Engineering Design",
-    description: "Comprehensive engineering design services including mechanical, electrical, and systems engineering with advanced modeling and simulation.",
-    icon: Cog
+    title: "Managed IT & Remote Support",
+    description: "Comprehensive IT management and 24/7 remote support for your entire technology stack with proactive monitoring and rapid response times.",
+    icon: MonitorCheck,
+    tools: ["NinjaOne", "HaloPSA", "TeamViewer"]
   },
   {
-    title: "Process Optimization",
-    description: "Data-driven analysis and implementation of process improvements to enhance efficiency, reduce costs, and improve output quality.",
-    icon: LineChart
+    title: "Endpoint Protection & Response",
+    description: "Advanced threat detection and response for all endpoints with real-time monitoring, automated remediation, and detailed security reporting.",
+    icon: Shield,
+    tools: ["SentinelOne", "Huntress"]
   },
   {
-    title: "Advanced Technology Integration",
-    description: "Seamless integration of new technologies into existing systems with minimal disruption to operations and maximum ROI.",
-    icon: Laptop
+    title: "Patch & Asset Lifecycle Management",
+    description: "Automated patch management, software updates, and complete asset lifecycle tracking from deployment to retirement.",
+    icon: CloudCog,
+    tools: ["NinjaOne", "HaloPSA"]
   },
   {
-    title: "Project Management",
-    description: "Expert project planning, execution, and oversight ensuring on-time, on-budget delivery with comprehensive risk management.",
-    icon: CheckSquare
+    title: "Backup & Business Continuity",
+    description: "Robust data protection with automated backups, disaster recovery, and business continuity planning to minimize downtime.",
+    icon: Database,
+    tools: ["Datto", "Microsoft"]
   },
   {
-    title: "Quality Assurance",
-    description: "Rigorous testing and quality control protocols ensuring all deliverables meet the highest standards of quality and reliability.",
-    icon: Search
+    title: "Email Security & Protection",
+    description: "Multi-layered email security with advanced threat protection, anti-phishing, and secure email gateways to protect your communications.",
+    icon: MailWarning,
+    tools: ["MailProtector", "Red Sift"]
   },
   {
-    title: "Consultation Services",
-    description: "Strategic advice and technical consulting from industry experts to help navigate complex engineering challenges.",
-    icon: Users
+    title: "PSA & Automation",
+    description: "Streamlined workflows and process automation to increase efficiency, reduce manual tasks, and improve service delivery.",
+    icon: Code,
+    tools: ["HaloPSA", "NinjaOne"]
+  },
+  {
+    title: "Phishing & Security Awareness",
+    description: "Comprehensive security awareness training, simulated phishing campaigns, and ongoing education to build a security-conscious culture.",
+    icon: Users,
+    tools: ["KnowBe4"]
+  },
+  {
+    title: "24/7 Monitoring & Response",
+    description: "Round-the-clock monitoring of your critical systems with automated alerts and rapid incident response to prevent downtime.",
+    icon: Clock,
+    tools: ["Huntress", "Datto", "NinjaOne"]
+  },
+  {
+    title: "Cloud Infrastructure",
+    description: "Secure cloud hosting, migration, and management services with optimized performance, scaling, and cost control.",
+    icon: Server,
+    tools: ["Microsoft Azure", "AWS", "Google Cloud"]
   }
 ];

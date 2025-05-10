@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { Linkedin, Twitter, Facebook, Youtube, Clock, Mail, Phone } from "lucide-react";
+import { CalendarClock, Linkedin, Twitter, Facebook, Youtube, Clock, Mail, Phone, MapPin, ArrowRight, Shield, Server, Database } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -23,16 +23,64 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Card, CardContent } from "@/components/ui/card";
 
+// Updated form schema with business challenges and preferred contact time
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   company: z.string().min(2, { message: "Company name must be at least 2 characters." }),
+  phone: z.string().optional(),
   service: z.string().min(1, { message: "Please select a service." }),
+  challenge: z.string().min(1, { message: "Please select your primary challenge." }),
+  contactTime: z.string().optional(),
   message: z.string().min(10, { message: "Message must be at least 10 characters." })
 });
 
 type FormValues = z.infer<typeof formSchema>;
+
+// Contact option card component
+const ContactOption = ({ 
+  icon: Icon, 
+  title, 
+  description, 
+  actionLabel, 
+  actionHref 
+}: { 
+  icon: any; 
+  title: string; 
+  description: string; 
+  actionLabel: string; 
+  actionHref: string 
+}) => {
+  return (
+    <Card className="bg-steel/20 border border-accent/10 hover:border-accent/20 transition-all group">
+      <CardContent className="p-6">
+        <div className="flex flex-col h-full">
+          <div className="mb-4 p-3 rounded-lg bg-slate w-12 h-12 flex items-center justify-center text-accent">
+            <Icon className="h-6 w-6" />
+          </div>
+          
+          <h3 className="text-xl font-heading font-semibold mb-2 text-foreground group-hover:text-accent transition-colors">
+            {title}
+          </h3>
+          
+          <p className="text-muted-foreground text-sm mb-6 flex-grow">
+            {description}
+          </p>
+          
+          <a 
+            href={actionHref} 
+            className="text-accent font-medium inline-flex items-center text-sm hover:underline mt-auto group-hover:translate-x-1 transition-transform"
+          >
+            {actionLabel}
+            <ArrowRight className="ml-1 h-4 w-4" />
+          </a>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,7 +92,10 @@ const Contact = () => {
       name: "",
       email: "",
       company: "",
+      phone: "",
       service: "",
+      challenge: "",
+      contactTime: "",
       message: ""
     }
   });
@@ -77,17 +128,65 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-neutral-darkest mb-4">Contact Us</h2>
-          <p className="text-lg text-neutral-dark max-w-3xl mx-auto">
-            Get in touch with our team to discuss your project requirements or to learn more about our services.
+    <section id="contact" className="py-24 md:py-32 bg-slate relative">
+      {/* Decorative background pattern */}
+      <div 
+        className="absolute inset-0 z-0 opacity-5" 
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}
+        aria-hidden="true"
+      ></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section header */}
+        <div className="max-w-2xl mx-auto text-center mb-16">
+          <div className="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1 mb-4">
+            <span className="text-accent font-heading text-sm font-medium tracking-wider">GET IN TOUCH</span>
+          </div>
+          
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+            Let's Discuss Your IT Needs
+          </h2>
+          
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Contact our team today to explore how we can strengthen your IT infrastructure,
+            improve security, and provide the managed services your business needs.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
+        {/* Contact options */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <ContactOption 
+            icon={Shield}
+            title="Security Assessment"
+            description="Get a complimentary security evaluation to identify and address vulnerabilities in your IT environment."
+            actionLabel="Book Assessment"
+            actionHref="#assessment"
+          />
+          
+          <ContactOption 
+            icon={Server}
+            title="Managed Services"
+            description="Explore our managed IT services offerings and discover how we can support your day-to-day operations."
+            actionLabel="Learn More"
+            actionHref="#services"
+          />
+          
+          <ContactOption 
+            icon={CalendarClock}
+            title="Schedule a Demo"
+            description="See our solutions in action with a personalized demonstration tailored to your business needs."
+            actionLabel="Book Demo"
+            actionHref="#demo"
+          />
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Contact form */}
+          <div className="bg-steel/10 p-8 rounded-lg border border-accent/10">
+            <h3 className="text-2xl font-heading font-semibold text-foreground mb-6">Contact Us</h3>
+            
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -96,9 +195,9 @@ const Contact = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Full Name</FormLabel>
+                        <FormLabel className="text-foreground">Full Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="John Smith" {...field} />
+                          <Input placeholder="John Smith" className="bg-slate border-accent/20" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -109,10 +208,96 @@ const Contact = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email Address</FormLabel>
+                        <FormLabel className="text-foreground">Email Address</FormLabel>
                         <FormControl>
-                          <Input placeholder="email@example.com" {...field} />
+                          <Input placeholder="email@example.com" className="bg-slate border-accent/20" {...field} />
                         </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="company"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-foreground">Company Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Your Company" className="bg-slate border-accent/20" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-foreground">Phone Number (Optional)</FormLabel>
+                        <FormControl>
+                          <Input placeholder="+1 (123) 456-7890" className="bg-slate border-accent/20" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="service"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-foreground">Service Interest</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="bg-slate border-accent/20">
+                              <SelectValue placeholder="Select a Service" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="managed_it">Managed IT & Remote Support</SelectItem>
+                            <SelectItem value="endpoint_protection">Endpoint Protection & Response</SelectItem>
+                            <SelectItem value="patch_management">Patch & Asset Lifecycle</SelectItem>
+                            <SelectItem value="psa_automation">PSA & Automation</SelectItem>
+                            <SelectItem value="email_security">Email Security</SelectItem>
+                            <SelectItem value="backup_bcdr">Backup & BCDR</SelectItem>
+                            <SelectItem value="cloud_infrastructure">Cloud Infrastructure</SelectItem>
+                            <SelectItem value="consultation">Strategic IT Consultation</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="challenge"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-foreground">Primary Challenge</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="bg-slate border-accent/20">
+                              <SelectValue placeholder="Select a Challenge" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="security">Cybersecurity Concerns</SelectItem>
+                            <SelectItem value="reliability">IT Reliability Issues</SelectItem>
+                            <SelectItem value="costs">Reducing IT Costs</SelectItem>
+                            <SelectItem value="growth">Scaling IT for Growth</SelectItem>
+                            <SelectItem value="compliance">Compliance & Regulations</SelectItem>
+                            <SelectItem value="expertise">Lack of IT Expertise</SelectItem>
+                            <SelectItem value="other">Other Challenge</SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -121,38 +306,21 @@ const Contact = () => {
                 
                 <FormField
                   control={form.control}
-                  name="company"
+                  name="contactTime"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Company Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Your Company" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="service"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Service Interested In</FormLabel>
+                      <FormLabel className="text-foreground">Preferred Contact Time (Optional)</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a Service" />
+                          <SelectTrigger className="bg-slate border-accent/20">
+                            <SelectValue placeholder="Select Preferred Time" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="engineering_design">Engineering Design</SelectItem>
-                          <SelectItem value="process_optimization">Process Optimization</SelectItem>
-                          <SelectItem value="technology_integration">Advanced Technology Integration</SelectItem>
-                          <SelectItem value="project_management">Project Management</SelectItem>
-                          <SelectItem value="quality_assurance">Quality Assurance</SelectItem>
-                          <SelectItem value="consultation">Consultation Services</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
+                          <SelectItem value="morning">Morning (8AM - 12PM)</SelectItem>
+                          <SelectItem value="afternoon">Afternoon (12PM - 4PM)</SelectItem>
+                          <SelectItem value="evening">Evening (4PM - 6PM)</SelectItem>
+                          <SelectItem value="any">Any Time</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -165,11 +333,11 @@ const Contact = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Project Details</FormLabel>
+                      <FormLabel className="text-foreground">Tell Us About Your Needs</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Please describe your project or inquiry..." 
-                          className="resize-none" 
+                          placeholder="Please describe your IT environment, challenges, and what you're looking for..." 
+                          className="resize-none bg-slate border-accent/20" 
                           rows={5} 
                           {...field} 
                         />
@@ -181,45 +349,58 @@ const Contact = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full px-6 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-md transition shadow-md"
+                  className="w-full px-6 py-6 bg-accent hover:bg-accent/80 text-white font-heading rounded-md transition-all shadow-lg group flex items-center justify-center gap-2"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Submitting..." : "Submit Inquiry"}
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </form>
             </Form>
           </div>
           
+          {/* Contact information */}
           <div className="space-y-8">
+            {/* Offices */}
             <div>
-              <h3 className="text-xl font-semibold mb-4">Our Offices</h3>
+              <h3 className="text-2xl font-heading font-semibold text-foreground mb-6">Our Locations</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-neutral-lightest p-6 rounded-lg">
-                  <div className="font-medium text-lg mb-2">Headquarters</div>
-                  <address className="not-italic text-neutral-dark">
+                <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="p-2 rounded-md bg-steel/20 text-accent">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <h4 className="font-heading font-semibold text-lg">Headquarters</h4>
+                  </div>
+                  <address className="not-italic text-muted-foreground">
                     1234 Innovation Drive<br />
                     Suite 500<br />
                     San Francisco, CA 94105<br />
                     United States
                   </address>
                   <div className="mt-4">
-                    <a href="tel:+14155550123" className="text-primary hover:text-primary-dark flex items-center transition">
+                    <a href="tel:+14155550123" className="text-accent hover:text-accent/80 flex items-center transition-colors">
                       <Phone className="mr-2 h-4 w-4" />
                       +1 (415) 555-0123
                     </a>
                   </div>
                 </div>
                 
-                <div className="bg-neutral-lightest p-6 rounded-lg">
-                  <div className="font-medium text-lg mb-2">East Coast Office</div>
-                  <address className="not-italic text-neutral-dark">
+                <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="p-2 rounded-md bg-steel/20 text-accent">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <h4 className="font-heading font-semibold text-lg">East Coast Office</h4>
+                  </div>
+                  <address className="not-italic text-muted-foreground">
                     567 Technology Square<br />
                     Floor 8<br />
                     Boston, MA 02139<br />
                     United States
                   </address>
                   <div className="mt-4">
-                    <a href="tel:+16175550198" className="text-primary hover:text-primary-dark flex items-center transition">
+                    <a href="tel:+16175550198" className="text-accent hover:text-accent/80 flex items-center transition-colors">
                       <Phone className="mr-2 h-4 w-4" />
                       +1 (617) 555-0198
                     </a>
@@ -228,35 +409,81 @@ const Contact = () => {
               </div>
             </div>
             
-            <div>
-              <h3 className="text-xl font-semibold mb-4">General Inquiries</h3>
-              <div className="space-y-3">
-                <a href="mailto:info@annealtech.com" className="text-primary hover:text-primary-dark flex items-center transition">
-                  <Mail className="mr-2 h-4 w-4" />
-                  info@annealtech.com
-                </a>
-                <div className="text-neutral-dark flex items-center">
-                  <Clock className="mr-2 h-4 w-4" />
-                  Monday - Friday: 8:00 AM - 6:00 PM PST
+            {/* Support information */}
+            <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
+              <h3 className="text-xl font-heading font-semibold text-foreground mb-4">Contact Information</h3>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-md bg-steel/20 text-accent">
+                    <Mail className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <div className="font-medium text-foreground">Email Us</div>
+                    <a href="mailto:info@annealtech.com" className="text-accent hover:text-accent/80 transition-colors text-sm">
+                      info@annealtech.com
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-md bg-steel/20 text-accent">
+                    <Phone className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <div className="font-medium text-foreground">Call Us</div>
+                    <a href="tel:+18005551234" className="text-accent hover:text-accent/80 transition-colors text-sm">
+                      +1 (800) 555-1234 (Toll Free)
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-md bg-steel/20 text-accent">
+                    <Clock className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <div className="font-medium text-foreground">Business Hours</div>
+                    <div className="text-muted-foreground text-sm">
+                      Monday - Friday: 8:00 AM - 6:00 PM EST
+                    </div>
+                    <div className="text-accent text-sm font-medium mt-1">
+                      24/7 Support Available for Clients
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-md bg-steel/20 text-accent">
+                    <Database className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <div className="font-medium text-foreground">Emergency Support</div>
+                    <div className="text-muted-foreground text-sm">
+                      For existing clients with urgent issues
+                    </div>
+                    <a href="tel:+18005559999" className="text-accent hover:text-accent/80 transition-colors text-sm">
+                      +1 (800) 555-9999
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Connect With Us</h3>
-              <div className="flex space-x-4">
-                <a href="#" className="text-primary hover:text-primary-dark text-2xl transition" aria-label="LinkedIn">
-                  <Linkedin className="h-6 w-6" />
-                </a>
-                <a href="#" className="text-primary hover:text-primary-dark text-2xl transition" aria-label="Twitter">
-                  <Twitter className="h-6 w-6" />
-                </a>
-                <a href="#" className="text-primary hover:text-primary-dark text-2xl transition" aria-label="Facebook">
-                  <Facebook className="h-6 w-6" />
-                </a>
-                <a href="#" className="text-primary hover:text-primary-dark text-2xl transition" aria-label="YouTube">
-                  <Youtube className="h-6 w-6" />
-                </a>
+              
+              {/* Social media */}
+              <div className="mt-6 pt-6 border-t border-accent/10">
+                <div className="flex space-x-4">
+                  <a href="#" className="p-2 rounded-full border border-accent/20 text-accent hover:bg-accent/10 transition-colors" aria-label="LinkedIn">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                  <a href="#" className="p-2 rounded-full border border-accent/20 text-accent hover:bg-accent/10 transition-colors" aria-label="Twitter">
+                    <Twitter className="h-5 w-5" />
+                  </a>
+                  <a href="#" className="p-2 rounded-full border border-accent/20 text-accent hover:bg-accent/10 transition-colors" aria-label="Facebook">
+                    <Facebook className="h-5 w-5" />
+                  </a>
+                  <a href="#" className="p-2 rounded-full border border-accent/20 text-accent hover:bg-accent/10 transition-colors" aria-label="YouTube">
+                    <Youtube className="h-5 w-5" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
