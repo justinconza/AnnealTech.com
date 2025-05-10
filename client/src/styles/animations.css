@@ -1,0 +1,325 @@
+/* === Micro-interaction animations === */
+
+/* Hover effects */
+.hover-glow {
+  transition: all 0.25s ease-in-out;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 10px 2px rgba(255, 87, 0, 0.2), 0 0 20px 6px rgba(255, 87, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.hover-scale {
+  transition: all 0.2s ease-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+.hover-lift {
+  transition: transform 0.2s ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+/* Button interactions */
+.btn-pulse {
+  position: relative;
+}
+
+.btn-pulse:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 rgba(255, 87, 0, 0.4);
+  animation: none;
+}
+
+.btn-pulse:hover:after {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 87, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 87, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 87, 0, 0);
+  }
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Card interactions */
+.card-hover {
+  transition: all 0.3s ease;
+  transform-origin: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Shimmer effect for card images */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: all 0.5s ease;
+}
+
+.shimmer:hover::after {
+  left: 150%;
+  transition: all 0.8s ease;
+}
+
+/* Background animation */
+.bg-pulse {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-pulse::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 87, 0, 0.1), transparent 60%);
+  transform: scale(0.9);
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.bg-pulse:hover::before {
+  transform: scale(1.5);
+  opacity: 0.8;
+}
+
+/* Neon-like glowing text animation */
+.glow-text {
+  transition: text-shadow 0.3s ease;
+}
+
+.glow-text:hover {
+  text-shadow: 0 0 8px rgba(255, 87, 0, 0.7), 0 0 12px rgba(255, 87, 0, 0.5);
+}
+
+/* Progress bar animation */
+@keyframes progressFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-progress {
+  transform-origin: left;
+  animation: progressFill 1s ease-out forwards;
+}
+
+/* Micro spinner animation */
+@keyframes microSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.micro-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 87, 0, 0.3);
+  border-top-color: #ff5700;
+  border-radius: 50%;
+  animation: microSpin 0.8s linear infinite;
+}
+
+/* Item appear animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* Staggered item animations */
+.stagger-item {
+  opacity: 0;
+}
+
+.stagger-item--entered {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* Generate classes for 10 staggered items */
+.stagger-item-1 { animation-delay: 0.05s; }
+.stagger-item-2 { animation-delay: 0.1s; }
+.stagger-item-3 { animation-delay: 0.15s; }
+.stagger-item-4 { animation-delay: 0.2s; }
+.stagger-item-5 { animation-delay: 0.25s; }
+.stagger-item-6 { animation-delay: 0.3s; }
+.stagger-item-7 { animation-delay: 0.35s; }
+.stagger-item-8 { animation-delay: 0.4s; }
+.stagger-item-9 { animation-delay: 0.45s; }
+.stagger-item-10 { animation-delay: 0.5s; }
+
+/* Hidden element animation for a reveal effect */
+.reveal-hidden {
+  position: relative;
+}
+
+.reveal-hidden::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212; 
+  transform-origin: right;
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.reveal-hidden.revealed::after {
+  transform: scaleX(0);
+}
+
+/* Cyberpunk glitch effect (subtle) */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both;
+}
+
+/* Button click effect */
+.btn-click {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-click::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+
+.btn-click:active::after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
+
+/* Data line animation for cyberpunk theme */
+.data-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-line::before {
+  content: '';
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 87, 0, 0.7), transparent);
+  bottom: 0;
+  width: 100%;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.data-line:hover::before {
+  transform: translateX(100%);
+  opacity: 1;
+}
