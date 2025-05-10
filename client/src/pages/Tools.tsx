@@ -302,16 +302,18 @@ const EmailSecurityForm = ({ onClose }: { onClose: () => void }) => {
                 onClick={() => {
                   const summaryText = `
 Email Security Analysis Results:
------------------------------
+-------------------------------
+${results.sender ? `Sender: ${results.sender}` : ''}
+${results.sentDate ? `Sent Date: ${results.sentDate}` : ''}
 Security Score: ${results.securityScore}/10
+
+Authentication Status:
+- SPF: ${results.validations?.spf ? 'Valid' : 'Invalid/Missing'}
+- DKIM: ${results.validations?.dkim ? 'Valid' : 'Invalid/Missing'}
+- DMARC: ${results.validations?.dmarc ? 'Valid' : 'Invalid/Missing'}
 
 ${results.issues && results.issues.length > 0 ? `Security Issues:
 ${results.issues.map((issue: string) => `- ${issue}`).join('\n')}` : ''}
-
-${results.validations ? `Validations:
-- SPF: ${results.validations.spf ? 'Valid' : 'Invalid/Missing'}
-- DKIM: ${results.validations.dkim ? 'Valid' : 'Invalid/Missing'}
-- DMARC: ${results.validations.dmarc ? 'Valid' : 'Invalid/Missing'}` : ''}
 
 ${results.recommendations && results.recommendations.length > 0 ? `Recommendations:
 ${results.recommendations.map((rec: string) => `- ${rec}`).join('\n')}` : ''}
@@ -743,6 +745,36 @@ const PasswordStrengthForm = ({ onClose }: { onClose: () => void }) => {
               <Key className="w-8 h-8" />
             </div>
             <h3 className="text-xl font-heading font-semibold">Password Strength Analysis</h3>
+            <div className="mt-2 flex justify-center">
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-xs border-accent/20 hover-lift px-3 py-1 h-auto"
+                onClick={() => {
+                  const summaryText = `
+Password Strength Analysis:
+---------------------------
+Strength Rating: ${results.score}/10
+${results.timeToBreak ? `Estimated Crack Time: ${results.timeToBreak}` : ''}
+
+${results.weaknesses && results.weaknesses.length > 0 ? `Weaknesses:
+${results.weaknesses.map((weakness: string) => `- ${weakness}`).join('\n')}` : ''}
+
+${results.improvement ? `Improvement Suggestion:
+${results.improvement}` : ''}
+                  `.trim();
+                  
+                  navigator.clipboard.writeText(summaryText);
+                  toast({
+                    description: "All results copied to clipboard!",
+                    duration: 2000,
+                  });
+                }}
+              >
+                <Copy className="h-3 w-3 mr-1" />
+                Copy All Results
+              </Button>
+            </div>
           </div>
           
           <div className="space-y-4">
@@ -1391,6 +1423,38 @@ const RiskAssessmentForm = ({ onClose }: { onClose: () => void }) => {
               <Shield className="w-8 h-8" />
             </div>
             <h3 className="text-xl font-heading font-semibold">Security Risk Assessment</h3>
+            <div className="mt-2 flex justify-center">
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-xs border-accent/20 hover-lift px-3 py-1 h-auto"
+                onClick={() => {
+                  const summaryText = `
+Security Risk Assessment Results:
+------------------------------
+Overall Risk Score: ${results.overallScore}/10
+
+${results.domainScores && Object.keys(results.domainScores).length > 0 ? `Domain Risk Scores:
+${Object.entries(results.domainScores).map(([domain, score]: [string, any]) => `- ${domain}: ${score}/10`).join('\n')}` : ''}
+
+${results.vulnerabilities && results.vulnerabilities.length > 0 ? `Key Vulnerabilities:
+${results.vulnerabilities.map((vuln: string) => `- ${vuln}`).join('\n')}` : ''}
+
+${results.recommendations && results.recommendations.length > 0 ? `Recommendations:
+${results.recommendations.map((rec: string) => `- ${rec}`).join('\n')}` : ''}
+                  `.trim();
+                  
+                  navigator.clipboard.writeText(summaryText);
+                  toast({
+                    description: "All results copied to clipboard!",
+                    duration: 2000,
+                  });
+                }}
+              >
+                <Copy className="h-3 w-3 mr-1" />
+                Copy All Results
+              </Button>
+            </div>
           </div>
           
           <div className="space-y-4">
