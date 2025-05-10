@@ -321,11 +321,28 @@ Ensure all events are from the last 6 hours with accurate timestamps, are realis
     const content = response.choices[0].message.content;
     console.log("Response content preview:", content ? content.substring(0, 100) + "..." : "no content");
 
-    // Parse the response
-    const result = content ? JSON.parse(content) : {};
+    // Parse the response safely with error handling
+    let result = {};
+    try {
+      if (content) {
+        result = JSON.parse(content);
+        console.log("Successfully parsed JSON response");
+      }
+    } catch (parseError) {
+      console.error("Error parsing JSON response:", parseError);
+      console.error("Response content preview:", content ? `${content.substring(0, 200)}...` : "no content");
+      // Return a minimal valid structure to prevent UI errors
+      return {
+        threatEvents: [],
+        globalThreatLevel: 5,
+        topTargetedSectors: ["Unknown"],
+        activeThreats: ["API Error"],
+        trendingThreats: ["Service Unavailable"]
+      };
+    }
     
     // Add timestamps to the response to show recency
-    if (result.threatEvents) {
+    if (result.threatEvents && Array.isArray(result.threatEvents)) {
       // Define type for threat events
       interface ThreatEvent {
         id: string;
@@ -345,15 +362,20 @@ Ensure all events are from the last 6 hours with accurate timestamps, are realis
       // Ensure all threats have very recent timestamps (within the last 6 hours)
       const now = new Date();
       result.threatEvents = result.threatEvents.map((threat: ThreatEvent) => {
-        // Verify the timestamp is recent or generate a new one
-        const eventDate = new Date(threat.timestamp);
-        const hoursAgo = (now.getTime() - eventDate.getTime()) / (1000 * 60 * 60);
-        
-        if (hoursAgo > 6) {
-          // Generate a random time within the last 6 hours
-          const randomHoursAgo = Math.random() * 6;
-          const newDate = new Date(now.getTime() - randomHoursAgo * 60 * 60 * 1000);
-          threat.timestamp = newDate.toISOString();
+        try {
+          // Verify the timestamp is recent or generate a new one
+          const eventDate = new Date(threat.timestamp);
+          const hoursAgo = (now.getTime() - eventDate.getTime()) / (1000 * 60 * 60);
+          
+          if (isNaN(eventDate.getTime()) || hoursAgo > 6) {
+            // Generate a random time within the last 6 hours
+            const randomHoursAgo = Math.random() * 6;
+            const newDate = new Date(now.getTime() - randomHoursAgo * 60 * 60 * 1000);
+            threat.timestamp = newDate.toISOString();
+          }
+        } catch (dateError) {
+          // If there's an error with date handling, create a fallback timestamp
+          threat.timestamp = new Date(now.getTime() - (Math.random() * 6 * 60 * 60 * 1000)).toISOString();
         }
         
         return threat;
