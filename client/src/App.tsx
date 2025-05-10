@@ -4,8 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { AnimatePresence } from "framer-motion";
-import { PageTransition } from "@/components/ui/page-transition";
+import { SimplePageTransition } from "@/components/ui/simple-animations";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Header from "@/components/layout/Header";
@@ -26,49 +25,53 @@ const LoadingSpinner = () => (
 );
 
 function Router() {
+  const [location] = useLocation();
+  
   return (
     <>
       <Header />
       <main>
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/services">
-            {() => (
-              <Suspense fallback={<LoadingSpinner />}>
-                <Services />
-              </Suspense>
-            )}
-          </Route>
-          <Route path="/about">
-            {() => (
-              <Suspense fallback={<LoadingSpinner />}>
-                <About />
-              </Suspense>
-            )}
-          </Route>
-          <Route path="/tools">
-            {() => (
-              <Suspense fallback={<LoadingSpinner />}>
-                <Tools />
-              </Suspense>
-            )}
-          </Route>
-          <Route path="/faq">
-            {() => (
-              <Suspense fallback={<LoadingSpinner />}>
-                <Faq />
-              </Suspense>
-            )}
-          </Route>
-          <Route path="/contact">
-            {() => (
-              <Suspense fallback={<LoadingSpinner />}>
-                <Contact />
-              </Suspense>
-            )}
-          </Route>
-          <Route component={NotFound} />
-        </Switch>
+        <SimplePageTransition>
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/services">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Services />
+                </Suspense>
+              )}
+            </Route>
+            <Route path="/about">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <About />
+                </Suspense>
+              )}
+            </Route>
+            <Route path="/tools">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Tools />
+                </Suspense>
+              )}
+            </Route>
+            <Route path="/faq">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Faq />
+                </Suspense>
+              )}
+            </Route>
+            <Route path="/contact">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Contact />
+                </Suspense>
+              )}
+            </Route>
+            <Route component={NotFound} />
+          </Switch>
+        </SimplePageTransition>
       </main>
       <Footer />
     </>

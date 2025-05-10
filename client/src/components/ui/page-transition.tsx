@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation } from "wouter";
-import { motion } from "framer-motion";
+import { motion, HTMLMotionProps } from "framer-motion";
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -36,10 +36,16 @@ export function PageTransition({ children }: PageTransitionProps) {
 export function StaggerItem({ 
   children, 
   index,
+  className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { index: number }) {
+}: { 
+  children: React.ReactNode;
+  index: number;
+  className?: string;
+}) {
   return (
     <motion.div
+      className={className}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ 
@@ -59,10 +65,15 @@ export function StaggerItem({
  */
 export function AnimatedSection({ 
   children,
+  className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <motion.section
+      className={className}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -148,15 +159,25 @@ export function TextReveal({ text, className = "" }: { text: string; className?:
 export function AnimatedButton({
   children,
   className = "",
-  ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  onClick,
+  disabled,
+  type
+}: {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
+}) {
   return (
     <motion.button
       className={`${className} btn-click`}
-      whileHover={{ scale: 1.02, y: -2 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={!disabled ? { scale: 1.02, y: -2 } : undefined}
+      whileTap={!disabled ? { scale: 0.98 } : undefined}
       transition={{ duration: 0.2 }}
-      {...props}
+      onClick={onClick}
+      disabled={disabled}
+      type={type}
     >
       {children}
     </motion.button>
@@ -169,8 +190,10 @@ export function AnimatedButton({
 export function AnimatedCard({
   children,
   className = "",
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <motion.div
       className={`${className} overflow-hidden`}
@@ -182,7 +205,6 @@ export function AnimatedCard({
         y: -5,
         boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)"
       }}
-      {...props}
     >
       {children}
     </motion.div>
