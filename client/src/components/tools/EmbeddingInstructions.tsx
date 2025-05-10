@@ -1,4 +1,5 @@
-import { CopyBlock, dracula } from "react-syntax-highlighter";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Copy, ExternalLink } from "lucide-react";
@@ -55,13 +56,14 @@ $w.onReady(function () {
           <Card className="p-4 bg-background">
             <h4 className="text-sm font-medium mb-3">Standard HTML Iframe</h4>
             <div className="relative">
-              <CopyBlock
-                text={iframeCode}
+              <SyntaxHighlighter
                 language="html"
-                theme={dracula}
+                style={dracula}
                 showLineNumbers={false}
                 wrapLongLines
-              />
+              >
+                {iframeCode}
+              </SyntaxHighlighter>
               <Button
                 size="sm"
                 variant="ghost"
@@ -93,13 +95,14 @@ $w.onReady(function () {
           <Card className="p-4 bg-background">
             <h4 className="text-sm font-medium mb-3">Wix Website Integration</h4>
             <div className="relative">
-              <CopyBlock
-                text={wixCode}
+              <SyntaxHighlighter
                 language="javascript"
-                theme={dracula}
+                style={dracula}
                 showLineNumbers={false}
                 wrapLongLines
-              />
+              >
+                {wixCode}
+              </SyntaxHighlighter>
               <Button
                 size="sm"
                 variant="ghost"
