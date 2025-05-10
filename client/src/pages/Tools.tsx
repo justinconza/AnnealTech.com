@@ -2377,6 +2377,19 @@ const ToolsPage = () => {
         </DialogContent>
       </Dialog>
       
+      {/* Email Breach Checker Dialog */}
+      <Dialog open={activeDialog === "email-breach-check"} onOpenChange={closeDialog}>
+        <DialogContent className="sm:max-w-[800px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-heading text-2xl">Email Breach Checker</DialogTitle>
+            <DialogDescription>
+              Check if your email address or domain has been compromised in known data breaches and get security recommendations.
+            </DialogDescription>
+          </DialogHeader>
+          <EmailBreachChecker />
+        </DialogContent>
+      </Dialog>
+      
       {/* Premium Tool Gated Access Dialog */}
       <Dialog open={activeDialog === "premium"} onOpenChange={closeDialog}>
         <DialogContent className="sm:max-w-[600px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
