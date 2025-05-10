@@ -12,18 +12,27 @@ const DEFAULT_MODEL = "gpt-4o";
 export async function analyzeEmailSecurity(emailData: string) {
   try {
     console.log("Analyzing email headers with length:", emailData.length);
-
-    // Extract first 100 chars for logging
-    const emailPreview = emailData.substring(0, 100).replace(/\n/g, " ") + "...";
-    console.log("Email preview:", emailPreview);
-
-    // Create the prompt with JSON keyword
-    const systemPrompt = "You are an expert email security analyst. Analyze the provided email headers or content for security issues, SPF/DKIM validation, suspicious origins, and potential threats. Provide a security rating from 1-10 and specific recommendations. Respond with JSON including these fields: 'securityScore' (number), 'issues' (array of strings), 'validations' (object with boolean fields: spf, dkim, dmarc), 'recommendations' (array of strings).";
-    const userPrompt = `Analyze the following email headers and respond with JSON format:\n\n${emailData}`;
     
-    console.log("System prompt:", systemPrompt);
-    console.log("User prompt preview:", userPrompt.substring(0, 100) + "...");
-
+    const systemPrompt = `You are an email security expert with deep knowledge of email headers, SPF, DKIM, DMARC, and email security best practices.
+                          Your task is to analyze the provided email header data and identify potential security issues, spoofing attempts, or other anomalies.`;
+                          
+    const userPrompt = `Analyze the following email headers for security issues, focusing on authentication results, potential spoofing, and any suspicious patterns.
+                        Return your analysis as valid JSON with the following structure:
+                        {
+                          "securityScore": number from 1-10 (10 being most secure),
+                          "spfResult": "pass", "fail", or "neutral",
+                          "dkimResult": "pass", "fail", or "not present",
+                          "dmarcResult": "pass", "fail", or "not present",
+                          "spoofingDetected": boolean,
+                          "senderValidated": boolean,
+                          "securityIssues": array of identified issues,
+                          "recommendations": array of security recommendations
+                        }
+                      
+                        Email Headers:
+                        ${emailData}`;
+    
+    // Call the OpenAI API
     const response = await openai.chat.completions.create({
       model: DEFAULT_MODEL,
       messages: [
@@ -39,124 +48,277 @@ export async function analyzeEmailSecurity(emailData: string) {
       response_format: { type: "json_object" },
       temperature: 0.3,
     });
-
-    console.log("OpenAI response received");
+    
+    console.log("Email security analysis response received");
     const content = response.choices[0].message.content;
-    console.log("Response content preview:", content ? content.substring(0, 100) + "..." : "no content");
-
-    return content ? JSON.parse(content) : {};
+    
+    if (!content) {
+      throw new Error("Empty response from AI");
+    }
+    
+    return JSON.parse(content);
   } catch (error) {
     console.error("Error analyzing email security:", error);
     throw new Error("Failed to analyze email security");
   }
 }
 
-// Phishing detection
+// Phishing content detection
 export async function detectPhishing(content: string) {
   try {
+    console.log("Analyzing content for phishing indicators");
+    
+    const systemPrompt = `You are a cybersecurity expert specializing in phishing detection. Your job is to analyze text
+                          and identify potential phishing attempts, social engineering tactics, or other malicious content.`;
+                          
+    const userPrompt = `Analyze the following content and determine if it contains indicators of phishing, scams, 
+                        social engineering, or other malicious intent. Look for urgency, threats, suspicious links, 
+                        poor grammar, requests for sensitive information, and other red flags.
+                        
+                        Return your analysis as valid JSON with the following structure:
+                        {
+                          "isPhishing": boolean indicating if the content appears to be phishing,
+                          "phishingScore": number from 1-10 (10 being definitely phishing),
+                          "redFlags": array of concerning elements found in the text,
+                          "tactics": array of social engineering tactics identified,
+                          "recommendations": array of security actions to take,
+                          "explanation": detailed explanation of your analysis
+                        }
+                        
+                        Content to analyze:
+                        ${content}`;
+    
+    // Call the OpenAI API
     const response = await openai.chat.completions.create({
       model: DEFAULT_MODEL,
       messages: [
         {
           role: "system",
-          content: 
-            "You are a phishing detection expert. Analyze the provided email or URL for signs of phishing, including deceptive domains, urgency tactics, grammar issues, and suspicious requests. Provide a threat score from 1-10, identify red flags, and explain why they're concerning. Respond with JSON including: 'score', 'redFlags' (array), 'assessment' (string), 'recommendations' (array).",
+          content: systemPrompt
         },
         {
           role: "user",
-          content: `Analyze this content for phishing and respond with JSON:\n\n${content}`,
-        }
-      ],
-      response_format: { type: "json_object" },
-      temperature: 0.2,
-    });
-
-    const messageContent = response.choices[0].message.content;
-    return messageContent ? JSON.parse(messageContent) : {};
-  } catch (error) {
-    console.error("Error detecting phishing:", error);
-    throw new Error("Failed to analyze for phishing threats");
-  }
-}
-
-// Security risk assessment
-export async function assessSecurityRisks(organizationData: any) {
-  try {
-    const response = await openai.chat.completions.create({
-      model: DEFAULT_MODEL,
-      messages: [
-        {
-          role: "system",
-          content: 
-            "You are an IT security risk assessment expert. Based on the organization details provided, identify potential security vulnerabilities, calculate risk scores for different security domains (1-10 scale), and provide actionable recommendations. Focus on network security, data protection, access control, and employee training. Respond with JSON including: 'overallScore', 'domainScores' (object with domain names and scores), 'vulnerabilities' (array), 'recommendations' (array).",
-        },
-        {
-          role: "user",
-          content: `Analyze this organization data and respond with JSON:\n\n${JSON.stringify(organizationData)}`,
+          content: userPrompt
         }
       ],
       response_format: { type: "json_object" },
       temperature: 0.3,
     });
+    
+    console.log("Phishing detection analysis response received");
+    const responseContent = response.choices[0].message.content;
+    
+    if (!responseContent) {
+      throw new Error("Empty response from AI");
+    }
+    
+    return JSON.parse(responseContent);
+  } catch (error) {
+    console.error("Error detecting phishing:", error);
+    throw new Error("Failed to analyze content for phishing indicators");
+  }
+}
 
-    const messageContent = response.choices[0].message.content;
-    return messageContent ? JSON.parse(messageContent) : {};
+// Security assessment for organizations
+export async function assessSecurityRisks(organizationData: any) {
+  try {
+    console.log("Assessing security risks for organization");
+    
+    const systemPrompt = `You are a cybersecurity risk assessment expert with experience evaluating organizational security postures.
+                          Your task is to analyze the provided information about an organization and identify potential security risks
+                          and vulnerabilities based on their industry, size, and other factors.`;
+                          
+    const userPrompt = `Perform a security risk assessment for the organization described below. Consider industry-specific threats, 
+                        regulatory requirements, common vulnerabilities, and attack vectors relevant to their situation.
+                      
+                        Return your assessment as valid JSON with the following structure:
+                        {
+                          "overallRiskLevel": number from 1-10 (10 being highest risk),
+                          "topThreats": array of the most significant threats to this organization,
+                          "vulnerabilityAssessment": {
+                            "technical": array of technical vulnerabilities,
+                            "operational": array of operational/process vulnerabilities,
+                            "human": array of human/social engineering vulnerabilities
+                          },
+                          "riskFactors": array of organizational risk factors,
+                          "recommendations": array of security recommendations,
+                          "complianceConsiderations": array of relevant regulations and compliance requirements
+                        }
+                        
+                        Organization information:
+                        ${JSON.stringify(organizationData)}`;
+    
+    // Call the OpenAI API
+    const response = await openai.chat.completions.create({
+      model: DEFAULT_MODEL,
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt
+        },
+        {
+          role: "user",
+          content: userPrompt
+        }
+      ],
+      response_format: { type: "json_object" },
+      temperature: 0.3,
+    });
+    
+    console.log("Security risk assessment response received");
+    const content = response.choices[0].message.content;
+    
+    if (!content) {
+      throw new Error("Empty response from AI");
+    }
+    
+    return JSON.parse(content);
   } catch (error) {
     console.error("Error assessing security risks:", error);
-    throw new Error("Failed to assess security risks");
+    throw new Error("Failed to assess organization security risks");
   }
 }
 
 // Password strength evaluation
 export async function evaluatePasswordStrength(password: string) {
   try {
+    console.log("Evaluating password strength");
+    
+    const systemPrompt = `You are a password security expert. Your task is to evaluate the strength of a given password 
+                          without storing, logging, or revealing the actual password in your response. Analyze it for common 
+                          weaknesses like dictionary words, common patterns, lack of complexity, and other security issues.`;
+                          
+    const userPrompt = `Evaluate the strength of the following password. DO NOT include the actual password in your response.
+                        Analyze factors such as:
+                        - Length
+                        - Character variety (uppercase, lowercase, numbers, symbols)
+                        - Commonality
+                        - Pattern usage
+                        - Dictionary word usage
+                        - Resistance to various cracking methods
+                        
+                        Return your evaluation as valid JSON with the following structure:
+                        {
+                          "strength": number from 1-10 (10 being strongest),
+                          "timeToCrack": estimated time to crack with current technology,
+                          "vulnerabilities": array of specific weaknesses identified,
+                          "improvements": array of specific recommendations to improve,
+                          "analysisDetails": {
+                            "length": assessment of length adequacy,
+                            "complexity": assessment of character complexity,
+                            "uniqueness": assessment of how unique/uncommon the password is,
+                            "patterns": description of any patterns detected (without revealing the password)
+                          }
+                        }
+                        
+                        Password to evaluate:
+                        ${password}`;
+    
+    // Call the OpenAI API
     const response = await openai.chat.completions.create({
       model: DEFAULT_MODEL,
       messages: [
         {
           role: "system",
-          content: 
-            "You are a password security expert. Evaluate the strength of the provided password based on length, complexity, use of special characters, numbers, and case variation. NEVER STORE THE ACTUAL PASSWORD IN YOUR RESPONSE. Provide a strength score from 1-10, identify weaknesses, and suggest improvements. Respond with JSON including: 'score', 'weaknesses' (array), 'timeToBreak' (string estimation), 'improvement' (string), with no reference to the actual password.",
+          content: systemPrompt
         },
         {
           role: "user",
-          content: `Evaluate this password and respond with JSON (without including the actual password):\n\n${password}`,
+          content: userPrompt
         }
       ],
       response_format: { type: "json_object" },
-      temperature: 0.2,
+      temperature: 0.3,
     });
-
-    const messageContent = response.choices[0].message.content;
-    return messageContent ? JSON.parse(messageContent) : {};
+    
+    console.log("Password strength evaluation response received");
+    const content = response.choices[0].message.content;
+    
+    if (!content) {
+      throw new Error("Empty response from AI");
+    }
+    
+    return JSON.parse(content);
   } catch (error) {
     console.error("Error evaluating password strength:", error);
     throw new Error("Failed to evaluate password strength");
   }
 }
 
-// Domain security scan
+// Domain security scanning
 export async function scanDomainSecurity(domain: string) {
   try {
+    console.log("Scanning domain security for:", domain);
+    
+    const systemPrompt = `You are a domain security expert with extensive knowledge of DNS configurations, SSL/TLS, SPF, DKIM, DMARC, 
+                          domain security best practices, and common vulnerabilities. Your task is to provide a comprehensive security 
+                          assessment for the provided domain.`;
+                          
+    const userPrompt = `Perform a security assessment for the domain: ${domain}
+                        
+                        Simulate a full security scan including analysis of:
+                        - DNS security (DNSSEC, potential hijacking risks)
+                        - Email security (SPF, DKIM, DMARC)
+                        - Web security (HTTPS, HSTS, Content-Security-Policy)
+                        - Domain registration details (registration age, privacy protection)
+                        - Common misconfigurations
+                        - Potential impersonation issues
+                        
+                        Return your assessment as valid JSON with the following structure:
+                        {
+                          "overallSecurityScore": number from 1-10 (10 being most secure),
+                          "discoveredIssues": array of security issues found,
+                          "domain": {
+                            "age": estimated age of domain registration,
+                            "privacyProtection": boolean indicating if privacy protection is enabled,
+                            "registrantInfo": summary of registrant information availability
+                          },
+                          "dns": {
+                            "dnssecEnabled": boolean,
+                            "vulnerabilities": array of DNS-specific vulnerabilities
+                          },
+                          "email": {
+                            "spfConfigured": boolean,
+                            "dkimConfigured": boolean,
+                            "dmarcConfigured": boolean,
+                            "emailSecurityScore": number from 1-10,
+                            "vulnerabilities": array of email-specific vulnerabilities
+                          },
+                          "web": {
+                            "httpsEnabled": boolean,
+                            "hstsEnabled": boolean,
+                            "securityHeaders": array of security headers detected,
+                            "webSecurityScore": number from 1-10,
+                            "vulnerabilities": array of web-specific vulnerabilities
+                          },
+                          "recommendations": array of security recommendations
+                        }`;
+    
+    // Call the OpenAI API
     const response = await openai.chat.completions.create({
       model: DEFAULT_MODEL,
       messages: [
         {
           role: "system",
-          content: 
-            "You are a domain security expert. Analyze the provided domain for security configuration issues, including HTTPS implementation, HSTS, DNS security, and common domain-based threats. Provide a security score from 1-10 and specific recommendations. Respond with JSON including: 'score', 'findings' (array of issues), 'securityLevel' (string), 'recommendations' (array).",
+          content: systemPrompt
         },
         {
           role: "user",
-          content: `Analyze this domain and respond with JSON:\n\n${domain}`,
+          content: userPrompt
         }
       ],
       response_format: { type: "json_object" },
       temperature: 0.3,
     });
-
-    const messageContent = response.choices[0].message.content;
-    return messageContent ? JSON.parse(messageContent) : {};
+    
+    console.log("Domain security scan response received");
+    const content = response.choices[0].message.content;
+    
+    if (!content) {
+      throw new Error("Empty response from AI");
+    }
+    
+    return JSON.parse(content);
   } catch (error) {
     console.error("Error scanning domain security:", error);
     throw new Error("Failed to scan domain security");
@@ -166,59 +328,60 @@ export async function scanDomainSecurity(domain: string) {
 // QR Code security analysis
 export async function analyzeQRCodeSecurity(url: string, qrCodeData?: string) {
   try {
-    console.log("Analyzing QR code URL:", url);
+    console.log("Analyzing QR code security for URL:", url);
     
-    const systemPrompt = `You are a security expert analyzing a URL that was extracted from a QR code. 
-Provide a comprehensive security analysis by simulating data from multiple OSINT sources including:
-1. VirusTotal - for malware detection and security reputation
-2. URLScan.io - for webpage content and script analysis
-3. WhoIs databases - for domain registration and ownership details
-4. PhishTank - for known phishing site detection
-5. SSL/TLS Certificate analysis - for HTTPS implementation quality
-6. DNS configuration databases - for proper DNS security measures
-7. Reputation databases - for known malicious domain tracking
-
-Use this multi-source analysis to detect potential threats, phishing indicators, and unsafe patterns. Also analyze whether the site contains adult content or NSFW material, and flag such sites accordingly.
-
-Respond with detailed JSON that includes a security score, domain intelligence from these sources, classification, and specific recommendations.`;
+    const systemPrompt = `You are a cybersecurity expert specializing in QR code security assessment and URL analysis. 
+                          Your task is to analyze the security of a URL found in a QR code by evaluating potential phishing attempts, 
+                          malicious redirects, and other security risks. Use your knowledge of domain reputation, common scam techniques, 
+                          and URL analysis to provide a comprehensive security assessment.`;
+                          
+    const userPrompt = `Perform a security analysis of the following URL that was extracted from a QR code:
+                        
+                        URL: ${url}
+                        ${qrCodeData ? `Additional QR data: ${qrCodeData}` : ''}
+                        
+                        Simulate a comprehensive security analysis including:
+                        - Domain age and reputation
+                        - WHOIS information
+                        - SSL certificate validity
+                        - Potential phishing indicators
+                        - Similarity to known brands or services
+                        - Malware or scam likelihood
+                        - URL structure analysis (suspicious parameters, redirects, etc.)
+                        - Overall security assessment
+                        
+                        Return your analysis as valid JSON with the following structure:
+                        {
+                          "securityScore": number from 1-10 (10 being most secure),
+                          "summary": brief summary of your findings,
+                          "isSecure": boolean indicating if the URL appears secure,
+                          "domainDetails": {
+                            "registrationDate": estimated domain registration date,
+                            "owner": owner information if available,
+                            "country": country of registration if available,
+                            "securityProtocols": array of security protocols detected
+                          },
+                          "osintData": {
+                            "virusTotal": {
+                              "detectionRate": detection rate if available,
+                              "firstSeen": when first seen in databases,
+                              "categoryTags": array of category tags
+                            },
+                            "urlScanResults": array of simulated URL scan findings,
+                            "reputationScore": reputation score from 1-10
+                          },
+                          "websiteSnapshot": {
+                            "title": page title if available,
+                            "description": page meta description if available,
+                            "contentPreview": brief text preview of the page content,
+                            "lastScanDate": date of the simulated snapshot,
+                            "containsAdultContent": boolean indicating if the website contains NSFW/adult content
+                          },
+                          "redFlags": array of suspicious elements detected,
+                          "recommendations": array of security recommendations,
+                          "classification": general classification (safe, suspicious, dangerous, etc.)
+                        }`;
     
-    const userPrompt = `
-Analyze this URL extracted from a QR code for security threats using multiple OSINT intelligence sources:
-
-URL: ${url}
-${qrCodeData ? `Additional QR code data: ${qrCodeData}` : ''}
-
-Please respond with valid JSON including these fields:
-- securityScore: a number from 1-10 (10 being safest)
-- summary: a brief overview of the findings
-- isSecure: boolean indicating if the URL appears safe
-- domainDetails: {
-    registrationDate: approximate date if detectable,
-    owner: if publicly available,
-    country: host country if detectable,
-    securityProtocols: list of security measures detected
-  }
-- osintData: {
-    virusTotal: {
-      detectionRate: estimated malicious detection rate (0-100%),
-      firstSeen: approximate date first seen in database,
-      categoryTags: array of categories assigned to this URL
-    },
-    urlScanResults: array of suspicious elements found during simulated URL scan,
-    reputationScore: overall reputation from 0-100 based on multiple databases
-  }
-- websiteSnapshot: {
-    title: page title if available,
-    description: page meta description if available,
-    contentPreview: brief text preview of the page content,
-    lastScanDate: date of the simulated snapshot,
-    containsAdultContent: boolean indicating if the website contains NSFW/adult content
-  }
-- redFlags: array of suspicious elements detected
-- recommendations: array of security recommendations
-- classification: general classification (safe, suspicious, dangerous, etc.)
-`;
-
     // Call the OpenAI API
     const response = await openai.chat.completions.create({
       model: DEFAULT_MODEL,
@@ -238,13 +401,102 @@ Please respond with valid JSON including these fields:
 
     console.log("QR code analysis response received");
     const content = response.choices[0].message.content;
-    console.log("Response content preview:", content ? content.substring(0, 100) + "..." : "no content");
 
-    // Parse and return the result
-    return content ? JSON.parse(content) : {};
+    if (!content) {
+      throw new Error("Empty response from AI");
+    }
+    
+    return JSON.parse(content);
   } catch (error) {
-    console.error("Error analyzing QR code URL:", error);
+    console.error("Error analyzing QR code security:", error);
     throw new Error("Failed to analyze QR code security");
+  }
+}
+
+// Email breach check
+export async function checkEmailBreaches(emailOrDomain: string, isDomain: boolean = false) {
+  try {
+    console.log(`Checking ${isDomain ? 'domain' : 'email'} for breaches:`, emailOrDomain);
+    
+    const systemPrompt = `You are a cybersecurity expert specializing in data breach analysis and digital footprint assessment.
+                          Your task is to analyze the provided ${isDomain ? 'domain' : 'email address'} and simulate a comprehensive
+                          breach check against multiple data breach databases. Use your knowledge of notable data breaches,
+                          password leaks, and common exposure patterns to provide detailed intelligence about potential exposures.`;
+                          
+    const userPrompt = `Perform a comprehensive breach check for the following ${isDomain ? 'domain' : 'email address'}:
+                        
+                        ${isDomain ? 'Domain' : 'Email'}: ${emailOrDomain}
+                        
+                        Simulate checking this ${isDomain ? 'domain' : 'email'} against multiple breach databases including:
+                        - Have I Been Pwned
+                        - BreachDirectory
+                        - DeHashed
+                        - IntelligenceX
+                        - Leaked.site
+                        - WeLeakInfo
+                        
+                        ${isDomain ? 'For domain checks, simulate checking email addresses with this domain.' : ''}
+                        
+                        Consider common breaches through 2025 including:
+                        - Major corporate breaches
+                        - Service provider exposures
+                        - Dark web database dumps
+                        - Credential stuffing lists
+                        - Password reuse from other services
+                        
+                        Return your findings as valid JSON with the following structure:
+                        {
+                          "breachesFound": number of breaches detected,
+                          "exposureScore": number from 1-10 indicating severity of exposure (10 being most exposed),
+                          "exposureStatus": "safe", "moderate", "severe", or "critical",
+                          "breachDetails": [
+                            {
+                              "breachName": name of the breach,
+                              "breachDate": date of the breach,
+                              "dataTypes": array of data types exposed (e.g., "email", "password", "phone", etc.),
+                              "severity": severity level of this specific breach,
+                              "description": brief description of the breach
+                            }
+                          ],
+                          "exposedDataTypes": array of all data types found across breaches,
+                          "darkWebExposure": {
+                            "found": boolean indicating if credentials were found on dark web,
+                            "lastSeen": most recent date seen if applicable,
+                            "markets": array of dark web markets where data was found
+                          },
+                          "passwordReuseSeverity": assessment of password reuse risk,
+                          "recommendedActions": array of recommended security actions,
+                          "summary": brief summary of overall findings
+                        }`;
+    
+    // Call the OpenAI API
+    const response = await openai.chat.completions.create({
+      model: DEFAULT_MODEL,
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt
+        },
+        {
+          role: "user",
+          content: userPrompt
+        }
+      ],
+      response_format: { type: "json_object" },
+      temperature: 0.4,
+    });
+    
+    console.log("Email breach check response received");
+    const content = response.choices[0].message.content;
+    
+    if (!content) {
+      throw new Error("Empty response from AI");
+    }
+    
+    return JSON.parse(content);
+  } catch (error) {
+    console.error("Error checking email breaches:", error);
+    throw new Error("Failed to check email breaches");
   }
 }
 
@@ -421,37 +673,43 @@ that are tailored to the organization's specific context, constraints, and needs
     const userPrompt = `
 Analyze the security posture of this organization and identify gaps in their security implementation:
 
-Industry: ${organizationData.industry}
-Organization Size: ${organizationData.size}
-Existing Security Measures: ${organizationData.existingMeasures.join(', ')}
-Specific Security Concerns: ${organizationData.specificConcerns}
-Regulatory Requirements: ${organizationData.regulatoryRequirements.join(', ')}
-Available Budget Level: ${organizationData.budget}
+Organization Information:
+- Industry: ${organizationData.industry}
+- Size: ${organizationData.size}
+- Existing Security Measures: ${organizationData.existingMeasures.join(", ")}
+- Specific Security Concerns: ${organizationData.specificConcerns}
+- Regulatory Requirements: ${organizationData.regulatoryRequirements.join(", ")}
+- Available Budget: ${organizationData.budget}
 
-Please respond with valid JSON including these fields:
-- overallSecurityScore: a number from 1-10 (10 being most secure)
-- summary: a brief executive summary of findings
-- criticalGaps: array of the most urgent security gaps that need immediate attention
-- industryBenchmark: {
-    averageScore: typical security score for this industry,
-    complianceLevel: how well they meet industry standards (low, medium, high),
-    commonThreats: array of threats commonly faced in this industry
-  }
-- gapAnalysis: {
-    technical: array of technical security gaps,
-    operational: array of operational security gaps,
-    compliance: array of regulatory compliance gaps
-  }
-- recommendations: array of specific recommendations with priority levels (critical, high, medium, low)
-- implementationPlan: {
-    quickWins: array of easy-to-implement measures,
-    shortTerm: array of measures to implement within 3 months,
-    longTerm: array of strategic security initiatives
-  }
-- budgetConsiderations: analysis of how budget constraints affect recommendations
-- riskAssessment: array of identified risks with impact and likelihood ratings
-`;
+Based on this information, conduct a comprehensive security gap analysis that identifies vulnerabilities, 
+recommends appropriate security measures, and provides actionable steps to improve the organization's 
+security posture. Consider industry-specific threats, compliance requirements, and best practices.
 
+Return your analysis as JSON with the following structure:
+{
+  "overallSecurityScore": number from 1-10 (10 being most secure),
+  "summary": concise summary of the security posture and key gaps,
+  "criticalGaps": array of critical security gaps that need immediate attention,
+  "industryBenchmark": {
+    "averageScore": average security score for similar organizations in this industry,
+    "complianceLevel": assessment of current compliance status,
+    "commonThreats": array of common threats facing this industry
+  },
+  "gapAnalysis": {
+    "technical": array of technical security gaps,
+    "operational": array of operational security gaps,
+    "compliance": array of compliance gaps
+  },
+  "recommendations": array of objects with "recommendation" and "priority" fields,
+  "implementationPlan": {
+    "quickWins": array of quick, easy-to-implement security improvements,
+    "shortTerm": array of short-term security improvements (1-3 months),
+    "longTerm": array of long-term security improvements (3+ months)
+  },
+  "budgetConsiderations": analysis of budget constraints and how to maximize security with available resources,
+  "riskAssessment": array of objects containing "risk", "impact", and "likelihood" fields
+}`;
+    
     // Call the OpenAI API
     const response = await openai.chat.completions.create({
       model: DEFAULT_MODEL,
@@ -466,15 +724,18 @@ Please respond with valid JSON including these fields:
         }
       ],
       response_format: { type: "json_object" },
-      temperature: 0.3,
+      temperature: 0.4,
     });
-
+    
     console.log("Security gap analysis response received");
     const content = response.choices[0].message.content;
-    console.log("Response content preview:", content ? content.substring(0, 100) + "..." : "no content");
-
-    // Parse and return the result
-    return content ? JSON.parse(content) : {};
+    
+    if (!content) {
+      throw new Error("Empty response from AI");
+    }
+    
+    return JSON.parse(content);
+    
   } catch (error) {
     console.error("Error analyzing security gaps:", error);
     throw new Error("Failed to analyze security gaps");

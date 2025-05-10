@@ -10,7 +10,8 @@ import {
   scanDomainSecurity,
   analyzeQRCodeSecurity,
   analyzeSecurityGaps,
-  getThreatIntelligence
+  getThreatIntelligence,
+  checkEmailBreaches
 } from "./openai";
 
 // Contact form validation schema
@@ -270,6 +271,46 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.status(500).json({
           success: false,
           message: "Failed to analyze security gaps"
+        });
+      }
+    }
+  });
+
+  // Email Breach Check API
+  const emailBreachSchema = z.object({
+    emailOrDomain: z.string().min(1),
+    isDomain: z.boolean().default(false)
+  });
+
+  app.post("/api/tools/email-breach-check", async (req: Request, res: Response) => {
+    try {
+      console.log("Checking email/domain for breaches:", JSON.stringify({
+        emailOrDomain: req.body.emailOrDomain.substring(0, 10) + "...",
+        isDomain: req.body.isDomain
+      }));
+      
+      const validatedData = emailBreachSchema.parse(req.body);
+      const result = await checkEmailBreaches(
+        validatedData.emailOrDomain,
+        validatedData.isDomain
+      );
+      
+      console.log("Email breach check completed");
+      
+      res.status(200).json(result);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        console.error("Email breach check validation error:", error.errors);
+        res.status(400).json({
+          success: false,
+          message: "Invalid email breach check data",
+          errors: error.errors
+        });
+      } else {
+        console.error("Error checking email breaches:", error);
+        res.status(500).json({
+          success: false,
+          message: "Failed to check email breaches"
         });
       }
     }
