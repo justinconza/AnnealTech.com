@@ -8,7 +8,9 @@ import {
   assessSecurityRisks, 
   evaluatePasswordStrength,
   scanDomainSecurity,
-  analyzeQRCodeSecurity
+  analyzeQRCodeSecurity,
+  analyzeSecurityGaps,
+  getThreatIntelligence
 } from "./openai";
 
 // Contact form validation schema
