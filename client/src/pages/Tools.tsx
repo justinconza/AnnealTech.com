@@ -2014,7 +2014,7 @@ const ToolsPage = () => {
       
       {/* Phishing Detection Dialog */}
       <Dialog open={activeDialog === "phishing-detection"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[700px] bg-steel border-accent/20">
+        <DialogContent className="sm:max-w-[700px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-heading text-2xl">Phishing Detection Tool</DialogTitle>
             <DialogDescription>
@@ -2027,7 +2027,7 @@ const ToolsPage = () => {
       
       {/* Password Strength Dialog */}
       <Dialog open={activeDialog === "password-strength"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[600px] bg-steel border-accent/20">
+        <DialogContent className="sm:max-w-[600px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-heading text-2xl">Password Strength Tester</DialogTitle>
             <DialogDescription>
@@ -2040,7 +2040,7 @@ const ToolsPage = () => {
       
       {/* Domain Security Scanner Dialog */}
       <Dialog open={activeDialog === "domain-security"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[600px] bg-steel border-accent/20">
+        <DialogContent className="sm:max-w-[600px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-heading text-2xl">Domain Security Scanner</DialogTitle>
             <DialogDescription>
@@ -2066,7 +2066,7 @@ const ToolsPage = () => {
       
       {/* Premium Tool Gated Access Dialog */}
       <Dialog open={activeDialog === "premium"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[600px] bg-steel border-accent/20">
+        <DialogContent className="sm:max-w-[600px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-heading text-2xl">Premium Tool Access</DialogTitle>
             <DialogDescription>
