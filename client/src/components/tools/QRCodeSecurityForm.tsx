@@ -397,6 +397,13 @@ ${results.domainDetails.country ? `- Country: ${results.domainDetails.country}` 
 ${results.domainDetails.securityProtocols && results.domainDetails.securityProtocols.length > 0 ? 
 `- Security Protocols: ${results.domainDetails.securityProtocols.join(', ')}` : ''}
 
+${results.websiteSnapshot ? `Website Snapshot:
+${results.websiteSnapshot.title ? `- Page Title: ${results.websiteSnapshot.title}` : ''}
+${results.websiteSnapshot.description ? `- Meta Description: ${results.websiteSnapshot.description}` : ''}
+${results.websiteSnapshot.contentPreview ? `- Content Preview: ${results.websiteSnapshot.contentPreview}` : ''}
+${results.websiteSnapshot.lastScanDate ? `- Snapshot Date: ${results.websiteSnapshot.lastScanDate}` : ''}
+` : ''}
+
 ${results.osintData ? `OSINT Intelligence Data:
 ${results.osintData.virusTotal?.detectionRate ? `- VirusTotal Detection Rate: ${results.osintData.virusTotal.detectionRate}` : ''}
 ${results.osintData.virusTotal?.firstSeen ? `- First Seen In Database: ${results.osintData.virusTotal.firstSeen}` : ''}
