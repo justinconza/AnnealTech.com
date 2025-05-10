@@ -39,7 +39,7 @@ export function EmbeddedWrapper({
         </div>
         <div className="flex items-center space-x-3">
           <a 
-            href="https://annealtech.com" 
+            href="https://www.annealtech.com" 
             target="_blank"
             rel="noopener noreferrer"
             className={cn('px-3 py-1 rounded-md border text-sm font-medium transition-colors flex items-center', 
@@ -47,15 +47,7 @@ export function EmbeddedWrapper({
               formalThemeStyles.accent)}
           >
             <ExternalLink className="h-3.5 w-3.5 mr-1.5" />
-            Back to Main Site
-          </a>
-          <a 
-            href="/embedded/tools" 
-            className={cn('px-3 py-1 rounded-md border text-sm font-medium transition-colors', 
-              'border-blue-200 hover:bg-blue-50 dark:border-blue-800 dark:hover:bg-blue-900/30',
-              formalThemeStyles.accent)}
-          >
-            Tools Wix Test
+            Go Back To Main Site
           </a>
         </div>
       </div>
