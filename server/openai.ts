@@ -414,28 +414,61 @@ export async function analyzeQRCodeSecurity(url: string, qrCodeData?: string) {
 }
 
 // Email breach check
+import { getThreatsFromOTX, checkDomainWithSecurityTrails } from './osint';
+
 export async function checkEmailBreaches(emailOrDomain: string, isDomain: boolean = false) {
   try {
     console.log(`Checking ${isDomain ? 'domain' : 'email'} for breaches:`, emailOrDomain);
     
+    // Gather additional insights from OSINT tools
+    let osintData = {};
+    
+    if (isDomain) {
+      // For domains, we can get additional information from SecurityTrails
+      const domain = emailOrDomain;
+      const [securityTrailsData, otxData] = await Promise.all([
+        checkDomainWithSecurityTrails(domain),
+        getThreatsFromOTX(domain, 'domain')
+      ]);
+      
+      osintData = {
+        securityTrailsData,
+        otxData
+      };
+    } else {
+      // For emails, we extract the domain to gather domain intelligence
+      const emailParts = emailOrDomain.split('@');
+      if (emailParts.length === 2) {
+        const domain = emailParts[1];
+        const [securityTrailsData, otxData] = await Promise.all([
+          checkDomainWithSecurityTrails(domain),
+          getThreatsFromOTX(domain, 'domain')
+        ]);
+        
+        osintData = {
+          securityTrailsData,
+          otxData
+        };
+      }
+    }
+    
+    // We'll enhance our OpenAI prompt with this OSINT data
+    const osintSummary = JSON.stringify(osintData);
+    
     const systemPrompt = `You are a cybersecurity expert specializing in data breach analysis and digital footprint assessment.
-                          Your task is to analyze the provided ${isDomain ? 'domain' : 'email address'} and simulate a comprehensive
+                          Your task is to analyze the provided ${isDomain ? 'domain' : 'email address'} and perform a comprehensive
                           breach check against multiple data breach databases. Use your knowledge of notable data breaches,
-                          password leaks, and common exposure patterns to provide detailed intelligence about potential exposures.`;
+                          password leaks, and common exposure patterns to provide detailed intelligence about potential exposures.
+                          
+                          Additionally, I'm providing you with real OSINT data from SecurityTrails and AlienVault OTX.
+                          Use this data to enhance your analysis with factual information about the domain.`;
                           
     const userPrompt = `Perform a comprehensive breach check for the following ${isDomain ? 'domain' : 'email address'}:
                         
                         ${isDomain ? 'Domain' : 'Email'}: ${emailOrDomain}
                         
-                        Simulate checking this ${isDomain ? 'domain' : 'email'} against multiple breach databases including:
-                        - Have I Been Pwned
-                        - BreachDirectory
-                        - DeHashed
-                        - IntelligenceX
-                        - Leaked.site
-                        - WeLeakInfo
-                        
-                        ${isDomain ? 'For domain checks, simulate checking email addresses with this domain.' : ''}
+                        Here is the real OSINT data from our tools:
+                        ${osintSummary}
                         
                         Consider common breaches through 2025 including:
                         - Major corporate breaches
@@ -446,7 +479,7 @@ export async function checkEmailBreaches(emailOrDomain: string, isDomain: boolea
                         
                         Return your findings as valid JSON with the following structure:
                         {
-                          "breachesFound": number of breaches detected,
+                          "breachesFound": number of breaches detected (estimate based on real data and known breaches),
                           "exposureScore": number from 1-10 indicating severity of exposure (10 being most exposed),
                           "exposureStatus": "safe", "moderate", "severe", or "critical",
                           "breachDetails": [
