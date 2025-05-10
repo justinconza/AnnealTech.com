@@ -6,87 +6,179 @@ import {
   Youtube,
   MapPin,
   Phone,
-  Mail
+  Mail,
+  Hammer,
+  Shield,
+  Server,
+  Clock,
+  ArrowUpRight
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-darkest text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          <div>
-            <Link href="/" className="text-white text-2xl font-bold mb-4 inline-block">
-              Anneal<span className="text-accent">Tech</span>
+    <footer className="bg-slate text-foreground pt-20 pb-12 relative overflow-hidden border-t border-accent/10">
+      {/* Decorative SVG background */}
+      <div className="absolute inset-0 pointer-events-none opacity-5">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M0 0 L40 0 L40 40 L0 40 Z" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
+      
+      {/* Main footer content */}
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+          {/* Logo and info */}
+          <div className="lg:col-span-4">
+            <Link href="/" className="flex items-center mb-6">
+              <div className="mr-3 text-accent">
+                <Hammer className="w-6 h-6" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-foreground text-xl font-display font-bold tracking-wider">
+                  Anneal<span className="text-accent">Tech</span>
+                </span>
+              </div>
             </Link>
-            <p className="text-neutral-light mb-6">
-              Innovative engineering solutions for a changing world. We specialize in helping businesses overcome technical challenges and drive growth.
+            
+            <p className="text-muted-foreground mb-6">
+              We transform IT infrastructure into strategic business assets through expert managed services and security solutions. Forging Technology. Empowering People.
             </p>
+            
+            {/* Social media */}
             <div className="flex space-x-4">
-              <a href="#" className="text-neutral-light hover:text-white transition" aria-label="LinkedIn">
-                <Linkedin className="h-5 w-5" />
+              <a href="#" className="text-muted-foreground hover:text-accent transition-colors p-2 border border-accent/10 rounded-full hover:border-accent/30" aria-label="LinkedIn">
+                <Linkedin className="h-4 w-4" />
               </a>
-              <a href="#" className="text-neutral-light hover:text-white transition" aria-label="Twitter">
-                <Twitter className="h-5 w-5" />
+              <a href="#" className="text-muted-foreground hover:text-accent transition-colors p-2 border border-accent/10 rounded-full hover:border-accent/30" aria-label="Twitter">
+                <Twitter className="h-4 w-4" />
               </a>
-              <a href="#" className="text-neutral-light hover:text-white transition" aria-label="Facebook">
-                <Facebook className="h-5 w-5" />
+              <a href="#" className="text-muted-foreground hover:text-accent transition-colors p-2 border border-accent/10 rounded-full hover:border-accent/30" aria-label="Facebook">
+                <Facebook className="h-4 w-4" />
               </a>
-              <a href="#" className="text-neutral-light hover:text-white transition" aria-label="YouTube">
-                <Youtube className="h-5 w-5" />
+              <a href="#" className="text-muted-foreground hover:text-accent transition-colors p-2 border border-accent/10 rounded-full hover:border-accent/30" aria-label="YouTube">
+                <Youtube className="h-4 w-4" />
               </a>
             </div>
           </div>
           
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-neutral-light hover:text-white transition">Home</a></li>
-              <li><a href="#services" className="text-neutral-light hover:text-white transition">Services</a></li>
-              <li><a href="#about" className="text-neutral-light hover:text-white transition">About Us</a></li>
-              <li><a href="#expertise" className="text-neutral-light hover:text-white transition">Expertise</a></li>
-              <li><a href="#contact" className="text-neutral-light hover:text-white transition">Contact</a></li>
+          {/* Quick links */}
+          <div className="lg:col-span-2">
+            <h3 className="text-lg font-heading font-semibold mb-4">Company</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-accent transition-colors inline-flex items-center">
+                  <span>Home</span>
+                </a>
+              </li>
+              <li>
+                <a href="#about" className="text-muted-foreground hover:text-accent transition-colors inline-flex items-center">
+                  <span>About Us</span>
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-muted-foreground hover:text-accent transition-colors inline-flex items-center">
+                  <span>Services</span>
+                </a>
+              </li>
+              <li>
+                <a href="#stack" className="text-muted-foreground hover:text-accent transition-colors inline-flex items-center">
+                  <span>Technology Stack</span>
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="text-muted-foreground hover:text-accent transition-colors inline-flex items-center">
+                  <span>Contact</span>
+                </a>
+              </li>
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Our Services</h3>
-            <ul className="space-y-2">
-              <li><a href="#services" className="text-neutral-light hover:text-white transition">Engineering Design</a></li>
-              <li><a href="#services" className="text-neutral-light hover:text-white transition">Process Optimization</a></li>
-              <li><a href="#services" className="text-neutral-light hover:text-white transition">Technology Integration</a></li>
-              <li><a href="#services" className="text-neutral-light hover:text-white transition">Project Management</a></li>
-              <li><a href="#services" className="text-neutral-light hover:text-white transition">Quality Assurance</a></li>
+          {/* Services */}
+          <div className="lg:col-span-3">
+            <h3 className="text-lg font-heading font-semibold mb-4">Services</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="#services" className="text-muted-foreground hover:text-accent transition-colors inline-flex items-center">
+                  <Shield className="h-4 w-4 mr-2 text-accent/70" />
+                  <span>Endpoint Protection</span>
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-muted-foreground hover:text-accent transition-colors inline-flex items-center">
+                  <Server className="h-4 w-4 mr-2 text-accent/70" />
+                  <span>Managed IT Services</span>
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-muted-foreground hover:text-accent transition-colors inline-flex items-center">
+                  <Mail className="h-4 w-4 mr-2 text-accent/70" />
+                  <span>Email Security</span>
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-muted-foreground hover:text-accent transition-colors inline-flex items-center">
+                  <Clock className="h-4 w-4 mr-2 text-accent/70" />
+                  <span>24/7 Monitoring</span>
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-muted-foreground hover:text-accent transition-colors inline-flex items-center group">
+                  <span>View All Services</span>
+                  <ArrowUpRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+              </li>
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Information</h3>
-            <ul className="space-y-2">
+          {/* Contact and newsletter */}
+          <div className="lg:col-span-3">
+            <h3 className="text-lg font-heading font-semibold mb-4">Contact</h3>
+            <ul className="space-y-3">
               <li className="flex">
-                <MapPin className="mt-1 mr-2 h-4 w-4 flex-shrink-0" />
-                <span>1234 Innovation Drive, Suite 500<br />San Francisco, CA 94105</span>
+                <MapPin className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-accent" />
+                <span className="text-muted-foreground">1234 Innovation Drive, Suite 500<br />San Francisco, CA 94105</span>
               </li>
               <li className="flex">
-                <Phone className="mt-1 mr-2 h-4 w-4 flex-shrink-0" />
-                <span>+1 (415) 555-0123</span>
+                <Phone className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-accent" />
+                <a href="tel:+14155550123" className="text-muted-foreground hover:text-accent transition-colors">
+                  +1 (415) 555-0123
+                </a>
               </li>
               <li className="flex">
-                <Mail className="mt-1 mr-2 h-4 w-4 flex-shrink-0" />
-                <span>info@annealtech.com</span>
+                <Mail className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-accent" />
+                <a href="mailto:info@annealtech.com" className="text-muted-foreground hover:text-accent transition-colors">
+                  info@annealtech.com
+                </a>
               </li>
             </ul>
+            
+            <div className="mt-6">
+              <Button 
+                className="bg-accent hover:bg-accent/80 text-white font-heading rounded-md transition-all group flex items-center gap-2"
+              >
+                <span>Book Demo</span>
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </Button>
+            </div>
           </div>
         </div>
         
-        <div className="pt-8 border-t border-neutral-dark">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="text-neutral-light text-sm">
+        {/* Bottom bar */}
+        <div className="pt-8 border-t border-accent/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+            <div className="text-muted-foreground text-sm">
               &copy; {new Date().getFullYear()} AnnealTech. All rights reserved.
             </div>
-            <div className="text-neutral-light text-sm md:text-right">
-              <a href="#" className="hover:text-white mr-4 transition">Privacy Policy</a>
-              <a href="#" className="hover:text-white mr-4 transition">Terms of Service</a>
-              <a href="#" className="hover:text-white transition">Sitemap</a>
+            <div className="text-muted-foreground text-sm md:text-right flex flex-wrap md:justify-end gap-6">
+              <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-accent transition-colors">Sitemap</a>
             </div>
           </div>
         </div>
