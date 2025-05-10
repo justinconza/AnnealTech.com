@@ -160,6 +160,7 @@ const EmailSecurityForm = ({ onClose }: { onClose: () => void }) => {
       const response = await apiRequest('/api/tools/email-security', {
         method: 'POST',
         body: JSON.stringify(values),
+        headers: { 'Content-Type': 'application/json' }
       });
       
       setResults(response);
@@ -354,6 +355,7 @@ const PhishingDetectionForm = ({ onClose }: { onClose: () => void }) => {
       const response = await apiRequest('/api/tools/phishing-detection', {
         method: 'POST',
         body: JSON.stringify(values),
+        headers: { 'Content-Type': 'application/json' }
       });
       
       setResults(response);
@@ -522,6 +524,7 @@ const PasswordStrengthForm = ({ onClose }: { onClose: () => void }) => {
       const response = await apiRequest('/api/tools/password-strength', {
         method: 'POST',
         body: JSON.stringify(values),
+        headers: { 'Content-Type': 'application/json' }
       });
       
       setResults(response);
