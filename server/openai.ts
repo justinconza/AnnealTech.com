@@ -17,11 +17,11 @@ export async function analyzeEmailSecurity(emailData: string) {
         {
           role: "system",
           content: 
-            "You are an expert email security analyst. Analyze the provided email headers or content for security issues, SPF/DKIM validation, suspicious origins, and potential threats. Provide a security rating from 1-10 and specific recommendations.",
+            "You are an expert email security analyst. Analyze the provided email headers or content for security issues, SPF/DKIM validation, suspicious origins, and potential threats. Provide a security rating from 1-10 and specific recommendations. Respond with JSON including these fields: 'securityScore' (number), 'issues' (array of strings), 'validations' (object with boolean fields: spf, dkim, dmarc), 'recommendations' (array of strings).",
         },
         {
           role: "user",
-          content: emailData,
+          content: `Analyze the following email headers and respond with JSON:\n\n${emailData}`,
         }
       ],
       response_format: { type: "json_object" },
@@ -49,7 +49,7 @@ export async function detectPhishing(content: string) {
         },
         {
           role: "user",
-          content,
+          content: `Analyze this content for phishing and respond with JSON:\n\n${content}`,
         }
       ],
       response_format: { type: "json_object" },
@@ -77,7 +77,7 @@ export async function assessSecurityRisks(organizationData: any) {
         },
         {
           role: "user",
-          content: JSON.stringify(organizationData),
+          content: `Analyze this organization data and respond with JSON:\n\n${JSON.stringify(organizationData)}`,
         }
       ],
       response_format: { type: "json_object" },
@@ -105,7 +105,7 @@ export async function evaluatePasswordStrength(password: string) {
         },
         {
           role: "user",
-          content: password,
+          content: `Evaluate this password and respond with JSON (without including the actual password):\n\n${password}`,
         }
       ],
       response_format: { type: "json_object" },
@@ -133,7 +133,7 @@ export async function scanDomainSecurity(domain: string) {
         },
         {
           role: "user",
-          content: domain,
+          content: `Analyze this domain and respond with JSON:\n\n${domain}`,
         }
       ],
       response_format: { type: "json_object" },

@@ -1,0 +1,119 @@
+Received: from PH7PR14MB5319.namprd14.prod.outlook.com (2603:10b6:510:13c::13)
+ by SA1PR14MB4595.namprd14.prod.outlook.com with HTTPS; Tue, 25 Mar 2025
+ 01:07:53 +0000
+Received: from CH3P220CA0026.NAMP220.PROD.OUTLOOK.COM (2603:10b6:610:1e8::33)
+ by PH7PR14MB5319.namprd14.prod.outlook.com (2603:10b6:510:13c::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8534.42; Tue, 25 Mar
+ 2025 01:07:51 +0000
+Received: from CH2PEPF00000144.namprd02.prod.outlook.com
+ (2603:10b6:610:1e8:cafe::fe) by CH3P220CA0026.outlook.office365.com
+ (2603:10b6:610:1e8::33) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8534.42 via Frontend Transport; Tue,
+ 25 Mar 2025 01:07:50 +0000
+Authentication-Results: spf=pass (sender IP is 69.72.44.244)
+ smtp.mailfrom=airtable.com; dkim=pass (signature was verified)
+ header.d=airtable.com;dmarc=pass action=none
+ header.from=airtable.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of airtable.com designates
+ 69.72.44.244 as permitted sender) receiver=protection.outlook.com;
+ client-ip=69.72.44.244; helo=email-69-72-44-244.airtable.com; pr=C
+Received: from email-69-72-44-244.airtable.com (69.72.44.244) by
+ CH2PEPF00000144.mail.protection.outlook.com (10.167.244.101) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8534.20
+ via Frontend Transport; Tue, 25 Mar 2025 01:07:50 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=airtable.com; q=dns/txt; s=smtp; t=1742864869; x=1742872069;
+ h=Message-Id: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: Sender: Sender;
+ bh=IhcIIiUcB9kBHixdPr8D4BbDhoj4ycyTeexwuIEOzHI=;
+ b=keTz+Jko4na0bqISTc9X5KRKQ36ISoZHWFJs6WW0nR5qRFJnQ5VWy3s0Ev1AM2FxIW4b/XS/S0eFK1ybSH6D1/5QsEnhbOZeBk/HQi+2Ms1CEOiCsYVKtU8SyJBipgERyZbf2IKd9swbcE1HOrBJ5OVXh4rgBtKCjUVcs5Xftmo=
+X-Mailgun-Sending-Ip: 69.72.44.244
+X-Mailgun-Sending-Ip-Pool-Name:
+X-Mailgun-Sending-Ip-Pool:
+X-Mailgun-Sid: WyIyNjVhNSIsImp1c3Rpbi5jb256YUBhbm5lYWx0ZWNoLmNvbSIsImRmMjhmIl0=
+Received: by c73cae2f8f1f with HTTP id 67e201e5a4a859477701a7d6; Tue, 25 Mar 2025
+ 01:07:49 GMT
+Sender: noreply@airtable.com
+Date: Tue, 25 Mar 2025 01:07:49 +0000
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="ccbc1d7410a6fcbc3614ad735c7e180459097e9f09000e246fa511f6e40e"
+Subject: You just received $10 in Airtable credit - Airtable
+From: Airtable <noreply@airtable.com>
+To: justin.conza@annealtech.com
+Message-Id: <20250325010749.5f9358e958d46d3f@airtable.com>
+Return-Path: bounce+dcd661.df28f-justin.conza=annealtech.com@airtable.com
+X-MS-Exchange-Organization-ExpirationStartTime: 25 Mar 2025 01:07:50.5453
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ c30b496f-6e1f-4c8e-6c43-08dd6b3976b6
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: cfd190df-4504-4daa-9384-58f806f78bdc:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ CH2PEPF00000144:EE_|PH7PR14MB5319:EE_|SA1PR14MB4595:EE_
+X-MS-Exchange-Organization-AuthSource:
+ CH2PEPF00000144.namprd02.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: c30b496f-6e1f-4c8e-6c43-08dd6b3976b6
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam:
+ BCL:2;ARA:13230040|3092899012|69100299015|2092899012|3072899012|5062899012|4022899009|5073199012|13012899012|13102899012|12012899012|8096899003|4076899003|13003099007|43540500003;
+X-Forefront-Antispam-Report:
+ CIP:69.72.44.244;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:email-69-72-44-244.airtable.com;PTR:email-69-72-44-244.airtable.com;CAT:NONE;SFS:(13230040)(3092899012)(69100299015)(2092899012)(3072899012)(5062899012)(4022899009)(5073199012)(13012899012)(13102899012)(12012899012)(8096899003)(4076899003)(13003099007)(43540500003);DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Mar 2025 01:07:50.0453
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: c30b496f-6e1f-4c8e-6c43-08dd6b3976b6
+X-MS-Exchange-CrossTenant-Id: cfd190df-4504-4daa-9384-58f806f78bdc
+X-MS-Exchange-CrossTenant-AuthSource:
+ CH2PEPF00000144.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR14MB5319
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.7424822
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8534.033
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(4710137)(4713040)(470014026)(4714060)(4999020)(920097)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?us-ascii?Q?ijQ/umEAu4aPMR33o/vVn43j3MQXan1lJvJvKCsfl6rTdMI75xOHJs7ODsHW?=
+ =?us-ascii?Q?1osepFmaR8vnBbnUPmBB6bH+3CkP5UmwTwAm8MpSgbDH3PxhlXIsLC/Fl2YI?=
+ =?us-ascii?Q?jIZPQio4Y7fW7l91y+ZLTQoNd57OP08Sg9w9UYv+DNNcPaUBrJrhaBNZhoqL?=
+ =?us-ascii?Q?wdZPtSMRLWT2Fzg0f2nzhjY65q58cxQtVJZ+c3swVRz8jGpykFRX615zKkdd?=
+ =?us-ascii?Q?XvvOL+wnU8yEtFBoHv06vS2pRE5gg4g0Tma14UzW22PN8DMGBXIGR+1S/b3d?=
+ =?us-ascii?Q?SuRHuChsAdVe8PdgnUbT/bUCySWw/eegch94pqtkPhbOozXcNr+eLVQtmMwH?=
+ =?us-ascii?Q?EPlUFyWY9PP69hsPKVDcvaEqiJJrcV2InH0FiHUCWTmAMCzC0Ta0OKJ7R1Ej?=
+ =?us-ascii?Q?VoNVVz632aH9/7ipC04s4F541TlBt90V9cHMHcGeeIFuh3Fu2/YUMyZc8CCF?=
+ =?us-ascii?Q?buBJgVEKmky0zE3Qhbd/iHY1gGel2oiYWn1mX85ckH6UabfoiTa3XJ9szC4K?=
+ =?us-ascii?Q?wzhH8vL2rdgFhHKuZVXiU3zhdW1U5OcE1+uEdEm0Jw9TCpfye/5a3ZxqL/By?=
+ =?us-ascii?Q?/iO9OesZg2Thzfz2Wzbgul5ZGwlQyUIgyJSsx5VCRLRU/0ScHO7udVXEbE1r?=
+ =?us-ascii?Q?z78YUgrT7ZTzRVWNCI22DQHR51DCW+Wg8xAWqoS9NjJRlyt0VCKYzsR3e/wQ?=
+ =?us-ascii?Q?MS/jxTPwQh/8DuGRzVUp1hzfTc1iVJJ8gV0NXxkNsJJnYjKO6ILxOXgl/IPl?=
+ =?us-ascii?Q?sUaYP6oLngC4xG0TH9XIHAqSyzjt604BJJjTjYilGw3ogvnT7hHSwZV25LGp?=
+ =?us-ascii?Q?FOyLaamNDQuRbTBdrjEp+SFdWCC7WhxBhGS8YUkrFL9pMe/yL6ntmv1FMdkX?=
+ =?us-ascii?Q?0xTMeMTUIr2QEYXauDGMV/hjV9YlVkiN0AJX4Rxd139BvvzcBqIhsh6Y1tCE?=
+ =?us-ascii?Q?F2ws3OTAGRQt50ldnVoHM85Xt4ucq1K81fB4XoSAybUWDov5im9b5jYJuZQH?=
+ =?us-ascii?Q?txhGEHZDlwWWjl2lLNKtG3LMNRzb6owwAd2o0hvuj8XkQwi9r7Z4MG/NmDVR?=
+ =?us-ascii?Q?n2iQCU5Qej2NfP1PffipSr6Y8TZfPOSb5/GXXTGDYHgF0zGW0F5HQA7OIEK1?=
+ =?us-ascii?Q?67O8IZiE/gteziUQqpySTkL3fgE6d92EDGFpRL9pERWzN+5z67nWCJRbvXJp?=
+ =?us-ascii?Q?hrCDuHtbf/Kn856cvh0rItfwibn0uyUyTv5oTxEuzppJKr5iNZWq8qZWc9n6?=
+ =?us-ascii?Q?NJhiUkjDsM54O/xOsPGu8tI9dphmslq3lowtKEwNsF5whgGhzE7dr1QFGLOo?=
+ =?us-ascii?Q?86dFtgtPviYgXMTmkAIiKA6IuVBVJnr+evrwzVhlOiAxw9NTfhnzAslvLlKw?=
+ =?us-ascii?Q?BkjQQVx0Diw7up7DEuUuAAAMbcPXhZYE6sZzneAoRlUJISqzCqmBZSJHutPh?=
+ =?us-ascii?Q?1w0MOwCd2aqpcYq/+U72MfQRjnMV4AZgAWlAsmm9rjEpOgVu4g6tMYKvN3so?=
+ =?us-ascii?Q?63I2soJ/6CF3X7s/VFbhsg2mEtB4s6cL/003gQoW1OTs6d0A1gCDA6X1NUQ9?=
+ =?us-ascii?Q?et5Bt8xcS2ATO2AH0+05QCYnHrQL/5VFq3bRReKSVf1Bx/fdj/0WBQIjV9ac?=
+ =?us-ascii?Q?luzRdGrRZwTKJT2b1csW7r3UtvEPq5uCo4ZBpAq7d+5oylaji/RMcSYpjLsq?=
+ =?us-ascii?Q?U2j7IxF7mToE2cg+DN9Dau/ol1c7lrVBPfIfO/eN/hCvDA2hpsJQSRbWfH8P?=
+ =?us-ascii?Q?iCAKvWnrio6usiZ9O6QeGTGDeVxcQUONXvcvkXtyImRTuCJqD8oM8NvPCeV6?=
+ =?us-ascii?Q?4ONGaa9EZyV423/vQMEmFvww+Ea4EwNd+HnU+s2NOpHSWnt+rX7PC7YLqsBC?=
+ =?us-ascii?Q?odhQLbqCq4d96sspREmfvjB7Av/A/0fdbNlWYkjWm9XaAaBVIxqvkfwuNg5S?=
+ =?us-ascii?Q?TO7lVqY8E8Co12sC3OI/AYk6uQ6uJrB9+xUBILf/8158FJSrdJaJmxpPbjLR?=
+ =?us-ascii?Q?6kZUk1SsJpUD5xYw6r7WZnFeBQSHm81/B7quFCBWaPuzUeZMzR7JVUNuLyd7?=
+ =?us-ascii?Q?dyycD3Qia+WyB9VSgOGQSQr3wEkLZnUnDhJJKLpi82ZwnPYqsHuwEzT1VzHc?=
+ =?us-ascii?Q?g/6gQBLZC8C10I/GNf7WXLPo9Ei/sV88GM/0kieZUh9UKthdQsQ3zkKC7RHt?=
+ =?us-ascii?Q?5LmuQXwptOmGhFMeRny7otHo8lN2rDXiNGf6l/Y5rqyTKTpYTl4EWosbwN1o?=
+ =?us-ascii?Q?QkGqsKxfzGPngMvSaS5F?=
