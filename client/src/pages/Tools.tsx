@@ -2044,6 +2044,68 @@ const ToolsPage = () => {
               </div>
             </div>
             
+            <div className="relative group">
+              <ToolCard 
+                icon={Map}
+                title="Security Threat Heat Map"
+                description="Visualize real-time global cyber threats with intelligence from AlienVault OTX, URLhaus, and AbuseIPDB."
+                onOpenTool={() => openTool("threat-heatmap")}
+              />
+              <div className="absolute top-3 right-3 opacity-100 hover:scale-110 transition-transform">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-accent/10 border-accent/20 shadow-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEmbedInstructions("Security Threat Heat Map", "threat-heatmap");
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 text-accent" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Embed this tool on your site</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
+            
+            <div className="relative group">
+              <ToolCard 
+                icon={FileBarChart}
+                title="AI Security Gap Analysis"
+                description="Get a comprehensive analysis of your organization's security gaps with AI-powered recommendations."
+                onOpenTool={() => openTool("security-gap-analysis")}
+              />
+              <div className="absolute top-3 right-3 opacity-100 hover:scale-110 transition-transform">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-accent/10 border-accent/20 shadow-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEmbedInstructions("AI Security Gap Analysis", "security-gap-analysis");
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 text-accent" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Embed this tool on your site</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
+            
             <ToolCard 
               icon={Activity}
               title="Uptime & Monitoring Tool"
@@ -2254,6 +2316,32 @@ const ToolsPage = () => {
             </DialogDescription>
           </DialogHeader>
           <QRCodeSecurityForm onClose={closeDialog} />
+        </DialogContent>
+      </Dialog>
+      
+      {/* Security Threat Heat Map Dialog */}
+      <Dialog open={activeDialog === "threat-heatmap"} onOpenChange={closeDialog}>
+        <DialogContent className="sm:max-w-[1000px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-heading text-2xl">Security Threat Heat Map</DialogTitle>
+            <DialogDescription>
+              Visualize global cyber threats in real-time with our advanced threat intelligence map.
+            </DialogDescription>
+          </DialogHeader>
+          <ThreatHeatMap />
+        </DialogContent>
+      </Dialog>
+      
+      {/* AI Security Gap Analysis Dialog */}
+      <Dialog open={activeDialog === "security-gap-analysis"} onOpenChange={closeDialog}>
+        <DialogContent className="sm:max-w-[800px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-heading text-2xl">AI Security Gap Analysis</DialogTitle>
+            <DialogDescription>
+              Get a comprehensive AI-powered analysis of your organization's security gaps and actionable recommendations.
+            </DialogDescription>
+          </DialogHeader>
+          <SecurityGapAnalysis />
         </DialogContent>
       </Dialog>
       
