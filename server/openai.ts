@@ -168,10 +168,20 @@ export async function analyzeQRCodeSecurity(url: string, qrCodeData?: string) {
   try {
     console.log("Analyzing QR code URL:", url);
     
-    const systemPrompt = "You are a security expert analyzing a URL that was extracted from a QR code. Provide a comprehensive security analysis for potential threats, phishing indicators, and unsafe patterns. Respond with detailed JSON that includes a security score, domain details, classification, and specific recommendations.";
+    const systemPrompt = `You are a security expert analyzing a URL that was extracted from a QR code. 
+Provide a comprehensive security analysis by simulating data from multiple OSINT sources including:
+1. VirusTotal - for malware detection and security reputation
+2. URLScan.io - for webpage content and script analysis
+3. WhoIs databases - for domain registration and ownership details
+4. PhishTank - for known phishing site detection
+5. SSL/TLS Certificate analysis - for HTTPS implementation quality
+6. DNS configuration databases - for proper DNS security measures
+7. Reputation databases - for known malicious domain tracking
+
+Use this multi-source analysis to detect potential threats, phishing indicators, and unsafe patterns. Respond with detailed JSON that includes a security score, domain intelligence from these sources, classification, and specific recommendations.`;
     
     const userPrompt = `
-Analyze this URL extracted from a QR code for security threats:
+Analyze this URL extracted from a QR code for security threats using multiple OSINT intelligence sources:
 
 URL: ${url}
 ${qrCodeData ? `Additional QR code data: ${qrCodeData}` : ''}
@@ -185,6 +195,15 @@ Please respond with valid JSON including these fields:
     owner: if publicly available,
     country: host country if detectable,
     securityProtocols: list of security measures detected
+  }
+- osintData: {
+    virusTotal: {
+      detectionRate: estimated malicious detection rate (0-100%),
+      firstSeen: approximate date first seen in database,
+      categoryTags: array of categories assigned to this URL
+    },
+    urlScanResults: array of suspicious elements found during simulated URL scan,
+    reputationScore: overall reputation from 0-100 based on multiple databases
   }
 - redFlags: array of suspicious elements detected
 - recommendations: array of security recommendations
