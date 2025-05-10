@@ -58,28 +58,28 @@ const tools: Tool[] = [
   {
     id: 'password-strength',
     name: 'Password Strength Analyzer',
-    description: 'Evaluate password security and receive recommendations',
+    description: 'Evaluate the strength of your passwords against modern security standards',
     icon: <Lock className="h-5 w-5" />,
     premium: false
   },
   {
     id: 'phishing-scan',
-    name: 'Phishing Detection Tool',
-    description: 'Check URLs and email content for phishing indicators',
-    icon: <Shield className="h-5 w-5" />,
+    name: 'Phishing Detection',
+    description: 'Identify potential phishing attempts in emails and messages',
+    icon: <Eye className="h-5 w-5" />,
     premium: false
   },
   {
     id: 'email-security',
-    name: 'Email Header Analyzer',
-    description: 'Analyze email headers for security and authentication',
+    name: 'Email Security Analysis',
+    description: 'Analyze email headers and content for security vulnerabilities',
     icon: <Send className="h-5 w-5" />,
     premium: false
   },
   {
     id: 'threat-map',
-    name: 'Security Threat Heat Map',
-    description: 'Visualize global cybersecurity threats in real-time',
+    name: 'Security Threat Heatmap',
+    description: 'Visualize global security threats and attack patterns',
     icon: <MapPin className="h-5 w-5" />,
     premium: false
   },
@@ -144,6 +144,7 @@ function EmbeddedTools() {
       toolId: null
     });
   };
+
   return (
     <div className={cn('min-h-screen flex flex-col', modernThemeStyles.background)}>
       <Helmet>
@@ -191,43 +192,38 @@ function EmbeddedTools() {
             <div
               key={tool.id}
               className={cn(
-                'rounded-lg p-6 transition-all duration-200 hover:shadow-md',
+                'rounded-lg p-6 transition-all duration-200 hover:shadow-md hover:translate-y-[-2px]',
                 tool.premium ? 'border-l-4 border-l-blue-500' : '',
-                formalThemeStyles.card
+                modernThemeStyles.card
               )}
             >
               <div className="flex justify-between items-start mb-4">
-                <div className={cn('p-2 rounded-full', formalThemeStyles.accent, 'bg-blue-100 dark:bg-blue-900/30')}>
-                  {tool.icon}
+                <div className={cn('p-2 rounded-full', modernThemeStyles.iconBackground)}>
+                  <div className={modernThemeStyles.accent}>
+                    {tool.icon}
+                  </div>
                 </div>
                 {tool.premium && (
-                  <span className={cn('px-2 py-1 text-xs font-medium rounded-full', 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300')}>
+                  <span className={cn('px-2 py-1 text-xs font-medium rounded-full', modernThemeStyles.badge)}>
                     Premium
                   </span>
                 )}
                 {tool.comingSoon && (
-                  <span className="px-2 py-1 text-xs font-medium rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300">
+                  <span className="px-2 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-700 dark:bg-slate-800/50 dark:text-slate-300">
                     Coming Soon
                   </span>
                 )}
               </div>
-              
-              <h3 className={cn('text-lg font-semibold mb-2', formalThemeStyles.heading)}>
-                {tool.name}
-              </h3>
-              
-              <p className={cn('text-sm mb-4', formalThemeStyles.text)}>
-                {tool.description}
-              </p>
+              <h3 className={cn('text-lg font-semibold mb-2', modernThemeStyles.heading)}>{tool.name}</h3>
+              <p className={cn('text-sm mb-4', modernThemeStyles.text)}>{tool.description}</p>
               
               <button
+                onClick={() => !tool.comingSoon && openToolDialog(tool.id)}
                 disabled={tool.comingSoon}
-                onClick={() => !tool.comingSoon && navigateToTool(tool.id)}
                 className={cn(
-                  'w-full rounded-md py-2 font-medium transition-colors duration-200 text-sm',
-                  tool.comingSoon
-                    ? 'bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-800'
-                    : formalThemeStyles.button
+                  'w-full py-2 px-4 rounded-md text-sm font-medium transition-all',
+                  !tool.comingSoon ? modernThemeStyles.button : 'bg-slate-300 dark:bg-slate-700 cursor-not-allowed',
+                  !tool.comingSoon && 'hover:shadow-sm hover:translate-y-[-1px]'
                 )}
               >
                 {tool.comingSoon ? 'Coming Soon' : 'Launch Tool'}
@@ -237,10 +233,34 @@ function EmbeddedTools() {
         </div>
       </main>
       
-      <footer className={cn('py-6 px-4 border-t', formalThemeStyles.navbar)}>
+      {/* Tool Dialog */}
+      <Dialog open={dialogState.isOpen} onOpenChange={(open) => !open && closeToolDialog()}>
+        <DialogContent className="max-w-4xl w-[90vw] max-h-[90vh] overflow-y-auto p-0">
+          <DialogHeader className={cn('p-6 border-b', modernThemeStyles.navbar)}>
+            <DialogTitle className={modernThemeStyles.heading}>
+              {tools.find(t => t.id === dialogState.toolId)?.name}
+            </DialogTitle>
+            <DialogDescription className={modernThemeStyles.text}>
+              {tools.find(t => t.id === dialogState.toolId)?.description}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="p-6">
+            {dialogState.toolId && (
+              <iframe 
+                src={`/embedded/${getToolPath(dialogState.toolId)}`}
+                className="w-full min-h-[70vh] border-none"
+                title={tools.find(t => t.id === dialogState.toolId)?.name}
+              />
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+      
+      <footer className={cn('py-6 mt-8 border-t', modernThemeStyles.navbar)}>
         <div className="container mx-auto text-center">
-          <p className={cn('text-sm', formalThemeStyles.text)}>
-            &copy; {new Date().getFullYear()} Anneal Technologies. All rights reserved.
+          <p className={cn('text-sm', modernThemeStyles.text)}>
+            © {new Date().getFullYear()} Anneal Technologies. All rights reserved.
           </p>
         </div>
       </footer>
