@@ -207,7 +207,7 @@ function EmbeddedTools() {
           {tool.name}
         </h3>
         
-        <p className="text-lg mb-5 text-black leading-relaxed font-semibold bg-white p-3 rounded-md shadow-sm border border-[#0d4f86]/10">
+        <p className="text-lg mb-5 text-black leading-relaxed font-medium bg-white p-3 rounded-md shadow-sm border border-[#0d4f86]/10" style={{ fontFamily: '"Inter", sans-serif' }}>
           {tool.description}
         </p>
         
@@ -264,7 +264,7 @@ function EmbeddedTools() {
               Advanced Security Tools
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#0d4f86]/30 rounded-full"></span>
             </h2>
-            <p className="max-w-2xl mx-auto text-xl text-black font-semibold leading-relaxed">
+            <p className="max-w-2xl mx-auto text-xl text-black font-medium leading-relaxed font-['Inter',sans-serif]">
               Our collection of professional-grade security tools to help you identify vulnerabilities, 
               strengthen your defenses, and protect your valuable assets.
             </p>
@@ -291,7 +291,7 @@ function EmbeddedTools() {
                   <DialogTitle className="text-[#0d4f86] text-xl font-bold">
                     {tools.find(t => t.id === dialogState.toolId)?.name}
                   </DialogTitle>
-                  <DialogDescription className="text-black font-medium text-base mt-1">
+                  <DialogDescription className="text-black font-medium text-base mt-1 font-['Inter',sans-serif]">
                     {tools.find(t => t.id === dialogState.toolId)?.description}
                   </DialogDescription>
                 </div>
