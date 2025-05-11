@@ -17,7 +17,56 @@ export const blueThemeColors = {
 };
 
 // Apply blue theme to all child components using CSS variables
+// Add custom CSS classes for the blue theme
+const blueThemeCustomClasses = `
+  .blue-theme-scope .bg-background {
+    background-color: #f8f9fa !important;
+  }
+  .blue-theme-scope textarea, 
+  .blue-theme-scope input, 
+  .blue-theme-scope select {
+    background-color: #f8f9fa !important;
+    border-color: #e2e8f0 !important;
+  }
+  .blue-theme-scope button.bg-accent {
+    background-color: #0d4f86 !important;
+    color: white !important;
+  }
+  .blue-theme-scope .text-white {
+    color: white !important;
+  }
+  /* Fix button styling for all buttons with accent class */
+  .blue-theme-scope button[type="submit"],
+  .blue-theme-scope button.bg-accent,
+  .blue-theme-scope button.hover\\:bg-accent\\/90 {
+    background-color: #0d4f86 !important;
+    color: white !important;
+  }
+  /* Fix lighter background colors */
+  .blue-theme-scope .bg-muted,
+  .blue-theme-scope .bg-card,
+  .blue-theme-scope .bg-popover {
+    background-color: #f8f9fa !important;
+  }
+`;
+
+// Add the styles to the document head
+const addBlueThemeStyles = () => {
+  // Only add once
+  if (!document.getElementById('blue-theme-styles')) {
+    const styleEl = document.createElement('style');
+    styleEl.id = 'blue-theme-styles';
+    styleEl.innerHTML = blueThemeCustomClasses;
+    document.head.appendChild(styleEl);
+  }
+};
+
 export function BlueThemeProvider({ children }: BlueThemeProviderProps) {
+  // Add styles on mount
+  React.useEffect(() => {
+    addBlueThemeStyles();
+  }, []);
+  
   return (
     <div 
       className="blue-theme-scope"
@@ -26,6 +75,10 @@ export function BlueThemeProvider({ children }: BlueThemeProviderProps) {
         '--primary-foreground': '#ffffff',
         '--accent': '#0d4f86',
         '--accent-foreground': '#ffffff',
+        '--background': '#f8f9fa',
+        '--foreground': '#222222', 
+        '--border': '#e2e8f0',
+        '--button-bg': '#0d4f86'
       } as React.CSSProperties}
     >
       {children}
