@@ -293,7 +293,7 @@ export default function QRCodeSecurityEmbed() {
                 <div className="mb-2">
                   {getSecurityBadge(results.classification)}
                 </div>
-                <p className="text-slate-600 dark:text-slate-300 text-sm">{form.getValues().url}</p>
+                <p className="text-slate-800 dark:text-slate-300 text-sm">{form.getValues().url}</p>
               </div>
               
               <div className={cn("bg-slate-50 dark:bg-slate-900/50 rounded-lg p-6", "border border-slate-200 dark:border-slate-800")}>
@@ -304,7 +304,7 @@ export default function QRCodeSecurityEmbed() {
                   </div>
                 </div>
                 
-                <p className="mb-4 text-slate-600 dark:text-slate-300">{results.summary}</p>
+                <p className="mb-4 text-slate-800 dark:text-slate-300">{results.summary}</p>
                 
                 {results.redFlags && results.redFlags.length > 0 && (
                   <div className="space-y-2 mb-4">
@@ -326,7 +326,7 @@ export default function QRCodeSecurityEmbed() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {results.domainDetails.registrationDate && (
                         <div className="flex items-center text-sm">
-                          <Calendar className="h-4 w-4 mr-2 text-slate-500 dark:text-slate-400" />
+                          <Calendar className="h-4 w-4 mr-2 text-slate-700 dark:text-slate-400" />
                           <span className="text-slate-700 dark:text-slate-300">
                             Registered: {results.domainDetails.registrationDate}
                           </span>
@@ -335,7 +335,7 @@ export default function QRCodeSecurityEmbed() {
                       
                       {results.domainDetails.country && (
                         <div className="flex items-center text-sm">
-                          <Flag className="h-4 w-4 mr-2 text-slate-500 dark:text-slate-400" />
+                          <Flag className="h-4 w-4 mr-2 text-slate-700 dark:text-slate-400" />
                           <span className="text-slate-700 dark:text-slate-300">
                             Country: {results.domainDetails.country}
                           </span>
@@ -351,7 +351,7 @@ export default function QRCodeSecurityEmbed() {
                     <div className="space-y-2">
                       {results.osintData.virusTotal.detectionRate && (
                         <div className="flex items-center text-sm">
-                          <AlertCircle className="h-4 w-4 mr-2 text-slate-500 dark:text-slate-400" />
+                          <AlertCircle className="h-4 w-4 mr-2 text-slate-700 dark:text-slate-400" />
                           <span className="text-slate-700 dark:text-slate-300">
                             Detection: {results.osintData.virusTotal.detectionRate}
                           </span>
@@ -360,7 +360,7 @@ export default function QRCodeSecurityEmbed() {
                       
                       {results.osintData.reputationScore !== undefined && (
                         <div className="flex items-center text-sm">
-                          <BadgeCheck className="h-4 w-4 mr-2 text-slate-500 dark:text-slate-400" />
+                          <BadgeCheck className="h-4 w-4 mr-2 text-slate-700 dark:text-slate-400" />
                           <span className="text-slate-700 dark:text-slate-300">
                             Reputation: {results.osintData.reputationScore}/10
                           </span>
@@ -369,7 +369,7 @@ export default function QRCodeSecurityEmbed() {
                       
                       {results.osintData.virusTotal.firstSeen && (
                         <div className="flex items-center text-sm">
-                          <AlarmClock className="h-4 w-4 mr-2 text-slate-500 dark:text-slate-400" />
+                          <AlarmClock className="h-4 w-4 mr-2 text-slate-700 dark:text-slate-400" />
                           <span className="text-slate-700 dark:text-slate-300">
                             First seen: {results.osintData.virusTotal.firstSeen}
                           </span>
