@@ -169,7 +169,7 @@ const StatusBadge = ({ status }: { status: Platform["status"] }) => {
     );
   }
   return (
-    <Badge variant="outline" className="bg-slate-50 text-slate-500 border-slate-200">
+    <Badge variant="outline" className="bg-slate-50 text-slate-700 border-slate-200">
       <XCircle className="w-3 h-3 mr-1" /> Not Found
     </Badge>
   );
@@ -382,7 +382,7 @@ export default function UsernameTrackingEmbed() {
                         <User className="mr-2 h-5 w-5" />
                         Username: <span className="ml-2 font-mono">{form.getValues("username")}</span>
                       </h3>
-                      <p className="text-slate-500 text-sm mt-1">
+                      <p className="text-slate-700 text-sm mt-1">
                         {results.found} accounts discovered across {results.platforms.length} platforms
                       </p>
                     </div>
@@ -574,7 +574,7 @@ export default function UsernameTrackingEmbed() {
                                         <h5 className="font-medium">{platform.name}</h5>
                                         <StatusBadge status={platform.status} />
                                       </div>
-                                      <div className="text-sm text-slate-500">
+                                      <div className="text-sm text-slate-700">
                                         {platform.status !== "not found" ? (
                                           <div className="flex items-center gap-1">
                                             <span className="font-mono">{platform.username}</span>
@@ -610,7 +610,7 @@ export default function UsernameTrackingEmbed() {
                                   {platform.status !== "not found" && (
                                     <div>
                                       <div className="flex items-center gap-1 text-sm">
-                                        <span className="text-slate-500">Confidence:</span>
+                                        <span className="text-slate-700">Confidence:</span>
                                         <div className="w-24 bg-slate-200 rounded-full h-1.5">
                                           <div 
                                             className={`h-1.5 rounded-full ${
@@ -629,7 +629,7 @@ export default function UsernameTrackingEmbed() {
                                 {platform.status === "found" && platform.metadata && (
                                   <>
                                     <Separator className="my-3" />
-                                    <div className="text-sm space-y-1 text-slate-700">
+                                    <div className="text-sm space-y-1 text-slate-900">
                                       {platform.metadata.bio && (
                                         <div className="line-clamp-2">
                                           <span className="font-medium text-[#0d4f86]">Bio:</span> {platform.metadata.bio}
@@ -796,7 +796,7 @@ export default function UsernameTrackingEmbed() {
                                 </div>
                               ))
                             ) : (
-                              <p className="text-slate-500">No significant risks identified</p>
+                              <p className="text-slate-700">No significant risks identified</p>
                             )}
                           </Card>
                         </div>
