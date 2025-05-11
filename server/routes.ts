@@ -2,6 +2,8 @@ import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
+import jsQR from 'jsqr';
+import { createCanvas, loadImage } from 'canvas';
 import { 
   analyzeEmailSecurity, 
   detectPhishing, 
@@ -325,9 +327,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Image data is required" });
       }
       
-      // Load jsQR to scan the QR code
-      const jsQR = require('jsqr');
-      const { createCanvas, loadImage } = require('canvas');
+      // Use the imported jsQR and canvas modules
       
       // Process the image data
       const base64Data = imageData.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
