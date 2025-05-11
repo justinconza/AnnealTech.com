@@ -797,35 +797,28 @@ export async function trackSocialMedia(username: string, platforms: string[] = [
   try {
     console.log("Tracking social media presence for username:", username);
     
+    // First, search across real platforms using direct API calls
+    const realOsintData = await searchUsernameAcrossPlatforms(username, platforms);
+    
+    // Get the count of accounts actually found
+    const accountsFound = realOsintData.platforms.filter(p => p.status === "found").length;
+    
+    // Use OpenAI to analyze the real data and provide meaningful analysis
     const systemPrompt = `You are an OSINT analyst specializing in digital footprint analysis. 
-                         Your expertise is in finding and correlating verified social media accounts across platforms.
-                         You have access to real-time data from various OSINT sources and tools like Sherlock, Maigret, Socialscan, and Twint.
-                         You must only report verified information from actual sources. Do not simulate, fabricate, or guess information.
-                         For any platform where you cannot verify information, clearly mark it as "not found".`;
+                         You will be given REAL data about a username's presence across platforms.
+                         You will analyze this data to identify privacy and security risks.
+                         DO NOT fabricate additional findings beyond what's in the data provided.`;
 
-    const userPrompt = `Analyze the following username "${username}" ${platforms.length > 0 ? `focusing on these platforms: ${platforms.join(', ')}` : ''}
-                       Look up this username on various social platforms. Use real data and make ZERO assumptions.
-                       If you don't know whether an account exists, mark it as "not found".
-                       DO NOT fabricate or simulate results. Only include factual information.
-                       Return your analysis as JSON with the following structure:
+    const userPrompt = `Here is real OSINT data collected for username "${username}":
+                       ${JSON.stringify(realOsintData, null, 2)}
+                       
+                       Based ONLY on this REAL data, provide privacy and security analysis in JSON with this structure:
                        {
-                         "summary": a brief summary of findings,
-                         "found": number of accounts found,
-                         "digitalExposure": score from 1-10,
-                         "platforms": [{
-                           "name": platform name,
-                           "url": profile URL,
-                           "status": "found" or "possible" or "not found",
-                           "username": username on the platform (may differ from search),
-                           "confidence": confidence score 0-1,
-                           "metadata": additional info like bio, active status, etc.
-                         }],
-                         "possibleRealNames": possible real names if found,
-                         "possibleLocations": possible locations if found,
-                         "possibleEmails": possible email addresses based on username patterns,
-                         "imageUrls": profile image urls if available,
-                         "risksIdentified": privacy/security risks identified,
-                         "recommendedActions": recommended actions to improve privacy
+                         "summary": a concise summary of the findings from the real data above,
+                         "found": ${accountsFound},
+                         "digitalExposure": a score from 1-10 based ONLY on accounts actually found,
+                         "risksIdentified": specific privacy/security risks based ONLY on the data provided,
+                         "recommendedActions": practical security recommendations based on the accounts found
                        }`;
 
     const response = await openai.chat.completions.create({
@@ -834,7 +827,7 @@ export async function trackSocialMedia(username: string, platforms: string[] = [
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt }
       ],
-      temperature: 0.7,
+      temperature: 0.5,
       response_format: { type: "json_object" }
     });
 
@@ -842,20 +835,22 @@ export async function trackSocialMedia(username: string, platforms: string[] = [
     if (!content) {
       throw new Error("No content returned from OpenAI");
     }
-    let result = JSON.parse(content);
-
-    // Ensure correct structure and default values
+    
+    // Parse the analysis from OpenAI
+    const analysisResult = JSON.parse(content);
+    
+    // Combine the real data with the analysis
     return {
-      summary: result.summary || "",
-      found: result.found || 0,
-      digitalExposure: result.digitalExposure || 0,
-      platforms: result.platforms || [],
-      possibleRealNames: result.possibleRealNames || [],
-      possibleLocations: result.possibleLocations || [],
-      possibleEmails: result.possibleEmails || [],
-      imageUrls: result.imageUrls || [],
-      risksIdentified: result.risksIdentified || [],
-      recommendedActions: result.recommendedActions || []
+      summary: analysisResult.summary || "",
+      found: accountsFound,
+      digitalExposure: analysisResult.digitalExposure || accountsFound > 0 ? Math.min(accountsFound * 2, 10) : 0,
+      platforms: realOsintData.platforms,
+      possibleRealNames: realOsintData.possibleRealNames || [],
+      possibleLocations: realOsintData.possibleLocations || [],
+      possibleEmails: realOsintData.possibleEmails || [],
+      imageUrls: [],
+      risksIdentified: analysisResult.risksIdentified || [],
+      recommendedActions: analysisResult.recommendedActions || []
     };
   } catch (error) {
     console.error("Error in social media tracking:", error);

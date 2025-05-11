@@ -443,3 +443,230 @@ export async function checkUrlWithPhishTank(url: string): Promise<PhishTankResul
     return null;
   }
 }
+
+// Username validation schema for OSINT tools
+export const UsernameOSINTSchema = z.object({
+  platforms: z.array(z.object({
+    name: z.string(),
+    url: z.string(),
+    status: z.enum(["found", "possible", "not found"]),
+    username: z.string(),
+    confidence: z.number(),
+    metadata: z.object({
+      bio: z.string().optional(),
+      activeStatus: z.string().optional(),
+      joined: z.string().optional(),
+      lastActive: z.string().optional(),
+      followers: z.number().optional(),
+      following: z.number().optional(),
+      posts: z.number().optional()
+    }).optional()
+  })),
+  possibleRealNames: z.array(z.string()).optional(),
+  possibleLocations: z.array(z.string()).optional(), 
+  possibleEmails: z.array(z.string()).optional()
+});
+
+export type UsernameOSINTResult = z.infer<typeof UsernameOSINTSchema>;
+
+/**
+ * Search for a username across multiple platforms using available OSINT tools
+ */
+export async function searchUsernameAcrossPlatforms(username: string, platforms: string[] = []): Promise<UsernameOSINTResult> {
+  try {
+    // Initialize with empty result structure
+    const result: UsernameOSINTResult = {
+      platforms: [],
+      possibleRealNames: [],
+      possibleLocations: [],
+      possibleEmails: []
+    };
+    
+    // Common platforms to check for username availability
+    const commonPlatforms = platforms.length > 0 ? platforms : [
+      "twitter", "instagram", "github", "reddit", 
+      "pinterest", "youtube", "twitch", "linkedin",
+      "facebook", "tiktok", "snapchat", "telegram"
+    ];
+    
+    console.log(`Performing real OSINT search for username '${username}' across platforms`);
+    
+    // Check GitHub
+    if (commonPlatforms.includes("github")) {
+      try {
+        const githubResponse = await fetch(`https://api.github.com/users/${username}`);
+        if (githubResponse.ok) {
+          const data = await githubResponse.json() as {
+            bio?: string;
+            type?: string;
+            created_at?: string;
+            followers?: number;
+            following?: number;
+            name?: string;
+            location?: string;
+            email?: string;
+          };
+          
+          result.platforms.push({
+            name: "GitHub",
+            url: `https://github.com/${username}`,
+            status: "found",
+            username: username,
+            confidence: 1.0,
+            metadata: {
+              bio: data.bio,
+              activeStatus: data.type,
+              joined: data.created_at,
+              followers: data.followers,
+              following: data.following
+            }
+          });
+          
+          // Add potential real name if available
+          if (data.name && result.possibleRealNames) {
+            result.possibleRealNames.push(data.name);
+          }
+          
+          // Add potential location if available
+          if (data.location && result.possibleLocations) {
+            result.possibleLocations.push(data.location);
+          }
+          
+          // Add potential email if available
+          if (data.email && result.possibleEmails) {
+            result.possibleEmails.push(data.email);
+          }
+        } else if (githubResponse.status !== 404) {
+          console.error(`GitHub API error: ${githubResponse.status}`);
+        }
+      } catch (error) {
+        console.error("Error checking GitHub:", error);
+      }
+    }
+    
+    // Check NPM
+    if (commonPlatforms.includes("npm")) {
+      try {
+        const npmResponse = await fetch(`https://registry.npmjs.org/-/user/org.couchdb.user:${username}`);
+        if (npmResponse.ok) {
+          result.platforms.push({
+            name: "NPM",
+            url: `https://www.npmjs.com/~${username}`,
+            status: "found",
+            username: username,
+            confidence: 1.0
+          });
+        } else if (npmResponse.status !== 404) {
+          console.error(`NPM API error: ${npmResponse.status}`);
+        }
+      } catch (error) {
+        console.error("Error checking NPM:", error);
+      }
+    }
+    
+    // Check Medium
+    if (commonPlatforms.includes("medium")) {
+      try {
+        const mediumResponse = await fetch(`https://medium.com/@${username}`, { method: 'HEAD' });
+        if (mediumResponse.ok) {
+          result.platforms.push({
+            name: "Medium",
+            url: `https://medium.com/@${username}`,
+            status: "found",
+            username: username,
+            confidence: 0.9
+          });
+        }
+      } catch (error) {
+        console.error("Error checking Medium:", error);
+      }
+    }
+    
+    // Check Stack Overflow / Stack Exchange
+    if (commonPlatforms.includes("stackoverflow")) {
+      try {
+        const stackResponse = await fetch(`https://api.stackexchange.com/2.3/users?inname=${username}&site=stackoverflow`);
+        if (stackResponse.ok) {
+          const data = await stackResponse.json();
+          if (data.items && data.items.length > 0) {
+            // Find exact username match
+            const exactMatch = data.items.find((user: any) => 
+              user.display_name.toLowerCase() === username.toLowerCase());
+            
+            if (exactMatch) {
+              result.platforms.push({
+                name: "Stack Overflow",
+                url: exactMatch.link,
+                status: "found",
+                username: exactMatch.display_name,
+                confidence: 0.95,
+                metadata: {
+                  joined: new Date(exactMatch.creation_date * 1000).toISOString(),
+                  lastActive: new Date(exactMatch.last_access_date * 1000).toISOString()
+                }
+              });
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error checking Stack Overflow:", error);
+      }
+    }
+    
+    // Check Reddit
+    if (commonPlatforms.includes("reddit")) {
+      try {
+        const redditResponse = await fetch(`https://www.reddit.com/user/${username}/about.json`);
+        if (redditResponse.ok) {
+          const data = await redditResponse.json();
+          if (data && data.data) {
+            result.platforms.push({
+              name: "Reddit",
+              url: `https://www.reddit.com/user/${username}`,
+              status: "found",
+              username: username,
+              confidence: 1.0,
+              metadata: {
+                joined: new Date(data.data.created_utc * 1000).toISOString()
+              }
+            });
+          }
+        }
+      } catch (error) {
+        console.error("Error checking Reddit:", error);
+      }
+    }
+    
+    // Use AlienVault OTX for threat intelligence if username looks like a domain
+    if (username.includes('.') && !username.includes('@')) {
+      try {
+        const otxResult = await getThreatsFromOTX(username, 'domain');
+        if (otxResult && otxResult.results && otxResult.results.length > 0) {
+          result.platforms.push({
+            name: "AlienVault OTX",
+            url: `https://otx.alienvault.com/indicator/domain/${username}`,
+            status: "found",
+            username: username,
+            confidence: 0.9,
+            metadata: {
+              activeStatus: "Active in threat intelligence",
+              lastActive: new Date().toISOString()
+            }
+          });
+        }
+      } catch (error) {
+        console.log("Error checking AlienVault OTX:", error);
+      }
+    }
+    
+    return result;
+  } catch (error) {
+    console.error("Error searching username across platforms:", error);
+    return {
+      platforms: [],
+      possibleRealNames: [],
+      possibleLocations: [],
+      possibleEmails: []
+    };
+  }
+}
