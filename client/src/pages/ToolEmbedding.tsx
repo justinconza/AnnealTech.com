@@ -204,7 +204,7 @@ export default function ToolEmbedding() {
                 <Button
                   variant="outline" 
                   className="text-accent"
-                  onClick={() => window.open(tool.path, '_blank')}
+                  onClick={() => window.open(getToolUrl(tool.path), '_blank')}
                 >
                   View Tool
                 </Button>
