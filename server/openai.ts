@@ -801,7 +801,9 @@ export async function trackSocialMedia(username: string, platforms: string[] = [
                          Your expertise is in finding and correlating social media accounts across platforms.`;
 
     const userPrompt = `Analyze the following username "${username}" ${platforms.length > 0 ? `focusing on these platforms: ${platforms.join(', ')}` : ''}
-                       Simulate the results of Sherlock, Maigret, Socialscan, Twint, and other OSINT tools.
+                       Look up this username on various social platforms. Use real data and make ZERO assumptions.
+                       If you don't know whether an account exists, mark it as "not found".
+                       DO NOT fabricate or simulate results. Only include factual information.
                        Return your analysis as JSON with the following structure:
                        {
                          "summary": a brief summary of findings,

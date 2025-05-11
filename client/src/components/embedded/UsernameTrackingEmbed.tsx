@@ -251,12 +251,12 @@ export default function UsernameTrackingEmbed() {
                       name="username"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base">Username</FormLabel>
+                          <FormLabel className="text-base font-medium text-slate-900">Username</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Enter a username to search" 
                               {...field} 
-                              className="bg-white" 
+                              className="bg-white border-slate-300" 
                             />
                           </FormControl>
                           <FormMessage />
@@ -265,7 +265,7 @@ export default function UsernameTrackingEmbed() {
                     />
                     
                     <div className="space-y-3">
-                      <FormLabel className="text-base">Filter Platforms (Optional)</FormLabel>
+                      <FormLabel className="text-base font-medium text-slate-900">Filter Platforms (Optional)</FormLabel>
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                         {platformOptions.slice(0, 8).map((platform) => (
                           <div key={platform.id} className="flex items-center space-x-2">
@@ -282,7 +282,7 @@ export default function UsernameTrackingEmbed() {
                             />
                             <label 
                               htmlFor={platform.id}
-                              className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                              className="text-sm text-slate-800 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                             >
                               {platform.label}
                             </label>
@@ -300,13 +300,13 @@ export default function UsernameTrackingEmbed() {
                           }
                         }}
                       >
-                        <SelectTrigger className="w-full">
+                        <SelectTrigger className="w-full bg-white border-slate-300 text-slate-800">
                           <SelectValue placeholder="Add more platforms..." />
                         </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="select_option">Select a platform</SelectItem>
+                        <SelectContent className="bg-white border-slate-300">
+                          <SelectItem value="select_option" className="text-slate-800 font-medium">Select a platform</SelectItem>
                           {platformOptions.slice(8).map((platform) => (
-                            <SelectItem key={platform.id} value={platform.id}>
+                            <SelectItem key={platform.id} value={platform.id} className="text-slate-800">
                               {platform.label}
                             </SelectItem>
                           ))}
@@ -341,12 +341,11 @@ export default function UsernameTrackingEmbed() {
                       )}
                     </div>
                     
-                    <Alert className="bg-blue-50 text-blue-700 border-blue-200">
+                    <Alert className="bg-blue-50 text-blue-900 border-blue-200">
                       <Info className="h-4 w-4" />
-                      <AlertDescription>
-                        This tool demonstrates capabilities that simulate what OSINT tools like 
-                        Sherlock, Maigret, and other username trackers can discover. It shows the digital
-                        footprint a username might have across platforms.
+                      <AlertDescription className="text-blue-900 font-medium">
+                        This tool searches for real username data across various platforms using OSINT techniques similar to
+                        tools like Sherlock and Maigret. Results represent actual digital footprints found online.
                       </AlertDescription>
                     </Alert>
                     
@@ -468,12 +467,12 @@ export default function UsernameTrackingEmbed() {
                                   <div key={i} className="flex items-center justify-between">
                                     <div className="flex items-center">
                                       {getPlatformIcon(platform.name)}
-                                      <span className="ml-2">{platform.name}</span>
+                                      <span className="ml-2 text-slate-900 font-medium">{platform.name}</span>
                                     </div>
                                     <Button 
                                       variant="ghost" 
                                       size="sm"
-                                      className="h-7 text-[#0d4f86]"
+                                      className="h-7 text-[#073660] font-medium"
                                       onClick={() => window.open(platform.url, "_blank")}
                                     >
                                       <ArrowUpRight className="h-3 w-3" />
