@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Lock, Shield, Eye, FileSearch, Database, Send, AlertTriangle, QrCode, Globe, MapPin, Share2, Copy } from 'lucide-react';
+import { Lock, Shield, Eye, FileSearch, Database, Send, AlertTriangle, QrCode, Globe, MapPin, Share2, Copy, User, Search } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -19,6 +19,15 @@ interface ToolEmbedInfo {
 }
 
 const tools: ToolEmbedInfo[] = [
+  {
+    id: 'username-tracking',
+    name: 'Username & Social Media Tracker',
+    description: 'Track usernames across multiple social platforms to discover digital footprints and assess privacy risks',
+    path: '/embedded/username-tracking',
+    icon: <User className="h-5 w-5" />,
+    recommendedWidth: 750,
+    recommendedHeight: 700
+  },
   {
     id: 'qrcode-scanner',
     name: 'QR Code Security Scanner',

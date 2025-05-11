@@ -2502,6 +2502,34 @@ const ToolsPage = () => {
         </DialogContent>
       </Dialog>
       
+      {/* Username & Social Media Tracker Dialog */}
+      <Dialog open={activeDialog === "username-tracking"} onOpenChange={closeDialog}>
+        <DialogContent className="sm:max-w-[800px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-heading text-2xl">Username & Social Media Tracker</DialogTitle>
+            <DialogDescription>
+              Track usernames across multiple social platforms to discover digital footprints and assess privacy risks.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="alert bg-amber-50 border border-amber-200 p-4 mb-6 rounded-lg">
+            <div className="flex items-start">
+              <AlertTriangle className="text-amber-600 h-5 w-5 mr-3 mt-0.5 flex-shrink-0" />
+              <div className="text-amber-800 text-sm">
+                <p className="font-medium">Privacy Notice</p>
+                <p>This tool is for educational and informational purposes only. It provides an approximation of what OSINT tools like Sherlock, Maigret, and others might discover about public username data. Always respect privacy laws and terms of service of social media platforms.</p>
+              </div>
+            </div>
+          </div>
+          <div className="p-1">
+            <iframe 
+              src="/embedded/username-tracking" 
+              className="w-full h-[700px] border-0 rounded-lg overflow-hidden"
+              title="Username & Social Media Tracker"
+            ></iframe>
+          </div>
+        </DialogContent>
+      </Dialog>
+      
       {/* AI Security Gap Analysis Dialog */}
       <Dialog open={activeDialog === "security-gap-analysis"} onOpenChange={closeDialog}>
         <DialogContent className="sm:max-w-[800px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
