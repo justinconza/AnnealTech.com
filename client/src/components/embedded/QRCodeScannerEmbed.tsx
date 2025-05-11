@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
+import jsQR from 'jsqr';
 
 // Modern, professional theme styles with #0d4f86 blue
 const blueTheme = {
@@ -185,11 +186,17 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
       console.error('Error scanning QR code:', error);
       // Don't show error toast during continuous camera scanning to avoid spam
       if (!isCameraActive) {
-        onError?.('Could not detect a valid QR code in the image.');
+        const errorMessage = error.message || 'Could not detect a valid QR code in the image.';
+        onError?.(errorMessage);
         toast({
           variant: "destructive",
-          description: "Could not detect a valid QR code. Please try again or upload a clearer image.",
+          description: "Could not detect a valid QR code. Please try again with a clearer image.",
         });
+        
+        // Log detailed error for debugging
+        if (error.response) {
+          console.error('Error response:', error.response.data);
+        }
       }
     } finally {
       setIsAnalyzing(false);
@@ -324,7 +331,7 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
         {uploadedImage && (
           <div className={cn("p-4 text-center mb-4", blueTheme.card)}>
             <div className="space-y-4">
-              <div className="relative mx-auto w-full max-w-xs aspect-square overflow-hidden rounded-md border bg-black">
+              <div className="relative mx-auto w-full max-w-xs aspect-square overflow-hidden rounded-md border bg-white">
                 <img 
                   src={uploadedImage} 
                   alt="Uploaded QR Code" 

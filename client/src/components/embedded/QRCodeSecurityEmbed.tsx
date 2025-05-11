@@ -208,9 +208,18 @@ export default function QRCodeSecurityEmbed() {
                 </div>
               ) : (
                 <div className={cn("rounded-lg p-4 mb-6", formalThemeStyles.card)}>
-                  <div className="flex items-center mb-4">
-                    <QrCode className={cn("h-5 w-5 mr-2", formalThemeStyles.accent)} />
-                    <p className="font-medium">QR Code Detected</p>
+                  <div className="mb-4">
+                    <div className="flex items-center">
+                      <QrCode className={cn("h-5 w-5 mr-2", formalThemeStyles.accent)} />
+                      <p className="font-medium">QR Code Detected</p>
+                    </div>
+                    {form.getValues("url") && (
+                      <div className="mt-2 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-md">
+                        <p className="text-sm text-blue-900 dark:text-blue-100 break-all">
+                          <span className="font-medium">URL to analyze:</span> {form.getValues("url")}
+                        </p>
+                      </div>
+                    )}
                   </div>
                   
                   <Form {...form}>
