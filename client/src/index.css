@@ -177,4 +177,17 @@
   .container {
     @apply px-4 mx-auto;
   }
+  
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .animate-shine {
+    animation: shine 1.5s ease-in-out infinite;
+  }
 }
