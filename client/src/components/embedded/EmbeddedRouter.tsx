@@ -11,6 +11,7 @@ const QRCodeSecurityEmbedded = lazy(() => import("@/pages/embedded/QRCodeSecurit
 const ThreatHeatMapEmbedded = lazy(() => import("@/pages/embedded/ThreatHeatMap"));
 const SecurityGapAnalysisEmbedded = lazy(() => import("@/pages/embedded/SecurityGapAnalysis"));
 const EmailBreachCheckEmbedded = lazy(() => import("@/pages/embedded/EmailBreachCheck"));
+// Renamed import to match the exported component name
 const SecurityAssessmentEmbedded = lazy(() => import("@/pages/embedded/SecurityAssessment"));
 const EmbeddedToolsPage = lazy(() => import("@/pages/embedded/EmbeddedTools"));
 
