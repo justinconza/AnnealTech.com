@@ -150,7 +150,7 @@ export default function ToolEmbedding() {
       
       <div className="container max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-10">
-          <div className="inline-flex mb-2 bg-blue-100 px-4 py-1 rounded-full text-blue-700 text-sm font-medium">
+          <div className="inline-flex mb-2 bg-blue-50 px-4 py-1 rounded-full text-blue-700 text-sm font-medium">
             <Shield className="mr-2 h-4 w-4" /> Ready for Embedding
           </div>
           <h1 className="text-3xl md:text-4xl font-display font-bold mb-4 text-[#1a1a1a] dark:text-white">
@@ -164,11 +164,11 @@ export default function ToolEmbedding() {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {tools.map((tool) => (
-            <Card key={tool.id} className="overflow-hidden border-accent/10 hover:border-accent/30 transition-all">
+            <Card key={tool.id} className="overflow-hidden border-slate-200 hover:border-slate-300 transition-all">
               <CardHeader className="pb-2">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center mr-3">
                       {tool.icon}
                     </div>
                     <div>
@@ -219,7 +219,7 @@ export default function ToolEmbedding() {
               <CardFooter className="border-t pt-4 flex justify-between">
                 <Button
                   variant="outline" 
-                  className="text-accent"
+                  className="text-blue-700"
                   onClick={() => window.open(getToolUrl(tool.path), '_blank')}
                 >
                   View Tool
@@ -227,7 +227,7 @@ export default function ToolEmbedding() {
                 
                 <Button 
                   onClick={() => copyEmbedCode(tool)}
-                  className="bg-accent hover:bg-accent/90 text-white"
+                  className="bg-blue-700 hover:bg-blue-800 text-white"
                 >
                   <Share2 className="mr-2 h-4 w-4" />
                   Copy Embed Code
@@ -237,7 +237,7 @@ export default function ToolEmbedding() {
           ))}
         </div>
         
-        <div className="mt-12 p-6 bg-muted/30 rounded-lg border border-accent/10">
+        <div className="mt-12 p-6 bg-slate-50 rounded-lg border border-slate-200">
           <h2 className="text-xl font-bold mb-4">Custom Integration Tips</h2>
           <div className="space-y-4">
             <p>For the best user experience when embedding our tools:</p>
