@@ -26,8 +26,8 @@ const blueTheme = {
   accentLight: 'bg-blue-50 border-[#0d4f86]/20',
   accentMedium: 'bg-[#0d4f86]/10 text-[#0d4f86]',
   accentBorder: 'border-[#0d4f86]/30 hover:border-[#0d4f86]/70',
-  text: 'text-slate-700',
-  textMuted: 'text-slate-600',
+  text: 'text-slate-900',
+  textMuted: 'text-slate-900',
   headingText: 'text-[#0d4f86] font-semibold',
   background: 'bg-white',
   backgroundAlt: 'bg-slate-50',
@@ -207,7 +207,7 @@ function EmbeddedTools() {
           {tool.name}
         </h3>
         
-        <p className={cn('text-sm mb-5 text-slate-600 leading-relaxed')}>
+        <p className={cn('text-base mb-5 text-slate-900 leading-relaxed font-medium')}>
           {tool.description}
         </p>
         
@@ -264,7 +264,7 @@ function EmbeddedTools() {
               Advanced Security Tools
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#0d4f86]/30 rounded-full"></span>
             </h2>
-            <p className={cn("max-w-2xl mx-auto text-lg", blueTheme.textMuted)}>
+            <p className="max-w-2xl mx-auto text-lg text-slate-900 font-medium leading-relaxed">
               Our collection of professional-grade security tools to help you identify vulnerabilities, 
               strengthen your defenses, and protect your valuable assets.
             </p>
