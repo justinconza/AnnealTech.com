@@ -122,10 +122,20 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
     // Draw the current video frame to the canvas
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     
-    // Convert the canvas to a data URL and scan it
     try {
-      const imageData = canvas.toDataURL('image/png');
-      scanImageOnServer(imageData);
+      // Get image data directly from canvas for QR code scanning
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      
+      // Scan for QR code using jsQR
+      const code = jsQR(imageData.data, imageData.width, imageData.height, {
+        inversionAttempts: 'dontInvert'
+      });
+      
+      if (code) {
+        // QR code found - stop camera and process result
+        stopCamera();
+        handleQrCodeResult(code.data);
+      }
     } catch (error) {
       console.error('Error capturing frame:', error);
     }
@@ -154,7 +164,7 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
     scanImageOnServer(uploadedImage);
   };
 
-  // Use server-side scanning as a fallback
+  // Process image data with jsQR
   const scanImageOnServer = async (imageData: string) => {
     // Don't make multiple requests simultaneously
     if (isAnalyzing) return;
@@ -162,31 +172,60 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
     try {
       setIsAnalyzing(true);
       
-      const response = await apiRequest('/api/tools/scan-qrcode', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          imageData
-        }),
+      // Create an Image element to load the data URL
+      const img = new Image();
+      
+      // Set up promise to handle image loading
+      const imageLoadPromise = new Promise<HTMLImageElement>((resolve, reject) => {
+        img.onload = () => resolve(img);
+        img.onerror = (e) => reject(new Error('Failed to load image'));
       });
       
-      const data = await response.json();
+      // Set the source to the data URL
+      img.src = imageData;
       
-      if (data.success && data.result) {
+      // Wait for the image to load
+      const loadedImg = await imageLoadPromise;
+      
+      // Create a canvas to draw the image
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      if (!ctx) {
+        throw new Error('Could not create canvas context');
+      }
+      
+      // Set canvas dimensions to match image
+      canvas.width = loadedImg.width;
+      canvas.height = loadedImg.height;
+      
+      // Draw image onto canvas
+      ctx.drawImage(loadedImg, 0, 0);
+      
+      // Get image data for QR code scanning
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      
+      // Scan for QR code using jsQR
+      const code = jsQR(imgData.data, imgData.width, imgData.height, {
+        inversionAttempts: 'dontInvert'
+      });
+      
+      if (code) {
         // Stop scanning if we found a result
         if (isCameraActive) {
           stopCamera();
         }
         
-        handleQrCodeResult(data.result);
+        // Process the QR code data
+        handleQrCodeResult(code.data);
+      } else {
+        throw new Error('No QR code found in the image');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error scanning QR code:', error);
       // Don't show error toast during continuous camera scanning to avoid spam
       if (!isCameraActive) {
-        const errorMessage = error.message || 'Could not detect a valid QR code in the image.';
+        const errorMessage = error?.message || 'Could not detect a valid QR code in the image.';
         onError?.(errorMessage);
         toast({
           variant: "destructive",
@@ -194,7 +233,7 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
         });
         
         // Log detailed error for debugging
-        if (error.response) {
+        if (error?.response) {
           console.error('Error response:', error.response.data);
         }
       }
