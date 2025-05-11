@@ -239,35 +239,12 @@ function EmbeddedTools() {
         </div>
       </header>
       
-      <main className="flex-1">
-        {/* Hero Section - styled like the tools page */}
-        <section className={cn("py-12 relative overflow-hidden", blueTheme.backgroundAlt)}>
-          {/* Decorative background elements */}
-          <div className="absolute -top-48 -right-48 w-96 h-96 rounded-full bg-blue-50 blur-3xl"></div>
-          <div className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full bg-blue-50 blur-3xl"></div>
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-block bg-blue-50 border border-blue-200 rounded-full px-4 py-1 mb-6">
-                <span className={cn("font-medium tracking-wider text-sm", blueTheme.accent)}>EMBEDDABLE SECURITY TOOLS</span>
-              </div>
-              
-              <h1 className={cn("text-3xl md:text-4xl font-bold mb-6", blueTheme.headingText)}>
-                Professional Security Tools for <span className={blueTheme.accent}>Your Website</span>
-              </h1>
-              
-              <p className={cn("text-lg max-w-2xl mx-auto mb-8", blueTheme.textMuted)}>
-                Enhance your website with our collection of embeddable security tools. Each tool can be easily integrated into your site to provide additional value to your visitors.
-              </p>
-            </div>
-          </div>
-        </section>
-      
+      <main className="flex-1">      
         {/* Tools Grid */}
-        <section className="py-16 container mx-auto px-4">
-          <div className="text-center mb-12">
+        <section className="py-10 container mx-auto px-4">
+          <div className="text-center mb-8">
             <h2 className={cn("text-2xl font-bold mb-4", blueTheme.headingText)}>
-              Security Tools Suite
+              Advanced Security Tools
             </h2>
             <p className={cn("max-w-2xl mx-auto", blueTheme.textMuted)}>
               Our collection of professional-grade security tools to help you identify vulnerabilities, 
