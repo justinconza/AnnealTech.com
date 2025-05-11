@@ -32,15 +32,15 @@ export function EmbeddedWrapper({
 }: EmbeddedWrapperProps) {
   return (
     <BlueThemeProvider>
-      <div className={cn('w-full h-full p-4 flex flex-col min-h-[300px]', formalThemeStyles.background, formalThemeStyles.text)}>
-        <div className="flex justify-between items-center mb-6">
+      <div className={cn('w-full min-h-screen p-4 flex flex-col', formalThemeStyles.background, formalThemeStyles.text)}>
+        <div className="flex flex-wrap justify-between items-center mb-6 gap-3">
           <div className="flex items-center">
             <Shield className={cn('h-5 w-5 mr-2', formalThemeStyles.accent)} />
             {title && (
               <h2 className={cn('text-xl font-semibold', formalThemeStyles.heading)}>{title}</h2>
             )}
           </div>
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center">
             <a 
               href="https://www.annealtech.com" 
               target="_blank"
@@ -50,7 +50,7 @@ export function EmbeddedWrapper({
                 formalThemeStyles.accent)}
             >
               <ExternalLink className="h-3.5 w-3.5 mr-1.5" />
-              Go Back To Main Site
+              <span className="whitespace-nowrap">Go Back To Main Site</span>
             </a>
           </div>
         </div>
@@ -60,7 +60,7 @@ export function EmbeddedWrapper({
         </div>
         
         {showBranding && (
-          <div className="mt-4 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 flex items-center">
+          <div className="mt-6 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 flex items-center">
             <span>Powered by </span>
             <a 
               href="/" 
