@@ -191,7 +191,7 @@ export default function QRCodeSecurityEmbed() {
       </Helmet>
       
       <EmbeddedWrapper title="QR Code Security Analyzer">
-        <div className="space-y-6">
+        <div className="space-y-6 flex-grow w-full">
           {!results ? (
             <>
               {!qrData ? (

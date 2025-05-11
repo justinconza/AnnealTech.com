@@ -338,7 +338,7 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
   };
 
   return (
-    <div className="space-y-4 text-slate-900">
+    <div className="space-y-4 text-slate-900 w-full h-full flex-grow">
       <div className="max-w-md mx-auto w-full">
         {!isCameraActive && !uploadedImage && (
           <div className={cn("p-6 text-center mb-4", blueTheme.card)}>
