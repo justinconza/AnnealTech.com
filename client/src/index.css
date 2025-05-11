@@ -16,11 +16,19 @@ html, body, #root {
 }
 
 /* Embedded pages specific styling */
-body:has(#embedded-tool-page) {
+html:has(#embedded-tool-page),
+body:has(#embedded-tool-page),
+#root:has(#embedded-tool-page),
+#embedded-tool-page {
   min-height: 100vh;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  overflow-x: hidden;
 }
 
 .dark {

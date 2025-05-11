@@ -32,7 +32,7 @@ export function EmbeddedWrapper({
 }: EmbeddedWrapperProps) {
   return (
     <BlueThemeProvider>
-      <div className={cn('w-full min-h-screen p-4 flex flex-col', formalThemeStyles.background, formalThemeStyles.text)}>
+      <div className={cn('w-full min-h-screen h-full p-4 flex flex-col', formalThemeStyles.background, formalThemeStyles.text)}>
         <div className="flex flex-wrap justify-between items-center mb-6 gap-3">
           <div className="flex items-center">
             <Shield className={cn('h-5 w-5 mr-2', formalThemeStyles.accent)} />
