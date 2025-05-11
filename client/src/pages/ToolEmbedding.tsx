@@ -144,10 +144,10 @@ export default function ToolEmbedding() {
           <div className="inline-flex mb-2 bg-blue-100 px-4 py-1 rounded-full text-blue-700 text-sm font-medium">
             <Shield className="mr-2 h-4 w-4" /> Ready for Embedding
           </div>
-          <h1 className="text-3xl md:text-4xl font-display font-bold mb-4 text-slate-800 dark:text-white">
+          <h1 className="text-3xl md:text-4xl font-display font-bold mb-4 text-[#1a1a1a] dark:text-white">
             Security Tools Embedding Guide
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Each security tool has its own dedicated URL that can be embedded via iframe into your website.
             Copy the code snippets below or visit the individual tool pages directly.
           </p>
