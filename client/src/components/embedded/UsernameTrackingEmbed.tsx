@@ -483,42 +483,42 @@ export default function UsernameTrackingEmbed() {
                                 <Button 
                                   variant="ghost" 
                                   size="sm" 
-                                  className="w-full text-[#0d4f86]"
+                                  className="w-full text-[#073660] font-medium"
                                   onClick={() => setCurrentTab("platforms")}
                                 >
                                   View all ({results.platforms.filter(p => p.status === "found").length})
                                 </Button>
                               )}
                               {results.platforms.filter(p => p.status === "found").length === 0 && (
-                                <p className="text-sm text-slate-500">No accounts found</p>
+                                <p className="text-sm text-slate-700 font-medium">No accounts found</p>
                               )}
                             </div>
                           </Card>
                           
                           <Card className="border border-slate-200 p-4">
-                            <h4 className="font-medium text-[#0d4f86] mb-2 flex items-center">
+                            <h4 className="font-medium text-[#073660] mb-2 flex items-center">
                               <AlertTriangle className="w-4 h-4 mr-2" />
                               Privacy & Security Risks
                             </h4>
                             <div className="space-y-2">
                               {results.risksIdentified.slice(0, 5).map((risk, i) => (
                                 <div key={i} className="flex items-start">
-                                  <AlertTriangle className="w-4 h-4 mr-2 text-yellow-500 shrink-0 mt-0.5" />
-                                  <span className="text-sm">{risk}</span>
+                                  <AlertTriangle className="w-4 h-4 mr-2 text-amber-600 shrink-0 mt-0.5" />
+                                  <span className="text-sm text-slate-800 font-medium">{risk}</span>
                                 </div>
                               ))}
                               {results.risksIdentified.length > 5 && (
                                 <Button 
                                   variant="ghost" 
                                   size="sm" 
-                                  className="w-full text-[#0d4f86]"
+                                  className="w-full text-[#073660] font-medium"
                                   onClick={() => setCurrentTab("recommendations")}
                                 >
                                   View all ({results.risksIdentified.length})
                                 </Button>
                               )}
                               {results.risksIdentified.length === 0 && (
-                                <p className="text-sm text-slate-500">No significant risks identified</p>
+                                <p className="text-sm text-slate-700 font-medium">No significant risks identified</p>
                               )}
                             </div>
                           </Card>
@@ -538,7 +538,7 @@ export default function UsernameTrackingEmbed() {
                     <TabsContent value="platforms" className="focus:outline-none">
                       <div className="p-6 space-y-4">
                         <div className="flex items-center justify-between mb-4">
-                          <h4 className="font-medium text-[#0d4f86]">Platforms Analyzed</h4>
+                          <h4 className="font-medium text-[#073660] text-lg">Platforms Analyzed</h4>
                           <div className="flex gap-2">
                             <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
                               Found: {results.platforms.filter(p => p.status === "found").length}
