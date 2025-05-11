@@ -12,13 +12,15 @@ interface EmbeddedWrapperProps {
 // Modern, corporate theme styles (matching blue theme from /embedded/tools)
 const formalThemeStyles = {
   background: 'bg-white dark:bg-slate-950',
-  text: 'text-black dark:text-white',
-  heading: 'text-[#0d4f86] dark:text-[#4d9de0] font-semibold',
+  text: 'text-slate-900 dark:text-white',
+  heading: 'text-[#073660] dark:text-[#4d9de0] font-semibold',
   card: 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm',
   button: 'bg-[#0d4f86] hover:bg-[#0a3d68] text-white',
-  accent: 'text-[#0d4f86] dark:text-[#4d9de0]',
+  accent: 'text-[#073660] dark:text-[#4d9de0]',
   navbar: 'bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800',
-  outlineButton: 'border-[#0d4f86]/20 hover:bg-[#0d4f86]/5 text-[#0d4f86] dark:border-[#0d4f86]/30 dark:hover:bg-[#0d4f86]/10 dark:text-[#4d9de0]'
+  outlineButton: 'border-[#0d4f86]/20 hover:bg-[#0d4f86]/5 text-[#073660] dark:border-[#0d4f86]/30 dark:hover:bg-[#0d4f86]/10 dark:text-[#4d9de0]',
+  label: 'text-slate-900 dark:text-white font-medium',
+  description: 'text-slate-800 dark:text-slate-200'
 };
 
 /**
