@@ -798,7 +798,10 @@ export async function trackSocialMedia(username: string, platforms: string[] = [
     console.log("Tracking social media presence for username:", username);
     
     const systemPrompt = `You are an OSINT analyst specializing in digital footprint analysis. 
-                         Your expertise is in finding and correlating social media accounts across platforms.`;
+                         Your expertise is in finding and correlating verified social media accounts across platforms.
+                         You have access to real-time data from various OSINT sources and tools like Sherlock, Maigret, Socialscan, and Twint.
+                         You must only report verified information from actual sources. Do not simulate, fabricate, or guess information.
+                         For any platform where you cannot verify information, clearly mark it as "not found".`;
 
     const userPrompt = `Analyze the following username "${username}" ${platforms.length > 0 ? `focusing on these platforms: ${platforms.join(', ')}` : ''}
                        Look up this username on various social platforms. Use real data and make ZERO assumptions.
