@@ -190,4 +190,24 @@
   .animate-shine {
     animation: shine 1.5s ease-in-out infinite;
   }
+  
+  /* Blue Theme styling for embedded tools */
+  .blue-theme-scope {
+    --primary: 210 100% 28%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 210 100% 28%;
+    --accent-foreground: 0 0% 100%;
+  }
+  
+  .blue-theme-scope .btn-primary {
+    @apply bg-[#0d4f86] hover:bg-[#0a3d68] text-white;
+  }
+  
+  .blue-theme-scope .text-primary {
+    @apply text-[#0d4f86];
+  }
+  
+  .blue-theme-scope .border-theme {
+    @apply border-[#0d4f86]/20;
+  }
 }
