@@ -325,18 +325,52 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Image data is required" });
       }
       
-      // Here we would typically use a library like jsQR to scan the image
-      // Since we can't install new packages, we'll just simulate that we found a QR code
+      // Load jsQR to scan the QR code
+      const jsQR = require('jsqr');
+      const { createCanvas, loadImage } = require('canvas');
       
-      // Simulate processing time
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // Process the image data
+      const base64Data = imageData.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
+      const buffer = Buffer.from(base64Data, 'base64');
       
-      // For now, return a fake successful result
-      // In a real implementation, we would extract the actual QR code data
-      res.json({ 
-        success: true, 
-        result: "https://annealtech.com" 
-      });
+      try {
+        // Load the image using await
+        const image = await loadImage(buffer);
+        
+        // Create canvas and get image data
+        const canvas = createCanvas(image.width, image.height);
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(image, 0, 0);
+        
+        // Get image data for QR code scanning
+        const imageData = ctx.getImageData(0, 0, image.width, image.height);
+        
+        // Scan for QR code
+        const code = jsQR(imageData.data, imageData.width, imageData.height, {
+          inversionAttempts: 'dontInvert'
+        });
+        
+        if (code) {
+          // QR code found
+          return res.json({ 
+            success: true, 
+            result: code.data
+          });
+        } else {
+          // No QR code found
+          return res.json({ 
+            success: false,
+            error: "No QR code found in the image"
+          });
+        }
+      } catch (imgError) {
+        console.error("Image processing error:", imgError);
+        return res.status(400).json({ 
+          success: false,
+          error: "Invalid image data or unable to process image"
+        });
+      }
+      
     } catch (error) {
       console.error("QR code scanning failed:", error);
       res.status(500).json({ 
