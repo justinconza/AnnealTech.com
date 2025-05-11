@@ -241,18 +241,18 @@ function EmbeddedTools() {
       {/* Navbar */}
       <header className={cn('py-3 px-6 shadow-md', blueTheme.navbarBg)}>
         <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-3">
-            <div className="p-1.5 rounded-full bg-white/20 backdrop-blur-sm">
+          <div className="flex items-center space-x-3 hover-lift">
+            <div className="p-1.5 rounded-full bg-white/20 backdrop-blur-sm energy-flux">
               <Shield className="h-5 w-5 text-white" />
             </div>
-            <h1 className="text-xl font-semibold text-white">Anneal Security Tools</h1>
+            <h1 className="text-xl font-bold text-white font-heading glow-text">Anneal Security Tools</h1>
           </div>
           <div>
             <a 
               href="https://www.annealtech.com" 
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium text-sm flex items-center hover:bg-white/20 transition-all duration-300 hover:shadow-lg"
+              className="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium text-sm flex items-center hover:bg-white/20 transition-all duration-300 hover:shadow-lg hover-lift btn-pulse"
             >
               <ExternalLink className="h-4 w-4 mr-2" />
               Go Back To Main Site
@@ -285,25 +285,25 @@ function EmbeddedTools() {
       
       {/* Tool Dialog */}
       <Dialog open={dialogState.isOpen} onOpenChange={(open) => !open && closeToolDialog()}>
-        <DialogContent className="max-w-4xl w-[90vw] max-h-[90vh] overflow-y-auto p-0 bg-white shadow-2xl border border-[#0d4f86]/10 rounded-xl">
+        <DialogContent className="max-w-4xl w-[90vw] max-h-[90vh] overflow-y-auto p-0 bg-white shadow-2xl border border-[#0d4f86]/10 rounded-xl fade-in-up">
           <DialogHeader className={cn('p-6 border-b border-[#0d4f86]/10 bg-gradient-to-r from-[#0d4f86]/5 to-white')}>
             <div className="flex justify-between items-center">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-[#0d4f86]/10 border border-[#0d4f86]/20">
+                <div className="w-12 h-12 p-3 rounded-lg bg-[#0d4f86]/10 border border-[#0d4f86]/20 flex items-center justify-center bg-pulse">
                   {tools.find(t => t.id === dialogState.toolId)?.icon}
                 </div>
                 <div>
-                  <DialogTitle className="text-[#0d4f86] text-xl font-bold">
+                  <DialogTitle className="text-[#0d4f86] text-xl font-bold font-heading glow-text">
                     {tools.find(t => t.id === dialogState.toolId)?.name}
                   </DialogTitle>
-                  <DialogDescription className="text-black font-medium text-base mt-1 font-['Inter',sans-serif]">
+                  <DialogDescription className="text-slate-900 font-medium text-base mt-1" style={{ fontFamily: '"Inter", sans-serif' }}>
                     {tools.find(t => t.id === dialogState.toolId)?.description}
                   </DialogDescription>
                 </div>
               </div>
               <Button 
                 variant="ghost" 
-                className="p-2 rounded-full h-8 w-8 hover:bg-[#0d4f86]/10 transition-all" 
+                className="p-2 rounded-full h-8 w-8 hover:bg-[#0d4f86]/10 transition-all hover-lift data-line" 
                 onClick={closeToolDialog}
               >
                 <X className="h-4 w-4 text-[#0d4f86]" />
@@ -326,11 +326,13 @@ function EmbeddedTools() {
       
       <footer className={cn('py-6', 'bg-[#0d4f86] text-white')}>
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
-          <div className="flex items-center gap-2 mb-4 md:mb-0">
-            <Shield className="h-5 w-5 text-white/90" />
-            <p className="font-semibold">Anneal Technologies</p>
+          <div className="flex items-center gap-2 mb-4 md:mb-0 hover-lift">
+            <div className="p-1 rounded-full bg-white/10 energy-flux">
+              <Shield className="h-5 w-5 text-white/90" />
+            </div>
+            <p className="font-semibold font-heading glow-text">Anneal Technologies</p>
           </div>
-          <p className="text-sm text-white/80">
+          <p className="text-sm text-white/80 data-line font-medium">
             © {new Date().getFullYear()} Anneal Technologies. All rights reserved.
           </p>
         </div>
