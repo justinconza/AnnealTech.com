@@ -101,7 +101,10 @@ export default function QRCodeScannerEmbed({ onDetected, onError }: QRCodeScanne
 
   // Capture a frame from the video and scan it
   const captureAndScanFrame = () => {
-    if (!videoRef.current || !canvasRef.current || videoRef.current.readyState !== videoRef.current.HAVE_ENOUGH_DATA) {
+    if (!videoRef.current || !canvasRef.current) return;
+    
+    // Check if video is ready
+    if (videoRef.current.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
       return;
     }
 
