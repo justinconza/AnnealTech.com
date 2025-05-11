@@ -184,8 +184,8 @@ function EmbeddedTools() {
         <div className="flex justify-between items-start mb-5">
           <div className={cn(
             'w-12 h-12 p-3 rounded-lg transform transition-all duration-300 group-hover:scale-110', 
-            'bg-[#0d4f86]/10 text-[#0d4f86] border border-[#0d4f86]/10 flex items-center justify-center bg-pulse',
-            'group-hover:shadow-[0_0_15px_rgba(13,79,134,0.3)] group-hover:border-[#0d4f86]/40'
+            'bg-[#0d4f86]/10 text-[#0d4f86] border border-[#0d4f86]/10 flex items-center justify-center',
+            'group-hover:shadow-[0_0_10px_rgba(13,79,134,0.3)]'
           )}>
             {tool.icon}
           </div>
@@ -206,13 +206,12 @@ function EmbeddedTools() {
         
         <h3 className={cn(
           'text-xl font-bold mb-3 transition-all duration-300 font-heading',
-          'text-[#0d4f86] glow-text group-hover:bg-gradient-to-r group-hover:from-[#0d4f86] group-hover:to-[#1e85c7] group-hover:bg-clip-text group-hover:text-transparent',
-          'relative after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-[#0d4f86]/20 after:to-transparent after:translate-x-[-100%] group-hover:after:animate-shine after:opacity-0 group-hover:after:opacity-100'
+          'text-[#0d4f86] glow-text'
         )}>
           {tool.name}
         </h3>
         
-        <div className="text-base mb-5 text-slate-800 leading-relaxed font-normal bg-white p-3 rounded-md shadow-sm border border-[#0d4f86]/10 grow" style={{ fontFamily: '"Inter", sans-serif' }}>
+        <div className="text-base mb-5 text-black leading-relaxed font-normal bg-white p-3 rounded-md shadow-sm border border-[#0d4f86]/10 grow" style={{ fontFamily: '"Inter", sans-serif' }}>
           {tool.description}
         </div>
         
@@ -228,7 +227,7 @@ function EmbeddedTools() {
           </Button>
         ) : (
           <Button 
-            className="w-full bg-[#0d4f86] hover:bg-[#0a3d68] py-5 rounded-md text-sm font-medium text-white shadow-sm hover:shadow-[0_0_20px_rgba(13,79,134,0.4)] hover-lift btn-pulse relative overflow-hidden group-hover:after:opacity-100 after:opacity-0 after:absolute after:inset-0 after:bg-white/10 after:transition-opacity after:duration-500"
+            className="w-full bg-[#0d4f86] hover:bg-[#0a3d68] py-5 rounded-md text-sm font-medium text-white shadow-sm hover:shadow-lg hover:shadow-[#0d4f86]/20 hover-lift btn-pulse"
           >
             Launch Tool
           </Button>
@@ -275,7 +274,7 @@ function EmbeddedTools() {
               Advanced Security Tools
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#0d4f86]/30 rounded-full"></span>
             </h2>
-            <p className="max-w-2xl mx-auto text-base text-slate-800 font-normal leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
+            <p className="max-w-2xl mx-auto text-base text-black font-normal leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
               Our collection of professional-grade security tools to help you identify vulnerabilities, 
               strengthen your defenses, and protect your valuable assets.
             </p>
@@ -302,7 +301,7 @@ function EmbeddedTools() {
                   <DialogTitle className="text-[#0d4f86] text-xl font-bold font-heading glow-text">
                     {tools.find(t => t.id === dialogState.toolId)?.name}
                   </DialogTitle>
-                  <DialogDescription className="text-slate-800 font-normal text-base mt-1" style={{ fontFamily: '"Inter", sans-serif' }}>
+                  <DialogDescription className="text-black font-normal text-base mt-1" style={{ fontFamily: '"Inter", sans-serif' }}>
                     {tools.find(t => t.id === dialogState.toolId)?.description}
                   </DialogDescription>
                 </div>
