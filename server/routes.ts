@@ -13,7 +13,8 @@ import {
   analyzeQRCodeSecurity,
   analyzeSecurityGaps,
   getThreatIntelligence,
-  checkEmailBreaches
+  checkEmailBreaches,
+  trackSocialMedia
 } from "./openai";
 
 // Contact form validation schema
@@ -377,6 +378,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
         success: false,
         error: "Failed to scan QR code"
       });
+    }
+  });
+
+  // Social Media & Username Tracking API
+  const usernameTrackingSchema = z.object({
+    username: z.string().min(1, { message: "Username is required" }),
+    platforms: z.array(z.string()).optional()
+  });
+
+  app.post("/api/tools/username-tracking", async (req: Request, res: Response) => {
+    try {
+      console.log("Username tracking request received:", req.body.username);
+      
+      const validatedData = usernameTrackingSchema.parse(req.body);
+      const results = await trackSocialMedia(
+        validatedData.username, 
+        validatedData.platforms || []
+      );
+      
+      console.log("Username tracking completed for:", validatedData.username);
+      
+      res.status(200).json(results);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        console.error("Username tracking validation error:", error.errors);
+        res.status(400).json({
+          success: false,
+          message: "Invalid username tracking data",
+          errors: error.errors
+        });
+      } else {
+        console.error("Error tracking username:", error);
+        res.status(500).json({
+          success: false,
+          message: "Failed to track username"
+        });
+      }
     }
   });
 
