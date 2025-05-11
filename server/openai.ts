@@ -5,7 +5,9 @@ import {
   checkUrlWithPhishTank, 
   scanUrlWithURLScan,
   checkDomainWithSecurityTrails,
-  checkHostWithShodan
+  checkHostWithShodan,
+  searchUsernameAcrossPlatforms,
+  UsernameOSINTResult
 } from './osint';
 
 // Initialize the OpenAI client
@@ -801,7 +803,7 @@ export async function trackSocialMedia(username: string, platforms: string[] = [
     const realOsintData = await searchUsernameAcrossPlatforms(username, platforms);
     
     // Get the count of accounts actually found
-    const accountsFound = realOsintData.platforms.filter(p => p.status === "found").length;
+    const accountsFound = realOsintData.platforms.filter((p: { status: string }) => p.status === "found").length;
     
     // Use OpenAI to analyze the real data and provide meaningful analysis
     const systemPrompt = `You are an OSINT analyst specializing in digital footprint analysis. 

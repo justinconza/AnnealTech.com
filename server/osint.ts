@@ -587,10 +587,18 @@ export async function searchUsernameAcrossPlatforms(username: string, platforms:
       try {
         const stackResponse = await fetch(`https://api.stackexchange.com/2.3/users?inname=${username}&site=stackoverflow`);
         if (stackResponse.ok) {
-          const data = await stackResponse.json();
+          const data = await stackResponse.json() as { 
+            items?: Array<{
+              display_name: string;
+              link: string;
+              creation_date: number;
+              last_access_date: number;
+            }>
+          };
+          
           if (data.items && data.items.length > 0) {
             // Find exact username match
-            const exactMatch = data.items.find((user: any) => 
+            const exactMatch = data.items.find(user => 
               user.display_name.toLowerCase() === username.toLowerCase());
             
             if (exactMatch) {
@@ -618,7 +626,13 @@ export async function searchUsernameAcrossPlatforms(username: string, platforms:
       try {
         const redditResponse = await fetch(`https://www.reddit.com/user/${username}/about.json`);
         if (redditResponse.ok) {
-          const data = await redditResponse.json();
+          const data = await redditResponse.json() as { 
+            data?: { 
+              created_utc: number;
+              total_karma?: number;
+            } 
+          };
+          
           if (data && data.data) {
             result.platforms.push({
               name: "Reddit",
