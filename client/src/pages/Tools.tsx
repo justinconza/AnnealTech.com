@@ -2222,9 +2222,18 @@ const ToolsPage = () => {
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
               Embed Our Security Tools Suite
             </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-muted-foreground max-w-3xl mx-auto mb-6">
               Want to provide these security tools on your own website? We've created a special embeddable version with a modern, corporate theme that can be easily integrated via iframe.
             </p>
+            <div className="flex justify-center mb-8">
+              <Button 
+                className="bg-accent hover:bg-accent/90 text-white" 
+                onClick={() => window.location.href = '/tools/embed'}
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                View Embedding Instructions
+              </Button>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
