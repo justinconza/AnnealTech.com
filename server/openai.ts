@@ -792,6 +792,72 @@ Ensure all events are from the last 6 hours with accurate timestamps, are realis
 }
 
 // AI Security Gap Analysis
+// Social media & username tracking function
+export async function trackSocialMedia(username: string, platforms: string[] = []) {
+  try {
+    console.log("Tracking social media presence for username:", username);
+    
+    const systemPrompt = `You are an OSINT analyst specializing in digital footprint analysis. 
+                         Your expertise is in finding and correlating social media accounts across platforms.`;
+
+    const userPrompt = `Analyze the following username "${username}" ${platforms.length > 0 ? `focusing on these platforms: ${platforms.join(', ')}` : ''}
+                       Simulate the results of Sherlock, Maigret, Socialscan, Twint, and other OSINT tools.
+                       Return your analysis as JSON with the following structure:
+                       {
+                         "summary": a brief summary of findings,
+                         "found": number of accounts found,
+                         "digitalExposure": score from 1-10,
+                         "platforms": [{
+                           "name": platform name,
+                           "url": profile URL,
+                           "status": "found" or "possible" or "not found",
+                           "username": username on the platform (may differ from search),
+                           "confidence": confidence score 0-1,
+                           "metadata": additional info like bio, active status, etc.
+                         }],
+                         "possibleRealNames": possible real names if found,
+                         "possibleLocations": possible locations if found,
+                         "possibleEmails": possible email addresses based on username patterns,
+                         "imageUrls": profile image urls if available,
+                         "risksIdentified": privacy/security risks identified,
+                         "recommendedActions": recommended actions to improve privacy
+                       }`;
+
+    const response = await openai.chat.completions.create({
+      model: DEFAULT_MODEL,
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt }
+      ],
+      temperature: 0.7,
+      response_format: { type: "json_object" }
+    });
+
+    const content = response.choices[0].message.content;
+    if (!content) {
+      throw new Error("No content returned from OpenAI");
+    }
+    let result = JSON.parse(content);
+
+    // Ensure correct structure and default values
+    return {
+      summary: result.summary || "",
+      found: result.found || 0,
+      digitalExposure: result.digitalExposure || 0,
+      platforms: result.platforms || [],
+      possibleRealNames: result.possibleRealNames || [],
+      possibleLocations: result.possibleLocations || [],
+      possibleEmails: result.possibleEmails || [],
+      imageUrls: result.imageUrls || [],
+      risksIdentified: result.risksIdentified || [],
+      recommendedActions: result.recommendedActions || []
+    };
+  } catch (error) {
+    console.error("Error in social media tracking:", error);
+    throw error;
+  }
+}
+
 export async function analyzeSecurityGaps(organizationData: {
   industry: string;
   size: string;
