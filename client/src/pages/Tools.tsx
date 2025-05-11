@@ -2228,7 +2228,7 @@ const ToolsPage = () => {
             <div className="flex justify-center mb-8">
               <Button 
                 className="bg-accent hover:bg-accent/90 text-white" 
-                onClick={() => window.location.href = '/tools/embed'}
+                onClick={() => { window.location.href = '/tools/embed'; }}
               >
                 <Share2 className="mr-2 h-4 w-4" />
                 View Embedding Instructions
