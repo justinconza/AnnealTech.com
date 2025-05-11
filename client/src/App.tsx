@@ -14,6 +14,7 @@ import Footer from "@/components/layout/Footer";
 const Services = lazy(() => import("./pages/Services"));
 const About = lazy(() => import("./pages/About"));
 const Tools = lazy(() => import("./pages/Tools"));
+const ToolEmbedding = lazy(() => import("./pages/ToolEmbedding"));
 const Faq = lazy(() => import("./pages/Faq"));
 const Contact = lazy(() => import("./pages/Contact"));
 
