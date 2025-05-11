@@ -25,7 +25,9 @@ import {
   Map,
   FileBarChart,
   BarChart3,
-  FileSearch
+  FileSearch,
+  User,
+  Search
 } from "lucide-react";
 import { EmbeddingInstructions } from "@/components/tools/EmbeddingInstructions";
 import QRCodeSecurityForm from "@/components/tools/QRCodeSecurityForm";
@@ -2095,6 +2097,37 @@ const ToolsPage = () => {
                         onClick={(e) => {
                           e.stopPropagation();
                           openEmbedInstructions("AI Security Gap Analysis", "security-gap-analysis");
+                        }}
+                      >
+                        <Share2 className="h-4 w-4 text-accent" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Embed this tool on your site</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
+            
+            <div className="relative group">
+              <ToolCard 
+                icon={User}
+                title="Username & Social Media Tracker"
+                description="Track usernames across popular platforms to discover digital footprints and assess privacy risks."
+                onOpenTool={() => openTool("username-tracking")}
+              />
+              <div className="absolute top-3 right-3 opacity-100 hover:scale-110 transition-transform">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-accent/10 border-accent/20 shadow-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEmbedInstructions("Username & Social Media Tracker", "username-tracking");
                         }}
                       >
                         <Share2 className="h-4 w-4 text-accent" />
