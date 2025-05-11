@@ -292,7 +292,7 @@ export default function UsernameTrackingEmbed() {
                       
                       <Select
                         onValueChange={(value) => {
-                          if (value === "") return;
+                          if (value === "select_option") return;
                           
                           const current = form.getValues("platforms") || [];
                           if (!current.includes(value)) {
@@ -304,7 +304,7 @@ export default function UsernameTrackingEmbed() {
                           <SelectValue placeholder="Add more platforms..." />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="">Select a platform</SelectItem>
+                          <SelectItem value="select_option">Select a platform</SelectItem>
                           {platformOptions.slice(8).map((platform) => (
                             <SelectItem key={platform.id} value={platform.id}>
                               {platform.label}
