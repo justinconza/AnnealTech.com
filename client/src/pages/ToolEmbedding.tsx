@@ -103,7 +103,8 @@ const tools: ToolEmbedInfo[] = [
 ];
 
 export default function ToolEmbedding() {
-  const baseUrl = window.location.origin;
+  // Using the production domain for embedding rather than the development domain
+  const baseUrl = "https://anneal-devsite.replit.app";
   
   const copyEmbedCode = (tool: ToolEmbedInfo) => {
     const iframeUrl = `${baseUrl}${tool.path}`;
