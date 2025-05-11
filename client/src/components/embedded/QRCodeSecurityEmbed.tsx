@@ -29,15 +29,15 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { EmbeddedWrapper } from '@/components/ui/embedded-wrapper';
 
-// Modern, corporate theme colors
+// Modern, corporate theme colors matching the blue theme from /embedded/tools
 const formalThemeStyles = {
   background: 'bg-white dark:bg-slate-950',
   text: 'text-black dark:text-white',
-  heading: 'text-blue-800 dark:text-blue-100 font-semibold',
+  heading: 'text-[#0d4f86] dark:text-[#4d9de0] font-semibold',
   card: 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm',
-  button: 'bg-blue-600 hover:bg-blue-700 text-white',
-  outlineButton: 'border-blue-200 hover:bg-blue-50 text-blue-700 dark:border-blue-800 dark:hover:bg-blue-900/20 dark:text-blue-300',
-  accent: 'text-blue-700 dark:text-blue-300',
+  button: 'bg-[#0d4f86] hover:bg-[#0a3d68] text-white',
+  outlineButton: 'border-[#0d4f86]/20 hover:bg-[#0d4f86]/5 text-[#0d4f86] dark:border-[#0d4f86]/30 dark:hover:bg-[#0d4f86]/10 dark:text-[#4d9de0]',
+  accent: 'text-[#0d4f86] dark:text-[#4d9de0]',
   navbar: 'bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800'
 };
 
