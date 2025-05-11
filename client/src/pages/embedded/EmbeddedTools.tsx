@@ -19,21 +19,23 @@ import {
 
 import { Button } from '@/components/ui/button';
 
-// Define blue-focused theme colors (light mode with dark blue accents)
+// Define blue-focused theme colors using #0d4f86 as primary blue color
 const blueTheme = {
-  accent: 'text-blue-600 dark:text-blue-400',
-  accentBg: 'bg-blue-600 hover:bg-blue-700',
-  accentLight: 'bg-blue-50 border-blue-200',
-  accentMedium: 'bg-blue-100 text-blue-700',
-  accentBorder: 'border-blue-200 hover:border-blue-300',
+  accent: 'text-[#0d4f86] dark:text-blue-300',
+  accentBg: 'bg-[#0d4f86] hover:bg-[#0a3d68]',
+  accentLight: 'bg-blue-50 border-[#0d4f86]/20',
+  accentMedium: 'bg-[#0d4f86]/10 text-[#0d4f86]',
+  accentBorder: 'border-[#0d4f86]/30 hover:border-[#0d4f86]/70',
   text: 'text-slate-700',
-  textMuted: 'text-slate-500',
-  headingText: 'text-slate-800 font-semibold',
-  background: 'bg-slate-50',
-  backgroundAlt: 'bg-white',
-  backgroundAccent: 'bg-blue-50',
-  card: 'bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-200',
-  cardHover: 'hover:border-blue-200 hover:translate-y-[-2px]'
+  textMuted: 'text-slate-600',
+  headingText: 'text-[#0d4f86] font-semibold',
+  background: 'bg-white',
+  backgroundAlt: 'bg-slate-50',
+  backgroundAccent: 'bg-[#0d4f86]/5',
+  navbarBg: 'bg-[#0d4f86]/95',
+  navbarText: 'text-white',
+  card: 'bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300',
+  cardHover: 'hover:border-[#0d4f86]/50 hover:translate-y-[-3px] hover:shadow-[#0d4f86]/10'
 };
 
 // Tool definition
@@ -158,48 +160,64 @@ function EmbeddedTools() {
     });
   };
 
-  // Tool card component
+  // Tool card component with enhanced interactive effects
   const ToolCard = ({ tool }: { tool: Tool }) => {
     return (
       <div 
         className={cn(
-          'rounded-lg p-6 transition-all duration-200 group cursor-pointer',
-          tool.premium ? 'border-l-4 border-l-blue-500' : '',
+          'rounded-lg p-6 transition-all duration-300 group cursor-pointer overflow-hidden relative z-10',
+          tool.premium ? 'border-l-4 border-l-[#0d4f86]' : '',
           blueTheme.card,
-          blueTheme.cardHover
+          blueTheme.cardHover,
+          'hover:after:opacity-100 after:opacity-0 after:absolute after:-z-10 after:inset-0 after:bg-gradient-to-br after:from-[#0d4f86]/5 after:to-[#0d4f86]/10 after:transition-opacity after:duration-300'
         )}
         onClick={() => !tool.comingSoon && openToolDialog(tool.id)}
       >
-        <div className="flex justify-between items-start mb-4">
-          <div className={cn('p-2 rounded-full', blueTheme.accentLight)}>
-            <div className={blueTheme.accent}>
+        {/* Decorative corner accent */}
+        <div className="absolute top-0 right-0 w-20 h-20 -mr-10 -mt-10 bg-[#0d4f86]/5 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-500 ease-out"></div>
+        
+        <div className="flex justify-between items-start mb-5">
+          <div className={cn(
+            'p-3 rounded-full transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-md', 
+            'bg-gradient-to-br from-[#0d4f86]/10 to-[#0d4f86]/20 border border-[#0d4f86]/10'
+          )}>
+            <div className="text-[#0d4f86]">
               {tool.icon}
             </div>
           </div>
           {tool.premium && (
-            <span className={cn('px-2 py-1 text-xs font-medium rounded-full', blueTheme.accentMedium)}>
+            <span className={cn(
+              'px-3 py-1 text-xs font-medium rounded-full flex items-center',
+              'bg-gradient-to-r from-[#0d4f86]/20 to-[#0d4f86]/30 text-[#0d4f86] border border-[#0d4f86]/10'
+            )}>
               Premium
             </span>
           )}
           {tool.comingSoon && (
-            <span className="px-2 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-700">
+            <span className="px-3 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-700 border border-slate-200">
               Coming Soon
             </span>
           )}
         </div>
-        <h3 className={cn('text-lg font-semibold mb-2 group-hover:text-blue-600 transition-colors', blueTheme.headingText)}>
+        
+        <h3 className={cn(
+          'text-lg font-semibold mb-3 transition-all duration-300',
+          'text-[#0d4f86] group-hover:text-[#0a3d68] group-hover:translate-x-0.5'
+        )}>
           {tool.name}
         </h3>
-        <p className={cn('text-sm mb-4', blueTheme.textMuted)}>
+        
+        <p className={cn('text-sm mb-5 text-slate-600 leading-relaxed')}>
           {tool.description}
         </p>
         
         <Button
           disabled={tool.comingSoon}
           className={cn(
-            'w-full py-2 px-4 rounded-md text-sm font-medium transition-all',
-            !tool.comingSoon ? cn(blueTheme.accentBg, 'text-white') : 'bg-slate-300 cursor-not-allowed',
-            !tool.comingSoon && 'hover:shadow-sm hover:translate-y-[-1px]'
+            'w-full py-5 rounded-md text-sm font-medium transition-all duration-300',
+            !tool.comingSoon ? 
+              'bg-[#0d4f86] hover:bg-[#0a3d68] text-white shadow-sm hover:shadow-lg hover:shadow-[#0d4f86]/20' : 
+              'bg-slate-300 cursor-not-allowed',
           )}
         >
           {tool.comingSoon ? 'Coming Soon' : 'Launch Tool'}
@@ -216,21 +234,20 @@ function EmbeddedTools() {
       </Helmet>
       
       {/* Navbar */}
-      <header className={cn('py-4 px-6 bg-white border-b border-slate-100 shadow-sm')}>
+      <header className={cn('py-3 px-6 shadow-md', blueTheme.navbarBg)}>
         <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <Shield className={cn('h-6 w-6', blueTheme.accent)} />
-            <h1 className={cn('text-xl font-semibold', blueTheme.headingText)}>Anneal Security Tools</h1>
+          <div className="flex items-center space-x-3">
+            <div className="p-1.5 rounded-full bg-white/20 backdrop-blur-sm">
+              <Shield className="h-5 w-5 text-white" />
+            </div>
+            <h1 className="text-xl font-semibold text-white">Anneal Security Tools</h1>
           </div>
           <div>
             <a 
               href="https://www.annealtech.com" 
               target="_blank"
               rel="noopener noreferrer"
-              className={cn('px-4 py-2 rounded-md border font-medium text-sm flex items-center', 
-                blueTheme.accent, 
-                'border-blue-200 hover:bg-blue-50 hover:shadow-sm'
-              )}
+              className="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium text-sm flex items-center hover:bg-white/20 transition-all duration-300 hover:shadow-lg"
             >
               <ExternalLink className="h-4 w-4 mr-2" />
               Go Back To Main Site
@@ -239,14 +256,15 @@ function EmbeddedTools() {
         </div>
       </header>
       
-      <main className="flex-1">      
+      <main className="flex-1 bg-gradient-to-b from-white to-blue-50">      
         {/* Tools Grid */}
-        <section className="py-10 container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className={cn("text-2xl font-bold mb-4", blueTheme.headingText)}>
+        <section className="py-12 container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className={cn("text-3xl font-bold mb-4 relative inline-block", blueTheme.headingText)}>
               Advanced Security Tools
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#0d4f86]/30 rounded-full"></span>
             </h2>
-            <p className={cn("max-w-2xl mx-auto", blueTheme.textMuted)}>
+            <p className={cn("max-w-2xl mx-auto text-lg", blueTheme.textMuted)}>
               Our collection of professional-grade security tools to help you identify vulnerabilities, 
               strengthen your defenses, and protect your valuable assets.
             </p>
@@ -262,32 +280,37 @@ function EmbeddedTools() {
       
       {/* Tool Dialog */}
       <Dialog open={dialogState.isOpen} onOpenChange={(open) => !open && closeToolDialog()}>
-        <DialogContent className="max-w-4xl w-[90vw] max-h-[90vh] overflow-y-auto p-0 bg-white border-blue-100">
-          <DialogHeader className={cn('p-6 border-b', 'bg-white border-slate-100')}>
+        <DialogContent className="max-w-4xl w-[90vw] max-h-[90vh] overflow-y-auto p-0 bg-white shadow-2xl border border-[#0d4f86]/10 rounded-xl">
+          <DialogHeader className={cn('p-6 border-b border-[#0d4f86]/10 bg-gradient-to-r from-[#0d4f86]/5 to-white')}>
             <div className="flex justify-between items-center">
-              <div>
-                <DialogTitle className={blueTheme.headingText}>
-                  {tools.find(t => t.id === dialogState.toolId)?.name}
-                </DialogTitle>
-                <DialogDescription className={blueTheme.textMuted}>
-                  {tools.find(t => t.id === dialogState.toolId)?.description}
-                </DialogDescription>
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-full bg-[#0d4f86]/10 border border-[#0d4f86]/20">
+                  {tools.find(t => t.id === dialogState.toolId)?.icon}
+                </div>
+                <div>
+                  <DialogTitle className="text-[#0d4f86] text-xl font-bold">
+                    {tools.find(t => t.id === dialogState.toolId)?.name}
+                  </DialogTitle>
+                  <DialogDescription className="text-slate-600 mt-1">
+                    {tools.find(t => t.id === dialogState.toolId)?.description}
+                  </DialogDescription>
+                </div>
               </div>
               <Button 
                 variant="ghost" 
-                className="p-2 rounded-full h-8 w-8" 
+                className="p-2 rounded-full h-8 w-8 hover:bg-[#0d4f86]/10 transition-all" 
                 onClick={closeToolDialog}
               >
-                <X className="h-4 w-4" />
+                <X className="h-4 w-4 text-[#0d4f86]" />
               </Button>
             </div>
           </DialogHeader>
           
-          <div className="p-6">
+          <div className="p-0">
             {dialogState.toolId && (
               <iframe 
                 src={`/embedded/${getToolPath(dialogState.toolId)}`}
-                className="w-full min-h-[70vh] border-none"
+                className="w-full min-h-[75vh] border-none rounded-b-xl"
                 title={tools.find(t => t.id === dialogState.toolId)?.name}
                 allow="camera;microphone"
               />
@@ -296,9 +319,13 @@ function EmbeddedTools() {
         </DialogContent>
       </Dialog>
       
-      <footer className={cn('py-6 border-t', 'bg-white border-slate-100')}>
-        <div className="container mx-auto text-center">
-          <p className={cn('text-sm', blueTheme.textMuted)}>
+      <footer className={cn('py-6', 'bg-[#0d4f86] text-white')}>
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+          <div className="flex items-center gap-2 mb-4 md:mb-0">
+            <Shield className="h-5 w-5 text-white/90" />
+            <p className="font-semibold">Anneal Technologies</p>
+          </div>
+          <p className="text-sm text-white/80">
             © {new Date().getFullYear()} Anneal Technologies. All rights reserved.
           </p>
         </div>
