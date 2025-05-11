@@ -490,7 +490,7 @@ export default function UsernameTrackingEmbed() {
                                 </Button>
                               )}
                               {results.platforms.filter(p => p.status === "found").length === 0 && (
-                                <p className="text-sm text-slate-700 font-medium">No accounts found</p>
+                                <p className="text-sm text-slate-900 font-medium">No accounts found</p>
                               )}
                             </div>
                           </Card>
@@ -518,7 +518,7 @@ export default function UsernameTrackingEmbed() {
                                 </Button>
                               )}
                               {results.risksIdentified.length === 0 && (
-                                <p className="text-sm text-slate-700 font-medium">No significant risks identified</p>
+                                <p className="text-sm text-slate-900 font-medium">No significant risks identified</p>
                               )}
                             </div>
                           </Card>
@@ -527,8 +527,8 @@ export default function UsernameTrackingEmbed() {
                         {results.possibleRealNames.length > 0 || results.possibleLocations.length > 0 || results.possibleEmails.length > 0 ? (
                           <Alert className="bg-yellow-50 text-yellow-700 border-yellow-200">
                             <AlertTriangle className="h-4 w-4" />
-                            <AlertDescription>
-                              <span className="font-medium">Personal Information Found:</span> We've detected some potential personal information associated with this username. This information could be exposed publicly.
+                            <AlertDescription className="text-yellow-900 font-medium">
+                              <span className="font-bold">Personal Information Found:</span> We've detected some potential personal information associated with this username. This information could be exposed publicly.
                             </AlertDescription>
                           </Alert>
                         ) : null}
@@ -546,7 +546,7 @@ export default function UsernameTrackingEmbed() {
                             <Badge variant="outline" className="bg-yellow-50 text-yellow-700 border-yellow-200">
                               Possible: {results.platforms.filter(p => p.status === "possible").length}
                             </Badge>
-                            <Badge variant="outline" className="bg-slate-50 text-slate-500 border-slate-200">
+                            <Badge variant="outline" className="bg-slate-50 text-slate-700 border-slate-200">
                               Not Found: {results.platforms.filter(p => p.status === "not found").length}
                             </Badge>
                           </div>
