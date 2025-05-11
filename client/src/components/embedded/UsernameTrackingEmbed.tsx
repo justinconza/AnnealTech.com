@@ -449,13 +449,13 @@ export default function UsernameTrackingEmbed() {
                     <TabsContent value="analysis" className="p-6 focus:outline-none">
                       <div className="space-y-6">
                         <div>
-                          <h4 className="font-medium mb-2 text-[#0d4f86]">Summary</h4>
-                          <p className="text-slate-700">{results.summary}</p>
+                          <h4 className="font-medium mb-2 text-[#073660] text-lg">Summary</h4>
+                          <p className="text-slate-900 font-medium">{results.summary}</p>
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <Card className="border border-slate-200 p-4">
-                            <h4 className="font-medium text-[#0d4f86] mb-2 flex items-center">
+                            <h4 className="font-medium text-[#073660] mb-2 flex items-center">
                               <CheckCircle className="w-4 h-4 mr-2" />
                               Found Accounts
                             </h4>
