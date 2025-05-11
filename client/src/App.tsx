@@ -61,6 +61,13 @@ function MainRouter() {
                 </Suspense>
               )}
             </Route>
+            <Route path="/tools/embed">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <ToolEmbedding />
+                </Suspense>
+              )}
+            </Route>
             <Route path="/faq">
               {() => (
                 <Suspense fallback={<LoadingSpinner />}>
