@@ -169,7 +169,8 @@ function EmbeddedTools() {
           tool.premium ? 'border-l-4 border-l-[#0d4f86]' : '',
           blueTheme.card,
           blueTheme.cardHover,
-          'hover:after:opacity-100 after:opacity-0 after:absolute after:-z-10 after:inset-0 after:bg-gradient-to-br after:from-[#0d4f86]/5 after:to-[#0d4f86]/10 after:transition-opacity after:duration-300'
+          'hover:after:opacity-100 after:opacity-0 after:absolute after:-z-10 after:inset-0 after:bg-gradient-to-br after:from-[#0d4f86]/5 after:to-[#0d4f86]/10 after:transition-opacity after:duration-300',
+          'shimmer card-hover fade-in-up'
         )}
         onClick={() => !tool.comingSoon && openToolDialog(tool.id)}
       >
@@ -178,50 +179,54 @@ function EmbeddedTools() {
         
         <div className="flex justify-between items-start mb-5">
           <div className={cn(
-            'p-3 rounded-full transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-md', 
-            'bg-gradient-to-br from-[#0d4f86]/10 to-[#0d4f86]/20 border border-[#0d4f86]/10'
+            'w-12 h-12 p-3 rounded-lg transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-md', 
+            'bg-[#0d4f86]/10 text-[#0d4f86] border border-[#0d4f86]/10 flex items-center justify-center bg-pulse'
           )}>
-            <div className="text-[#0d4f86]">
-              {tool.icon}
-            </div>
+            {tool.icon}
           </div>
           {tool.premium && (
             <span className={cn(
-              'px-3 py-1 text-xs font-medium rounded-full flex items-center',
+              'px-3 py-1 text-xs font-medium tracking-wide rounded-full flex items-center',
               'bg-gradient-to-r from-[#0d4f86]/20 to-[#0d4f86]/30 text-[#0d4f86] border border-[#0d4f86]/10'
             )}>
               Premium
             </span>
           )}
           {tool.comingSoon && (
-            <span className="px-3 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+            <span className="px-3 py-1 text-xs font-medium tracking-wide rounded-full bg-slate-100 text-slate-700 border border-slate-200">
               Coming Soon
             </span>
           )}
         </div>
         
         <h3 className={cn(
-          'text-lg font-semibold mb-3 transition-all duration-300',
-          'text-[#0d4f86] group-hover:text-[#0a3d68] group-hover:translate-x-0.5'
+          'text-xl font-bold mb-3 transition-all duration-300 font-heading',
+          'text-[#0d4f86] glow-text'
         )}>
           {tool.name}
         </h3>
         
-        <p className="text-lg mb-5 text-black leading-relaxed font-medium bg-white p-3 rounded-md shadow-sm border border-[#0d4f86]/10" style={{ fontFamily: '"Inter", sans-serif' }}>
+        <div className="text-base mb-5 text-slate-900 leading-relaxed font-medium bg-white p-3 rounded-md shadow-sm border border-[#0d4f86]/10 grow" style={{ fontFamily: '"Inter", sans-serif' }}>
           {tool.description}
-        </p>
+        </div>
         
-        <Button
-          disabled={tool.comingSoon}
-          className={cn(
-            'w-full py-5 rounded-md text-sm font-medium transition-all duration-300',
-            !tool.comingSoon ? 
-              'bg-[#0d4f86] hover:bg-[#0a3d68] text-white shadow-sm hover:shadow-lg hover:shadow-[#0d4f86]/20' : 
-              'bg-slate-300 cursor-not-allowed',
-          )}
-        >
-          {tool.comingSoon ? 'Coming Soon' : 'Launch Tool'}
-        </Button>
+        {tool.comingSoon ? (
+          <Button 
+            disabled
+            className="w-full border-[#0d4f86]/20 text-muted-foreground py-5 rounded-md text-sm font-medium bg-slate-300 cursor-not-allowed"
+          >
+            <span className="text-xs font-medium tracking-wide px-2 py-0.5 bg-slate-400/30 rounded-full mr-2">
+              Coming Soon
+            </span>
+            Launch Tool
+          </Button>
+        ) : (
+          <Button 
+            className="w-full bg-[#0d4f86] hover:bg-[#0a3d68] py-5 rounded-md text-sm font-medium text-white shadow-sm hover:shadow-lg hover:shadow-[#0d4f86]/20 hover-lift btn-pulse"
+          >
+            Launch Tool
+          </Button>
+        )}
       </div>
     );
   };
@@ -259,12 +264,12 @@ function EmbeddedTools() {
       <main className="flex-1 bg-gradient-to-b from-white to-blue-50">      
         {/* Tools Grid */}
         <section className="py-12 container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className={cn("text-3xl font-bold mb-4 relative inline-block", blueTheme.headingText)}>
+          <div className="text-center mb-10 fade-in-up">
+            <h2 className={cn("text-3xl font-bold mb-4 relative inline-block font-heading glow-text", blueTheme.headingText)}>
               Advanced Security Tools
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#0d4f86]/30 rounded-full"></span>
             </h2>
-            <p className="max-w-2xl mx-auto text-xl text-black font-medium leading-relaxed font-['Inter',sans-serif]">
+            <p className="max-w-2xl mx-auto text-lg text-slate-900 font-medium leading-relaxed" style={{ fontFamily: '"Inter", sans-serif' }}>
               Our collection of professional-grade security tools to help you identify vulnerabilities, 
               strengthen your defenses, and protect your valuable assets.
             </p>
