@@ -11,6 +11,7 @@ const QRCodeSecurityEmbedded = lazy(() => import("@/pages/embedded/QRCodeSecurit
 const ThreatHeatMapEmbedded = lazy(() => import("@/pages/embedded/ThreatHeatMap"));
 const SecurityGapAnalysisEmbedded = lazy(() => import("@/pages/embedded/SecurityGapAnalysis"));
 const EmailBreachCheckEmbedded = lazy(() => import("@/pages/embedded/EmailBreachCheck"));
+const UsernameTrackingEmbedded = lazy(() => import("@/pages/embedded/UsernameTracking"));
 // Renamed import to match the exported component name
 const SecurityAssessmentEmbedded = lazy(() => import("@/pages/embedded/SecurityAssessment"));
 const EmbeddedToolsPage = lazy(() => import("@/pages/embedded/EmbeddedTools"));
@@ -91,6 +92,14 @@ export function EmbeddedRouter() {
           {() => (
             <Suspense fallback={<EmbeddedLoadingSpinner />}>
               <EmailBreachCheckEmbedded />
+            </Suspense>
+          )}
+        </Route>
+        
+        <Route path="/embedded/username-tracking">
+          {() => (
+            <Suspense fallback={<EmbeddedLoadingSpinner />}>
+              <UsernameTrackingEmbedded />
             </Suspense>
           )}
         </Route>

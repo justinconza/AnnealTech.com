@@ -63,7 +63,7 @@ import {
 
 // Layout component
 import { EmbeddedWrapper } from "@/components/ui/embedded-wrapper";
-import { cn, formatDistanceToNow } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 // Validation schema
 const formSchema = z.object({

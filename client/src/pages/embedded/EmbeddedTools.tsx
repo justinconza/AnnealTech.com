@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Lock, Shield, Eye, FileSearch, Database, Send, AlertTriangle, QrCode, Globe, MapPin, ExternalLink, X, Share2 } from 'lucide-react';
+import { Lock, Shield, Eye, FileSearch, Database, Send, AlertTriangle, QrCode, Globe, MapPin, ExternalLink, X, Share2, User, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { 
   Dialog,
@@ -49,6 +49,13 @@ interface Tool {
 }
 
 const tools: Tool[] = [
+  {
+    id: 'username-tracking',
+    name: 'Username & Social Media Tracker',
+    description: 'Track usernames across social platforms to discover digital footprints and exposure risks',
+    icon: <User className="h-5 w-5" />,
+    premium: false
+  },
   {
     id: 'qrcode-scanner',
     name: 'QR Code Security Scanner',
