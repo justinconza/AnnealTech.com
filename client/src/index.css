@@ -7,6 +7,22 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body, #root {
+  min-height: 100vh;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+/* Embedded pages specific styling */
+[class*="embedded"] {
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
 .dark {
   --background: 240 10% 4%; /* #121212 - Slate Gray */
   --foreground: 0 0% 95%; /* Near white text */
