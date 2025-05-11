@@ -108,7 +108,13 @@ export default function ToolEmbedding() {
   
   const copyEmbedCode = (tool: ToolEmbedInfo) => {
     const iframeUrl = `${baseUrl}${tool.path}`;
-    const iframeCode = `<iframe src="${iframeUrl}" width="${tool.recommendedWidth}" height="${tool.recommendedHeight}" frameborder="0" allowtransparency="true" style="border-radius: 8px;"></iframe>`;
+    
+    // Add camera and microphone permissions specifically for the QR code scanner tool
+    const allowPermissions = tool.id === 'qrcode-scanner' 
+      ? ` allow="camera;microphone"` 
+      : '';
+    
+    const iframeCode = `<iframe src="${iframeUrl}" width="${tool.recommendedWidth}" height="${tool.recommendedHeight}" frameborder="0" allowtransparency="true"${allowPermissions} style="border-radius: 8px;"></iframe>`;
     
     navigator.clipboard.writeText(iframeCode);
     
@@ -135,10 +141,10 @@ export default function ToolEmbedding() {
       
       <div className="container max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-10">
-          <div className="inline-flex mb-2 bg-accent/10 px-4 py-1 rounded-full text-accent text-sm font-medium">
+          <div className="inline-flex mb-2 bg-blue-100 px-4 py-1 rounded-full text-blue-700 text-sm font-medium">
             <Shield className="mr-2 h-4 w-4" /> Ready for Embedding
           </div>
-          <h1 className="text-3xl md:text-4xl font-display font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-display font-bold mb-4 text-slate-800 dark:text-white">
             Security Tools Embedding Guide
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
