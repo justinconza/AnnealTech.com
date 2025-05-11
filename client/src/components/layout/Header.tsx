@@ -1,7 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Hammer, ArrowUpRight } from "lucide-react";
+import { Menu, X, Hammer, ArrowUpRight, Shield } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 // Spark component for the animated forge effect
 const ForgeSpark = ({ delay = 0 }) => {
@@ -125,7 +131,30 @@ const Header = () => {
           <NavLink href="/">Home</NavLink>
           <NavLink href="/services">Services</NavLink>
           <NavLink href="/about">About</NavLink>
-          <NavLink href="/tools">Tools</NavLink>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-foreground font-heading hover:text-accent/90 transition-all relative group py-1 focus:outline-none">
+              <span className="flex items-center">
+                Tools
+                <span className="ml-1 inline-block w-2 h-2 border-t-2 border-r-2 border-current transform rotate-45 translate-y-[2px]"></span>
+              </span>
+              <span className="absolute bottom-0 left-0 h-0.5 bg-accent transition-all duration-300 w-0 group-hover:w-full"></span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="bg-slate-800 border-accent/20 text-white rounded-md shadow-lg w-56">
+              <DropdownMenuItem className="focus:bg-accent/20 hover:bg-accent/20 cursor-pointer">
+                <Link href="/tools" className="flex items-center w-full">
+                  <span>Security Tools</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="focus:bg-accent/20 hover:bg-accent/20 cursor-pointer">
+                <Link href="/embedded/tools" className="flex items-center w-full">
+                  <Shield className="mr-2 h-4 w-4 text-blue-400" />
+                  <span>Embeddable Tools Suite</span>
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          
           <NavLink href="/faq">FAQ</NavLink>
           <NavLink href="/contact">Contact</NavLink>
         </nav>
@@ -161,7 +190,25 @@ const Header = () => {
             <NavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
             <NavLink href="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</NavLink>
             <NavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>About</NavLink>
-            <NavLink href="/tools" onClick={() => setIsMobileMenuOpen(false)}>Tools</NavLink>
+            
+            {/* Tools Section with Submenu */}
+            <div className="py-1">
+              <div className="text-foreground font-heading mb-2">Tools</div>
+              <div className="ml-4 space-y-3">
+                <NavLink href="/tools" onClick={() => setIsMobileMenuOpen(false)}>
+                  Security Tools
+                </NavLink>
+                <Link 
+                  href="/embedded/tools" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center text-foreground font-heading hover:text-accent/90 transition-all py-1"
+                >
+                  <Shield className="mr-2 h-4 w-4 text-blue-400" />
+                  <span>Embeddable Tools Suite</span>
+                </Link>
+              </div>
+            </div>
+            
             <NavLink href="/faq" onClick={() => setIsMobileMenuOpen(false)}>FAQ</NavLink>
             <NavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</NavLink>
             

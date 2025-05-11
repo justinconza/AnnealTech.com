@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "wouter";
 
 // Animated text for the subtitle
 const AnimatedText = ({ text }: { text: string }) => {
@@ -101,6 +102,16 @@ const Hero = () => {
             >
               <span>Explore Services</span>
             </Button>
+            
+            <Link href="/embedded/tools">
+              <Button 
+                className="px-8 py-6 bg-blue-600/90 hover:bg-blue-700 text-white font-heading font-medium rounded-md transition-all shadow-lg hover:shadow-blue-600/20 group" 
+              >
+                <Shield className="mr-2 h-5 w-5" />
+                <span>Security Tools Suite</span>
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </div>
           
           {/* Stats */}
