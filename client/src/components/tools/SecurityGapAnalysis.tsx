@@ -566,7 +566,7 @@ export default function SecurityGapAnalysis() {
                         <h4 className="font-medium text-amber-500">Technical Gaps</h4>
                         <div className="space-y-2">
                           {analysisResult.gapAnalysis.technical.map((gap, index) => (
-                            <div key={index} className="flex items-start text-sm">
+                            <div key={index} className="flex items-start text-sm text-slate-800">
                               <ArrowRightCircle className="text-amber-500 h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
                               <span>{gap}</span>
                             </div>
@@ -578,7 +578,7 @@ export default function SecurityGapAnalysis() {
                         <h4 className="font-medium text-accent">Operational Gaps</h4>
                         <div className="space-y-2">
                           {analysisResult.gapAnalysis.operational.map((gap, index) => (
-                            <div key={index} className="flex items-start text-sm">
+                            <div key={index} className="flex items-start text-sm text-slate-800">
                               <ArrowRightCircle className="text-accent h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
                               <span>{gap}</span>
                             </div>
@@ -590,7 +590,7 @@ export default function SecurityGapAnalysis() {
                         <h4 className="font-medium text-blue-400">Compliance Gaps</h4>
                         <div className="space-y-2">
                           {analysisResult.gapAnalysis.compliance.map((gap, index) => (
-                            <div key={index} className="flex items-start text-sm">
+                            <div key={index} className="flex items-start text-sm text-slate-800">
                               <ArrowRightCircle className="text-blue-400 h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
                               <span>{gap}</span>
                             </div>
@@ -617,7 +617,7 @@ export default function SecurityGapAnalysis() {
                               <div className="flex items-start">
                                 <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                                 <div>
-                                  <p className="text-sm">{rec.recommendation}</p>
+                                  <p className="text-sm text-slate-800 font-medium">{rec.recommendation}</p>
                                 </div>
                               </div>
                               <Badge className={`${getPriorityColor(rec.priority)} text-white ml-2`}>
