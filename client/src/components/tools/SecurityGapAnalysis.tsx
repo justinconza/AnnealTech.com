@@ -470,7 +470,7 @@ export default function SecurityGapAnalysis() {
                 <div className="flex justify-between items-center mb-4">
                   <div>
                     <h3 className="text-lg font-semibold">Security Posture Summary</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-slate-800">
                       Based on {form.getValues().industry} industry benchmarks
                     </p>
                   </div>
@@ -504,7 +504,7 @@ export default function SecurityGapAnalysis() {
                     <div className="flex items-center p-3 bg-slate-darker rounded-md">
                       <Building className="h-5 w-5 mr-2 text-accent" />
                       <div>
-                        <div className="text-xs text-muted-foreground">Industry</div>
+                        <div className="text-xs text-slate-800 font-medium">Industry</div>
                         <div className="font-medium">
                           {industries.find(i => i.value === form.getValues().industry)?.label}
                         </div>
@@ -514,7 +514,7 @@ export default function SecurityGapAnalysis() {
                     <div className="flex items-center p-3 bg-slate-darker rounded-md">
                       <ShieldAlert className="h-5 w-5 mr-2 text-amber-500" />
                       <div>
-                        <div className="text-xs text-muted-foreground">Compliance Level</div>
+                        <div className="text-xs text-slate-800 font-medium">Compliance Level</div>
                         <div className="font-medium">
                           {analysisResult.industryBenchmark.complianceLevel}
                         </div>
@@ -524,7 +524,7 @@ export default function SecurityGapAnalysis() {
                     <div className="flex items-center p-3 bg-slate-darker rounded-md">
                       <BadgeDollarSign className="h-5 w-5 mr-2 text-green-500" />
                       <div>
-                        <div className="text-xs text-muted-foreground">Budget Level</div>
+                        <div className="text-xs text-slate-800 font-medium">Budget Level</div>
                         <div className="font-medium">
                           {budgetLevels.find(b => b.value === form.getValues().budget)?.label.split("(")[0]}
                         </div>
@@ -775,7 +775,7 @@ export default function SecurityGapAnalysis() {
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-slate-darker p-3 rounded-md">
-                          <div className="text-xs text-muted-foreground mb-1">Industry Average Score</div>
+                          <div className="text-xs text-slate-800 font-medium mb-1">Industry Average Score</div>
                           <div className="flex items-center">
                             <Progress 
                               value={analysisResult.industryBenchmark.averageScore * 10} 
@@ -786,7 +786,7 @@ export default function SecurityGapAnalysis() {
                         </div>
                         
                         <div className="bg-slate-darker p-3 rounded-md">
-                          <div className="text-xs text-muted-foreground mb-1">Your Compliance Level</div>
+                          <div className="text-xs text-slate-800 font-medium mb-1">Your Compliance Level</div>
                           <div className="font-medium flex items-center">
                             <BarChart className="h-4 w-4 mr-2 text-accent" />
                             {analysisResult.industryBenchmark.complianceLevel}
