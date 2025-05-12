@@ -330,12 +330,12 @@ export default function ThreatHeatMap() {
         <CardHeader className="pb-4">
           <div className="flex justify-between items-center">
             <div>
-              <CardTitle className="text-xl font-heading">Real-time Security Threat Heat Map</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-xl font-heading text-[#073660]">Real-time Security Threat Heat Map</CardTitle>
+              <CardDescription className="text-slate-900">
                 Live cybersecurity threat intelligence from OSINT sources
               </CardDescription>
               {lastUpdated && (
-                <p className="text-xs text-muted-foreground mt-1">
+                <p className="text-xs text-slate-800 mt-1">
                   Last updated: {lastUpdated.toLocaleTimeString()} ({
                     Math.floor((new Date().getTime() - lastUpdated.getTime()) / 60000) === 0 
                       ? 'just now' 
@@ -440,7 +440,7 @@ export default function ThreatHeatMap() {
                               <div className={`w-2 h-full mr-2 ${getSeverityColor(event.severity)}`}></div>
                               <div>
                                 <div className="font-semibold">{event.type} Attack</div>
-                                <div className="text-sm text-muted-foreground">
+                                <div className="text-sm text-slate-800">
                                   <span className="font-medium">{event.location.country}</span> • {formatDate(event.timestamp)}
                                 </div>
                               </div>
@@ -451,7 +451,7 @@ export default function ThreatHeatMap() {
                           </div>
                           <div className="mt-2 text-sm">{event.description}</div>
                           <div className="mt-2 text-xs">
-                            <span className="text-muted-foreground">Targets:</span>{' '}
+                            <span className="text-slate-800 font-medium">Targets:</span>{' '}
                             {event.targets.map((target, idx) => (
                               <span 
                                 key={idx} 
@@ -461,7 +461,7 @@ export default function ThreatHeatMap() {
                               </span>
                             ))}
                           </div>
-                          <div className="mt-1 text-xs text-muted-foreground">
+                          <div className="mt-1 text-xs text-slate-800">
                             <span>Actor: {event.actor}</span>
                           </div>
                         </div>
@@ -528,7 +528,7 @@ export default function ThreatHeatMap() {
             <div className="h-[450px] flex items-center justify-center">
               <div className="text-center">
                 <Loader2 className="h-10 w-10 animate-spin mx-auto text-accent" />
-                <p className="mt-4 text-muted-foreground">
+                <p className="mt-4 text-slate-800">
                   Loading real-time threat intelligence data...
                 </p>
               </div>
@@ -536,7 +536,7 @@ export default function ThreatHeatMap() {
           )}
         </CardContent>
         <CardFooter className="pt-2">
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-slate-800">
             Data refreshed: {threatData ? new Date().toLocaleString() : '-'} • Data sources include AlienVault OTX, URLhaus, and AbuseIPDB
           </p>
         </CardFooter>
