@@ -488,7 +488,7 @@ export default function SecurityGapAnalysis() {
                   <div>
                     <div className="mb-1 flex justify-between items-center">
                       <span className="text-sm font-medium">Overall Security Score</span>
-                      <span className="text-sm">{analysisResult.overallSecurityScore}/10</span>
+                      <span className="text-sm text-slate-800 font-medium">{analysisResult.overallSecurityScore}/10</span>
                     </div>
                     <Progress 
                       value={analysisResult.overallSecurityScore * 10} 
@@ -496,8 +496,8 @@ export default function SecurityGapAnalysis() {
                     />
                   </div>
                   
-                  <div className="bg-slate-darker p-4 rounded-md text-sm">
-                    <p>{analysisResult.summary}</p>
+                  <div className="bg-slate-darker p-4 rounded-md text-sm text-slate-800">
+                    <p className="font-medium">{analysisResult.summary}</p>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -743,8 +743,8 @@ export default function SecurityGapAnalysis() {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="px-4 pb-4">
-                    <div className="bg-slate-darker p-4 rounded-md text-sm">
-                      <p>{analysisResult.budgetConsiderations}</p>
+                    <div className="bg-slate-darker p-4 rounded-md text-sm text-slate-800">
+                      <p className="font-medium">{analysisResult.budgetConsiderations}</p>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
