@@ -21,11 +21,39 @@ import { Link } from "wouter";
 // Components for the CRE industry page
 const HeroSection = () => {
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-blue-900 to-blue-800 text-white relative overflow-hidden">
-      {/* Background decorative elements */}
+    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-900 to-blue-800 text-white relative overflow-hidden">
+      {/* Animated background elements */}
       <div className="absolute inset-0 opacity-10 bg-circuit"></div>
-      <div className="absolute -top-48 -right-48 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl"></div>
-      <div className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl"></div>
+      
+      {/* Floating orbs */}
+      <motion.div 
+        initial={{ opacity: 0.5, x: -10 }}
+        animate={{ 
+          opacity: [0.4, 0.6, 0.4], 
+          x: [-10, 10, -10],
+        }}
+        transition={{ 
+          duration: 8, 
+          repeat: Infinity,
+          ease: "easeInOut" 
+        }}
+        className="absolute top-20 right-[20%] w-64 h-64 rounded-full bg-blue-500/10 blur-3xl"
+      ></motion.div>
+      
+      <motion.div 
+        initial={{ opacity: 0.3 }}
+        animate={{ 
+          opacity: [0.3, 0.5, 0.3], 
+          y: [-5, 15, -5],
+        }}
+        transition={{ 
+          duration: 10, 
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1
+        }}
+        className="absolute bottom-40 left-[10%] w-72 h-72 rounded-full bg-blue-400/10 blur-3xl"
+      ></motion.div>
       
       {/* Blue flame elements */}
       <div className="absolute bottom-0 right-20 flame" style={{ animationDelay: "-0.5s" }}>
@@ -34,23 +62,76 @@ const HeroSection = () => {
       <div className="absolute bottom-0 left-32 flame" style={{ animationDelay: "-1.2s" }}>
         <div className="flame-inner"></div>
       </div>
+      <div className="absolute bottom-0 left-1/2 flame" style={{ animationDelay: "-0.8s" }}>
+        <div className="flame-inner"></div>
+      </div>
+      
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-300 rounded-full"
+            initial={{ 
+              opacity: Math.random() * 0.5 + 0.3,
+              x: Math.random() * 100 + "%", 
+              y: Math.random() * 100 + "%"
+            }}
+            animate={{ 
+              y: [
+                Math.random() * 100 + "%", 
+                Math.random() * 20 + 40 + "%", 
+                Math.random() * 100 + "%"
+              ],
+              opacity: [0.3, 0.7, 0.3]
+            }}
+            transition={{ 
+              duration: Math.random() * 10 + 20,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-block bg-blue-400 border border-blue-300 rounded-full px-4 py-1 mb-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="inline-block bg-blue-400 border border-blue-300 rounded-full px-4 py-1 mb-4"
+            >
               <span className="text-blue-900 font-heading text-sm font-medium tracking-wider">COMMERCIAL REAL ESTATE</span>
-            </div>
+            </motion.div>
             
-            <h1 className="text-3xl md:text-5xl font-display font-bold mb-6">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-3xl md:text-5xl font-display font-bold mb-4"
+            >
               Forging Security and Efficiency for Commercial Real Estate Operations
-            </h1>
+            </motion.h1>
             
-            <p className="text-xl text-blue-100 mb-8">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="text-xl text-blue-100 mb-6"
+            >
               AnnealTech empowers property firms and brokers to scale with confidence—delivering secure, seamless IT experiences across all your locations with industry-leading service and support.
-            </p>
+            </motion.p>
             
             <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
               whileHover={{ scale: 1.05 }}
               className="inline-block"
             >
@@ -59,16 +140,26 @@ const HeroSection = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </motion.div>
-          </div>
+          </motion.div>
           
-          <div className="hidden lg:flex justify-end">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="hidden lg:flex justify-end"
+          >
             <div className="relative">
               <img 
                 src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
                 alt="Modern commercial real estate office" 
                 className="rounded-lg shadow-2xl"
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg">
+              <motion.div 
+                initial={{ opacity: 0, y: 20, x: 20 }}
+                animate={{ opacity: 1, y: 0, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.2 }}
+                className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg"
+              >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
                     <ShieldCheck className="h-5 w-5 text-blue-600" />
@@ -78,9 +169,21 @@ const HeroSection = () => {
                     <p className="text-sm text-blue-900">SLA-Backed Support</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: -20, x: 20 }}
+                animate={{ opacity: 1, y: 0, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.5 }}
+                className="absolute -top-6 -right-6 bg-blue-600 p-3 rounded-lg shadow-lg text-white"
+              >
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4" />
+                  <p className="text-sm font-medium">24/7 Support</p>
+                </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -88,62 +191,195 @@ const HeroSection = () => {
 };
 
 const ChallengesSection = () => {
+  const challenges = [
+    {
+      challenge: "Inconsistent IT support across locations",
+      solution: "Centralized 24/7 support for remote and on-site needs",
+      icon: Building
+    },
+    {
+      challenge: "Cyber risks to tenant or investor data",
+      solution: "Always-on monitoring, endpoint protection, and user training",
+      icon: Shield
+    },
+    {
+      challenge: "Staff not using tools efficiently",
+      solution: "Hands-on business app training and onboarding",
+      icon: Users
+    },
+    {
+      challenge: "Delayed support requests and maintenance",
+      solution: "SLA-backed response and fulfillment within guaranteed timeframes",
+      icon: Clock
+    },
+    {
+      challenge: "Little visibility into risk or performance",
+      solution: "Monthly reporting and strategic reviews",
+      icon: BarChart
+    }
+  ];
+
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block p-2 bg-blue-100 rounded-lg text-blue-600 mb-4">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-white to-blue-50 relative">
+      {/* Decorative shapes */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 1200 1000" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute opacity-[0.03] text-blue-900" preserveAspectRatio="none">
+          <path d="M0 0L1200 0L1200 1000L0 1000L0 0Z" fill="currentColor"/>
+          <path d="M0 1000L1200 0L1200 1000L0 1000Z" fill="currentColor"/>
+        </svg>
+      </div>
+    
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
+          <motion.div 
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, duration: 0.5 }}
+            className="inline-flex items-center justify-center p-3 bg-blue-100 rounded-full text-blue-600 mb-4"
+          >
             <Building className="h-6 w-6" />
-          </div>
+          </motion.div>
           
-          <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-3xl font-heading font-bold text-slate-800 mb-6"
+          >
             <span className="relative inline-block">
               CRE Sector Challenges
-              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500"></span>
+              <motion.span 
+                initial={{ width: 0 }}
+                whileInView={{ width: "50%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="absolute -bottom-1 left-1/4 h-1 bg-blue-500"
+              ></motion.span>
             </span>
-          </h2>
+          </motion.h2>
           
-          <p className="text-lg text-slate-600">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-lg text-slate-600"
+          >
             Commercial Real Estate companies operate across numerous sites with complex staff structures and sensitive tenant data. 
             Many face downtime, cyber risks, and compliance gaps caused by fragmented IT and undertrained staff.
-          </p>
+          </motion.p>
           
-          <p className="text-lg text-slate-600 mt-4">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="text-lg text-slate-600 mt-4"
+          >
             AnnealTech is your Managed Experience Provider—offering end-to-end, secure, human-first IT services built around your unique business model.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-blue-900 text-white">
-                <th className="px-6 py-4 text-left rounded-tl-lg">Challenge</th>
-                <th className="px-6 py-4 text-left rounded-tr-lg">AnnealTech Solution</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-blue-100 hover:bg-blue-50 transition-colors">
-                <td className="px-6 py-4 text-slate-700 font-medium">Inconsistent IT support across locations</td>
-                <td className="px-6 py-4 text-slate-600">Centralized 24/7 support for remote and on-site needs</td>
-              </tr>
-              <tr className="border-b border-blue-100 hover:bg-blue-50 transition-colors">
-                <td className="px-6 py-4 text-slate-700 font-medium">Cyber risks to tenant or investor data</td>
-                <td className="px-6 py-4 text-slate-600">Always-on monitoring, endpoint protection, and user training</td>
-              </tr>
-              <tr className="border-b border-blue-100 hover:bg-blue-50 transition-colors">
-                <td className="px-6 py-4 text-slate-700 font-medium">Staff not using tools efficiently</td>
-                <td className="px-6 py-4 text-slate-600">Hands-on business app training and onboarding</td>
-              </tr>
-              <tr className="border-b border-blue-100 hover:bg-blue-50 transition-colors">
-                <td className="px-6 py-4 text-slate-700 font-medium">Delayed support requests and maintenance</td>
-                <td className="px-6 py-4 text-slate-600">SLA-backed response and fulfillment within guaranteed timeframes</td>
-              </tr>
-              <tr className="hover:bg-blue-50 transition-colors">
-                <td className="px-6 py-4 text-slate-700 font-medium rounded-bl-lg">Little visibility into risk or performance</td>
-                <td className="px-6 py-4 text-slate-600 rounded-br-lg">Monthly reporting and strategic reviews</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="space-y-5 max-w-5xl mx-auto">
+          {challenges.map((item, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
+              className="relative"
+            >
+              <motion.div 
+                whileHover={{ scale: 1.01 }}
+                className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row border-l-4 border-blue-600"
+              >
+                <div className="md:w-7/12 p-6 md:p-8 flex items-start gap-4">
+                  <div className="bg-blue-100 p-3 rounded-full text-blue-600 flex-shrink-0 mt-1">
+                    <item.icon className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-heading font-bold text-slate-800 mb-2">
+                      {item.challenge}
+                    </h3>
+                    <p className="text-slate-600">
+                      {item.solution}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-r from-blue-800 to-blue-600 md:w-5/12 p-6 md:p-8 text-white flex items-center justify-center relative overflow-hidden">
+                  <div className="relative z-10">
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 300, 
+                        delay: index * 0.1 + 0.6 
+                      }}
+                      className="flex items-center justify-center mb-4"
+                    >
+                      <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <ShieldCheck className="h-8 w-8" />
+                      </div>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 0.8 }}
+                      className="text-center"
+                    >
+                      <div className="uppercase text-xs tracking-wider mb-1 text-blue-100">AnnealTech Solution</div>
+                      <div className="text-lg font-semibold">End-to-End Security</div>
+                    </motion.div>
+                  </div>
+                  
+                  {/* Animated background particles */}
+                  <div className="absolute inset-0">
+                    {[...Array(5)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 bg-white rounded-full"
+                        initial={{ 
+                          x: Math.random() * 100 + "%", 
+                          y: Math.random() * 100 + "%",
+                          opacity: 0.3
+                        }}
+                        animate={{ 
+                          y: [
+                            Math.random() * 100 + "%", 
+                            Math.random() * 100 + "%"
+                          ],
+                          opacity: [0.3, 0.8, 0.3]
+                        }}
+                        transition={{ 
+                          duration: Math.random() * 5 + 5,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Connector line between cards except for the last one */}
+              {index < challenges.length - 1 && (
+                <div className="absolute left-8 top-full h-5 w-0.5 bg-blue-200 z-0"></div>
+              )}
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
