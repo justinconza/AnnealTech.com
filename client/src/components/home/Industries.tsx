@@ -92,7 +92,7 @@ const Industries = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-blue-900 to-blue-800 relative overflow-hidden">
+    <section className="py-8 bg-gradient-to-b from-blue-900 to-blue-800 relative overflow-hidden">
       <div className="absolute inset-0 opacity-20 bg-circuit"></div>
       
       {/* Blue flame elements */}

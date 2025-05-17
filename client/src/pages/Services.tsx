@@ -4,7 +4,8 @@ import { Helmet } from 'react-helmet';
 import { 
   ServerCog, Shield, Network, Database, Cloud, Share, 
   BarChart3, GraduationCap, UserPlus, Presentation, 
-  Scale, BadgeCheck, ShieldAlert, Workflow, ArrowRight 
+  Scale, BadgeCheck, ShieldAlert, Workflow, ArrowRight,
+  Server
 } from "lucide-react";
 import { Link } from 'wouter';
 import { ServiceCategory } from '@/components/home/WhatWeDoBest';
@@ -318,23 +319,75 @@ const ServicesPage: React.FC = () => {
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <section className="py-20 bg-forging-tech relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-transparent"></div>
+      <section className="py-16 bg-gradient-to-b from-blue-900 to-blue-800 text-white relative overflow-hidden">
+        {/* Forging themed animated background */}
+        <div className="forging-bg" aria-hidden="true">
+          <div className="forging-flow">
+            {/* Dynamic blue embers */}
+            {[...Array(20)].map((_, i) => (
+              <div 
+                key={`ember-${i}`} 
+                className="ember" 
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 8}s`,
+                  width: `${Math.random() * 3 + 2}px`,
+                  height: `${Math.random() * 3 + 2}px`
+                }}
+              />
+            ))}
+            
+            {/* Blue forge flames */}
+            {[...Array(8)].map((_, i) => (
+              <div 
+                key={`flame-${i}`} 
+                className="forge-flame" 
+                style={{
+                  left: `${i * 12.5}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  width: `${Math.random() * 15 + 15}px`
+                }}
+              />
+            ))}
+            
+            {/* Molten blue metal flows */}
+            <div className="molten-flow" style={{ animationDelay: "0s" }} />
+            <div className="molten-flow" style={{ animationDelay: "2s", bottom: "15px" }} />
+            <div className="molten-flow" style={{ animationDelay: "4s", bottom: "30px" }} />
+          </div>
+        </div>
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-800 mb-6">
+            <div className="inline-block p-3 bg-blue-600/30 rounded-full mb-6 backdrop-blur-sm border border-blue-500/20">
+              <div className="relative">
+                <Server className="h-8 w-8" />
+                <div className="absolute inset-0 rounded-full bg-blue-500 filter blur-md opacity-60 animate-pulse"></div>
+              </div>
+            </div>
+            
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-6xl font-heading font-bold mb-6"
+            >
               Our Services
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-xl text-blue-100 max-w-3xl mx-auto"
+            >
               Comprehensive IT solutions designed to transform and protect your business technology.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
