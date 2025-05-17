@@ -214,3 +214,97 @@
   0%, 100% { box-shadow: 0 0 20px rgba(49, 130, 206, 0.6); }
   50% { box-shadow: 0 0 30px rgba(49, 130, 206, 0.8); }
 }
+
+/* Forging themed animations for CRE Services section */
+.forging-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.forging-flow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(10, 58, 108, 0.2), transparent);
+  overflow: hidden;
+}
+
+.ember {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #3a89c9;
+  border-radius: 50%;
+  filter: blur(1px);
+  box-shadow: 0 0 6px 2px rgba(58, 137, 201, 0.8);
+  animation: float-ember 8s infinite ease-in-out;
+  opacity: 0;
+}
+
+.ember::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #81b9f0;
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: glow-ember 2s infinite alternate;
+}
+
+.forge-flame {
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  bottom: -10px;
+  background: linear-gradient(to top, #0e4d82, #0e4d82, transparent);
+  border-radius: 50% 50% 20% 20%;
+  transform: translateZ(0);
+  opacity: 0.3;
+  filter: blur(3px);
+  animation: forge-flicker 3s infinite alternate;
+}
+
+.molten-flow {
+  position: absolute;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, #3a89c9, transparent);
+  width: 100%;
+  bottom: 0;
+  opacity: 0.5;
+  animation: molten-flow 8s infinite ease-in-out;
+  filter: blur(2px);
+}
+
+@keyframes float-ember {
+  0% { transform: translate(0, 100px); opacity: 0; }
+  30% { opacity: 0.8; }
+  70% { opacity: 0.6; }
+  100% { transform: translate(0, -300px); opacity: 0; }
+}
+
+@keyframes glow-ember {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.4); }
+}
+
+@keyframes forge-flicker {
+  0%, 100% { height: 30px; opacity: 0.3; }
+  25% { height: 35px; opacity: 0.4; }
+  50% { height: 28px; opacity: 0.2; }
+  75% { height: 33px; opacity: 0.5; }
+}
+
+@keyframes molten-flow {
+  0% { transform: translateX(-30%); opacity: 0.3; }
+  50% { transform: translateX(0%); opacity: 0.5; }
+  100% { transform: translateX(30%); opacity: 0.3; }
+}

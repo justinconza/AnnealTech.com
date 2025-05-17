@@ -418,29 +418,103 @@ const ServicesSection = () => {
   ];
   
   return (
-    <section className="py-16 md:py-24 bg-blue-50" aria-labelledby="services-heading">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block p-2 bg-blue-600 rounded-lg text-white mb-4" aria-hidden="true">
-            <Server className="h-6 w-6" />
-          </div>
+    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-blue-100 relative overflow-hidden" aria-labelledby="services-heading">
+      {/* Forging themed animated background */}
+      <div className="forging-bg" aria-hidden="true">
+        <div className="forging-flow">
+          {/* Dynamic blue embers */}
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={`ember-${i}`} 
+              className="ember" 
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 8}s`,
+                width: `${Math.random() * 3 + 2}px`,
+                height: `${Math.random() * 3 + 2}px`
+              }}
+            />
+          ))}
           
-          <h2 id="services-heading" className="text-3xl font-heading font-bold text-slate-800 mb-4">
+          {/* Blue forge flames */}
+          {[...Array(8)].map((_, i) => (
+            <div 
+              key={`flame-${i}`} 
+              className="forge-flame" 
+              style={{
+                left: `${i * 12.5}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                width: `${Math.random() * 15 + 15}px`
+              }}
+            />
+          ))}
+          
+          {/* Molten blue metal flows */}
+          <div className="molten-flow" style={{ animationDelay: "0s" }} />
+          <div className="molten-flow" style={{ animationDelay: "2s", bottom: "15px" }} />
+          <div className="molten-flow" style={{ animationDelay: "4s", bottom: "30px" }} />
+        </div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <motion.div 
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+            className="inline-block p-2 bg-blue-600 rounded-lg text-white mb-4 relative shadow-lg" 
+            aria-hidden="true"
+          >
+            <Server className="h-6 w-6" />
+            {/* Glow effect */}
+            <div className="absolute inset-0 rounded-lg bg-blue-500 filter blur-md opacity-40 animate-pulse"></div>
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            id="services-heading" 
+            className="text-3xl font-heading font-bold text-slate-800 mb-4"
+          >
             <span className="relative inline-block">
               Tailored CRE Services
-              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500" aria-hidden="true"></span>
+              <motion.span 
+                initial={{ width: 0 }}
+                whileInView={{ width: "50%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="absolute -bottom-1 left-1/4 h-1 bg-blue-500" 
+                aria-hidden="true"
+              ></motion.span>
             </span>
-          </h2>
+          </motion.h2>
           
-          <p className="text-lg text-slate-600">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-lg text-slate-700"
+          >
             Our services are specifically designed for the unique needs of Commercial Real Estate operations,
             providing comprehensive support for your technology infrastructure.
-          </p>
+          </motion.p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6" role="list" aria-label="Available services">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10" role="list" aria-label="Available services">
           {services.map((service, idx) => (
-            <ServiceCard key={idx} icon={service.icon} title={service.title} index={idx} />
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.1 + 0.3 }}
+            >
+              <ServiceCard icon={service.icon} title={service.title} index={idx} />
+            </motion.div>
           ))}
         </div>
       </div>
