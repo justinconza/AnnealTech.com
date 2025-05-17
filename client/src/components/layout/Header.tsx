@@ -53,11 +53,11 @@ const NavLink = ({
       href={href} 
       onClick={onClick}
       className={`text-white font-heading hover:text-[#e5e5e5] transition-all relative group py-1 ${
-        isActive ? "text-[#f37021]" : ""
+        isActive ? "text-[#3A6EA5]" : ""
       }`}
     >
       <span>{children}</span>
-      <span className={`absolute bottom-0 left-0 h-0.5 bg-[#f37021] transition-all duration-300 ${
+      <span className={`absolute bottom-0 left-0 h-0.5 bg-[#3A6EA5] transition-all duration-300 ${
         isActive ? "w-full" : "w-0 group-hover:w-full"
       }`}></span>
     </Link>
