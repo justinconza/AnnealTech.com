@@ -395,19 +395,22 @@ const AboutPage = () => {
       </section>
       
       {/* Community & Values */}
-      <section className="py-16 md:py-24 bg-slate">
+      <section className="py-16 md:py-24 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-block p-3 bg-accent/10 rounded-lg text-accent mb-4">
+              <div className="inline-block p-3 bg-blue-600 rounded-lg text-white mb-4">
                 <Heart className="h-6 w-6" />
               </div>
               
-              <h2 className="text-3xl font-heading font-bold text-foreground mb-4">
-                Our Community Involvement
+              <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+                <span className="relative inline-block">
+                  Our Community Involvement
+                  <span className="absolute -bottom-1 left-0 w-1/3 h-1 bg-blue-500"></span>
+                </span>
               </h2>
               
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-slate-600 mb-6">
                 At AnnealTech, we believe in giving back to the communities where we live and work. 
                 Our commitment extends beyond providing excellent IT services to actively contributing 
                 to initiatives that foster education, inclusion, and technological advancement.
@@ -459,9 +462,9 @@ const AboutPage = () => {
                 />
               </div>
               
-              <div className="absolute top-4 left-4 bg-slate/80 backdrop-blur-sm p-4 rounded-lg border border-accent/10 max-w-xs">
-                <h3 className="font-heading font-medium text-foreground mb-1">Committed to Excellence</h3>
-                <p className="text-sm text-muted-foreground">
+              <div className="absolute top-4 left-4 bg-blue-600/90 backdrop-blur-sm p-4 rounded-lg border border-blue-500 max-w-xs shadow-lg">
+                <h3 className="font-heading font-medium text-white mb-1">Committed to Excellence</h3>
+                <p className="text-sm text-blue-100">
                   Not just in technology, but in making a positive impact on our world.
                 </p>
               </div>
@@ -471,21 +474,21 @@ const AboutPage = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-steel/20">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-slate p-8 md:p-12 rounded-lg border border-accent/10 text-center">
-            <h2 className="text-3xl font-heading font-bold text-foreground mb-4">
+          <div className="max-w-4xl mx-auto bg-blue-900 p-8 md:p-12 rounded-lg border border-blue-700 shadow-xl text-center">
+            <h2 className="text-3xl font-heading font-bold text-white mb-4">
               Ready to Experience the AnnealTech Difference?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
               Join hundreds of businesses that have transformed their IT infrastructure with our 
               managed services and security solutions.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button className="bg-accent hover:bg-accent/80 text-white">
+              <Button className="bg-blue-500 hover:bg-blue-400 text-white border-blue-400">
                 Contact Us
               </Button>
-              <Button variant="outline" className="border-accent/20 text-accent hover:bg-accent/10">
+              <Button variant="outline" className="border-blue-400 text-white hover:bg-blue-800">
                 Explore Our Services
               </Button>
             </div>
