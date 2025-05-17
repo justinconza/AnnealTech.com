@@ -198,40 +198,29 @@ const HeroSection = () => {
 const ChallengesSection = () => {
   const challenges = [
     {
-      title: "Budget Pressure",
-      description: "Rising costs and capital constraints impact IT investment ability, forcing CRE firms to prioritize spending.",
-      icon: DollarSign,
-      glowColor: "from-blue-400/20 via-blue-600/30 to-blue-400/20"
+      challenge: "Inconsistent IT support across locations",
+      solution: "Centralized 24/7 support for remote and on-site needs",
+      icon: Building
     },
     {
-      title: "Vulnerable Systems",
-      description: "Weak perimeter security and outdated systems create entry points for attackers targeting sensitive tenant data.",
-      icon: Shield,
-      glowColor: "from-red-400/20 via-red-500/30 to-red-400/20"
+      challenge: "Cyber risks to tenant or investor data",
+      solution: "Always-on monitoring, endpoint protection, and user training",
+      icon: Shield
     },
     {
-      title: "Staff Inefficiency",
-      description: "Undertrained teams struggle with complex tools, reducing productivity and creating operational bottlenecks.",
-      icon: Users,
-      glowColor: "from-amber-400/20 via-amber-500/30 to-amber-400/20"
+      challenge: "Staff not using tools efficiently",
+      solution: "Hands-on business app training and onboarding",
+      icon: Users
     },
     {
-      title: "Slow Response Times",
-      description: "Delayed support and maintenance cause downtime that impacts tenant satisfaction and property operations.",
-      icon: Clock,
-      glowColor: "from-emerald-400/20 via-emerald-500/30 to-emerald-400/20"
+      challenge: "Delayed support requests and maintenance",
+      solution: "SLA-backed response and fulfillment within guaranteed timeframes",
+      icon: Clock
     },
     {
-      title: "Multi-Site Complexity",
-      description: "Disjointed IT infrastructure across properties creates inconsistent experiences and security gaps.",
-      icon: Building,
-      glowColor: "from-violet-400/20 via-violet-500/30 to-violet-400/20"
-    },
-    {
-      title: "Limited Visibility",
-      description: "Lack of proper monitoring and reporting leaves CRE firms with minimal insight into risks and performance.",
-      icon: BarChart,
-      glowColor: "from-cyan-400/20 via-cyan-500/30 to-cyan-400/20"
+      challenge: "Little visibility into risk or performance",
+      solution: "Monthly reporting and strategic reviews",
+      icon: BarChart
     }
   ];
 
@@ -246,9 +235,14 @@ const ChallengesSection = () => {
   }));
 
   return (
-    <section className="py-16 md:py-24 bg-slate-900 relative overflow-hidden">
-      {/* Background gradients and effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-blue-950/80 to-slate-900/90 z-0"></div>
+    <section className="py-16 md:py-24 bg-gradient-to-b from-white to-blue-50 relative">
+      {/* Decorative shapes */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 1200 1000" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute opacity-[0.03] text-blue-900" preserveAspectRatio="none">
+          <path d="M0 0L1200 0L1200 1000L0 1000L0 0Z" fill="currentColor"/>
+          <path d="M0 1000L1200 0L1200 1000L0 1000Z" fill="currentColor"/>
+        </svg>
+      </div>
       
       {/* Subtle animated gradient background */}
       <motion.div 
@@ -648,9 +642,9 @@ const ServicesSection = () => {
   }));
   
   return (
-    <section className="py-16 md:py-24 bg-slate-900 relative overflow-hidden" aria-labelledby="services-heading">
-      {/* Dark forged metal background with blue accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 opacity-100"></div>
+    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-blue-100 relative overflow-hidden" aria-labelledby="services-heading">
+      {/* Animated light blue background */}
+      <div className="absolute inset-0 bg-blue-50 opacity-60"></div>
       
       {/* Metal texture overlay */}
       <div className="absolute inset-0 opacity-5"
