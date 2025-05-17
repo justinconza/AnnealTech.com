@@ -13,7 +13,8 @@ import {
   Server,
   ArrowRight,
   ShieldCheck,
-  Zap
+  Zap,
+  DollarSign
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
