@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import { useState, useEffect, useRef } from "react";
 import { 
   Building, 
   Shield, 
@@ -21,7 +22,7 @@ import { Link } from "wouter";
 // Components for the CRE industry page
 const HeroSection = () => {
   return (
-    <section className="pt-0 pb-8 md:pb-16 bg-gradient-to-b from-blue-900 to-blue-800 text-white relative overflow-hidden">
+    <section className="pt-0 pb-4 md:pb-8 bg-gradient-to-b from-blue-900 to-blue-800 text-white relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-10 bg-circuit"></div>
       
@@ -94,7 +95,7 @@ const HeroSection = () => {
         ))}
       </div>
       
-      <div className="container mx-auto px-4 relative z-10 flex items-center min-h-[50vh]">
+      <div className="container mx-auto px-4 pt-16 md:pt-20 pb-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -818,6 +819,110 @@ const CTASection = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+// Forged Steel Divider Component
+const ForgedSteelDivider = () => {
+  const [visible, setVisible] = useState(false);
+  const [embers, setEmbers] = useState<{ id: number; left: number; delay: number; xShift: number }[]>([]);
+  const dividerRef = useRef<HTMLDivElement>(null);
+  const [playSoundEffect] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          
+          // Play sound effect if enabled
+          if (playSoundEffect && audioRef.current) {
+            audioRef.current.volume = 0.2;
+            audioRef.current.play().catch(() => {
+              // Autoplay blocked - which is expected
+            });
+          }
+          
+          // Create embers
+          createEmbers();
+          
+          // Stop observing once visible
+          if (dividerRef.current) {
+            observer.unobserve(dividerRef.current);
+          }
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (dividerRef.current) {
+      observer.observe(dividerRef.current);
+    }
+
+    return () => {
+      if (dividerRef.current) {
+        observer.unobserve(dividerRef.current);
+      }
+    };
+  }, [playSoundEffect]);
+
+  // Generate embers at random intervals
+  useEffect(() => {
+    if (!visible) return;
+    
+    const interval = setInterval(() => {
+      createEmbers(1);
+    }, 2000);
+    
+    return () => clearInterval(interval);
+  }, [visible]);
+
+  const createEmbers = (count = 5) => {
+    const newEmbers = Array.from({ length: count }, (_, i) => ({
+      id: Date.now() + i,
+      left: Math.random() * 80 + 10, // 10-90% of width
+      delay: Math.random() * 500, // 0-500ms delay
+      xShift: (Math.random() - 0.5) * 20, // -10px to 10px x-shift
+    }));
+    
+    setEmbers(prev => [...prev, ...newEmbers]);
+    
+    // Remove embers after animation completes
+    setTimeout(() => {
+      setEmbers(prev => prev.filter(ember => 
+        !newEmbers.some(newEmber => newEmber.id === ember.id)
+      ));
+    }, 3500);
+  };
+
+  return (
+    <div className="my-16 container mx-auto px-4">
+      {playSoundEffect && (
+        <audio ref={audioRef} preload="auto">
+          <source src="/metal-clang.mp3" type="audio/mpeg" />
+        </audio>
+      )}
+      
+      <div 
+        ref={dividerRef}
+        className={`forged-steel-divider max-w-3xl mx-auto ${visible ? 'visible' : ''}`}
+      >
+        {/* Ember sparks */}
+        {embers.map(ember => (
+          <div
+            key={ember.id}
+            className="ember ember-animation"
+            style={{
+              left: `${ember.left}%`,
+              bottom: '0px',
+              animationDelay: `${ember.delay}ms`,
+              '--x-shift': `${ember.xShift}px`,
+            } as React.CSSProperties}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 

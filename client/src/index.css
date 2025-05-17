@@ -584,3 +584,118 @@
   position: relative;
   z-index: 5;
 }
+
+/* Forged Steel Divider Animation */
+.forged-steel-divider {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(
+    90deg, 
+    rgba(10, 10, 15, 0.9) 0%, 
+    rgba(51, 65, 85, 1) 30%, 
+    rgba(71, 85, 105, 1) 50%, 
+    rgba(51, 65, 85, 1) 70%, 
+    rgba(10, 10, 15, 0.9) 100%
+  );
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 
+    0 0 10px rgba(59, 130, 246, 0.3),
+    0 0 20px rgba(59, 130, 246, 0.1);
+  transform: scaleX(0);
+  transform-origin: center;
+  opacity: 0;
+  transition: transform 1.5s ease, opacity 1s ease;
+}
+
+.forged-steel-divider.visible {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.forged-steel-divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(245, 158, 11, 0.1) 50%,
+    transparent 100%
+  );
+  animation: steel-pulse 4s infinite ease-in-out;
+}
+
+.forged-steel-divider::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(59, 130, 246, 0.2) 30%,
+    rgba(59, 130, 246, 0.4) 50%,
+    rgba(59, 130, 246, 0.2) 70%,
+    transparent 100%
+  );
+  animation: steel-glow 3s infinite alternate ease-in-out;
+}
+
+/* Ember sparks */
+.ember {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.8);
+  box-shadow: 0 0 6px rgba(245, 158, 11, 1);
+  opacity: 0;
+  z-index: 1;
+}
+
+.ember-animation {
+  animation: ember-float 3s ease-out forwards;
+}
+
+@keyframes ember-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) translateX(var(--x-shift, 10px));
+    opacity: 0;
+  }
+}
+
+@keyframes steel-pulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scaleX(0.95);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes steel-glow {
+  0% {
+    opacity: 0.3;
+    filter: brightness(0.9);
+  }
+  100% {
+    opacity: 0.6;
+    filter: brightness(1.2);
+  }
+}
