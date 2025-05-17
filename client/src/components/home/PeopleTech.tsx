@@ -1,11 +1,48 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Users, ShieldCheck, Zap, ArrowRight } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const PeopleTech = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+  
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    
+    if (isVisible && videoRef.current) {
+      // Add a 1-2 second delay before playing the video
+      timeoutId = setTimeout(() => {
+        videoRef.current?.play();
+        setIsPlaying(true);
+      }, 1500); // 1.5 second delay
+    }
+    
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isVisible]);
   // Features with animations
   const features = [
     {
@@ -26,7 +63,7 @@ const PeopleTech = () => {
   ];
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 right-0 -mr-40 -mt-40 w-80 h-80 rounded-full bg-blue-500/5"></div>

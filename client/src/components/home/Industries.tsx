@@ -107,7 +107,8 @@ const Industries = () => {
       </div>
       
       {/* Custom styles for white navigation arrows */}
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .industries-swiper .swiper-button-next,
         .industries-swiper .swiper-button-prev {
           color: white;
@@ -118,7 +119,8 @@ const Industries = () => {
         .industries-swiper .swiper-pagination-bullet-active {
           background: white;
         }
-      `}</style>
+        `
+      }}></style>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
