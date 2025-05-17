@@ -1,55 +1,79 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { services } from "@/data/services";
+import { services } from "@/data/services-updated";
+import { motion } from "framer-motion";
 
-// Service Card component with forge-inspired design
+// Service Card component with professional dark design
 const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {
   return (
-    <div className="glow-card bg-white p-6 rounded-lg border border-[#3A6EA5]/10 relative hover:border-[#3A6EA5]/30 transition-all group shadow-sm">
-      {/* Top section with icon */}
-      <div className="flex items-start justify-between mb-4">
-        <div className="p-3 bg-[#3A6EA5]/10 rounded-md text-[#3A6EA5]">
-          <service.icon className="h-6 w-6" />
-        </div>
-        <div className="w-10 h-10 flex items-center justify-center">
-          <span className="text-[#3A6EA5]/20 font-display font-bold text-xl group-hover:text-[#3A6EA5]/70 transition-colors">
-            {(index + 1).toString().padStart(2, '0')}
-          </span>
-        </div>
-      </div>
-      
-      {/* Content */}
-      <h3 className="text-xl font-heading font-semibold mb-3 text-slate-800">{service.title}</h3>
-      <p className="text-slate-600 mb-5 text-sm">
-        {service.description}
-      </p>
-      
-      {/* Tools badges */}
-      <div className="flex flex-wrap gap-2 mb-5">
-        {service.tools?.map((tool, i) => (
-          <Badge key={i} variant="outline" className="bg-transparent border-[#3A6EA5]/20 text-[#3A6EA5] text-xs">
-            {tool}
-          </Badge>
-        ))}
-      </div>
-      
-      {/* Learn more button */}
-      <a 
-        href="#" 
-        className="text-[#3A6EA5] font-medium inline-flex items-center text-sm hover:text-[#2D5D94] transition-colors group-hover:underline"
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group"
+    >
+      <div 
+        className="h-full bg-slate-800 p-6 rounded-lg border border-slate-700 relative 
+        hover:border-[#0d4f86] transition-all shadow-md hover:shadow-[#0d4f86]/30
+        hover:scale-[1.02] duration-300 flex flex-col"
       >
-        Learn more
-        <ArrowUpRight className="ml-1 h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-      </a>
-    </div>
+        {/* Subtle glow effect on hover */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0d4f86]/0 to-[#0d4f86]/0 
+          group-hover:from-[#0d4f86]/5 group-hover:to-[#0d4f86]/10 rounded-lg transition-all duration-300"></div>
+        
+        {/* Top section with icon */}
+        <div className="flex items-start justify-between mb-4 relative z-10">
+          <div className="p-3 bg-[#0d4f86]/20 rounded-md text-[#4a9eff] group-hover:bg-[#0d4f86]/30 
+            group-hover:text-[#5aafff] transition-all duration-300">
+            <service.icon className="h-6 w-6" />
+          </div>
+          <div className="w-10 h-10 flex items-center justify-center">
+            <span className="text-slate-600 font-display font-bold text-xl group-hover:text-[#0d4f86]/70 transition-colors">
+              {(index + 1).toString().padStart(2, '0')}
+            </span>
+          </div>
+        </div>
+        
+        {/* Content */}
+        <h3 className="text-xl font-heading font-semibold mb-3 text-white group-hover:text-white/95">{service.title}</h3>
+        <p className="text-slate-300 mb-5 text-sm flex-grow">
+          {service.description}
+        </p>
+        
+        {/* Features list */}
+        <div className="mb-5">
+          <h4 className="text-xs uppercase text-[#4a9eff] font-semibold tracking-wider mb-2">Key Features</h4>
+          <ul className="space-y-1">
+            {service.features?.map((feature, i) => (
+              <li key={i} className="text-slate-400 text-xs flex items-start">
+                <span className="text-[#4a9eff] mr-1.5 text-xs">✓</span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        {/* Learn more button */}
+        <div className="mt-auto">
+          <a 
+            href="#" 
+            className="text-[#4a9eff] font-medium inline-flex items-center text-sm hover:text-[#5aafff] transition-colors group-hover:underline"
+          >
+            Learn more
+            <ArrowUpRight className="ml-1 h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
 // Main Services component
 const Services = () => {
   return (
-    <section id="services" className="py-24 md:py-32 bg-slate relative overflow-hidden">
+    <section id="services" className="py-16 md:py-24 bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden">
       {/* Background pattern */}
       <div 
         className="absolute inset-0 z-0 opacity-5" 
@@ -59,37 +83,53 @@ const Services = () => {
         aria-hidden="true"
       ></div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 max-w-screen-xl relative z-10">
         {/* Section header */}
-        <div className="max-w-2xl mb-16">
-          <div className="inline-block bg-[#3A6EA5]/10 border border-[#3A6EA5]/20 rounded-full px-4 py-1 mb-4">
-            <span className="text-[#3A6EA5] font-heading text-sm font-medium tracking-wider">OUR SERVICES</span>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto mb-16 text-center"
+        >
+          <div className="inline-block bg-[#0d4f86]/10 border border-[#0d4f86]/20 rounded-full px-4 py-1 mb-4">
+            <span className="text-[#0d4f86] font-heading text-sm font-medium tracking-wider">OUR SERVICES</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-800 mb-4">
-            Comprehensive Managed IT & Security Solutions
+            <span className="relative inline-block">
+              Comprehensive Managed IT & Security Solutions
+              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-[#0d4f86]"></span>
+            </span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl">
+          <p className="text-lg text-slate-600 mx-auto">
             We provide end-to-end managed services to transform your IT infrastructure into a secure, reliable, and performance-driven business asset.
           </p>
-        </div>
+        </motion.div>
         
         {/* Services grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.slice(0, 6).map((service, index) => (
             <ServiceCard key={index} service={service} index={index} />
           ))}
         </div>
         
         {/* View all services button */}
-        <div className="mt-12 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-12 text-center"
+        >
           <Button 
-            className="bg-[#3A6EA5] hover:bg-[#2D5D94] text-white font-heading px-8 py-6 rounded-md transition-all flex items-center mx-auto gap-2 group shadow-sm"
+            className="bg-[#0d4f86] hover:bg-[#0a3e6a] text-white font-heading px-8 py-6 rounded-md 
+            transition-all flex items-center mx-auto gap-2 group shadow-lg hover:shadow-[#0d4f86]/30"
             variant="default"
           >
             <span>View All Services</span>
             <ArrowRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
