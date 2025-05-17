@@ -1,6 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom animations */
+@keyframes pulse-gradient {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.2; }
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0); opacity: var(--initial-opacity, 0.4); }
+  100% { transform: translateY(-100px); opacity: 0; }
+}
+
+.flame {
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(circle at 60% 40%, #0d4f86, transparent);
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  animation: flame 1.5s infinite alternate;
+  transform-origin: center bottom;
+  opacity: 0.7;
+  filter: blur(1px);
+}
+
+.flame-inner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 60% 40%, #4a9eff, transparent);
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  top: 3px;
+  left: 4px;
+  filter: blur(1px);
+}
+
+@keyframes flame {
+  0% { transform: scale(1) rotate(-2deg); }
+  50% { transform: scale(0.9) rotate(2deg); }
+  100% { transform: scale(1.1) rotate(-1deg); }
+}
  
 @layer base {
   :root {

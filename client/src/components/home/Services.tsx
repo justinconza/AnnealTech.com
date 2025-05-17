@@ -171,16 +171,16 @@ const Services = () => {
           transition={{ duration: 0.7 }}
           className="max-w-3xl mx-auto mb-16 text-center"
         >
-          <div className="inline-block bg-[#0d4f86]/10 border border-[#0d4f86]/20 rounded-full px-4 py-1 mb-4">
-            <span className="text-[#0d4f86] font-heading text-sm font-medium tracking-wider">OUR SERVICES</span>
+          <div className="inline-block bg-[#0d4f86]/30 border border-[#0d4f86]/40 rounded-full px-4 py-1 mb-4">
+            <span className="text-[#4a9eff] font-heading text-sm font-medium tracking-wider">OUR SERVICES</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
             <span className="relative inline-block">
               Comprehensive Managed IT & Security Solutions
-              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-[#0d4f86]"></span>
+              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-[#4a9eff]"></span>
             </span>
           </h2>
-          <p className="text-lg text-slate-600 mx-auto">
+          <p className="text-lg text-blue-100 mx-auto">
             We provide end-to-end managed services to transform your IT infrastructure into a secure, reliable, and performance-driven business asset.
           </p>
         </motion.div>
@@ -201,8 +201,8 @@ const Services = () => {
           className="mt-12 text-center"
         >
           <Button 
-            className="bg-[#0d4f86] hover:bg-[#0a3e6a] text-white font-heading px-8 py-6 rounded-md 
-            transition-all flex items-center mx-auto gap-2 group shadow-lg hover:shadow-[#0d4f86]/30"
+            className="bg-[#4a9eff] hover:bg-[#3a8eff] text-white font-heading px-8 py-6 rounded-md 
+            transition-all flex items-center mx-auto gap-2 group shadow-lg hover:shadow-[#4a9eff]/50"
             variant="default"
           >
             <span>View All Services</span>
