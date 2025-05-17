@@ -1,9 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Hammer, ArrowUpRight, Shield } from "lucide-react";
-// Use the attached assets directly
-import logoImage from "../../../attached_assets/AT White transparent background (5).avif";
+import { Menu, X, ArrowUpRight, Shield } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -115,7 +113,7 @@ const Header = () => {
         <div className="flex items-center">
           <Link href="/" className="group flex items-center">
             <img 
-              src={logoImage} 
+              src="/images/annealtech-logo.avif" 
               alt="AnnealTech logo" 
               className="h-12 w-auto mr-3"
             />
