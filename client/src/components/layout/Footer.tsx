@@ -145,14 +145,14 @@ const Footer = () => {
                 <span className="text-[#EBF1F8]">1234 Innovation Drive, Suite 500<br />San Francisco, CA 94105</span>
               </li>
               <li className="flex">
-                <Phone className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#f37021]" />
-                <a href="tel:+14155550123" className="text-[#e5e5e5] hover:text-[#f37021] transition-colors">
+                <Phone className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#F05A22]" />
+                <a href="tel:+14155550123" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors">
                   +1 (415) 555-0123
                 </a>
               </li>
               <li className="flex">
-                <Mail className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#f37021]" />
-                <a href="mailto:info@annealtech.com" className="text-[#e5e5e5] hover:text-[#f37021] transition-colors">
+                <Mail className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#F05A22]" />
+                <a href="mailto:info@annealtech.com" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors">
                   info@annealtech.com
                 </a>
               </li>
@@ -160,7 +160,7 @@ const Footer = () => {
             
             <div className="mt-6">
               <Button 
-                className="bg-[#0d4f86] hover:bg-[#f37021] text-white font-medium rounded-md transition-colors duration-300 group flex items-center gap-2"
+                className="bg-[#0E3F6E] hover:bg-[#F05A22] text-white font-medium rounded-md transition-colors duration-300 shadow-sm group flex items-center gap-2"
               >
                 <span>Book Demo</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -170,15 +170,15 @@ const Footer = () => {
         </div>
         
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-[#e5e5e5]/10">
+        <div className="pt-8 border-t border-[#EBF1F8]/10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-            <div className="text-[#e5e5e5] text-sm">
+            <div className="text-[#EBF1F8] text-sm">
               &copy; {new Date().getFullYear()} AnnealTech. All rights reserved.
             </div>
-            <div className="text-[#e5e5e5] text-sm md:text-right flex flex-wrap md:justify-end gap-6">
-              <a href="#" className="hover:text-[#f37021] transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-[#f37021] transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-[#f37021] transition-colors">Sitemap</a>
+            <div className="text-[#EBF1F8] text-sm md:text-right flex flex-wrap md:justify-end gap-6">
+              <a href="#" className="hover:text-[#F05A22] transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-[#F05A22] transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-[#F05A22] transition-colors">Sitemap</a>
             </div>
           </div>
         </div>
