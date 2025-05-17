@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Users, ShieldCheck, Zap, ArrowRight } from "lucide-react";
+import { useState, useRef } from "react";
 
 const PeopleTech = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   // Features with animations
   const features = [
     {
@@ -116,12 +119,23 @@ const PeopleTech = () => {
               {/* Video embed */}
               <div className="relative rounded-xl overflow-hidden shadow-2xl">
                 <video 
+                  ref={videoRef}
                   className="w-full h-auto" 
-                  autoPlay 
                   loop 
                   muted 
                   playsInline
                   src="https://video.wixstatic.com/video/f5985d_c58d8f54bf3b4368ba44fae9bac277bf/360p/mp4/file.mp4"
+                  onClick={() => {
+                    if (videoRef.current) {
+                      if (videoRef.current.paused) {
+                        videoRef.current.play();
+                        setIsPlaying(true);
+                      } else {
+                        videoRef.current.pause();
+                        setIsPlaying(false);
+                      }
+                    }
+                  }}
                 >
                   Your browser does not support the video tag.
                 </video>
@@ -129,28 +143,36 @@ const PeopleTech = () => {
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent pointer-events-none"></div>
                 
-                {/* Play button (decorative) */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div 
-                    className="w-20 h-20 rounded-full bg-white/80 flex items-center justify-center cursor-pointer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    animate={{
-                      boxShadow: ['0 0 0 0px rgba(59, 130, 246, 0.5)', '0 0 0 20px rgba(59, 130, 246, 0)'],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      repeatType: 'loop'
-                    }}
-                  >
-                    <div className="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                  </motion.div>
-                </div>
+                {/* Play button - only shown when video is paused */}
+                {!isPlaying && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <motion.div 
+                      className="w-20 h-20 rounded-full bg-white/80 flex items-center justify-center cursor-pointer"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      animate={{
+                        boxShadow: ['0 0 0 0px rgba(59, 130, 246, 0.5)', '0 0 0 20px rgba(59, 130, 246, 0)'],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        repeatType: 'loop'
+                      }}
+                      onClick={() => {
+                        if (videoRef.current) {
+                          videoRef.current.play();
+                          setIsPlaying(true);
+                        }
+                      }}
+                    >
+                      <div className="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white ml-1" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    </motion.div>
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>

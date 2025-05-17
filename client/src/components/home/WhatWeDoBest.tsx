@@ -177,7 +177,7 @@ const WhatWeDoBest = () => {
     }
   ];
 
-  // Group services by category for display
+  // Group services by category
   const serviceGroups = {
     communication: services.filter(s => s.category === 'communication'),
     managed: services.filter(s => s.category === 'managed'),
@@ -185,25 +185,39 @@ const WhatWeDoBest = () => {
     advisory: services.filter(s => s.category === 'advisory')
   };
 
-  // Category titles and descriptions
+  // Category information
   const categoryInfo = {
     communication: {
       title: "Communication & Data Solutions",
-      description: "Enhance productivity and streamline data management with our enterprise tools and migration services."
+      description: "Enhance productivity and streamline data management with our enterprise tools and migration services.",
+      color: '#0D3F6E',
+      icon: Cloud
     },
     managed: {
       title: "Managed Experience Solutions",
-      description: "Comprehensive IT infrastructure management with predictable pricing and proactive security measures."
+      description: "Comprehensive IT infrastructure management with predictable pricing and proactive security measures.",
+      color: '#0E4D82',
+      icon: ServerCog
     },
     professional: {
       title: "Technology Professional Services",
-      description: "Expert training, staffing, and project management services to elevate your IT capabilities."
+      description: "Expert training, staffing, and project management services to elevate your IT capabilities.",
+      color: '#0E5C98',
+      icon: GraduationCap
     },
     advisory: {
       title: "Advisory Services",
-      description: "Strategic assessments and planning to optimize your IT investments and security posture."
+      description: "Strategic assessments and planning to optimize your IT investments and security posture.",
+      color: '#0F6AAE',
+      icon: BarChart3
     }
   };
+
+  // Combine all services into a single array for display
+  const allServices = services.sort((a, b) => {
+    const order = ['communication', 'managed', 'professional', 'advisory'];
+    return order.indexOf(a.category) - order.indexOf(b.category);
+  });
 
   return (
     <section className="py-24 relative overflow-hidden bg-forging-tech">
@@ -261,39 +275,57 @@ const WhatWeDoBest = () => {
           </p>
         </motion.div>
 
-        {/* Render each category section */}
-        {Object.entries(categoryInfo).map(([category, info], categoryIndex) => (
-          <div key={category} className="mb-16">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
-              <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-3">
-                {info.title}
-              </h3>
-              <p className="text-lg text-slate-600 max-w-3xl">
-                {info.description}
-              </p>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              {serviceGroups[category as ServiceCategory].map((service, index) => (
-                <ServiceCard 
-                  key={`${category}-${index}`}
-                  icon={service.icon}
-                  title={service.title}
-                  description={service.description}
-                  index={index}
-                  category={service.category}
-                  path={service.path}
-                />
-              ))}
-            </div>
+        {/* Service Categories - As a visual tabbed navigation */}
+        <div className="mb-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-4 mb-10"
+          >
+            {Object.entries(categoryInfo).map(([category, info]) => (
+              <motion.div
+                key={category}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white rounded-lg shadow-md p-4 flex items-center space-x-3 cursor-pointer"
+                style={{ borderTop: `3px solid ${info.color}` }}
+              >
+                <div 
+                  className="w-12 h-12 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: info.color }}
+                >
+                  <info.icon className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-800">{info.title}</h3>
+                  <p className="text-xs text-slate-500">{serviceGroups[category as ServiceCategory].length} services</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Service Cards in a grid */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {allServices.map((service, index) => (
+              <ServiceCard 
+                key={index}
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                index={index}
+                category={service.category}
+                path={service.path}
+              />
+            ))}
           </div>
-        ))}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
