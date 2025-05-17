@@ -1,0 +1,55 @@
+Revise and professionally restyle the “OUR SERVICES – Comprehensive Managed IT & Security Solutions” section on the homepage to align with AnnealTech’s visual branding and tone.
+
+Goals:
+- Improve layout, readability, spacing, and hover effects
+- Remove all product or vendor names (e.g., NinjaOne, HaloPSA, TeamViewer) — use function-based descriptions instead (e.g., “remote management platform”, “ticketing system”, “secure remote access”)
+- Match section formatting with other branded sections like “Partnership Timeline”
+
+Instructions:
+
+1. 🔠 Section Heading Block:
+   - Keep consistent formatting:
+     - H2: “OUR SERVICES” (uppercase, tracking-wider, small text, muted color)
+     - H1/H3: “Comprehensive Managed IT & Security Solutions” (larger, bold, readable)
+   - Use same typography, font-weight, and spacing as other major sections on the homepage
+
+2. 🧱 Grid Layout for Service Cards:
+   - Use a **responsive grid layout**:
+     - Mobile: 1 column
+     - Tablet: 2 columns
+     - Desktop: 3 or 4 columns
+   - Cards should be evenly spaced with good padding and consistent height
+   - Add spacing between cards but avoid excess white space
+
+3. 🧩 Each Service Card Should Include:
+   - Optional icon or visual (keep consistent size/placement)
+   - Bold title (e.g., “24/7 Help Desk Support”)
+   - Short 1–2 sentence benefit-focused description
+   - No mention of product names — refer only to service functionality
+
+   ✅ **Correct Examples**:
+   - ❌ "NinjaOne monitoring" → ✅ "Proactive device and endpoint monitoring"
+   - ❌ "HaloPSA integration" → ✅ "Streamlined ticketing and IT service workflows"
+   - ❌ "TeamViewer remote control" → ✅ "Secure remote troubleshooting and support"
+
+4. 🎨 Design & Visual Style:
+   - Card background: dark (e.g., `bg-slate-800` or `bg-[#1f1f1f]`)
+   - Accent/hover border: AnnealTech blue `#0d4f86`
+   - Rounded corners
+   - Subtle box shadow for elevation
+   - Hover effect: scale up slightly + soft glow (`hover:scale-[1.02] hover:shadow-blue-500/40`)
+
+5. 💻 Responsiveness & Clean Spacing:
+   - Ensure max-width container (`max-w-screen-xl`) and centered alignment
+   - Consistent vertical and horizontal padding (use `py-16 px-4` as baseline)
+   - Cards stack vertically on small screens and wrap cleanly on large screens
+
+6. ✨ Optional Interaction Enhancements:
+   - Add `scroll-fade` or `animate-fade-up` to cards as they enter viewport
+   - Include `group-hover` transitions for icons or titles (if applicable)
+   - Maintain accessibility: sufficient contrast and semantic HTML
+
+7. 🧼 Final Polish:
+   - Remove any inline styling or legacy layout junk
+   - Ensure all descriptions are customer-facing and non-technical where possible
+   - Validate visual consistency with sections above and below this block
