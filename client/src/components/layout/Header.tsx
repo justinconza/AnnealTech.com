@@ -164,7 +164,7 @@ const Header = () => {
           <Link href="/contact">
             <Button 
               variant="default" 
-              className="bg-[#0E3F6E] hover:bg-[#F05A22] text-white font-medium flex items-center gap-2 group transition-colors duration-300 shadow-sm"
+              className="bg-[#0E3F6E] hover:bg-[#3A6EA5] text-white font-medium flex items-center gap-2 group transition-colors duration-300 shadow-sm"
             >
               <span>Book Demo</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -176,7 +176,7 @@ const Header = () => {
         <Button 
           variant="ghost" 
           size="icon" 
-          className="md:hidden text-white hover:text-[#F05A22] hover:bg-transparent"
+          className="md:hidden text-white hover:text-[#3A6EA5] hover:bg-transparent"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -185,7 +185,7 @@ const Header = () => {
       
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#082C4F] border-t border-[#F05A22]/10 px-4 py-3">
+        <div className="md:hidden bg-[#082C4F] border-t border-[#3A6EA5]/10 px-4 py-3">
           <nav className="flex flex-col space-y-4">
             <NavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
             <NavLink href="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</NavLink>
@@ -201,9 +201,9 @@ const Header = () => {
                 <Link 
                   href="/embedded/tools" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center text-white font-medium hover:text-[#F05A22] transition-all py-1"
+                  className="flex items-center text-white font-medium hover:text-[#3A6EA5] transition-all py-1"
                 >
-                  <Shield className="mr-2 h-4 w-4 text-[#F05A22]" />
+                  <Shield className="mr-2 h-4 w-4 text-[#3A6EA5]" />
                   <span>Embeddable Tools Suite</span>
                 </Link>
               </div>
@@ -215,7 +215,7 @@ const Header = () => {
             <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
               <Button 
                 variant="default" 
-                className="bg-[#0E3F6E] hover:bg-[#F05A22] text-white font-medium mt-2 w-full flex items-center justify-center gap-2 transition-colors duration-300 shadow-sm"
+                className="bg-[#0E3F6E] hover:bg-[#3A6EA5] text-white font-medium mt-2 w-full flex items-center justify-center gap-2 transition-colors duration-300 shadow-sm"
               >
                 <span>Book Demo</span>
                 <ArrowUpRight className="w-4 h-4" />
