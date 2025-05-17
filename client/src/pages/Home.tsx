@@ -63,6 +63,7 @@ const Home = () => {
       <Industries />
       <PeopleTech />
       <Services />
+      <BlogSlider />
       <About />
       <Testimonials />
       <CTA />

@@ -16,37 +16,37 @@ const BlogSlider = () => {
     {
       id: 'remote-work',
       title: 'How do I facilitate hybrid and remote work?',
-      summary: 'No matter if your team is remote, hybrid or returning to the office, you need a plan for how to facilitate multiple styles and modes of work to stay competitive and profitable in your industry. Let's develop a plan that empowers your staff to do their best work, no matter where and when they do it.',
+      summary: "No matter if your team is remote, hybrid or returning to the office, you need a plan for how to facilitate multiple styles of work to stay competitive and profitable.",
       image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080'
     },
     {
       id: 'cloud-data',
       title: 'Can I move my data to the cloud?',
-      summary: 'Moving your businesses data is not always a simple process and can create significant disruption if done improperly. Our team specializes in getting your data from point A to point B while minimizing business disruption and increasing your future productivity.',
+      summary: "Moving your businesses data is not always a simple process. Our team specializes in getting your data from point A to point B while minimizing business disruption.",
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080'
     },
     {
       id: 'it-investment',
       title: 'How can I convince stakeholders to invest In IT?',
-      summary: 'Investing in IT, which is often seen as a "cost center" and not a revenue multiplier, can be immensely difficult. Come learn how we have guided IT leaders and business stakeholders how to effectively show the value their IT organization brings and how to grow through periods of market uncertainty and economic headwinds.',
+      summary: "Investing in IT can be difficult. Learn how we guide IT leaders and business stakeholders to effectively show the value their IT organization brings.",
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080'
     },
     {
       id: 'employee-risk',
       title: 'Are my employees putting us at risk?',
-      summary: 'Cyber attacks are becoming not just more common, but even more effective at getting past our digital defenses. By targeting employees, bad actors are getting our trusted team members to lower the bridges and opening the gates to our most sensitive business data. Building a moat around the castle isn\'t good enough anymore. Let\'s train your team members to be your greatest ally in defending your business.',
+      summary: "Cyber attacks are becoming more effective at getting past digital defenses. Build a strategy to train your team members to be your greatest cybersecurity ally.",
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080'
     },
     {
       id: 'it-talent',
       title: 'How do I find the right IT talent?',
-      summary: 'Hiring the right talent for IT is a skill all of it\'s own, and not one that many HR professionals have learned. Let\'s take the guesswork and confusion out of the IT talent acquisition process.',
+      summary: "Hiring the right talent for IT is a skill all of it's own, and not one that many HR professionals have learned. Take the guesswork out of the IT talent acquisition process.",
       image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080'
     },
     {
       id: 'ai-business',
       title: 'Does AI have a place in my business?',
-      summary: 'With all the hype around artificial intelligence, there can appear to be immense pressure to integrate these tools into your business and IT environment. Don\'t let hype drive your business decisions. Let\'s assess if and where AI can be leveraged to empower your team and business to be successful.',
+      summary: "Don't let hype drive your business decisions. Let's assess if and where AI can be leveraged to empower your team and business to be successful.",
       image: 'https://images.unsplash.com/photo-1671493751220-9fac23521d31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080'
     }
   ];
