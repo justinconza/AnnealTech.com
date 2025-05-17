@@ -352,8 +352,8 @@ const ChallengesSection = () => {
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row border-l-4 border-blue-600"
               >
-                <div className="md:w-7/12 p-6 md:p-8 flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full text-blue-600 flex-shrink-0 mt-1">
+                <div className="md:w-7/12 p-6 md:p-8 flex items-center gap-4">
+                  <div className="bg-blue-100 p-3 rounded-full text-blue-600 flex-shrink-0">
                     <item.icon className="h-6 w-6" />
                   </div>
                   <div>
