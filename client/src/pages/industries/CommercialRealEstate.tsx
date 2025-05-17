@@ -224,16 +224,6 @@ const ChallengesSection = () => {
     }
   ];
 
-  // Generate animated ember particles
-  const embers = Array.from({ length: 15 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 4 + 2,
-    left: Math.random() * 100,
-    delay: Math.random() * 5,
-    duration: Math.random() * 15 + 20,
-    opacity: Math.random() * 0.3 + 0.1
-  }));
-
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-white to-blue-50 relative">
       {/* Decorative shapes */}
@@ -243,23 +233,6 @@ const ChallengesSection = () => {
           <path d="M0 1000L1200 0L1200 1000L0 1000Z" fill="currentColor"/>
         </svg>
       </div>
-      
-      {/* Subtle animated gradient background */}
-      <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-slate-900/0 to-blue-800/10 z-0"
-        animate={{ 
-          background: [
-            "linear-gradient(to bottom right, rgba(30, 58, 138, 0.1), rgba(15, 23, 42, 0), rgba(30, 64, 175, 0.1))",
-            "linear-gradient(to bottom right, rgba(30, 64, 175, 0.1), rgba(15, 23, 42, 0), rgba(30, 58, 138, 0.1))",
-            "linear-gradient(to bottom right, rgba(30, 58, 138, 0.1), rgba(15, 23, 42, 0), rgba(30, 64, 175, 0.1))"
-          ]
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      
-      {/* Ember particles floating up */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-        {embers.map(ember => (
           <motion.div
             key={ember.id}
             className="absolute rounded-full bg-blue-400"
