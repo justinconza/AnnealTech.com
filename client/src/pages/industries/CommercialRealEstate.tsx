@@ -198,43 +198,101 @@ const HeroSection = () => {
 const ChallengesSection = () => {
   const challenges = [
     {
-      challenge: "Inconsistent IT support across locations",
-      solution: "Centralized 24/7 support for remote and on-site needs",
-      icon: Building
+      title: "Budget Pressure",
+      description: "Rising costs and capital constraints impact IT investment ability, forcing CRE firms to prioritize spending.",
+      icon: DollarSign,
+      glowColor: "from-blue-400/20 via-blue-600/30 to-blue-400/20"
     },
     {
-      challenge: "Cyber risks to tenant or investor data",
-      solution: "Always-on monitoring, endpoint protection, and user training",
-      icon: Shield
+      title: "Vulnerable Systems",
+      description: "Weak perimeter security and outdated systems create entry points for attackers targeting sensitive tenant data.",
+      icon: Shield,
+      glowColor: "from-red-400/20 via-red-500/30 to-red-400/20"
     },
     {
-      challenge: "Staff not using tools efficiently",
-      solution: "Hands-on business app training and onboarding",
-      icon: Users
+      title: "Staff Inefficiency",
+      description: "Undertrained teams struggle with complex tools, reducing productivity and creating operational bottlenecks.",
+      icon: Users,
+      glowColor: "from-amber-400/20 via-amber-500/30 to-amber-400/20"
     },
     {
-      challenge: "Delayed support requests and maintenance",
-      solution: "SLA-backed response and fulfillment within guaranteed timeframes",
-      icon: Clock
+      title: "Slow Response Times",
+      description: "Delayed support and maintenance cause downtime that impacts tenant satisfaction and property operations.",
+      icon: Clock,
+      glowColor: "from-emerald-400/20 via-emerald-500/30 to-emerald-400/20"
     },
     {
-      challenge: "Little visibility into risk or performance",
-      solution: "Monthly reporting and strategic reviews",
-      icon: BarChart
+      title: "Multi-Site Complexity",
+      description: "Disjointed IT infrastructure across properties creates inconsistent experiences and security gaps.",
+      icon: Building,
+      glowColor: "from-violet-400/20 via-violet-500/30 to-violet-400/20"
+    },
+    {
+      title: "Limited Visibility",
+      description: "Lack of proper monitoring and reporting leaves CRE firms with minimal insight into risks and performance.",
+      icon: BarChart,
+      glowColor: "from-cyan-400/20 via-cyan-500/30 to-cyan-400/20"
     }
   ];
 
+  // Generate animated ember particles
+  const embers = Array.from({ length: 15 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 4 + 2,
+    left: Math.random() * 100,
+    delay: Math.random() * 5,
+    duration: Math.random() * 15 + 20,
+    opacity: Math.random() * 0.3 + 0.1
+  }));
+
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-white to-blue-50 relative">
-      {/* Decorative shapes */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <svg width="100%" height="100%" viewBox="0 0 1200 1000" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute opacity-[0.03] text-blue-900" preserveAspectRatio="none">
-          <path d="M0 0L1200 0L1200 1000L0 1000L0 0Z" fill="currentColor"/>
-          <path d="M0 1000L1200 0L1200 1000L0 1000Z" fill="currentColor"/>
-        </svg>
+    <section className="py-16 md:py-24 bg-slate-900 relative overflow-hidden">
+      {/* Background gradients and effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-blue-950/80 to-slate-900/90 z-0"></div>
+      
+      {/* Subtle animated gradient background */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-slate-900/0 to-blue-800/10 z-0"
+        animate={{ 
+          background: [
+            "linear-gradient(to bottom right, rgba(30, 58, 138, 0.1), rgba(15, 23, 42, 0), rgba(30, 64, 175, 0.1))",
+            "linear-gradient(to bottom right, rgba(30, 64, 175, 0.1), rgba(15, 23, 42, 0), rgba(30, 58, 138, 0.1))",
+            "linear-gradient(to bottom right, rgba(30, 58, 138, 0.1), rgba(15, 23, 42, 0), rgba(30, 64, 175, 0.1))"
+          ]
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      
+      {/* Ember particles floating up */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+        {embers.map(ember => (
+          <motion.div
+            key={ember.id}
+            className="absolute rounded-full bg-blue-400"
+            style={{ 
+              width: `${ember.size}px`, 
+              height: `${ember.size}px`, 
+              left: `${ember.left}%`,
+              bottom: "-20px",
+              boxShadow: "0 0 10px 2px rgba(59, 130, 246, 0.3), 0 0 20px 6px rgba(59, 130, 246, 0.1)",
+              opacity: ember.opacity
+            }}
+            animate={{ 
+              y: [0, -Math.random() * 300 - 300],
+              opacity: [ember.opacity, 0],
+              x: [0, (Math.random() - 0.5) * 100]
+            }}
+            transition={{ 
+              duration: ember.duration,
+              repeat: Infinity,
+              delay: ember.delay,
+              ease: "easeOut"
+            }}
+          />
+        ))}
       </div>
     
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-20">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -242,147 +300,148 @@ const ChallengesSection = () => {
           transition={{ duration: 0.7 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
+          {/* Animated forge icon */}
           <motion.div 
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
+            initial={{ scale: 0, rotate: -180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 200, duration: 0.5 }}
-            className="inline-flex items-center justify-center p-3 bg-blue-100 rounded-full text-blue-600 mb-4"
+            transition={{ type: "spring", stiffness: 200, duration: 0.8 }}
+            className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-blue-800 to-blue-600 rounded-full text-white mb-6 shadow-lg shadow-blue-600/20 relative"
           >
-            <Building className="h-6 w-6" />
+            <Zap className="h-6 w-6" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 via-blue-600/30 to-blue-400/20" 
+              style={{
+                animation: "pulse-glow 2s ease-in-out infinite alternate"
+              }}
+            />
           </motion.div>
           
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-3xl font-heading font-bold text-slate-800 mb-6"
-          >
-            <span className="relative inline-block">
-              CRE Sector Challenges
-              <motion.span 
-                initial={{ width: 0 }}
-                whileInView={{ width: "50%" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="absolute -bottom-1 left-1/4 h-1 bg-blue-500"
-              ></motion.span>
-            </span>
-          </motion.h2>
+          {/* Section Heading with forge animation */}
+          <div className="overflow-hidden mb-2">
+            <motion.h2 
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-3xl md:text-4xl font-heading font-bold text-white mb-2 relative inline-block"
+            >
+              <div className="relative inline-block">
+                CRE Sector Challenges
+                <motion.span 
+                  initial={{ width: 0, left: "50%" }}
+                  whileInView={{ width: "100%", left: "0%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, delay: 0.8 }}
+                  className="absolute -bottom-1 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400"
+                  style={{
+                    boxShadow: "0 0 8px 1px rgba(59, 130, 246, 0.7)"
+                  }}
+                />
+              </div>
+            </motion.h2>
+          </div>
           
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg text-slate-600"
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="text-lg text-blue-100/90 mb-4"
           >
-            Commercial Real Estate companies operate across numerous sites with complex staff structures and sensitive tenant data. 
-            Many face downtime, cyber risks, and compliance gaps caused by fragmented IT and undertrained staff.
+            Commercial Real Estate firms face unique IT pressures that impact operations,
+            security, and tenant satisfaction.
           </motion.p>
           
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg text-slate-600 mt-4"
+            transition={{ duration: 0.7, delay: 0.6 }}
+            className="text-lg text-blue-100/80"
           >
-            AnnealTech is your Managed Experience Provider—offering end-to-end, secure, human-first IT services built around your unique business model.
+            AnnealTech's solutions are forged to address these core challenges, strengthening your foundations.
           </motion.p>
         </motion.div>
         
-        <div className="space-y-5 max-w-5xl mx-auto">
+        {/* Challenge cards in a responsive grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {challenges.map((item, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
-              className="relative"
+              transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+              whileHover={{ 
+                y: -8,
+                boxShadow: "0 15px 30px -10px rgba(0, 0, 0, 0.5), 0 0 10px rgba(59, 130, 246, 0.3)",
+                transition: { duration: 0.2 }
+              }}
+              className="challenge-card relative rounded-lg overflow-hidden"
             >
-              <motion.div 
-                whileHover={{ scale: 1.01 }}
-                className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row border-l-4 border-blue-600"
-              >
-                <div className="md:w-7/12 p-6 md:p-8 flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full text-blue-600 flex-shrink-0 mt-1">
-                    <item.icon className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-heading font-bold text-slate-800 mb-2">
-                      {item.challenge}
-                    </h3>
-                    <p className="text-slate-600">
-                      {item.solution}
-                    </p>
-                  </div>
-                </div>
+              <div className="forged-metal-card h-full flex flex-col bg-gradient-to-br from-slate-800 via-slate-700/95 to-slate-800 backdrop-blur-sm border border-slate-700 rounded-lg shadow-xl relative z-10">
+                {/* Color gradient glow on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.glowColor} opacity-0 hover:opacity-40 transition-opacity duration-700 ease-in-out rounded-lg z-0`}></div>
                 
-                <div className="bg-gradient-to-r from-blue-800 to-blue-600 md:w-5/12 p-6 md:p-8 text-white flex items-center justify-center relative overflow-hidden">
-                  <div className="relative z-10">
+                {/* Card content */}
+                <div className="p-6 z-10 flex-grow flex flex-col h-full">
+                  <div className="flex items-center mb-4">
+                    {/* Icon with glow effect */}
                     <motion.div 
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ 
-                        type: "spring", 
-                        stiffness: 300, 
-                        delay: index * 0.1 + 0.6 
-                      }}
-                      className="flex items-center justify-center mb-4"
+                      whileHover={{ scale: 1.1, rotate: [0, 5, -5, 0] }}
+                      transition={{ duration: 0.3 }}
+                      className="mr-4 p-4 rounded-lg bg-gradient-to-br from-blue-900 to-blue-700 text-blue-100 shadow-lg relative"
                     >
-                      <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                        <ShieldCheck className="h-8 w-8" />
-                      </div>
+                      <item.icon className="h-6 w-6 z-10 relative" />
+                      <motion.div 
+                        className="absolute inset-0 rounded-lg"
+                        initial={{ opacity: 0.3 }}
+                        animate={{ 
+                          opacity: [0.3, 0.6, 0.3],
+                          boxShadow: [
+                            "0 0 0 0 rgba(59, 130, 246, 0)",
+                            "0 0 15px 3px rgba(59, 130, 246, 0.5)",
+                            "0 0 0 0 rgba(59, 130, 246, 0)"
+                          ]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      />
                     </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 + 0.8 }}
-                      className="text-center"
-                    >
-                      <div className="uppercase text-xs tracking-wider mb-1 text-blue-100">AnnealTech Solution</div>
-                      <div className="text-lg font-semibold">{index % 3 === 0 ? "Enterprise Support" : index % 3 === 1 ? "Advanced Security" : "Smart Solutions"}</div>
-                    </motion.div>
+                    
+                    <h3 className="text-xl font-heading font-bold text-white">
+                      {item.title}
+                    </h3>
                   </div>
                   
-                  {/* Animated background particles */}
-                  <div className="absolute inset-0">
-                    {[...Array(5)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className="absolute w-1 h-1 bg-white rounded-full"
-                        initial={{ 
-                          x: Math.random() * 100 + "%", 
-                          y: Math.random() * 100 + "%",
-                          opacity: 0.3
-                        }}
-                        animate={{ 
-                          y: [
-                            Math.random() * 100 + "%", 
-                            Math.random() * 100 + "%"
-                          ],
-                          opacity: [0.3, 0.8, 0.3]
-                        }}
-                        transition={{ 
-                          duration: Math.random() * 5 + 5,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
-                    ))}
-                  </div>
+                  <p className="text-blue-100/80 flex-grow">
+                    {item.description}
+                  </p>
                 </div>
-              </motion.div>
-              
-              {/* Connector line between cards except for the last one */}
-              {index < challenges.length - 1 && (
-                <div className="absolute left-8 top-full h-5 w-0.5 bg-blue-200 z-0"></div>
-              )}
+                
+                {/* Blue flame effect at bottom */}
+                <div className="h-1 w-full bg-gradient-to-r from-blue-800 via-blue-600 to-blue-800 relative overflow-hidden">
+                  <motion.div 
+                    className="absolute inset-0 opacity-75"
+                    animate={{
+                      background: [
+                        "linear-gradient(to right, rgba(29, 78, 216, 0), rgba(37, 99, 235, 1), rgba(29, 78, 216, 0))",
+                        "linear-gradient(to right, rgba(29, 78, 216, 0), rgba(59, 130, 246, 1), rgba(29, 78, 216, 0))",
+                        "linear-gradient(to right, rgba(29, 78, 216, 0), rgba(37, 99, 235, 1), rgba(29, 78, 216, 0))"
+                      ],
+                      x: ['-100%', '100%']
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </div>
+                
+                {/* Metal texture overlay */}
+                <div className="absolute inset-0 bg-slate-800/10 backdrop-blur-[1px] opacity-20 z-5 pointer-events-none" 
+                  style={{ 
+                    backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%%22 height=%22100%%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')",
+                    backgroundBlendMode: "multiply"
+                  }}
+                />
+              </div>
             </motion.div>
           ))}
         </div>

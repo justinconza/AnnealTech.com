@@ -699,3 +699,19 @@
     filter: brightness(1.2);
   }
 }
+
+/* Pulse glow animation for forge icon */
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.2;
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.1);
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 15px 5px rgba(59, 130, 246, 0.4);
+  }
+  100% {
+    opacity: 0.2;
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.1);
+  }
+}
