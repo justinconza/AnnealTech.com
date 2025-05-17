@@ -21,7 +21,7 @@ import { Link } from "wouter";
 // Components for the CRE industry page
 const HeroSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-900 to-blue-800 text-white relative overflow-hidden">
+    <section className="py-8 md:py-12 bg-gradient-to-b from-blue-900 to-blue-800 text-white relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-10 bg-circuit"></div>
       
