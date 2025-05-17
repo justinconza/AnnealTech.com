@@ -26,7 +26,7 @@ const SubtleHighlight = ({ delay = 0 }) => {
   return (
     <div 
       ref={highlightRef}
-      className="absolute w-12 h-1 bg-[#F05A22] rounded-full opacity-0"
+      className="absolute w-12 h-1 bg-[#3A6EA5] rounded-full opacity-0"
       style={{
         left: `${Math.random() * 80 + 10}%`,
         bottom: '0',
@@ -103,7 +103,7 @@ const Header = () => {
       }`}
     >
       {/* Subtle highlights container */}
-      <div className="absolute bottom-0 left-0 w-full h-1 overflow-hidden pointer-events-none bg-[#F05A22]/20">
+      <div className="absolute bottom-0 left-0 w-full h-1 overflow-hidden pointer-events-none bg-[#3A6EA5]/40">
         {sparks.map((id, index) => (
           <SubtleHighlight key={id} delay={index * 100} />
         ))}
@@ -112,12 +112,12 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="group flex items-center">
-            <div className="mr-3 text-[#F05A22]">
+            <div className="mr-3 text-[#3A6EA5]">
               <Hammer className="w-7 h-7 transition-all duration-300" />
             </div>
             <div className="flex flex-col">
               <span className="text-white text-2xl font-bold tracking-wider">
-                Anneal<span className="text-[#F05A22]">Tech</span>
+                Anneal<span className="text-[#3A6EA5]">Tech</span>
               </span>
               <span className="text-[#EBF1F8] text-xs tracking-wide">
                 Forging Technology. Empowering People.
@@ -138,7 +138,7 @@ const Header = () => {
                 Tools
                 <span className="ml-1 inline-block w-2 h-2 border-t-2 border-r-2 border-current transform rotate-45 translate-y-[2px]"></span>
               </span>
-              <span className="absolute bottom-0 left-0 h-0.5 bg-[#F05A22] transition-all duration-300 w-0 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 h-0.5 bg-[#3A6EA5] transition-all duration-300 w-0 group-hover:w-full"></span>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="bg-white border border-[#EBF1F8] text-[#1f1f1f] rounded-md shadow-lg w-56">
               <DropdownMenuItem className="focus:bg-[#EBF1F8] hover:bg-[#EBF1F8] cursor-pointer">
