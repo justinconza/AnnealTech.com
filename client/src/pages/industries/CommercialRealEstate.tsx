@@ -829,8 +829,8 @@ const DownloadSection = () => {
   ];
   
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24 blue-flame-gradient">
+      <div className="container mx-auto px-4 blue-flame-content">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-block p-2 bg-blue-100 rounded-lg text-blue-600 mb-4">
             <Download className="h-6 w-6" />
@@ -843,14 +843,17 @@ const DownloadSection = () => {
             </span>
           </h2>
           
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-slate-700">
             Access our free resources designed specifically for Commercial Real Estate organizations.
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {resources.map((resource, idx) => (
-            <div key={idx} className="bg-blue-50 rounded-lg p-8 text-center hover:shadow-md transition-shadow">
+            <div 
+              key={idx} 
+              className="bg-white rounded-lg p-8 text-center hover:shadow-lg transition-all duration-300 border border-blue-100"
+            >
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4">
                 <resource.icon className="h-8 w-8" />
               </div>
