@@ -21,7 +21,7 @@ import { Link } from "wouter";
 // Components for the CRE industry page
 const HeroSection = () => {
   return (
-    <section className="py-8 md:py-12 bg-gradient-to-b from-blue-900 to-blue-800 text-white relative overflow-hidden">
+    <section className="py-4 md:py-8 bg-gradient-to-b from-blue-900 to-blue-800 text-white relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-10 bg-circuit"></div>
       
@@ -389,19 +389,91 @@ const ChallengesSection = () => {
   );
 };
 
-const ServiceCard = ({ icon: Icon, title, index }: { icon: any, title: string, index: number }) => (
-  <div 
-    className="bg-white rounded-lg shadow-md border border-blue-100 p-6 hover:shadow-lg hover:border-blue-300 transition-all focus-within:ring-2 focus-within:ring-blue-400 focus-within:outline-none"
-    tabIndex={0}
-    role="listitem"
-    aria-labelledby={`service-title-${index}`}
-  >
-    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-blue-100 text-blue-600 mb-4">
-      <Icon className="h-6 w-6" aria-hidden="true" />
+const ServiceCard = ({ icon: Icon, title, index }: { icon: any, title: string, index: number }) => {
+  const descriptions = [
+    "24/7 technical support with rapid response times for all workstation issues across your property portfolio.",
+    "Advanced identity and access management with multi-factor authentication and zero-trust architecture.",
+    "Real-time threat detection and prevention with AI-powered analytics to protect your endpoints.",
+    "Comprehensive training programs to educate staff on security best practices and threat recognition.",
+    "Continuous monitoring with Security Operations Center (SOC) for immediate threat detection and response.",
+    "Automated patch and update deployment to minimize security vulnerabilities across systems.",
+    "Personalized training sessions for CRE-specific software applications and productivity tools.",
+    "Complete device management from procurement to secure decommissioning for all technology assets.",
+    "Comprehensive inventory management and secure data destruction for retired IT assets.",
+    "Specialized IT and security consulting tailored to the unique needs of commercial real estate firms."
+  ];
+  
+  const features = [
+    ["Priority response SLA", "Remote troubleshooting", "On-site support when needed"],
+    ["SSO integration", "Privileged account management", "Conditional access policies"],
+    ["Ransomware protection", "Zero-day threat defense", "Behavioral analysis"],
+    ["Phishing simulations", "Regular security updates", "Compliance training"],
+    ["24/7 security monitoring", "Incident response", "Threat intelligence"],
+    ["Vulnerability scanning", "Critical patch deployment", "Compliance updates"],
+    ["Application-specific training", "Video tutorials", "Help desk support"],
+    ["Automated inventory", "Lifecycle planning", "Warranty management"],
+    ["Compliance reporting", "Asset recovery", "Certified data wiping"],
+    ["Risk assessments", "Compliance audits", "Security roadmapping"]
+  ];
+  
+  const benefits = [
+    "Minimize downtime",
+    "Prevent unauthorized access",
+    "Protect against malware",
+    "Reduce human error",
+    "Early threat detection",
+    "Maintain secure systems",
+    "Improve staff productivity",
+    "Optimize IT investment",
+    "Meet compliance requirements",
+    "Enhance overall security posture"
+  ];
+  
+  return (
+    <div 
+      className="service-card bg-white rounded-lg shadow-md border border-blue-100 p-6 hover:shadow-xl transition-all focus-within:ring-2 focus-within:ring-blue-400 focus-within:outline-none"
+      tabIndex={0}
+      role="listitem"
+      aria-labelledby={`service-title-${index}`}
+    >
+      <div className="card-icon inline-flex items-center justify-center w-12 h-12 rounded-lg bg-blue-100 text-blue-600 mb-4">
+        <Icon className="h-6 w-6" aria-hidden="true" />
+      </div>
+      
+      <h3 id={`service-title-${index}`} className="text-lg font-heading font-semibold text-slate-800 mb-1">{title}</h3>
+      
+      <p className="text-slate-600 text-sm mb-3">
+        {descriptions[index % descriptions.length]}
+      </p>
+      
+      <div className="card-details">
+        <h4 className="text-sm font-semibold text-blue-800 mb-2">Key Features:</h4>
+        <ul className="text-xs space-y-1 mb-3">
+          {features[index % features.length].map((feature, i) => (
+            <li key={i} className="flex items-start">
+              <span className="text-blue-500 mr-1 text-xs">✓</span>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+        
+        <div className="bg-blue-50 p-2 rounded-md text-xs text-blue-800 mb-3">
+          <strong>Business Impact:</strong> {benefits[index % benefits.length]}
+        </div>
+        
+        <div className="text-right">
+          <Button 
+            size="sm" 
+            variant="outline" 
+            className="text-xs border-blue-300 text-blue-700 hover:bg-blue-50"
+          >
+            Learn More
+          </Button>
+        </div>
+      </div>
     </div>
-    <h3 id={`service-title-${index}`} className="text-lg font-heading font-semibold text-slate-800 mb-1">{title}</h3>
-  </div>
-);
+  );
+};
 
 const ServicesSection = () => {
   const services = [
@@ -418,17 +490,33 @@ const ServicesSection = () => {
   ];
   
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-blue-100 relative overflow-hidden" aria-labelledby="services-heading">
-      {/* Forging themed animated background */}
-      <div className="forging-bg" aria-hidden="true">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-100 to-blue-50 relative overflow-hidden" aria-labelledby="services-heading">
+      {/* Enhanced forging themed animated background */}
+      <div className="forge-intense-bg" aria-hidden="true">
         <div className="forging-flow">
+          {/* Forge cores */}
+          {[...Array(5)].map((_, i) => (
+            <div 
+              key={`core-${i}`} 
+              className="forge-core" 
+              style={{
+                left: `${20 + i * 15}%`,
+                top: `${i % 2 === 0 ? 30 : 60}%`,
+                width: `${90 + Math.random() * 60}px`,
+                height: `${90 + Math.random() * 60}px`,
+                animationDelay: `${i * 0.7}s`
+              }}
+            />
+          ))}
+          
           {/* Dynamic blue embers */}
-          {[...Array(20)].map((_, i) => (
+          {[...Array(30)].map((_, i) => (
             <div 
               key={`ember-${i}`} 
               className="ember" 
               style={{
                 left: `${Math.random() * 100}%`,
+                bottom: `${Math.random() * 50}%`,
                 animationDelay: `${Math.random() * 8}s`,
                 width: `${Math.random() * 3 + 2}px`,
                 height: `${Math.random() * 3 + 2}px`
@@ -436,23 +524,58 @@ const ServicesSection = () => {
             />
           ))}
           
+          {/* Animated sparks */}
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={`spark-${i}`} 
+              className="forge-spark" 
+              style={{
+                left: `${10 + (i % 5) * 20}%`,
+                bottom: '10%',
+                animationDelay: `${i * 0.3}s`,
+                '--spark-x': `${-50 + Math.random() * 100}px`,
+                '--spark-y': `${-100 - Math.random() * 150}px`
+              } as React.CSSProperties}
+            />
+          ))}
+          
           {/* Blue forge flames */}
-          {[...Array(8)].map((_, i) => (
+          {[...Array(12)].map((_, i) => (
             <div 
               key={`flame-${i}`} 
               className="forge-flame" 
               style={{
-                left: `${i * 12.5}%`,
+                left: `${i * 8.5}%`,
                 animationDelay: `${Math.random() * 3}s`,
-                width: `${Math.random() * 15 + 15}px`
+                width: `${Math.random() * 20 + 12}px`
               }}
             />
           ))}
           
-          {/* Molten blue metal flows */}
-          <div className="molten-flow" style={{ animationDelay: "0s" }} />
-          <div className="molten-flow" style={{ animationDelay: "2s", bottom: "15px" }} />
-          <div className="molten-flow" style={{ animationDelay: "4s", bottom: "30px" }} />
+          {/* Molten streams */}
+          {[...Array(4)].map((_, i) => (
+            <div 
+              key={`stream-${i}`}
+              className="molten-stream" 
+              style={{ 
+                bottom: `${15 + i * 30}px`, 
+                animationDelay: `${i * 2}s`,
+                opacity: 0.4 + (i * 0.1)
+              }} 
+            />
+          ))}
+          
+          {/* Heat waves */}
+          {[...Array(3)].map((_, i) => (
+            <div 
+              key={`heat-${i}`}
+              className="heat-wave" 
+              style={{ 
+                bottom: `${i * 40}%`, 
+                animationDelay: `${i * 1.3}s` 
+              }} 
+            />
+          ))}
         </div>
       </div>
       
