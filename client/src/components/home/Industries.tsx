@@ -92,12 +92,19 @@ const Industries = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-circuit"></div>
+    <section className="py-16 bg-gradient-to-b from-blue-900 to-blue-800 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-20 bg-circuit"></div>
       
-      {/* Futuristic background elements */}
-      <div className="absolute -right-20 -top-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute -left-20 -bottom-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+      {/* Blue flame elements */}
+      <div className="absolute bottom-0 right-20 flame" style={{ animationDelay: "-0.5s" }}>
+        <div className="flame-inner"></div>
+      </div>
+      <div className="absolute bottom-0 left-32 flame" style={{ animationDelay: "-1.2s" }}>
+        <div className="flame-inner"></div>
+      </div>
+      <div className="absolute bottom-0 left-1/2 flame" style={{ animationDelay: "-0.8s" }}>
+        <div className="flame-inner"></div>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
@@ -105,20 +112,20 @@ const Industries = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-800 mb-6">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-3">
             <span className="inline-block relative">
               Industries We Serve
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500"></span>
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-blue-400"></span>
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
             From healthcare to finance, we deliver tailored cybersecurity solutions across diverse sectors.
           </p>
         </motion.div>
 
-        <div className="px-4 py-8">
+        <div className="px-4 py-4">
           <Swiper
             onSwiper={setSwiperRef}
             effect={'coverflow'}
@@ -157,10 +164,10 @@ const Industries = () => {
           </Swiper>
         </div>
         
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-8">
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="bg-blue-600 text-white py-4 px-8 rounded-md shadow-lg font-medium hover:bg-blue-700 transition duration-300 flex items-center space-x-2 cursor-pointer"
+            className="bg-blue-400 text-blue-900 py-4 px-8 rounded-md shadow-lg font-medium hover:bg-blue-300 transition duration-300 flex items-center space-x-2 cursor-pointer"
           >
             <span>View All Industries</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

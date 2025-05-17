@@ -177,47 +177,41 @@ const WhatWeDoBest = () => {
     }
   ];
 
-  // Group services by category
-  const serviceGroups = {
-    communication: services.filter(s => s.category === 'communication'),
-    managed: services.filter(s => s.category === 'managed'),
-    professional: services.filter(s => s.category === 'professional'),
-    advisory: services.filter(s => s.category === 'advisory')
-  };
-
-  // Category information
-  const categoryInfo = {
-    communication: {
-      title: "Communication & Data Solutions",
-      description: "Enhance productivity and streamline data management with our enterprise tools and migration services.",
+  // Top 4 services as requested
+  const topServices = [
+    {
+      title: "Managed Support Solutions",
+      description: "Leverage the scalable resources of our enterprise grade team to support your business or augment your existing team.",
+      icon: ServerCog,
       color: '#0D3F6E',
-      icon: Cloud
+      path: "/services/managed-support",
+      category: 'managed' as ServiceCategory
     },
-    managed: {
-      title: "Managed Experience Solutions",
-      description: "Comprehensive IT infrastructure management with predictable pricing and proactive security measures.",
+    {
+      title: "Communication & Data Solutions",
+      description: "Do you have a strategy for your data? Let's put your data where it is safe and ready for your business to grow.",
+      icon: Cloud,
       color: '#0E4D82',
-      icon: ServerCog
+      path: "/services/communication-data",
+      category: 'communication' as ServiceCategory
     },
-    professional: {
-      title: "Technology Professional Services",
-      description: "Expert training, staffing, and project management services to elevate your IT capabilities.",
-      color: '#0E5C98',
-      icon: GraduationCap
-    },
-    advisory: {
+    {
       title: "Advisory Services",
-      description: "Strategic assessments and planning to optimize your IT investments and security posture.",
+      description: "No IT professional is a jack-of-all-trades. Empower them with the tools to improve business outcomes.",
+      icon: BarChart3,
+      color: '#0E5C98',
+      path: "/services/advisory",
+      category: 'advisory' as ServiceCategory
+    },
+    {
+      title: "Technology Education",
+      description: "Learn from the best IT leaders in the business and achieve meaningful success in your IT career.",
+      icon: GraduationCap,
       color: '#0F6AAE',
-      icon: BarChart3
+      path: "/services/technology-education",
+      category: 'professional' as ServiceCategory
     }
-  };
-
-  // Combine all services into a single array for display
-  const allServices = services.sort((a, b) => {
-    const order = ['communication', 'managed', 'professional', 'advisory'];
-    return order.indexOf(a.category) - order.indexOf(b.category);
-  });
+  ];
 
   return (
     <section className="py-24 relative overflow-hidden bg-forging-tech">
@@ -275,54 +269,47 @@ const WhatWeDoBest = () => {
           </p>
         </motion.div>
 
-        {/* Service Categories - As a visual tabbed navigation */}
-        <div className="mb-12">
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-4 mb-10"
-          >
-            {Object.entries(categoryInfo).map(([category, info]) => (
-              <motion.div
-                key={category}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-lg shadow-md p-4 flex items-center space-x-3 cursor-pointer"
-                style={{ borderTop: `3px solid ${info.color}` }}
-              >
-                <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: info.color }}
-                >
-                  <info.icon className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-slate-800">{info.title}</h3>
-                  <p className="text-xs text-slate-500">{serviceGroups[category as ServiceCategory].length} services</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Service Cards in a grid */}
+        {/* Top 4 Services Grid */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mb-12"
+          className="mb-16"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allServices.map((service, index) => (
-              <ServiceCard 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {topServices.map((service, index) => (
+              <motion.div 
                 key={index}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                index={index}
-                category={service.category}
-                path={service.path}
-              />
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full"
+              >
+                <div className="h-2" style={{ backgroundColor: service.color }}></div>
+                <div className="p-8 flex-grow">
+                  <div className="flex items-start gap-4">
+                    <div 
+                      className="w-16 h-16 rounded-lg flex items-center justify-center text-white flex-shrink-0" 
+                      style={{ backgroundColor: service.color }}
+                    >
+                      <service.icon size={28} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-heading font-bold mb-3 text-slate-800">{service.title}</h3>
+                      <p className="text-slate-600 mb-4">{service.description}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 border-t border-gray-100">
+                  <Link href={service.path}>
+                    <Button variant="link" className="w-full justify-start text-blue-600 hover:text-blue-700 p-0 flex items-center group">
+                      <span>Learn More</span>
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -331,7 +318,7 @@ const WhatWeDoBest = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-8"
         >
           <Link href="/services">
             <Button

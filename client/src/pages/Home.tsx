@@ -10,6 +10,7 @@ import Contact from "@/components/home/Contact";
 import Industries from "@/components/home/Industries";
 import WhatWeDoBest from "@/components/home/WhatWeDoBest";
 import PeopleTech from "@/components/home/PeopleTech";
+import BlogSlider from "@/components/home/BlogSlider";
 
 const Home = () => {
   return (
