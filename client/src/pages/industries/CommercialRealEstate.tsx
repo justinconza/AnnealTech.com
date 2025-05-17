@@ -438,40 +438,98 @@ const ChallengesSection = () => {
 
 const ServicesSection = () => {
   const services = [
-    { title: "24/7 Remote Support", icon: Clock },
-    { title: "Identity Security (ITDR)", icon: Shield },
-    { title: "Endpoint Protection", icon: ShieldCheck },
-    { title: "Security Training", icon: Users },
-    { title: "Live Monitoring & SOC", icon: Zap },
-    { title: "Patch Management", icon: Server },
-    { title: "Software Training", icon: Users },
-    { title: "Device Lifecycle", icon: Building },
-    { title: "Asset Management", icon: BarChart },
-    { title: "Security Consulting", icon: Shield }
+    { 
+      title: "24/7 Remote Support", 
+      icon: Clock,
+      benefit: "Ensures continuous operations across all your properties with rapid response to any technical issue."
+    },
+    { 
+      title: "Identity Security (ITDR)", 
+      icon: Shield,
+      benefit: "Protects tenant and investor data with advanced identity verification and access controls."
+    },
+    { 
+      title: "Endpoint Protection", 
+      icon: ShieldCheck,
+      benefit: "Secures every device in your portfolio from the growing threats targeting property management systems."
+    },
+    { 
+      title: "Security Training", 
+      icon: Users,
+      benefit: "Transforms staff into a security asset, reducing human-error vulnerabilities across property teams."
+    },
+    { 
+      title: "Live Monitoring & SOC", 
+      icon: Zap,
+      benefit: "Detects and responds to threats in real-time before they impact your operations or tenant services."
+    },
+    { 
+      title: "Patch Management", 
+      icon: Server,
+      benefit: "Minimizes vulnerabilities by keeping systems current without disrupting property operations."
+    },
+    { 
+      title: "Software Training", 
+      icon: Users,
+      benefit: "Maximizes ROI on property management systems through personalized staff education."
+    },
+    { 
+      title: "Device Lifecycle", 
+      icon: Building,
+      benefit: "Streamlines technology from procurement through retirement across multi-location portfolios."
+    },
+    { 
+      title: "Asset Management", 
+      icon: BarChart,
+      benefit: "Optimizes IT investment with detailed tracking and strategic planning for your technology assets."
+    },
+    { 
+      title: "Security Consulting", 
+      icon: Shield,
+      benefit: "Provides strategic guidance on the unique cybersecurity challenges facing property managers."
+    }
   ];
   
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-blue-100 relative overflow-hidden">
-      <div className="container mx-auto px-4 max-w-screen-xl">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-slate-900 to-[#0d1d30] relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      
+      {/* Glowing orb */}
+      <motion.div 
+        initial={{ opacity: 0.2 }}
+        animate={{ 
+          opacity: [0.2, 0.4, 0.2],
+          scale: [1, 1.1, 1] 
+        }}
+        transition={{ 
+          duration: 10, 
+          repeat: Infinity,
+          ease: "easeInOut" 
+        }}
+        className="absolute top-1/4 -right-40 w-96 h-96 rounded-full bg-[#0d4f86]/20 blur-3xl"
+      ></motion.div>
+      
+      <div className="container mx-auto px-4 max-w-screen-xl relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl font-heading font-bold text-slate-800 mb-6">
+          <div className="inline-block bg-[#0d4f86]/30 border border-[#0d4f86]/40 rounded-full px-4 py-1 mb-4">
+            <span className="text-[#4a9eff] font-heading text-sm font-medium tracking-wider">OUR EXPERTISE</span>
+          </div>
+          
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
             <span className="relative inline-block">
-              Tailored CRE Services
-              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500"></span>
+              Purpose-Built IT & Cybersecurity for Property Management
+              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-[#0d4f86]"></span>
             </span>
           </h2>
           
-          <p className="text-lg text-slate-700 mb-4">
-            Our services are specifically designed for the unique needs of Commercial Real Estate operations,
-            providing comprehensive support for your technology infrastructure.
-          </p>
-          
-          <p className="text-lg text-slate-700">
-            Each service includes SLA-backed guarantees and expert support from our team of CRE-focused IT professionals.
+          <p className="text-lg text-blue-100 mb-8">
+            Secure multi-site operations, protect tenant data, and eliminate downtime with scalable
+            IT solutions designed specifically for commercial real estate challenges.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {services.map((service, idx) => (
             <motion.div
               key={idx}
@@ -479,15 +537,48 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="bg-white p-5 rounded-lg shadow-md border border-blue-100 hover:shadow-lg transition-all"
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              className="group h-full"
             >
-              <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center text-blue-600 mb-4">
-                <service.icon className="h-6 w-6" />
+              <div className="bg-white/5 backdrop-blur-sm h-full p-6 rounded-xl border border-white/10 
+              shadow-xl hover:shadow-[#0d4f86]/30 transition-all duration-300 flex flex-col
+              hover:border-[#0d4f86]/30 relative overflow-hidden">
+                {/* Icon */}
+                <div className="flex justify-between items-start mb-4">
+                  <div className="bg-[#0d4f86]/20 w-12 h-12 rounded-lg flex items-center justify-center 
+                  text-[#4a9eff] group-hover:bg-[#0d4f86]/30 group-hover:text-[#5aafff] transition-all duration-300">
+                    <service.icon className="h-6 w-6" />
+                  </div>
+                  <div className="text-white/20 font-bold text-xl group-hover:text-[#0d4f86]/70">
+                    {(idx + 1).toString().padStart(2, '0')}
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <h3 className="text-lg font-heading font-semibold text-white mb-3">{service.title}</h3>
+                <p className="text-blue-100/80 text-sm flex-grow">{service.benefit}</p>
+                
+                {/* Hover indicator */}
+                <div className="w-0 h-1 bg-[#0d4f86] absolute bottom-0 left-0 group-hover:w-full transition-all duration-500"></div>
               </div>
-              <h3 className="text-lg font-heading font-semibold text-slate-800 mb-1">{service.title}</h3>
             </motion.div>
           ))}
         </div>
+        
+        {/* CTA Button */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-16 text-center"
+        >
+          <Button className="bg-[#0d4f86] hover:bg-[#0a3e6a] text-white px-8 py-6 text-lg 
+          shadow-lg hover:shadow-[#4a9eff]/40 rounded-md transition-all flex items-center mx-auto gap-2 group">
+            <span>Get Your Free CRE Risk Assessment</span>
+            <ArrowRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

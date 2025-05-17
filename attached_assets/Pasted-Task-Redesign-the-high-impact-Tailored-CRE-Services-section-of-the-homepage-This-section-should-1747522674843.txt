@@ -1,0 +1,70 @@
+Task:
+Redesign the high-impact “Tailored CRE Services” section of the homepage. This section should clearly map AnnealTech’s real-world service offerings to the unique needs of the Commercial Real Estate (CRE) industry using modern, interactive elements like animated cards, hover states, or scroll-based effects.
+
+Goals:
+- Showcase AnnealTech’s deep alignment with CRE-specific challenges (multi-site operations, tenant data security, uptime demands, decentralized IT)
+- Reinforce the brand identity: “Forging Technology • Empowering People”
+- Deliver a visually sleek, technically credible, and modern user experience
+- Inspire trust and increase engagement (scrolling, hover, CTA clicks)
+
+---
+
+### Requirements:
+
+**1. Section Title:**  
+Bold, industry-relevant headline like:  
+➡️ *“Purpose-Built IT & Cybersecurity for Property Management”*
+
+**2. Subheadline (1–2 lines):**  
+Brief statement showing how AnnealTech helps CRE clients secure operations, reduce downtime, and scale across locations.
+
+**3. Service Layout (Card Grid or Interactive Tiles):**  
+Use a responsive, animated grid layout with 10 service cards from the screenshot:
+
+**Use these service names verbatim:**
+- 24/7 Remote Support  
+- Identity Security (ITDR)  
+- Endpoint Protection  
+- Security Training  
+- Live Monitoring & SOC  
+- Patch Management  
+- Software Training  
+- Device Lifecycle  
+- Asset Management  
+- Security Consulting  
+
+Each card should include:
+- 🏷 **Label** (service name)
+- 🧠 **1-sentence CRE-focused benefit**
+- ✨ Hover or scroll-triggered animation (flip, fade, or glow)
+
+---
+
+### 4. Visual Style Guide:
+
+- Use AnnealTech’s blue: **#0d4f86** for all accents, icons, and highlights.
+- Card backgrounds should be white or subtle gradient, with **rounded corners**, **shadow depth**, and **hover transitions**.
+- Full-width section with ample spacing and modern alignment
+- Match font and spacing rhythm from: [https://anneal-tech.replit.app/](https://anneal-tech.replit.app/)
+- Background: Optional dark or lightly textured backdrop (slate, carbon fiber, etc.)
+
+---
+
+### 5. Bonus Elements:
+
+- Add subtle **scroll-triggered animation** to stagger cards on reveal
+- Include a **"Free CRE Risk Assessment" CTA** below the grid
+  - Button Style: Rounded, bold, primary blue, hover glow
+- Ensure layout is **mobile-responsive** with vertical stacking and icon-size scaling
+
+---
+
+### Tone & Voice:
+
+- Confident, modern, and secure
+- Clear benefits for property management teams and CRE executives
+- No technical jargon overload—make it approachable but authoritative
+
+---
+
+Would you like me to now **generate the card copy**, **HTML/CSS**, or a **Webflow CMS field map** using this updated layout and prompt?

@@ -1,0 +1,48 @@
+Task:
+Design a high-impact “Tailored Services for Commercial Real Estate” section for AnnealTech.com. This section should clearly map AnnealTech’s service offerings to the unique needs of the CRE industry, using visually engaging elements like animated cards, hover states, or scroll-based effects.
+
+Goals:
+- Showcase AnnealTech’s deep alignment with CRE-specific challenges (multi-site operations, data privacy, downtime risk, IT support gaps)
+- Reinforce the brand identity of "Forging Technology • Empowering People"
+- Deliver a sleek, modern, and technically credible user experience
+- Inspire trust and encourage action (scrolling, booking assessment, etc.)
+
+Requirements:
+1. Section Title: Bold and confident, e.g., “Purpose-Built IT & Cybersecurity for Property Management”
+2. Subheadline: 1–2 lines showing value for CRE professionals (operations, tenant data, security, uptime)
+3. Service Layout: Use a responsive **card grid, tab system, or interactive icon set**
+   - At least **8 distinct services**
+   - Each service includes:
+     - 🔹 **Short Label** (e.g., “24/7 Workstation Support”)
+     - 🧠 **1-sentence benefit** related to CRE
+     - ✅ Hover or animation effect (flip, fade-in, or glow)
+4. Design Style:
+   - Incorporate AnnealTech’s primary blue (#0d4f86) for all highlights
+   - Background should be dark or subtly textured (metallic or slate-inspired)
+   - Rounded corners, shadows, and spacing inspired by https://anneal-tech.replit.app/
+   - Typography: clean, modern, trustworthy (match existing site)
+5. Bonus Elements:
+   - Scroll-trigger animation (e.g., staggered reveal)
+   - Optional “Free Assessment” CTA under the grid
+   - Mobile-optimized with vertical stacking and icon adaptation
+
+Tone:
+- Confident, technical, secure
+- Helpful and solution-oriented
+- Tailored for IT-savvy property managers and decision-makers
+
+Sample Input Services to Include:
+- 24/7 Remote Workstation Support  
+- Identity & Access Security  
+- Endpoint Protection & Threat Defense  
+- Security Awareness Training  
+- Real-Time System Monitoring  
+- Patch & Vulnerability Management  
+- Property App Training & Onboarding  
+- Asset Tracking & Device Lifecycle  
+- Strategic IT Consulting for CRE Firms
+
+Deliverables:
+- Section HTML structure or Webflow layout guidance
+- Matching CSS or Webflow class structure (if applicable)
+- Clear content for each service (title + benefit)
