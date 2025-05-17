@@ -19,6 +19,9 @@ const ToolEmbedding = lazy(() => import("./pages/ToolEmbedding"));
 const Faq = lazy(() => import("./pages/Faq"));
 const Contact = lazy(() => import("./pages/Contact"));
 
+// Lazy load industry-specific pages
+const CommercialRealEstate = lazy(() => import("./pages/industries/CommercialRealEstate"));
+
 // Lazy load embedded tools
 const EmailSecurityEmbedded = lazy(() => import("./pages/embedded/EmailSecurity"));
 const PhishingDetectionEmbedded = lazy(() => import("./pages/embedded/PhishingDetection"));
@@ -52,6 +55,13 @@ function MainRouter() {
               {() => (
                 <Suspense fallback={<LoadingSpinner />}>
                   <Industries />
+                </Suspense>
+              )}
+            </Route>
+            <Route path="/industries/commercial-real-estate">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <CommercialRealEstate />
                 </Suspense>
               )}
             </Route>

@@ -1,0 +1,100 @@
+🏢 Commercial Real Estate (CRE) Industry Page for AnnealTech
+🔷 Hero Section
+Headline:
+“Forging Security and Efficiency for Commercial Real Estate Operations”
+
+Subheadline:
+AnnealTech empowers property firms and brokers to scale with confidence—delivering secure, seamless IT experiences across all your locations with industry-leading service and support.
+
+CTA:
+🔹 Get Your Free CRE Risk Assessment
+
+💼 CRE Sector Challenges
+Overview:
+Commercial Real Estate companies operate across numerous sites with complex staff structures and sensitive tenant data. Many face downtime, cyber risks, and compliance gaps caused by fragmented IT and undertrained staff.
+
+AnnealTech is your Managed Experience Provider—offering end-to-end, secure, human-first IT services built around your unique business model.
+
+🧱 CRE Challenges + Solutions Grid
+Challenge	AnnealTech Solution
+Inconsistent IT support across locations	Centralized 24/7 support for remote and on-site needs
+Cyber risks to tenant or investor data	Always-on monitoring, endpoint protection, and user training
+Staff not using tools efficiently	Hands-on business app training and onboarding
+Delayed support requests and maintenance	SLA-backed response and fulfillment within guaranteed timeframes
+Little visibility into risk or performance	Monthly reporting and strategic reviews
+
+🛠 Tailored CRE Services
+24/7 Remote Workstation Support
+
+Identity Security (ITDR)
+
+Endpoint Threat Protection
+
+Security Awareness Training
+
+Live Monitoring & SOC Coverage
+
+Rapid Patch & Update Management
+
+Business Software Training & Onboarding
+
+Full Device Lifecycle Management
+
+Asset Tracking & Secure Disposal
+
+CRE-Focused IT & Security Consulting
+
+📊 SLA-Backed Service Metrics
+Service Area	SLA Commitment
+Incident Response Time	🔹 15 mins (Critical) / 30 mins (High)
+Incident Resolution Time	🔹 4 hrs (Critical) / 8–72 hrs based on priority
+Service Request Fulfillment	🔹 1–3 business days (Standard to Complex)
+Security Incident Response Time	🔹 30 minutes
+First Contact Resolution Rate	🔹 75% or higher
+Uptime Guarantee	🔹 99.9%
+Patch Implementation	🔹 Within 48 hours of release
+Backup & Recovery Time	🔹 Daily backup / 4-hour recovery for critical data
+Regular Reporting	🔹 Monthly with strategic recommendations
+
+💬 Testimonial
+“With AnnealTech managing our CRE IT needs, we reduced support delays, improved data security, and gained full visibility into our performance.”
+— VP of Operations, Multi-Location CRE Firm
+
+📍 Partnership Timeline
+Week 1: Environment audit + onboarding
+
+Week 2–4: Security, patching, device hardening
+
+Ongoing: 24/7 support, monitoring, and rapid response
+
+Quarterly: Reporting + optimization strategy
+
+🧠 CTA – Free Risk Assessment
+Header:
+Is Your CRE Infrastructure Fully Covered?
+
+Subtext:
+We’ll show you quick wins and exposure areas in 15 minutes or less—backed by our guaranteed SLA response and support levels.
+
+Button:
+🔹 Request Your Free IT & Security Assessment
+
+📥 Downloadable Tools
+“CRE IT & Cybersecurity Survival Guide” (PDF)
+
+“Security Maturity Checklist”
+
+“Onboarding Readiness Playbook”
+
+❓ CRE FAQ Highlights
+Do you support staff across multiple properties?
+Yes—our services are built for hybrid, multi-location teams.
+
+Do you offer training for staff?
+Yes—training is built into onboarding and ongoing operations.
+
+Are your services SLA-backed?
+Absolutely. Every element, from response to patching, has defined performance standards.
+
+Can you work with our internal IT?
+Yes—we augment internal IT or serve as a full extension.
