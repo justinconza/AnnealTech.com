@@ -72,9 +72,88 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
 
 // Main Services component
 const Services = () => {
+  // Create animated particles (ember effect)
+  const particles = Array.from({ length: 25 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 3 + 1,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    duration: Math.random() * 20 + 15,
+    delay: Math.random() * 5,
+    opacity: Math.random() * 0.4 + 0.1
+  }));
+
   return (
-    <section id="services" className="py-16 md:py-24 bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden">
-      {/* Background pattern */}
+    <section id="services" className="py-16 md:py-24 relative overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0d1d2e] via-[#0d3154] to-[#041325]">
+        {/* Gradient animation overlay */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-[#0d4f86]/30 via-[#001f3f]/5 to-transparent opacity-40"
+          style={{
+            animation: "pulse-gradient 8s ease-in-out infinite alternate"
+          }}
+        ></div>
+
+        {/* Blue glow orb */}
+        <motion.div
+          initial={{ opacity: 0.5 }}
+          animate={{ 
+            opacity: [0.5, 0.7, 0.5],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-[20%] w-64 h-64 rounded-full bg-[#0d4f86]/20 blur-3xl"
+        ></motion.div>
+
+        <motion.div
+          initial={{ opacity: 0.3 }}
+          animate={{ 
+            opacity: [0.3, 0.5, 0.3],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ 
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+          className="absolute bottom-1/4 right-[15%] w-80 h-80 rounded-full bg-[#0a3b66]/15 blur-3xl"
+        ></motion.div>
+
+        {/* Animated particles/embers */}
+        {particles.map(particle => (
+          <motion.div
+            key={particle.id}
+            className="absolute rounded-full bg-blue-400"
+            style={{ 
+              width: `${particle.size}px`, 
+              height: `${particle.size}px`, 
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              boxShadow: "0 0 8px 2px rgba(59, 130, 246, 0.3)",
+              opacity: particle.opacity
+            }}
+            animate={{ 
+              y: [0, -Math.random() * 200 - 50],
+              opacity: [particle.opacity, 0],
+              x: [(Math.random() - 0.5) * 30]
+            }}
+            transition={{ 
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+              ease: "linear"
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Pattern overlay for texture */}
       <div 
         className="absolute inset-0 z-0 opacity-5" 
         style={{
