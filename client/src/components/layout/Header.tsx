@@ -120,7 +120,7 @@ const Header = () => {
                 Anneal<span className="text-[#3A6EA5]">Tech</span>
               </span>
               <span className="text-xs tracking-wide">
-                <span className="text-white">Forging Technology.</span> <span className="text-[#6B9CD1]">Empowering People.</span>
+                <span className="text-white font-medium">Forging Technology.</span> <span className="text-[#6B9CD1]">Empowering People.</span>
               </span>
             </div>
           </Link>
