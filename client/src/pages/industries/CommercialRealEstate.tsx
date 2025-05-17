@@ -74,8 +74,8 @@ const HeroSection = () => {
                     <ShieldCheck className="h-5 w-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-slate-800 font-medium">Industry-Leading</p>
-                    <p className="text-sm text-slate-600">SLA-Backed Support</p>
+                    <p className="text-blue-900 font-medium">Industry-Leading</p>
+                    <p className="text-sm text-blue-900">SLA-Backed Support</p>
                   </div>
                 </div>
               </div>
