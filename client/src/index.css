@@ -1,7 +1,7 @@
-@import '@fontsource/orbitron';
-@import '@fontsource/exo';
-@import '@fontsource/inter';
-@import '@fontsource/work-sans';
+@import '@fontsource/montserrat';
+@import '@fontsource/lato';
+@import '@fontsource/roboto';
+@import '@fontsource/open-sans';
 @import './styles/animations.css';
 @tailwind base;
 @tailwind components;
@@ -13,6 +13,8 @@ html, body, #root {
   margin: 0;
   padding: 0;
   background-color: #ffffff;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
+  color: #1f1f1f;
 }
 
 /* Embedded pages specific styling */
