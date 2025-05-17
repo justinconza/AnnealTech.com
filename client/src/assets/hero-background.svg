@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440" height="800" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark Blue Base -->
+  <rect width="1440" height="800" fill="#0E3F6E"/>
+  
+  <!-- Subtle Grid Pattern -->
+  <path d="M0 40H1440M0 80H1440M0 120H1440M0 160H1440M0 200H1440M0 240H1440M0 280H1440M0 320H1440M0 360H1440M0 400H1440M0 440H1440M0 480H1440M0 520H1440M0 560H1440M0 600H1440M0 640H1440M0 680H1440M0 720H1440M0 760H1440M0 800H1440" stroke="#1A4B7A" stroke-width="0.5" stroke-dasharray="5 15"/>
+  <path d="M40 0V800M80 0V800M120 0V800M160 0V800M200 0V800M240 0V800M280 0V800M320 0V800M360 0V800M400 0V800M440 0V800M480 0V800M520 0V800M560 0V800M600 0V800M640 0V800M680 0V800M720 0V800M760 0V800M800 0V800M840 0V800M880 0V800M920 0V800M960 0V800M1000 0V800M1040 0V800M1080 0V800M1120 0V800M1160 0V800M1200 0V800M1240 0V800M1280 0V800M1320 0V800M1360 0V800M1400 0V800" stroke="#1A4B7A" stroke-width="0.5" stroke-dasharray="5 15"/>
+  
+  <!-- Geometric Elements - Hexagonal Pattern -->
+  <g opacity="0.15">
+    <!-- Bottom left corner design elements -->
+    <path d="M0 600L200 800H0V600Z" fill="#3A6EA5"/>
+    <path d="M200 800L400 600L600 800H200Z" fill="#2D5D94"/>
+    <path d="M600 800L800 600L1000 800H600Z" fill="#3A6EA5"/>
+    <path d="M1000 800L1200 600L1440 740V800H1000Z" fill="#2D5D94"/>
+    
+    <!-- Top right corner design elements -->
+    <path d="M1440 0V200L1240 0H1440Z" fill="#3A6EA5"/>
+    <path d="M1240 0L1440 200V400L1040 0H1240Z" fill="#2D5D94"/>
+    <path d="M1040 0L1440 400V500L840 0H1040Z" fill="#3A6EA5"/>
+    
+    <!-- Abstract geometric shapes -->
+    <circle cx="200" cy="200" r="100" fill="#6B9CD1" opacity="0.2"/>
+    <circle cx="1200" cy="600" r="80" fill="#6B9CD1" opacity="0.2"/>
+    <circle cx="700" cy="400" r="120" fill="#3A6EA5" opacity="0.1"/>
+    
+    <!-- Diagonal lines -->
+    <line x1="0" y1="0" x2="1440" y2="800" stroke="#1A4B7A" stroke-width="1" opacity="0.3"/>
+    <line x1="1440" y1="0" x2="0" y2="800" stroke="#1A4B7A" stroke-width="1" opacity="0.3"/>
+  </g>
+  
+  <!-- Digital Circuit-like Pattern -->
+  <g opacity="0.05">
+    <path d="M720 100H1000V140H940V250H1100V300H900V400H1200V450H850V600H950V650H720V100Z" stroke="#6B9CD1" stroke-width="2"/>
+    <path d="M720 100H440V140H500V250H340V300H540V400H240V450H590V600H490V650H720V100Z" stroke="#6B9CD1" stroke-width="2"/>
+    <circle cx="720" cy="100" r="5" fill="#EBF1F8"/>
+    <circle cx="720" cy="650" r="5" fill="#EBF1F8"/>
+    <circle cx="1000" cy="140" r="5" fill="#EBF1F8"/>
+    <circle cx="440" cy="140" r="5" fill="#EBF1F8"/>
+    <circle cx="940" cy="250" r="5" fill="#EBF1F8"/>
+    <circle cx="500" cy="250" r="5" fill="#EBF1F8"/>
+  </g>
+  
+  <!-- Highlight Glow -->
+  <radialGradient id="glow" cx="720" cy="400" r="600" gradientUnits="userSpaceOnUse">
+    <stop offset="0.2" stop-color="#3A6EA5" stop-opacity="0.15"/>
+    <stop offset="1" stop-color="#0E3F6E" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1440" height="800" fill="url(#glow)"/>
+  
+  <!-- Light Particles -->
+  <g opacity="0.5">
+    <circle cx="200" cy="150" r="1" fill="white"/>
+    <circle cx="350" cy="250" r="1" fill="white"/>
+    <circle cx="500" cy="100" r="1" fill="white"/>
+    <circle cx="650" cy="300" r="1" fill="white"/>
+    <circle cx="800" cy="200" r="1" fill="white"/>
+    <circle cx="950" cy="350" r="1" fill="white"/>
+    <circle cx="1100" cy="150" r="1" fill="white"/>
+    <circle cx="1250" cy="250" r="1" fill="white"/>
+    <circle cx="200" cy="450" r="1" fill="white"/>
+    <circle cx="350" cy="550" r="1" fill="white"/>
+    <circle cx="500" cy="400" r="1" fill="white"/>
+    <circle cx="650" cy="600" r="1" fill="white"/>
+    <circle cx="800" cy="500" r="1" fill="white"/>
+    <circle cx="950" cy="650" r="1" fill="white"/>
+    <circle cx="1100" cy="450" r="1" fill="white"/>
+    <circle cx="1250" cy="550" r="1" fill="white"/>
+    <circle cx="150" cy="700" r="1" fill="white"/>
+    <circle cx="300" cy="750" r="1" fill="white"/>
+    <circle cx="450" cy="650" r="1" fill="white"/>
+    <circle cx="600" cy="700" r="1" fill="white"/>
+    <circle cx="750" cy="750" r="1" fill="white"/>
+    <circle cx="900" cy="650" r="1" fill="white"/>
+    <circle cx="1050" cy="700" r="1" fill="white"/>
+    <circle cx="1200" cy="750" r="1" fill="white"/>
+    <circle cx="1350" cy="650" r="1" fill="white"/>
+  </g>
+</svg>
