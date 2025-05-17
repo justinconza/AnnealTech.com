@@ -735,25 +735,44 @@ const TimelineSection = () => {
 
 const CTASection = () => {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-900 to-blue-800 text-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-            Is Your CRE Infrastructure Fully Covered?
-          </h2>
-          
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            We'll show you quick wins and exposure areas in 15 minutes or less—backed by our guaranteed 
-            SLA response and support levels.
-          </p>
+    <section className="py-10 bg-gradient-to-r from-blue-900 to-blue-800 text-white relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-circuit opacity-10"></div>
+      
+      {/* Light beam */}
+      <motion.div 
+        className="absolute h-full w-40 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent skew-x-12"
+        animate={{
+          x: ['-100%', '300%']
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+          repeatDelay: 5
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="md:max-w-xl">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-2">
+              Is Your CRE Infrastructure Fully Covered?
+            </h2>
+            
+            <p className="text-base text-blue-100">
+              We'll show you quick wins and exposure areas in 15 minutes or less—backed by our guaranteed 
+              SLA response and support levels.
+            </p>
+          </div>
           
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="inline-block"
+            className="flex-shrink-0"
           >
-            <Button className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-6 text-lg shadow-lg hover:shadow-blue-300/25 rounded-md transition-all flex items-center">
-              <span>Request Your Free IT & Security Assessment</span>
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button className="bg-blue-500 hover:bg-blue-400 text-white px-6 py-3 text-base shadow-lg hover:shadow-blue-300/25 rounded-md transition-all flex items-center whitespace-nowrap">
+              <span>Request Your Free Assessment</span>
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>
         </div>
@@ -794,9 +813,9 @@ const CommercialRealEstatePage = () => {
       <main id="main-content">
         <HeroSection />
         <ChallengesSection />
+        <CTASection />
         <ServicesSection />
         <TimelineSection />
-        <CTASection />
       </main>
     </>
   );
