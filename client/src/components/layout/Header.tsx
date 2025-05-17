@@ -113,9 +113,9 @@ const Header = () => {
         <div className="flex items-center">
           <Link href="/" className="group flex items-center">
             <img 
-              src="/images/annealtech-logo.avif" 
+              src="/images/annealtech-logo.png" 
               alt="AnnealTech logo" 
-              className="h-12 w-auto mr-3"
+              className="h-11 w-auto mr-3"
             />
             <div className="flex flex-col">
               <span className="text-white text-2xl font-bold tracking-wider">
