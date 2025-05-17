@@ -568,7 +568,7 @@ const ServiceCard = ({ icon: Icon, title, index }: { icon: any, title: string, i
           </h3>
         </div>
         
-        <p className="text-blue-100/80 text-sm mb-5 leading-relaxed">
+        <p className="text-white text-sm mb-5 leading-relaxed">
           {descriptions[index % descriptions.length]}
         </p>
         
@@ -582,7 +582,7 @@ const ServiceCard = ({ icon: Icon, title, index }: { icon: any, title: string, i
           
           <ul className="grid grid-cols-1 gap-1 mb-4">
             {features[index % features.length].map((feature, i) => (
-              <li key={i} className="text-xs text-blue-100/70 flex items-start">
+              <li key={i} className="text-xs text-white flex items-start">
                 <span className="text-blue-400 mr-1.5">✓</span>
                 <span>{feature}</span>
               </li>
@@ -590,7 +590,7 @@ const ServiceCard = ({ icon: Icon, title, index }: { icon: any, title: string, i
           </ul>
           
           {/* Business Impact badge */}
-          <div className="bg-gradient-to-r from-blue-900/50 to-blue-800/50 rounded border border-blue-700/30 p-2.5 text-xs text-blue-100 flex items-center">
+          <div className="bg-gradient-to-r from-blue-900/80 to-blue-800/80 rounded border border-blue-700/50 p-2.5 text-xs text-white flex items-center">
             <motion.div 
               className="mr-2 flex-shrink-0"
               animate={{ rotate: [0, 5, 0, -5, 0] }}
@@ -728,21 +728,19 @@ const ServicesSection = () => {
           transition={{ duration: 0.7 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          {/* Forge hammer icon with glow effect */}
-          <motion.div 
-            initial={{ scale: 0, rotate: -180 }}
-            whileInView={{ scale: 1, rotate: 0 }}
+          {/* Section title with underline */}
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 200, duration: 0.8 }}
-            className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-blue-700 to-blue-600 rounded-full text-white mb-6 shadow-lg shadow-blue-600/20 relative"
+            transition={{ duration: 0.8 }}
+            className="text-sm uppercase tracking-widest text-blue-300 font-semibold mb-4 inline-block"
           >
-            <Server className="h-6 w-6" />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 via-blue-600/30 to-blue-400/20" 
-              style={{
-                animation: "pulse-glow 2s ease-in-out infinite alternate"
-              }}
-            />
-          </motion.div>
+            <span className="relative">
+              Tailored CRE Services
+              <span className="absolute bottom-0 left-0 w-full h-px bg-blue-500/50"></span>
+            </span>
+          </motion.h2>
           
           {/* Heading with animated underline */}
           <div className="overflow-hidden mb-2">
@@ -776,7 +774,7 @@ const ServicesSection = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-lg text-blue-100/90 mb-4"
+            className="text-lg text-blue-100 mb-4"
           >
             Our services are specifically engineered for the unique needs of Commercial Real Estate operations,
             providing comprehensive support for your technology infrastructure.
@@ -787,7 +785,7 @@ const ServicesSection = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.6 }}
-            className="text-lg text-blue-100/80"
+            className="text-lg text-blue-100"
           >
             Each service is delivered with SLA-backed guarantees, expertly forged to ensure reliability, security, and performance.
           </motion.p>
