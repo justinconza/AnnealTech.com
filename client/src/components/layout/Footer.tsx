@@ -146,14 +146,14 @@ const Footer = () => {
               </li>
               <li className="flex">
                 <Phone className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#3A6EA5]" />
-                <a href="tel:+14155550123" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors">
-                  +1 (415) 555-0123
+                <a href="tel:+15125938001" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors" aria-label="Call us at 512-593-8001">
+                  512-593-8001
                 </a>
               </li>
               <li className="flex">
                 <Mail className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#3A6EA5]" />
-                <a href="mailto:info@annealtech.com" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors">
-                  info@annealtech.com
+                <a href="mailto:Services@AnnealTech.com" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors" aria-label="Email us at Services@AnnealTech.com">
+                  Services@AnnealTech.com
                 </a>
               </li>
             </ul>
