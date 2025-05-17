@@ -135,9 +135,12 @@ const HeroSection = () => {
               whileHover={{ scale: 1.05 }}
               className="inline-block"
             >
-              <Button className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-6 text-lg shadow-lg hover:shadow-blue-600/25 rounded-md transition-all flex items-center space-x-2">
+              <Button 
+                className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-6 text-lg shadow-lg hover:shadow-blue-600/25 rounded-md transition-all flex items-center space-x-2"
+                aria-label="Get your free commercial real estate risk assessment"
+              >
                 <span>Get Your Free CRE Risk Assessment</span>
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Button>
             </motion.div>
           </motion.div>
@@ -341,7 +344,7 @@ const ChallengesSection = () => {
                       className="text-center"
                     >
                       <div className="uppercase text-xs tracking-wider mb-1 text-blue-100">AnnealTech Solution</div>
-                      <div className="text-lg font-semibold">End-to-End Security</div>
+                      <div className="text-lg font-semibold">{index % 3 === 0 ? "Enterprise Support" : index % 3 === 1 ? "Advanced Security" : "Smart Solutions"}</div>
                     </motion.div>
                   </div>
                   
@@ -386,12 +389,17 @@ const ChallengesSection = () => {
   );
 };
 
-const ServiceCard = ({ icon: Icon, title }: { icon: any, title: string }) => (
-  <div className="bg-white rounded-lg shadow-md border border-blue-100 p-6 hover:shadow-lg hover:border-blue-300 transition-all">
+const ServiceCard = ({ icon: Icon, title, index }: { icon: any, title: string, index: number }) => (
+  <div 
+    className="bg-white rounded-lg shadow-md border border-blue-100 p-6 hover:shadow-lg hover:border-blue-300 transition-all focus-within:ring-2 focus-within:ring-blue-400 focus-within:outline-none"
+    tabIndex={0}
+    role="listitem"
+    aria-labelledby={`service-title-${index}`}
+  >
     <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-blue-100 text-blue-600 mb-4">
-      <Icon className="h-6 w-6" />
+      <Icon className="h-6 w-6" aria-hidden="true" />
     </div>
-    <h3 className="text-lg font-heading font-semibold text-slate-800 mb-1">{title}</h3>
+    <h3 id={`service-title-${index}`} className="text-lg font-heading font-semibold text-slate-800 mb-1">{title}</h3>
   </div>
 );
 
@@ -410,17 +418,17 @@ const ServicesSection = () => {
   ];
   
   return (
-    <section className="py-16 md:py-24 bg-blue-50">
+    <section className="py-16 md:py-24 bg-blue-50" aria-labelledby="services-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block p-2 bg-blue-600 rounded-lg text-white mb-4">
+          <div className="inline-block p-2 bg-blue-600 rounded-lg text-white mb-4" aria-hidden="true">
             <Server className="h-6 w-6" />
           </div>
           
-          <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+          <h2 id="services-heading" className="text-3xl font-heading font-bold text-slate-800 mb-4">
             <span className="relative inline-block">
               Tailored CRE Services
-              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500"></span>
+              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500" aria-hidden="true"></span>
             </span>
           </h2>
           
@@ -430,9 +438,9 @@ const ServicesSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6" role="list" aria-label="Available services">
           {services.map((service, idx) => (
-            <ServiceCard key={idx} icon={service.icon} title={service.title} />
+            <ServiceCard key={idx} icon={service.icon} title={service.title} index={idx} />
           ))}
         </div>
       </div>
@@ -454,17 +462,17 @@ const SLASection = () => {
   ];
   
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24 bg-white" aria-labelledby="sla-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block p-2 bg-blue-100 rounded-lg text-blue-600 mb-4">
+          <div className="inline-block p-2 bg-blue-100 rounded-lg text-blue-600 mb-4" aria-hidden="true">
             <Clock3 className="h-6 w-6" />
           </div>
           
-          <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+          <h2 id="sla-heading" className="text-3xl font-heading font-bold text-slate-800 mb-4">
             <span className="relative inline-block">
               SLA-Backed Service Metrics
-              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500"></span>
+              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500" aria-hidden="true"></span>
             </span>
           </h2>
           
@@ -475,20 +483,21 @@ const SLASection = () => {
         </div>
         
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
+          <table className="w-full border-collapse" aria-label="Service Level Agreement Metrics">
+            <caption className="sr-only">Service Level Agreement commitments for Commercial Real Estate clients</caption>
             <thead>
               <tr className="bg-blue-900 text-white">
-                <th className="px-6 py-4 text-left rounded-tl-lg">Service Area</th>
-                <th className="px-6 py-4 text-left rounded-tr-lg">SLA Commitment</th>
+                <th scope="col" className="px-6 py-4 text-left rounded-tl-lg">Service Area</th>
+                <th scope="col" className="px-6 py-4 text-left rounded-tr-lg">SLA Commitment</th>
               </tr>
             </thead>
             <tbody>
               {metrics.map((metric, idx) => (
                 <tr key={idx} className={`${idx < metrics.length - 1 ? 'border-b border-blue-100' : ''} hover:bg-blue-50 transition-colors`}>
-                  <td className={`px-6 py-4 text-slate-700 font-medium ${idx === metrics.length - 1 ? 'rounded-bl-lg' : ''}`}>{metric.area}</td>
+                  <th scope="row" className={`px-6 py-4 text-slate-700 font-medium ${idx === metrics.length - 1 ? 'rounded-bl-lg' : ''}`}>{metric.area}</th>
                   <td className={`px-6 py-4 text-slate-600 ${idx === metrics.length - 1 ? 'rounded-br-lg' : ''}`}>
                     <div className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2" aria-hidden="true"></div>
                       {metric.commitment}
                     </div>
                   </td>
@@ -687,10 +696,10 @@ const FAQSection = () => {
   ];
   
   return (
-    <section className="py-16 md:py-24 bg-blue-50">
+    <section className="py-16 md:py-24 bg-blue-50" aria-labelledby="faq-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+          <h2 id="faq-heading" className="text-3xl font-heading font-bold text-slate-800 mb-4">
             <span className="relative inline-block">
               CRE FAQ Highlights
               <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500"></span>
@@ -704,8 +713,13 @@ const FAQSection = () => {
         
         <div className="max-w-3xl mx-auto space-y-6">
           {faqs.map((faq, idx) => (
-            <div key={idx} className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-heading font-semibold text-slate-800 mb-2">{faq.question}</h3>
+            <div 
+              key={idx} 
+              className="bg-white rounded-lg shadow-md p-6"
+              tabIndex={0}
+              aria-labelledby={`faq-question-${idx}`}
+            >
+              <h3 id={`faq-question-${idx}`} className="text-lg font-heading font-semibold text-slate-800 mb-2">{faq.question}</h3>
               <p className="text-slate-600">{faq.answer}</p>
             </div>
           ))}
@@ -717,7 +731,10 @@ const FAQSection = () => {
           </p>
           
           <Link href="/contact">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Button 
+              className="bg-blue-600 hover:bg-blue-700 text-white"
+              aria-label="Contact our Commercial Real Estate specialists"
+            >
               Contact Our CRE Specialists
             </Button>
           </Link>
@@ -747,17 +764,29 @@ const CommercialRealEstatePage = () => {
         />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
+        
+        {/* Accessibility metadata */}
+        <html lang="en" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://annealtech.com/industries/commercial-real-estate" />
       </Helmet>
       
-      <HeroSection />
-      <ChallengesSection />
-      <ServicesSection />
-      <SLASection />
-      <TestimonialSection />
-      <TimelineSection />
-      <DownloadSection />
-      <FAQSection />
-      <CTASection />
+      {/* Skip to main content link for screen readers */}
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-white focus:text-blue-900 focus:z-50">
+        Skip to main content
+      </a>
+      
+      <main id="main-content">
+        <HeroSection />
+        <ChallengesSection />
+        <ServicesSection />
+        <SLASection />
+        <TestimonialSection />
+        <TimelineSection />
+        <DownloadSection />
+        <FAQSection />
+        <CTASection />
+      </main>
     </>
   );
 };
