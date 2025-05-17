@@ -9,14 +9,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-// Spark component for the animated forge effect
-const ForgeSpark = ({ delay = 0 }) => {
-  const sparkRef = useRef<HTMLDivElement>(null);
+// Subtle highlight animation for modern branding
+const SubtleHighlight = ({ delay = 0 }) => {
+  const highlightRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (sparkRef.current) {
-        sparkRef.current.classList.add('animate-forge-spark');
+      if (highlightRef.current) {
+        highlightRef.current.classList.add('animate-fade-in-out');
       }
     }, delay);
     
@@ -25,10 +25,10 @@ const ForgeSpark = ({ delay = 0 }) => {
   
   return (
     <div 
-      ref={sparkRef}
-      className="absolute w-2 h-2 bg-accent rounded-full opacity-0"
+      ref={highlightRef}
+      className="absolute w-12 h-1 bg-[#f37021] rounded-full opacity-0"
       style={{
-        left: `${Math.random() * 100}%`,
+        left: `${Math.random() * 80 + 10}%`,
         bottom: '0',
       }}
     />
