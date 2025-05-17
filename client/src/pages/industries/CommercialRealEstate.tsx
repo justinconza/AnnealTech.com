@@ -490,50 +490,136 @@ const ServiceCard = ({ icon: Icon, title, index }: { icon: any, title: string, i
     "Enhance overall security posture"
   ];
   
+  // Determine accent color based on service type (for visual variety)
+  const cardColors = [
+    "from-blue-600 to-blue-800", // Support services
+    "from-indigo-600 to-indigo-800", // Security services
+    "from-cyan-600 to-cyan-800", // Monitoring services
+    "from-sky-600 to-sky-800", // Training services
+    "from-violet-600 to-violet-800" // Management services
+  ];
+  
+  const colorIndex = Math.floor(index / 2) % cardColors.length;
+  const gradientColor = cardColors[colorIndex];
+  
   return (
-    <div 
-      className="service-card bg-white rounded-lg shadow-md border border-blue-100 p-6 hover:shadow-xl transition-all focus-within:ring-2 focus-within:ring-blue-400 focus-within:outline-none"
+    <motion.div 
+      className="service-card relative h-full overflow-hidden rounded-xl shadow-lg"
+      whileHover={{ 
+        y: -5,
+        boxShadow: "0 20px 30px -15px rgba(13, 79, 134, 0.4), 0 0 15px rgba(59, 130, 246, 0.2)",
+        transition: { duration: 0.2 }
+      }}
+      initial={{ boxShadow: "0 10px 25px -15px rgba(13, 79, 134, 0.2)" }}
       tabIndex={0}
       role="listitem"
       aria-labelledby={`service-title-${index}`}
-      style={{ minHeight: "180px" }}
     >
-      <div className="card-icon inline-flex items-center justify-center w-12 h-12 rounded-lg bg-blue-100 text-blue-600 mb-4">
-        <Icon className="h-6 w-6" aria-hidden="true" />
+      {/* Card background with forge texture */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900 opacity-95"></div>
+      
+      {/* Metal texture overlay */}
+      <div className="absolute inset-0 opacity-10"
+        style={{ 
+          backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%%22 height=%22100%%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')",
+          backgroundBlendMode: "overlay"
+        }}
+      ></div>
+      
+      {/* Top accent bar with glow */}
+      <div className={`h-1.5 w-full bg-gradient-to-r ${gradientColor} relative overflow-hidden`}>
+        <motion.div 
+          className="absolute inset-0 opacity-75"
+          animate={{
+            x: ['-100%', '100%']
+          }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            backgroundImage: `linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)`
+          }}
+        />
       </div>
       
-      <h3 id={`service-title-${index}`} className="text-lg font-heading font-semibold text-slate-800 mb-1">{title}</h3>
-      
-      <p className="text-slate-600 text-sm mb-3">
-        {descriptions[index % descriptions.length]}
-      </p>
-      
-      <div className="card-details">
-        <h4 className="text-sm font-semibold text-blue-800 mb-2">Key Features:</h4>
-        <ul className="text-xs space-y-1 mb-3">
-          {features[index % features.length].map((feature, i) => (
-            <li key={i} className="flex items-start">
-              <span className="text-blue-500 mr-1 text-xs">✓</span>
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
-        
-        <div className="bg-blue-50 p-2 rounded-md text-xs text-blue-800 mb-3">
-          <strong>Business Impact:</strong> {benefits[index % benefits.length]}
+      {/* Card content */}
+      <div className="relative z-10 p-6 flex flex-col h-full">
+        <div className="flex items-center mb-4">
+          {/* Icon with animated glow effect */}
+          <motion.div 
+            className={`flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${gradientColor} text-white mr-4 relative`}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Icon className="h-6 w-6 relative z-10" aria-hidden="true" />
+            <motion.div 
+              className="absolute inset-0 rounded-lg opacity-60"
+              animate={{ 
+                boxShadow: [
+                  `0 0 0 rgba(59, 130, 246, 0)`,
+                  `0 0 20px rgba(59, 130, 246, 0.6)`,
+                  `0 0 0 rgba(59, 130, 246, 0)`
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
+          
+          <h3 id={`service-title-${index}`} className="text-lg font-heading font-bold text-white">
+            {title}
+          </h3>
         </div>
         
-        <div className="text-right">
+        <p className="text-blue-100/80 text-sm mb-5 leading-relaxed">
+          {descriptions[index % descriptions.length]}
+        </p>
+        
+        {/* Key Features section - always visible */}
+        <div className="card-features mt-auto">
+          <div className="flex items-center mb-2">
+            <div className="h-px flex-grow bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-blue-300 px-2">Key Features</h4>
+            <div className="h-px flex-grow bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></div>
+          </div>
+          
+          <ul className="grid grid-cols-1 gap-1 mb-4">
+            {features[index % features.length].map((feature, i) => (
+              <li key={i} className="text-xs text-blue-100/70 flex items-start">
+                <span className="text-blue-400 mr-1.5">✓</span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+          
+          {/* Business Impact badge */}
+          <div className="bg-gradient-to-r from-blue-900/50 to-blue-800/50 rounded border border-blue-700/30 p-2.5 text-xs text-blue-100 flex items-center">
+            <motion.div 
+              className="mr-2 flex-shrink-0"
+              animate={{ rotate: [0, 5, 0, -5, 0] }}
+              transition={{ duration: 5, repeat: Infinity }}
+            >
+              <Zap className="h-3.5 w-3.5 text-blue-400" />
+            </motion.div>
+            <div>
+              <span className="font-semibold text-blue-300">Business Impact: </span> 
+              {benefits[index % benefits.length]}
+            </div>
+          </div>
+        </div>
+        
+        {/* Learn More button */}
+        <motion.div 
+          className="mt-4 text-right"
+          whileHover={{ scale: 1.03 }}
+        >
           <Button 
             size="sm" 
-            variant="outline" 
-            className="text-xs border-blue-300 text-blue-700 hover:bg-blue-50"
+            className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white border-0 text-xs shadow-lg shadow-blue-900/20"
           >
-            Learn More
+            <span>Learn More</span>
+            <ArrowRight className="h-3 w-3 ml-1.5" />
           </Button>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -551,157 +637,199 @@ const ServicesSection = () => {
     { icon: Shield, title: "CRE-Focused IT & Security Consulting" }
   ];
   
+  // Generate animated particles for the background
+  const particles = Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 4 + 2,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    duration: Math.random() * 60 + 60,
+    delay: Math.random() * 10
+  }));
+  
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-100 to-blue-50 relative overflow-hidden" aria-labelledby="services-heading">
-      {/* Enhanced forging themed animated background */}
-      <div className="forge-intense-bg" aria-hidden="true">
-        <div className="forging-flow">
-          {/* Forge cores */}
-          {[...Array(5)].map((_, i) => (
-            <div 
-              key={`core-${i}`} 
-              className="forge-core" 
-              style={{
-                left: `${20 + i * 15}%`,
-                top: `${i % 2 === 0 ? 30 : 60}%`,
-                width: `${90 + Math.random() * 60}px`,
-                height: `${90 + Math.random() * 60}px`,
-                animationDelay: `${i * 0.7}s`
-              }}
-            />
-          ))}
-          
-          {/* Dynamic blue embers */}
-          {[...Array(30)].map((_, i) => (
-            <div 
-              key={`ember-${i}`} 
-              className="ember" 
-              style={{
-                left: `${Math.random() * 100}%`,
-                bottom: `${Math.random() * 50}%`,
-                animationDelay: `${Math.random() * 8}s`,
-                width: `${Math.random() * 3 + 2}px`,
-                height: `${Math.random() * 3 + 2}px`
-              }}
-            />
-          ))}
-          
-          {/* Animated sparks */}
-          {[...Array(20)].map((_, i) => (
-            <div 
-              key={`spark-${i}`} 
-              className="forge-spark" 
-              style={{
-                left: `${10 + (i % 5) * 20}%`,
-                bottom: '10%',
-                animationDelay: `${i * 0.3}s`,
-                '--spark-x': `${-50 + Math.random() * 100}px`,
-                '--spark-y': `${-100 - Math.random() * 150}px`
-              } as React.CSSProperties}
-            />
-          ))}
-          
-          {/* Blue forge flames */}
-          {[...Array(12)].map((_, i) => (
-            <div 
-              key={`flame-${i}`} 
-              className="forge-flame" 
-              style={{
-                left: `${i * 8.5}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                width: `${Math.random() * 20 + 12}px`
-              }}
-            />
-          ))}
-          
-          {/* Molten streams */}
-          {[...Array(4)].map((_, i) => (
-            <div 
-              key={`stream-${i}`}
-              className="molten-stream" 
-              style={{ 
-                bottom: `${15 + i * 30}px`, 
-                animationDelay: `${i * 2}s`,
-                opacity: 0.4 + (i * 0.1)
-              }} 
-            />
-          ))}
-          
-          {/* Heat waves */}
-          {[...Array(3)].map((_, i) => (
-            <div 
-              key={`heat-${i}`}
-              className="heat-wave" 
-              style={{ 
-                bottom: `${i * 40}%`, 
-                animationDelay: `${i * 1.3}s` 
-              }} 
-            />
-          ))}
-        </div>
+    <section className="py-16 md:py-24 bg-slate-900 relative overflow-hidden" aria-labelledby="services-heading">
+      {/* Dark forged metal background with blue accent */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 opacity-100"></div>
+      
+      {/* Metal texture overlay */}
+      <div className="absolute inset-0 opacity-5"
+        style={{ 
+          backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%%22 height=%22100%%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')",
+          backgroundBlendMode: "multiply"
+        }}
+      ></div>
+      
+      {/* Blue glowing accent at top */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-900 z-10">
+        <motion.div 
+          className="absolute inset-0"
+          animate={{
+            boxShadow: ["0 0 20px 0px rgba(59, 130, 246, 0.3)", "0 0 30px 5px rgba(59, 130, 246, 0.6)", "0 0 20px 0px rgba(59, 130, 246, 0.3)"]
+          }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+      
+      {/* Animated floating particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {particles.map(particle => (
+          <motion.div
+            key={particle.id}
+            className="absolute rounded-full bg-blue-400"
+            style={{ 
+              width: `${particle.size}px`, 
+              height: `${particle.size}px`, 
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
+              opacity: 0.2
+            }}
+            animate={{ 
+              y: [0, -30, 0],
+              x: [0, Math.random() > 0.5 ? 30 : -30, 0],
+              opacity: [0.1, 0.3, 0.1]
+            }}
+            transition={{ 
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Diagonal blue gradient accent */}
+      <div className="absolute top-0 right-0 w-full h-full overflow-hidden opacity-20">
+        <motion.div 
+          className="absolute -top-[30%] -right-[30%] w-[100%] h-[100%] bg-gradient-to-br from-blue-900/10 via-blue-600/20 to-transparent rounded-full blur-3xl"
+          animate={{ 
+            opacity: [0.4, 0.7, 0.4],
+            rotate: [0, 5, 0]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute bottom-0 left-0 w-[70%] h-[70%] bg-gradient-to-tr from-blue-900/20 via-blue-800/10 to-transparent rounded-full blur-3xl"
+          animate={{ 
+            opacity: [0.3, 0.6, 0.3],
+            scale: [0.9, 1.1, 0.9]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        {/* Section header with animated line */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
+          {/* Forge hammer icon with glow effect */}
           <motion.div 
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
+            initial={{ scale: 0, rotate: -180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-            className="inline-block p-2 bg-blue-600 rounded-lg text-white mb-4 relative shadow-lg" 
-            aria-hidden="true"
+            transition={{ type: "spring", stiffness: 200, duration: 0.8 }}
+            className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-blue-700 to-blue-600 rounded-full text-white mb-6 shadow-lg shadow-blue-600/20 relative"
           >
             <Server className="h-6 w-6" />
-            {/* Glow effect */}
-            <div className="absolute inset-0 rounded-lg bg-blue-500 filter blur-md opacity-40 animate-pulse"></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 via-blue-600/30 to-blue-400/20" 
+              style={{
+                animation: "pulse-glow 2s ease-in-out infinite alternate"
+              }}
+            />
           </motion.div>
           
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          {/* Heading with animated underline */}
+          <div className="overflow-hidden mb-2">
+            <motion.h2 
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              id="services-heading"
+              className="text-3xl md:text-4xl font-heading font-bold text-white mb-2 relative inline-block"
+            >
+              <div className="relative inline-block">
+                Tailored CRE Services
+                <motion.span 
+                  initial={{ width: 0, left: "50%" }}
+                  whileInView={{ width: "100%", left: "0%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, delay: 0.8 }}
+                  className="absolute -bottom-1 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400"
+                  style={{
+                    boxShadow: "0 0 8px 1px rgba(59, 130, 246, 0.7)"
+                  }}
+                />
+              </div>
+            </motion.h2>
+          </div>
+          
+          {/* Section description */}
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            id="services-heading" 
-            className="text-3xl font-heading font-bold text-slate-800 mb-4"
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="text-lg text-blue-100/90 mb-4"
           >
-            <span className="relative inline-block">
-              Tailored CRE Services
-              <motion.span 
-                initial={{ width: 0 }}
-                whileInView={{ width: "50%" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="absolute -bottom-1 left-1/4 h-1 bg-blue-500" 
-                aria-hidden="true"
-              ></motion.span>
-            </span>
-          </motion.h2>
+            Our services are specifically engineered for the unique needs of Commercial Real Estate operations,
+            providing comprehensive support for your technology infrastructure.
+          </motion.p>
           
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg text-slate-700"
+            transition={{ duration: 0.7, delay: 0.6 }}
+            className="text-lg text-blue-100/80"
           >
-            Our services are specifically designed for the unique needs of Commercial Real Estate operations,
-            providing comprehensive support for your technology infrastructure.
+            Each service is delivered with SLA-backed guarantees, expertly forged to ensure reliability, security, and performance.
           </motion.p>
-        </div>
+        </motion.div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10" role="list" aria-label="Available services">
+        {/* Service Cards Section - Responsive Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-12 relative z-10" role="list" aria-label="Available services">
           {services.map((service, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 + 0.3 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="h-full"
             >
               <ServiceCard icon={service.icon} title={service.title} index={idx} />
             </motion.div>
           ))}
         </div>
+        
+        {/* View all services button */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 1 }}
+          className="flex justify-center mt-8"
+        >
+          <Link href="/services">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Button className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white border-0 px-8 py-3 shadow-lg shadow-blue-900/20 flex items-center gap-2">
+                <span>View All Services</span>
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </motion.div>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
