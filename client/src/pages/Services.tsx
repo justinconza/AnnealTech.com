@@ -76,7 +76,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       
       <div className="p-6 border-t border-gray-100 mt-auto">
         <Link href={path}>
-          <Button className="w-full bg-blue-600 hover:bg-blue-700">
+          <Button className="w-full bg-blue-900 hover:bg-blue-800 text-white">
             <span>Learn More</span>
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
