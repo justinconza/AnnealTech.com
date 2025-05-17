@@ -1,0 +1,48 @@
+Redesign the “Beyond Traditional IT Support” section on the homepage to improve readability, visual hierarchy, and structural clarity — aligning it with AnnealTech’s professional branding and dark-tech aesthetic.
+
+GOALS:
+- Make the section easier to read
+- Visually emphasize the comparison
+- Clearly show the difference between Traditional MSPs and AnnealTech’s Managed Experience approach
+
+INSTRUCTIONS:
+
+1. 🧱 Layout:
+   - Replace the current paragraph-heavy layout with a structured **2-column comparison grid or table**
+   - Each row should represent a key category (e.g., Focus, Security, Support Model, Relationship, etc.)
+   - Left column: Traditional MSP (muted color)
+   - Right column: AnnealTech (highlighted and emphasized)
+
+2. 🎨 Styling:
+   - Use a **light or subtle dark background** (`bg-slate-900` or `bg-slate-100`) to contrast with surrounding sections
+   - Inside the table/grid:
+     - Left column text: `text-gray-400` or `text-slate-500`
+     - Right column text (AnnealTech): `text-white` or `text-[#0d4f86]`, with bold or slightly larger font
+     - Add `border`, `shadow-md`, or `ring-1 ring-slate-700` to the table/cards for pop
+   - Add vertical spacing between rows (`gap-y-6`) or row dividers
+
+3. 🔠 Section Heading:
+   - H2: “Beyond Traditional IT Support” (centered, large font, bold)
+   - Subheading: “See how our Managed Experience approach transforms the typical MSP relationship.”
+   - Use matching heading styles (like “Partnership Timeline”) with `text-white`, `text-lg`, and `text-gray-300`
+
+4. 💡 Optional Enhancements:
+   - Add a subtle glowing divider or icon badge to emphasize AnnealTech’s column
+   - Add fade-in animations on scroll (`animate-fade-up` or `transition-opacity`)
+   - Make the section mobile responsive:
+     - Stack comparison categories vertically on small screens
+     - Use clear labels like “Traditional MSP” and “AnnealTech” above each side
+
+5. 🧑‍💻 Accessibility:
+   - Ensure readable font sizes (`text-base`, `lg:text-lg`)
+   - Maintain high contrast between background and text
+   - Use semantic tags (like `<section>`, `<dl>`, or a `<table>` if appropriate)
+
+EXAMPLE COMPARISON ROWS:
+| Category      | Traditional MSP                   | AnnealTech                          |
+|---------------|-----------------------------------|--------------------------------------|
+| Focus         | Device uptime                     | User experience & business outcomes |
+| Security      | Basic AV + firewall               | Zero trust + behavioral analytics   |
+| Support Model | Reactive ticketing                | 24/7 concierge-style support        |
+| Relationship  | Vendor                            | Strategic partner                   |
+| Proactivity   | Fix after failure                 | Predict & prevent approach          |
