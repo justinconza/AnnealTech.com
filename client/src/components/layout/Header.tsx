@@ -130,6 +130,7 @@ const Header = () => {
         <nav className="hidden md:flex space-x-8">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/services">Services</NavLink>
+          <NavLink href="/industries">Industries</NavLink>
           <NavLink href="/about">About</NavLink>
           
           <DropdownMenu>
@@ -189,6 +190,7 @@ const Header = () => {
           <nav className="flex flex-col space-y-4">
             <NavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
             <NavLink href="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</NavLink>
+            <NavLink href="/industries" onClick={() => setIsMobileMenuOpen(false)}>Industries</NavLink>
             <NavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>About</NavLink>
             
             {/* Tools Section with Submenu */}
