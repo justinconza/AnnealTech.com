@@ -30,7 +30,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
             <service.icon className="h-6 w-6" />
           </div>
           <div className="w-10 h-10 flex items-center justify-center">
-            <span className="text-slate-600 font-display font-bold text-xl group-hover:text-[#0d4f86]/70 transition-colors">
+            <span className="text-white font-display font-bold text-xl group-hover:text-[#4a9eff] transition-colors">
               {(index + 1).toString().padStart(2, '0')}
             </span>
           </div>
