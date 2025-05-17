@@ -91,20 +91,20 @@ const PeopleTech = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
+      <div className="container mx-auto px-2 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-8 items-center">
           {/* Left column - Text content */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="w-full lg:w-1/2"
+            className="w-full lg:w-1/2 pl-0"
           >
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-800 mb-6">
               People <span className="text-blue-600">&gt;</span> Technology
             </h2>
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed px-4 md:px-6">
+            <p className="text-lg text-slate-600 mb-8 leading-relaxed pl-0 pr-2">
               While we leverage cutting-edge technology, we believe that human expertise is the true differentiator in cybersecurity. Our team of seasoned professionals brings insight, judgment, and experience that no algorithm can replace.
             </p>
             
