@@ -104,7 +104,7 @@ const PeopleTech = () => {
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-800 mb-6">
               People <span className="text-blue-600">&gt;</span> Technology
             </h2>
-            <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+            <p className="text-lg text-slate-600 mb-8 leading-relaxed px-4 md:px-6">
               While we leverage cutting-edge technology, we believe that human expertise is the true differentiator in cybersecurity. Our team of seasoned professionals brings insight, judgment, and experience that no algorithm can replace.
             </p>
             
@@ -122,8 +122,8 @@ const PeopleTech = () => {
                     <feature.icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-slate-800 mb-2">{feature.title}</h3>
-                    <p className="text-slate-600">{feature.description}</p>
+                    <h3 className="text-lg font-semibold text-slate-800 mb-2">{feature.title}</h3>
+                    <p className="text-slate-600 text-base">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -133,7 +133,7 @@ const PeopleTech = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white mt-4 px-6 py-5 text-lg group">
+              <Button className="bg-[#0a3e6a] hover:bg-[#082d4e] text-white mt-4 px-6 py-5 text-lg group">
                 <span>Meet Our Team</span>
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
