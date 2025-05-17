@@ -1,130 +1,165 @@
-import { LifeBuoy, Phone, BriefcaseBusiness, GraduationCap } from "lucide-react";
+import { motion } from "framer-motion";
+import { 
+  Lock, Shield, Server, Database, Code, Clock, HeartPulse, 
+  FileSearch, ArrowRight 
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-// Service category component
-const ServiceCategory = ({
-  icon: Icon,
-  title,
+// Service card component with animation
+const ServiceCard = ({ 
+  icon: Icon, 
+  title, 
   description,
-  features
-}: {
-  icon: React.ElementType;
-  title: string;
+  index 
+}: { 
+  icon: React.ElementType; 
+  title: string; 
   description: string;
-  features: string[];
+  index: number;
 }) => {
   return (
-    <div className="flex flex-col md:flex-row gap-6 items-start border-b border-[#EBF1F8] pb-8 mb-8 last:border-0 last:mb-0 last:pb-0">
-      <div className="w-16 h-16 rounded-lg bg-[#3A6EA5]/10 flex items-center justify-center text-[#3A6EA5] flex-shrink-0">
-        <Icon className="w-8 h-8" />
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+    >
+      <div className="mb-4 relative">
+        <div className="w-14 h-14 rounded-lg bg-blue-600 text-white flex items-center justify-center">
+          <Icon className="w-7 h-7" />
+        </div>
+        <div className="absolute w-full h-full top-0 left-0 bg-blue-600/10 rounded-lg scale-0 group-hover:scale-110 -z-10 transition-transform duration-300"></div>
       </div>
-      
-      <div className="flex-1">
-        <h3 className="text-2xl font-display font-semibold mb-3 text-slate-800">{title}</h3>
-        <p className="text-slate-600 mb-4">{description}</p>
-        
-        {/* Features list */}
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-start">
-              <div className="w-5 h-5 rounded-full bg-[#3A6EA5]/10 flex items-center justify-center mt-1 mr-3">
-                <span className="text-[#3A6EA5] text-xs">✓</span>
-              </div>
-              <span className="text-slate-700">{feature}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+      <h3 className="text-xl font-heading font-semibold mb-3 text-slate-800 group-hover:text-blue-600 transition-colors duration-300">{title}</h3>
+      <p className="text-slate-600 mb-4">{description}</p>
+      <Button variant="link" className="px-0 text-blue-600 font-medium group flex items-center">
+        <span>Learn More</span>
+        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      </Button>
+    </motion.div>
   );
 };
 
-// What We Do Best section component
+// WhatWeDoBest component
 const WhatWeDoBest = () => {
-  // Service categories data
-  const categories = [
+  // Services data
+  const services = [
     {
-      icon: LifeBuoy,
-      title: "Managed Support Solutions",
-      description: "End-to-end IT management and support services that keep your technology running smoothly and your team productive.",
-      features: [
-        "24/7 Help Desk Support",
-        "Network Monitoring & Management",
-        "Server Administration",
-        "Cybersecurity Protection",
-        "Data Backup & Recovery",
-        "Proactive Maintenance"
-      ]
+      icon: Shield,
+      title: "Managed Security",
+      description: "24/7 monitoring and threat detection to keep your systems protected from evolving cyber threats."
     },
     {
-      icon: Phone,
-      title: "Communication & Data Solutions",
-      description: "Integrated communication and data systems that enhance collaboration and ensure seamless information flow.",
-      features: [
-        "VoIP Phone Systems",
-        "Unified Communications",
-        "Cloud Services & Migration",
-        "Data Storage Solutions",
-        "Network Infrastructure",
-        "Business Continuity Planning"
-      ]
+      icon: Lock,
+      title: "Security Compliance",
+      description: "Meet industry regulations with our comprehensive compliance management programs."
     },
     {
-      icon: BriefcaseBusiness,
-      title: "Advisory Services",
-      description: "Strategic technology guidance to align your IT investments with your business goals and maximize return on investment.",
-      features: [
-        "IT Strategy & Planning",
-        "Virtual CIO Services",
-        "Technology Roadmapping",
-        "Security Risk Assessment",
-        "Compliance Consulting",
-        "Vendor Management"
-      ]
+      icon: Server,
+      title: "Network Security",
+      description: "Secure your infrastructure with advanced firewall solutions and intrusion prevention."
     },
     {
-      icon: GraduationCap,
-      title: "Technology Education",
-      description: "Custom training programs that empower your team to work more efficiently and securely with your technology systems.",
-      features: [
-        "Security Awareness Training",
-        "Software Application Training",
-        "System Adoption Programs",
-        "Executive Technology Briefings",
-        "Lunch & Learn Sessions",
-        "Custom Learning Materials"
-      ]
+      icon: Database,
+      title: "Data Protection",
+      description: "Safeguard critical data with encryption, backup and disaster recovery solutions."
+    },
+    {
+      icon: Code,
+      title: "Secure Development",
+      description: "Build applications with security at the core using our DevSecOps best practices."
+    },
+    {
+      icon: Clock,
+      title: "Incident Response",
+      description: "Fast, effective response to security incidents minimizing damage and downtime."
+    },
+    {
+      icon: HeartPulse,
+      title: "Security Assessment",
+      description: "Identify vulnerabilities with thorough penetration testing and security audits."
+    },
+    {
+      icon: FileSearch,
+      title: "Security Training",
+      description: "Empower your team with security awareness training to recognize and avoid threats."
     }
   ];
 
   return (
-    <section className="py-24 bg-gray-50" id="what-we-do-best">
-      <div className="container mx-auto px-4">
-        {/* Section header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block bg-[#3A6EA5]/10 border border-[#3A6EA5]/20 rounded-full px-4 py-1 mb-4">
-            <span className="text-[#3A6EA5] font-heading text-sm font-medium tracking-wider">WHAT WE DO BEST</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-800 mb-4">
-            Comprehensive IT Solutions<br />Tailored to Your Business
-          </h2>
-          <p className="text-lg text-slate-600">
-            Our core services are designed to provide complete coverage for all your technology needs,
-            from day-to-day support to strategic planning and implementation.
-          </p>
-        </div>
+    <section className="py-24 bg-slate-50 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
         
-        {/* Service categories */}
-        <div className="max-w-4xl mx-auto">
-          {categories.map((category, index) => (
-            <ServiceCategory
+        {/* Animated lines */}
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent"
+            style={{
+              top: `${20 + i * 15}%`,
+              left: 0,
+              right: 0,
+            }}
+            animate={{
+              x: ['-100%', '100%'],
+            }}
+            transition={{
+              duration: 15 + i * 5,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-800 mb-6">
+            <span className="inline-block relative">
+              What We Do Best
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500"></span>
+            </span>
+          </h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Our core security services combine cutting-edge technology with human expertise to deliver unmatched protection.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {services.map((service, index) => (
+            <ServiceCard 
               key={index}
-              icon={category.icon}
-              title={category.title}
-              description={category.description}
-              features={category.features}
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              index={index}
             />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
+        >
+          <Button
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-md text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <span>Explore All Services</span>
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+        </motion.div>
       </div>
     </section>
   );
