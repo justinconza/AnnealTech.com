@@ -112,11 +112,21 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="group flex items-center">
-            <img 
-              src="/images/at-logo.png" 
-              alt="AnnealTech logo" 
-              className="h-12 w-auto mr-2"
-            />
+            <div className="mr-3 flex items-center">
+              <img 
+                src="/images/at-logo.png" 
+                alt="AnnealTech logo" 
+                className="h-12 w-auto"
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-white text-2xl font-bold tracking-wider">
+                Anneal<span className="text-[#3A6EA5]">Tech</span>
+              </span>
+              <span className="text-xs tracking-wide">
+                <span className="text-white font-medium">Forging Technology.</span> <span className="text-[#6B9CD1]">Empowering People.</span>
+              </span>
+            </div>
           </Link>
         </div>
         
