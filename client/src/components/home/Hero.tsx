@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 // Import our SVG background
 import heroBackground from "@/assets/hero-background.svg";
+import ForgedStat from "@/components/home/ForgedStat";
 
 // Animated text for the subtitle
 const AnimatedText = ({ text }: { text: string }) => {
@@ -116,24 +117,12 @@ const Hero = () => {
             </Link>
           </div>
           
-          {/* Stats */}
+          {/* Stats with forged fire animation */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 border-t border-white/10 pt-8">
-            <div className="text-center">
-              <div className="text-4xl font-display font-bold text-white mb-1">15+</div>
-              <div className="text-sm text-white uppercase tracking-wider">Years Experience</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-display font-bold text-white mb-1">99.9%</div>
-              <div className="text-sm text-white uppercase tracking-wider">Uptime SLA</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-display font-bold text-white mb-1">24/7</div>
-              <div className="text-sm text-white uppercase tracking-wider">Support</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-display font-bold text-white mb-1">500+</div>
-              <div className="text-sm text-white uppercase tracking-wider">Clients</div>
-            </div>
+            <ForgedNumber value="15+" label="Years Experience" />
+            <ForgedNumber value="99.9%" label="Uptime SLA" />
+            <ForgedNumber value="24/7" label="Support" />
+            <ForgedNumber value="500+" label="Clients" />
           </div>
         </div>
       </div>

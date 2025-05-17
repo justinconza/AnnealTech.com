@@ -34,7 +34,7 @@ const PeopleTech = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
-                <Robot className="w-8 h-8" />
+                <Bot className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-heading font-semibold mb-3">Technology Enhances<br />But Doesn't Replace</h3>
               <p className="text-white/80">
