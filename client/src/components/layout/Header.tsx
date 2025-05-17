@@ -114,7 +114,7 @@ const Header = () => {
           <Link href="/" className="group flex items-center">
             <div className="mr-3 flex items-center">
               <img 
-                src="/at-logo.png" 
+                src="/at-logo.svg" 
                 alt="AnnealTech logo" 
                 className="h-12 w-auto"
               />
