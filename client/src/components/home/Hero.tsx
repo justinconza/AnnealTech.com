@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 // Import our SVG background
 import heroBackground from "@/assets/hero-background.svg";
-import ForgedStat from "@/components/home/ForgedStat";
+import AnimatedMetric from "@/components/home/AnimatedMetric";
 
 // Animated text for the subtitle
 const AnimatedText = ({ text }: { text: string }) => {
@@ -119,10 +119,10 @@ const Hero = () => {
           
           {/* Stats with forged fire animation */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 border-t border-white/10 pt-8">
-            <ForgedNumber value="15+" label="Years Experience" />
-            <ForgedNumber value="99.9%" label="Uptime SLA" />
-            <ForgedNumber value="24/7" label="Support" />
-            <ForgedNumber value="500+" label="Clients" />
+            <AnimatedMetric value="15+" label="Years Experience" />
+            <AnimatedMetric value="99.9%" label="Uptime SLA" />
+            <AnimatedMetric value="24/7" label="Support" />
+            <AnimatedMetric value="500+" label="Clients" />
           </div>
         </div>
       </div>

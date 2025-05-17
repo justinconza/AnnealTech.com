@@ -7,6 +7,9 @@ import TechStack from "@/components/home/TechStack";
 import Testimonials from "@/components/home/Testimonials";
 import CTA from "@/components/home/CTA";
 import Contact from "@/components/home/Contact";
+import Industries from "@/components/home/Industries";
+import WhatWeDoBest from "@/components/home/WhatWeDoBest";
+import PeopleTech from "@/components/home/PeopleTech";
 
 const Home = () => {
   return (
@@ -55,10 +58,11 @@ const Home = () => {
       
       {/* Main page sections */}
       <Hero />
+      <WhatWeDoBest />
+      <Industries />
+      <PeopleTech />
       <Services />
       <About />
-      <Expertise />
-      <TechStack />
       <Testimonials />
       <CTA />
       <Contact />
