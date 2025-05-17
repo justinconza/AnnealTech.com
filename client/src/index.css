@@ -74,14 +74,14 @@ body:has(#embedded-tool-page),
   /* Chart colors */
   --chart-1: 210 77% 21%; /* #0E3F6E - Corporate Blue */
   --chart-2: 210 50% 40%; /* #3A6EA5 - Medium Blue */
-  --chart-3: 24 91% 50%; /* #F05A22 - Vibrant Orange */
+  --chart-3: 24 91% 50%; /* #2D5D94 - Vibrant Orange */
   --chart-4: 210 33% 93%; /* #EBF1F8 - Light Blue */
   --chart-5: 0 0% 80%; /* #CCCCCC - Light Gray */
   
   /* Sidebar colors */
   --sidebar-background: 210 77% 21%; /* #0E3F6E - Corporate Blue */
   --sidebar-foreground: 0 0% 100%; /* White */
-  --sidebar-primary: 24 91% 50%; /* #F05A22 - Vibrant Orange */
+  --sidebar-primary: 24 91% 50%; /* #2D5D94 - Vibrant Orange */
   --sidebar-primary-foreground: 0 0% 100%; /* White */
   --sidebar-accent: 210 50% 40%; /* #3A6EA5 - Medium Blue */
   --sidebar-accent-foreground: 0 0% 100%; /* White */
@@ -127,14 +127,14 @@ body:has(#embedded-tool-page),
   /* Chart colors */
   --chart-1: 210 77% 21%; /* #0E3F6E - Corporate Blue */
   --chart-2: 210 50% 40%; /* #3A6EA5 - Medium Blue */
-  --chart-3: 24 91% 50%; /* #F05A22 - Vibrant Orange */
+  --chart-3: 24 91% 50%; /* #2D5D94 - Vibrant Orange */
   --chart-4: 210 33% 93%; /* #EBF1F8 - Light Blue */
   --chart-5: 0 0% 80%; /* #CCCCCC - Light Gray */
   
   /* Sidebar colors */
   --sidebar-background: 210 77% 21%; /* #0E3F6E - Corporate Blue */
   --sidebar-foreground: 0 0% 100%; /* White */
-  --sidebar-primary: 24 91% 50%; /* #F05A22 - Vibrant Orange */
+  --sidebar-primary: 24 91% 50%; /* #2D5D94 - Vibrant Orange */
   --sidebar-primary-foreground: 0 0% 100%; /* White */
   --sidebar-accent: 210 50% 40%; /* #3A6EA5 - Medium Blue */
   --sidebar-accent-foreground: 0 0% 100%; /* White */
@@ -267,7 +267,7 @@ body:has(#embedded-tool-page),
   
   /* AnnealTech theme styling for all components */
   .btn, .button, button[type="submit"], button[type="button"] {
-    @apply bg-[#0E3F6E] hover:bg-[#F05A22] text-white font-medium py-2 px-4 rounded-md transition-colors duration-300;
+    @apply bg-[#0E3F6E] hover:bg-[#2D5D94] text-white font-medium py-2 px-4 rounded-md transition-colors duration-300;
     box-shadow: 0 1px 3px rgba(14, 63, 110, 0.1);
     letter-spacing: 0.01em;
   }
@@ -294,12 +294,12 @@ body:has(#embedded-tool-page),
   .blue-theme-scope {
     --primary: 210 77% 21%; /* #0E3F6E - Corporate Blue */
     --primary-foreground: 0 0% 100%; /* White */
-    --accent: 24 91% 50%; /* #F05A22 - Vibrant Orange */
+    --accent: 24 91% 50%; /* #2D5D94 - Vibrant Orange */
     --accent-foreground: 0 0% 100%; /* White */
   }
   
   .blue-theme-scope .btn-primary {
-    @apply bg-[#0E3F6E] hover:bg-[#F05A22] text-white transition-colors duration-300;
+    @apply bg-[#0E3F6E] hover:bg-[#2D5D94] text-white transition-colors duration-300;
     box-shadow: 0 1px 3px rgba(14, 63, 110, 0.1);
   }
   

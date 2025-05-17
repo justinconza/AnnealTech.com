@@ -36,12 +36,12 @@ const Footer = () => {
           {/* Logo and info */}
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center mb-6">
-              <div className="mr-3 text-[#F05A22]">
+              <div className="mr-3 text-[#3A6EA5]">
                 <Hammer className="w-6 h-6" />
               </div>
               <div className="flex flex-col">
                 <span className="text-white text-xl font-bold tracking-wider">
-                  Anneal<span className="text-[#F05A22]">Tech</span>
+                  Anneal<span className="text-[#3A6EA5]">Tech</span>
                 </span>
               </div>
             </Link>
@@ -52,16 +52,16 @@ const Footer = () => {
             
             {/* Social media */}
             <div className="flex space-x-4">
-              <a href="#" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors p-2 border border-[#EBF1F8]/20 rounded-full hover:border-[#F05A22]/50" aria-label="LinkedIn">
+              <a href="#" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors p-2 border border-[#EBF1F8]/20 rounded-full hover:border-[#3A6EA5]/50" aria-label="LinkedIn">
                 <Linkedin className="h-4 w-4" />
               </a>
-              <a href="#" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors p-2 border border-[#EBF1F8]/20 rounded-full hover:border-[#F05A22]/50" aria-label="Twitter">
+              <a href="#" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors p-2 border border-[#EBF1F8]/20 rounded-full hover:border-[#3A6EA5]/50" aria-label="Twitter">
                 <Twitter className="h-4 w-4" />
               </a>
-              <a href="#" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors p-2 border border-[#EBF1F8]/20 rounded-full hover:border-[#F05A22]/50" aria-label="Facebook">
+              <a href="#" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors p-2 border border-[#EBF1F8]/20 rounded-full hover:border-[#3A6EA5]/50" aria-label="Facebook">
                 <Facebook className="h-4 w-4" />
               </a>
-              <a href="#" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors p-2 border border-[#EBF1F8]/20 rounded-full hover:border-[#F05A22]/50" aria-label="YouTube">
+              <a href="#" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors p-2 border border-[#EBF1F8]/20 rounded-full hover:border-[#3A6EA5]/50" aria-label="YouTube">
                 <Youtube className="h-4 w-4" />
               </a>
             </div>
@@ -72,27 +72,27 @@ const Footer = () => {
             <h3 className="text-lg font-medium mb-4 text-white">Company</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors inline-flex items-center">
+                <a href="#" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors inline-flex items-center">
                   <span>Home</span>
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors inline-flex items-center">
+                <a href="#about" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors inline-flex items-center">
                   <span>About Us</span>
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors inline-flex items-center">
+                <a href="#services" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors inline-flex items-center">
                   <span>Services</span>
                 </a>
               </li>
               <li>
-                <a href="#stack" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors inline-flex items-center">
+                <a href="#stack" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors inline-flex items-center">
                   <span>Technology Stack</span>
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors inline-flex items-center">
+                <a href="#contact" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors inline-flex items-center">
                   <span>Contact</span>
                 </a>
               </li>
@@ -104,31 +104,31 @@ const Footer = () => {
             <h3 className="text-lg font-medium mb-4 text-white">Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#services" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors inline-flex items-center">
-                  <Shield className="h-4 w-4 mr-2 text-[#F05A22]" />
+                <a href="#services" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors inline-flex items-center">
+                  <Shield className="h-4 w-4 mr-2 text-[#3A6EA5]" />
                   <span>Endpoint Protection</span>
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors inline-flex items-center">
-                  <Server className="h-4 w-4 mr-2 text-[#F05A22]" />
+                <a href="#services" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors inline-flex items-center">
+                  <Server className="h-4 w-4 mr-2 text-[#3A6EA5]" />
                   <span>Managed IT Services</span>
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors inline-flex items-center">
-                  <Mail className="h-4 w-4 mr-2 text-[#F05A22]" />
+                <a href="#services" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors inline-flex items-center">
+                  <Mail className="h-4 w-4 mr-2 text-[#3A6EA5]" />
                   <span>Email Security</span>
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors inline-flex items-center">
-                  <Clock className="h-4 w-4 mr-2 text-[#F05A22]" />
+                <a href="#services" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors inline-flex items-center">
+                  <Clock className="h-4 w-4 mr-2 text-[#3A6EA5]" />
                   <span>24/7 Monitoring</span>
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors inline-flex items-center group">
+                <a href="#services" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors inline-flex items-center group">
                   <span>View All Services</span>
                   <ArrowUpRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
@@ -141,18 +141,18 @@ const Footer = () => {
             <h3 className="text-lg font-medium mb-4 text-white">Contact</h3>
             <ul className="space-y-3">
               <li className="flex">
-                <MapPin className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#F05A22]" />
+                <MapPin className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#3A6EA5]" />
                 <span className="text-[#EBF1F8]">1234 Innovation Drive, Suite 500<br />San Francisco, CA 94105</span>
               </li>
               <li className="flex">
-                <Phone className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#F05A22]" />
-                <a href="tel:+14155550123" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors">
+                <Phone className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#3A6EA5]" />
+                <a href="tel:+14155550123" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors">
                   +1 (415) 555-0123
                 </a>
               </li>
               <li className="flex">
-                <Mail className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#F05A22]" />
-                <a href="mailto:info@annealtech.com" className="text-[#EBF1F8] hover:text-[#F05A22] transition-colors">
+                <Mail className="mt-1 mr-3 h-4 w-4 flex-shrink-0 text-[#3A6EA5]" />
+                <a href="mailto:info@annealtech.com" className="text-[#EBF1F8] hover:text-[#3A6EA5] transition-colors">
                   info@annealtech.com
                 </a>
               </li>
@@ -160,7 +160,7 @@ const Footer = () => {
             
             <div className="mt-6">
               <Button 
-                className="bg-[#0E3F6E] hover:bg-[#F05A22] text-white font-medium rounded-md transition-colors duration-300 shadow-sm group flex items-center gap-2"
+                className="bg-[#0E3F6E] hover:bg-[#3A6EA5] text-white font-medium rounded-md transition-colors duration-300 shadow-sm group flex items-center gap-2"
               >
                 <span>Book Demo</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -176,9 +176,9 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} AnnealTech. All rights reserved.
             </div>
             <div className="text-[#EBF1F8] text-sm md:text-right flex flex-wrap md:justify-end gap-6">
-              <a href="#" className="hover:text-[#F05A22] transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-[#F05A22] transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-[#F05A22] transition-colors">Sitemap</a>
+              <a href="#" className="hover:text-[#3A6EA5] transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-[#3A6EA5] transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-[#3A6EA5] transition-colors">Sitemap</a>
             </div>
           </div>
         </div>
