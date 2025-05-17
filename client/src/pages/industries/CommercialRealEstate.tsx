@@ -441,223 +441,171 @@ const ServicesSection = () => {
     { 
       title: "24/7 Remote Support", 
       icon: Clock,
-      benefit: "Ensures continuous operations across all your properties with rapid response to any technical issue."
+      benefit: "Instant support with response times low enough to avoid any disruption across your property portfolio.",
+      features: ["Rapid response SLA", "Multi-location support", "Expert property tech knowledge"]
     },
     { 
       title: "Identity Security (ITDR)", 
       icon: Shield,
-      benefit: "Protects tenant and investor data with advanced identity verification and access controls."
+      benefit: "Protect tenant and property management data with ironclad authentication and access protection.",
+      features: ["Multi-Factor Authentication", "Privileged Access Management", "Automatic Access Review"]
     },
     { 
       title: "Endpoint Protection", 
       icon: ShieldCheck,
-      benefit: "Secures every device in your portfolio from the growing threats targeting property management systems."
+      benefit: "Secure every device and endpoint in your properties against evolving threats and attacks.",
+      features: ["Zero-day protection", "Centralized Management", "Security Policies"]
     },
     { 
-      title: "Security Training", 
+      title: "Security Awareness Training", 
       icon: Users,
-      benefit: "Transforms staff into a security asset, reducing human-error vulnerabilities across property teams."
+      benefit: "Transform your staff into a security asset to recognize and properly respond to threats.",
+      features: ["Phishing Simulations", "Role-based Learning", "Social Engineering Defense"]
     },
     { 
       title: "Live Monitoring & SOC", 
       icon: Zap,
-      benefit: "Detects and responds to threats in real-time before they impact your operations or tenant services."
+      benefit: "Continuous monitoring by Security Operations Center (SOC) to prevent security incidents.",
+      features: ["24/7 Monitoring", "Real-time Alerts", "Threat Response"]
     },
     { 
       title: "Patch Management", 
       icon: Server,
-      benefit: "Minimizes vulnerabilities by keeping systems current without disrupting property operations."
+      benefit: "Automated patch deployment keeps systems updated without disrupting property operations.",
+      features: ["OS/Browser Updates", "Schedule Control", "Zero Downtime"]
     },
     { 
       title: "Software Training", 
       icon: Users,
-      benefit: "Maximizes ROI on property management systems through personalized staff education."
+      benefit: "Maximize ROI on property management systems through personalized staff education.",
+      features: ["Property Software Experts", "Custom Training Modules", "Certification Programs"]
     },
     { 
       title: "Device Lifecycle", 
       icon: Building,
-      benefit: "Streamlines technology from procurement through retirement across multi-location portfolios."
+      benefit: "Strategic procurement, maintenance, and retirement of IT assets across your properties.",
+      features: ["Lifecycle Planning", "Asset Refresh", "End-of-life Disposal"]
     },
     { 
       title: "Asset Management", 
       icon: BarChart,
-      benefit: "Optimizes IT investment with detailed tracking and strategic planning for your technology assets."
+      benefit: "Track and optimize your technology investments across multiple property locations.",
+      features: ["Real-time Inventory", "License Management", "Utilization Reports"]
     },
     { 
       title: "Security Consulting", 
       icon: Shield,
-      benefit: "Provides strategic guidance on the unique cybersecurity challenges facing property managers."
+      benefit: "Strategic guidance on the unique cybersecurity challenges facing property managers.",
+      features: ["CRE Risk Assessment", "Compliance Planning", "Security Roadmap"]
     }
   ];
   
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-slate-900 to-[#0d1d30] relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      
-      {/* Digital circuit pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <svg
-          width="100%"
-          height="100%"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern
-              id="circuit-pattern"
-              patternUnits="userSpaceOnUse"
-              width="100"
-              height="100"
-              patternTransform="scale(0.6) rotate(0)"
-            >
-              <path
-                d="M50 10 L90 10 L90 50 L50 50 Z M10 50 L50 50 L50 90 L10 90 Z"
-                stroke="#0d4f86"
-                strokeWidth="0.5"
-                fill="none"
-              />
-              <circle cx="50" cy="50" r="2" fill="#4a9eff" />
-              <circle cx="10" cy="10" r="2" fill="#4a9eff" />
-              <circle cx="90" cy="90" r="2" fill="#4a9eff" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#circuit-pattern)" />
-        </svg>
+    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-600 to-blue-800 relative overflow-hidden">
+      {/* Animated background pattern */}
+      <div className="absolute inset-0 bg-blue-700 opacity-30">
+        <div className="absolute inset-0" style={{
+          backgroundImage: "radial-gradient(circle at 25px 25px, rgba(255,255,255,0.2) 2px, transparent 0), radial-gradient(circle at 75px 75px, rgba(255,255,255,0.2) 2px, transparent 0)",
+          backgroundSize: "100px 100px"
+        }}></div>
       </div>
       
-      {/* Animated floating particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-blue-500/30"
-            initial={{
-              x: Math.random() * 100 + "%",
-              y: Math.random() * 100 + "%",
-              scale: Math.random() * 0.5 + 0.5,
-              opacity: Math.random() * 0.5 + 0.1
-            }}
-            animate={{
-              y: [
-                Math.random() * 100 + "%",
-                Math.random() * 100 + "%",
-                Math.random() * 100 + "%"
-              ],
-              x: [
-                Math.random() * 100 + "%",
-                Math.random() * 100 + "%",
-                Math.random() * 100 + "%"
-              ],
-              opacity: [
-                Math.random() * 0.2 + 0.1,
-                Math.random() * 0.5 + 0.3,
-                Math.random() * 0.2 + 0.1
-              ]
-            }}
-            transition={{
-              duration: 15 + Math.random() * 30,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        ))}
-      </div>
-      
-      {/* Glowing orbs */}
+      {/* Animated light beam */}
       <motion.div 
-        initial={{ opacity: 0.2 }}
-        animate={{ 
-          opacity: [0.2, 0.4, 0.2],
-          scale: [1, 1.1, 1] 
+        className="absolute -top-40 -left-40 w-80 h-80 bg-blue-400 rounded-full opacity-20 blur-3xl"
+        animate={{
+          x: [0, 100, 0],
+          y: [0, 50, 0],
         }}
-        transition={{ 
-          duration: 10, 
+        transition={{
+          duration: 20,
           repeat: Infinity,
-          ease: "easeInOut" 
+          ease: "easeInOut"
         }}
-        className="absolute top-1/4 -right-40 w-96 h-96 rounded-full bg-[#0d4f86]/20 blur-3xl"
-      ></motion.div>
+      />
       
-      <motion.div 
-        initial={{ opacity: 0.1 }}
-        animate={{ 
-          opacity: [0.1, 0.3, 0.1],
-          scale: [1, 1.2, 1] 
-        }}
-        transition={{ 
-          duration: 15, 
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 5
-        }}
-        className="absolute bottom-1/3 -left-20 w-80 h-80 rounded-full bg-[#0d4f86]/15 blur-3xl"
-      ></motion.div>
+      {/* Top border accent */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400"></div>
       
-      {/* Animated scan lines */}
-      <motion.div
-        initial={{ opacity: 0, y: 0 }}
-        animate={{ 
-          opacity: [0, 0.03, 0],
-          y: ["0%", "100%", "0%"]
-        }}
-        transition={{ 
-          duration: 8, 
-          repeat: Infinity,
-          ease: "linear" 
-        }}
-        className="absolute inset-0 bg-gradient-to-b from-blue-500/5 via-blue-500/10 to-blue-500/5 h-full w-full"
-      ></motion.div>
+      {/* Bottom border accent */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400"></div>
       
       <div className="container mx-auto px-4 max-w-screen-xl relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block bg-[#0d4f86]/30 border border-[#0d4f86]/40 rounded-full px-4 py-1 mb-4">
-            <span className="text-[#4a9eff] font-heading text-sm font-medium tracking-wider">OUR EXPERTISE</span>
+        <div className="max-w-3xl mx-auto text-center mb-14">
+          <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1 mb-4">
+            <span className="text-blue-100 font-heading text-sm font-medium tracking-wider">TAILORED SOLUTIONS</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
-            <span className="relative inline-block">
-              Purpose-Built IT & Cybersecurity for Property Management
-              <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-[#0d4f86]"></span>
-            </span>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-5">
+            Purpose-Built IT & Cybersecurity for Property Management
           </h2>
           
-          <p className="text-lg text-blue-100 mb-8">
+          <div className="w-24 h-1 bg-white mx-auto mb-6"></div>
+          
+          <p className="text-lg text-blue-50 mb-0">
             Secure multi-site operations, protect tenant data, and eliminate downtime with scalable
             IT solutions designed specifically for commercial real estate challenges.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {services.map((service, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.slice(0, 6).map((service, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="group h-full"
+              whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.5)" }}
+              className="group"
             >
-              <div className="bg-white/5 backdrop-blur-sm h-full p-6 rounded-xl border border-white/10 
-              shadow-xl hover:shadow-[#0d4f86]/30 transition-all duration-300 flex flex-col
-              hover:border-[#0d4f86]/30 relative overflow-hidden">
-                {/* Icon */}
-                <div className="flex justify-between items-start mb-4">
-                  <div className="bg-[#0d4f86]/20 w-12 h-12 rounded-lg flex items-center justify-center 
-                  text-[#4a9eff] group-hover:bg-[#0d4f86]/30 group-hover:text-[#5aafff] transition-all duration-300">
-                    <service.icon className="h-6 w-6" />
+              <div className="bg-white rounded-xl h-full shadow-lg overflow-hidden flex flex-col">
+                {/* Service header with icon */}
+                <div className="flex items-center p-5 border-b border-gray-100">
+                  <div className="bg-blue-600 w-10 h-10 rounded-lg flex items-center justify-center text-white">
+                    <service.icon className="h-5 w-5" />
                   </div>
-                  <div className="text-white/20 font-bold text-xl group-hover:text-[#0d4f86]/70">
-                    {(idx + 1).toString().padStart(2, '0')}
+                  <h3 className="ml-3 text-lg font-heading font-semibold text-gray-800">{service.title}</h3>
+                </div>
+                
+                {/* Service description */}
+                <div className="p-5 flex-grow">
+                  <p className="text-gray-600 mb-5">{service.benefit}</p>
+                  
+                  <div className="space-y-2">
+                    <h4 className="text-xs uppercase text-gray-400 font-semibold tracking-wider mb-2">KEY FEATURES</h4>
+                    {service.features.map((feature, i) => (
+                      <div key={i} className="flex items-start">
+                        <CheckIcon className="h-4 w-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
+                        <span className="text-sm text-gray-600">{feature}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 
-                {/* Content */}
-                <h3 className="text-lg font-heading font-semibold text-white mb-3">{service.title}</h3>
-                <p className="text-blue-100/80 text-sm flex-grow">{service.benefit}</p>
+                {/* Business impact footer */}
+                <div className="mt-auto">
+                  <div className="bg-blue-50 p-3 border-t border-blue-100">
+                    <p className="text-blue-700 text-xs font-medium flex items-center">
+                      <span className="mr-1">•</span> 
+                      Business Impact: {idx === 0 ? "Minimize downtime" : 
+                                        idx === 1 ? "Prevent unauthorized access" :
+                                        idx === 2 ? "Protect against malware" :
+                                        idx === 3 ? "Reduce human error" :
+                                        idx === 4 ? "Early threat detection" :
+                                        "Maintain secure systems"}
+                    </p>
+                  </div>
+                </div>
                 
-                {/* Hover indicator */}
-                <div className="w-0 h-1 bg-[#0d4f86] absolute bottom-0 left-0 group-hover:w-full transition-all duration-500"></div>
+                <div className="p-3 text-right">
+                  <motion.button 
+                    whileHover={{ x: 3 }}
+                    className="text-blue-600 inline-flex items-center text-sm"
+                  >
+                    Learn More <ArrowRight className="ml-1 h-3 w-3" />
+                  </motion.button>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -669,10 +617,10 @@ const ServicesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 text-center"
+          className="mt-14 text-center"
         >
-          <Button className="bg-[#0d4f86] hover:bg-[#0a3e6a] text-white px-8 py-6 text-lg 
-          shadow-lg hover:shadow-[#4a9eff]/40 rounded-md transition-all flex items-center mx-auto gap-2 group">
+          <Button className="bg-white hover:bg-blue-50 text-blue-700 px-8 py-4 text-lg 
+          font-medium shadow-xl hover:shadow-blue-500/30 rounded-md transition-all flex items-center mx-auto gap-2 group">
             <span>Get Your Free CRE Risk Assessment</span>
             <ArrowRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
