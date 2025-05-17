@@ -17,13 +17,13 @@ import { Button } from "@/components/ui/button";
 // Value Card component from the home page
 const ValueCard = ({ icon: Icon, title, description }: { icon: any; title: string; description: string }) => {
   return (
-    <div className="bg-slate/70 p-6 rounded-lg border border-accent/10 hover:border-accent/20 transition-colors group">
-      <div className="mb-4 text-accent p-3 bg-steel/20 rounded-lg inline-block">
+    <div className="bg-white p-6 rounded-lg border border-blue-200 hover:border-blue-400 transition-colors group shadow-sm hover:shadow-md">
+      <div className="mb-4 text-white p-3 bg-blue-600 rounded-lg inline-block group-hover:bg-blue-500 transition-colors">
         <Icon className="h-6 w-6" />
       </div>
       
-      <h3 className="text-xl font-heading font-semibold mb-2 text-foreground group-hover:text-accent transition-colors">{title}</h3>
-      <p className="text-muted-foreground text-sm">{description}</p>
+      <h3 className="text-xl font-heading font-semibold mb-2 text-slate-800 group-hover:text-blue-600 transition-colors">{title}</h3>
+      <p className="text-slate-600 text-sm">{description}</p>
     </div>
   );
 };
@@ -42,20 +42,20 @@ const Timeline = () => {
   return (
     <div className="space-y-6 relative">
       {/* Vertical line */}
-      <div className="absolute left-[22px] top-2 bottom-10 w-0.5 bg-accent/10 z-0"></div>
+      <div className="absolute left-[22px] top-2 bottom-10 w-0.5 bg-blue-300 z-0"></div>
       
       {/* Timeline items */}
       {milestones.map((milestone, index) => (
         <div key={index} className="flex gap-4">
           {/* Year marker */}
-          <div className="w-11 h-11 rounded-full bg-steel flex items-center justify-center border-2 border-accent/20 z-10 flex-shrink-0">
-            <span className="text-accent font-display text-xs font-bold">{milestone.year}</span>
+          <div className="w-11 h-11 rounded-full bg-blue-700 flex items-center justify-center border-2 border-blue-400 z-10 flex-shrink-0">
+            <span className="text-white font-display text-xs font-bold">{milestone.year}</span>
           </div>
           
           {/* Content */}
-          <div className="bg-steel/20 p-4 rounded-lg border border-accent/10 flex-grow">
-            <h4 className="text-lg font-heading font-semibold text-foreground">{milestone.title}</h4>
-            <p className="text-sm text-muted-foreground">{milestone.description}</p>
+          <div className="bg-white p-4 rounded-lg border border-blue-200 flex-grow shadow-sm hover:shadow-md transition-shadow">
+            <h4 className="text-lg font-heading font-semibold text-slate-800">{milestone.title}</h4>
+            <p className="text-sm text-slate-600">{milestone.description}</p>
           </div>
         </div>
       ))}
@@ -78,14 +78,14 @@ const TeamMember = ({
   linkedin?: string; 
 }) => {
   return (
-    <div className="bg-steel/10 rounded-lg border border-accent/10 overflow-hidden group">
+    <div className="bg-white rounded-lg border border-blue-200 overflow-hidden group shadow-sm hover:shadow-md transition-shadow">
       <div className="aspect-[4/5] relative overflow-hidden">
         <img 
           src={image} 
           alt={`${name}, ${title}`} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate/90 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
         
         {certifications.length > 0 && (
           <div className="absolute bottom-4 left-4 right-4">
@@ -93,7 +93,7 @@ const TeamMember = ({
               {certifications.map((cert, index) => (
                 <span 
                   key={index}
-                  className="text-xs bg-accent/20 text-accent px-2 py-0.5 rounded"
+                  className="text-xs bg-blue-400 text-blue-900 px-2 py-0.5 rounded font-medium"
                 >
                   {cert}
                 </span>
@@ -104,15 +104,15 @@ const TeamMember = ({
       </div>
       
       <div className="p-4">
-        <h3 className="font-heading font-semibold text-lg text-foreground">{name}</h3>
-        <p className="text-muted-foreground text-sm">{title}</p>
+        <h3 className="font-heading font-semibold text-lg text-slate-800">{name}</h3>
+        <p className="text-slate-600 text-sm">{title}</p>
         
         {linkedin && (
           <a 
             href={linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center text-accent text-sm mt-2 hover:underline"
+            className="inline-flex items-center text-blue-600 text-sm mt-2 hover:text-blue-700 hover:underline"
           >
             Connect on LinkedIn
             <ChevronRight className="h-3 w-3 ml-1" />
@@ -189,22 +189,22 @@ const AboutPage = () => {
       </Helmet>
       
       {/* Hero Section */}
-      <section className="py-24 md:py-32 bg-steel relative overflow-hidden">
+      <section className="py-24 md:py-32 bg-gradient-to-b from-blue-900 to-blue-800 relative overflow-hidden">
         {/* Decorative background elements */}
-        <div className="absolute -top-48 -right-48 w-96 h-96 rounded-full bg-accent/5 blur-3xl"></div>
-        <div className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full bg-accent/5 blur-3xl"></div>
+        <div className="absolute -top-48 -right-48 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl"></div>
+        <div className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1 mb-6">
-              <span className="text-accent font-heading text-sm font-medium tracking-wider">OUR STORY</span>
+            <div className="inline-block bg-blue-400 border border-blue-300 rounded-full px-4 py-1 mb-6">
+              <span className="text-blue-900 font-heading text-sm font-medium tracking-wider">OUR STORY</span>
             </div>
             
-            <h1 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
+            <h1 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">
               About AnnealTech
             </h1>
             
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
               AnnealTech is a Managed Experience Provider (MEP) focused on forging stronger, more resilient technology solutions for businesses. Learn about our journey, mission, and the team behind our success.
             </p>
           </div>
@@ -212,31 +212,37 @@ const AboutPage = () => {
       </section>
       
       {/* Mission & Vision Section */}
-      <section className="py-16 md:py-24 bg-slate">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-3xl font-heading font-bold text-foreground mb-4">
-                    Our Mission
+                  <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+                    <span className="relative inline-block">
+                      Our Mission
+                      <span className="absolute -bottom-1 left-0 w-16 h-1 bg-blue-500"></span>
+                    </span>
                   </h2>
-                  <p className="text-lg text-muted-foreground">
+                  <p className="text-lg text-slate-600">
                     To forge resilient technology infrastructures that empower businesses to thrive in an increasingly complex digital landscape. We combine technical excellence with human-centered design to create secure, reliable, and transformative IT experiences.
                   </p>
                 </div>
                 
                 <div>
-                  <h2 className="text-3xl font-heading font-bold text-foreground mb-4">
-                    Our Vision
+                  <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+                    <span className="relative inline-block">
+                      Our Vision
+                      <span className="absolute -bottom-1 left-0 w-16 h-1 bg-blue-500"></span>
+                    </span>
                   </h2>
-                  <p className="text-lg text-muted-foreground">
+                  <p className="text-lg text-slate-600">
                     To redefine the managed IT experience by creating systems that not only protect and perform but also adapt and evolve with our clients' needs. We envision a world where technology empowers human potential rather than limiting it.
                   </p>
                 </div>
                 
                 <div className="pt-4">
-                  <Button className="bg-accent hover:bg-accent/80 text-white">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all">
                     Learn About Our Services
                   </Button>
                 </div>
@@ -245,7 +251,7 @@ const AboutPage = () => {
             
             <div className="space-y-12">
               <div className="relative">
-                <div className="aspect-[16/9] rounded-lg overflow-hidden">
+                <div className="aspect-[16/9] rounded-lg overflow-hidden shadow-lg">
                   <img 
                     src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080" 
                     alt="AnnealTech team meeting" 
@@ -253,14 +259,14 @@ const AboutPage = () => {
                   />
                 </div>
                 
-                <div className="absolute -bottom-6 -right-6 bg-slate p-4 rounded-lg border border-accent/10 shadow-lg max-w-xs">
+                <div className="absolute -bottom-6 -right-6 bg-blue-600 p-4 rounded-lg border border-blue-500 shadow-lg max-w-xs text-white">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-accent/10 rounded-lg text-accent">
+                    <div className="p-2 bg-blue-500 rounded-lg text-white">
                       <Trophy className="h-6 w-6" />
                     </div>
                     <div>
-                      <h3 className="font-heading font-medium text-foreground">Award Winning</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <h3 className="font-heading font-medium text-white">Award Winning</h3>
+                      <p className="text-sm text-blue-100">
                         Top 100 Managed Service Providers - 2024
                       </p>
                     </div>
@@ -269,36 +275,36 @@ const AboutPage = () => {
               </div>
               
               <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
-                  <div className="flex justify-center mb-2 text-accent">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="flex justify-center mb-2 text-blue-600">
                     <Building className="h-8 w-8" />
                   </div>
-                  <div className="text-3xl font-display font-bold text-foreground mb-1">500+</div>
-                  <div className="text-sm text-muted-foreground">Clients Served</div>
+                  <div className="text-3xl font-display font-bold text-slate-800 mb-1">500+</div>
+                  <div className="text-sm text-slate-600">Clients Served</div>
                 </div>
                 
-                <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
-                  <div className="flex justify-center mb-2 text-accent">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="flex justify-center mb-2 text-blue-600">
                     <BarChart4 className="h-8 w-8" />
                   </div>
-                  <div className="text-3xl font-display font-bold text-foreground mb-1">99.9%</div>
-                  <div className="text-sm text-muted-foreground">Uptime Guarantee</div>
+                  <div className="text-3xl font-display font-bold text-slate-800 mb-1">99.9%</div>
+                  <div className="text-sm text-slate-600">Uptime Guarantee</div>
                 </div>
                 
-                <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
-                  <div className="flex justify-center mb-2 text-accent">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="flex justify-center mb-2 text-blue-600">
                     <GraduationCap className="h-8 w-8" />
                   </div>
-                  <div className="text-3xl font-display font-bold text-foreground mb-1">250+</div>
-                  <div className="text-sm text-muted-foreground">Certifications</div>
+                  <div className="text-3xl font-display font-bold text-slate-800 mb-1">250+</div>
+                  <div className="text-sm text-slate-600">Certifications</div>
                 </div>
                 
-                <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
-                  <div className="flex justify-center mb-2 text-accent">
+                <div className="bg-white p-6 rounded-lg border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="flex justify-center mb-2 text-blue-600">
                     <Globe className="h-8 w-8" />
                   </div>
-                  <div className="text-3xl font-display font-bold text-foreground mb-1">3</div>
-                  <div className="text-sm text-muted-foreground">Global Offices</div>
+                  <div className="text-3xl font-display font-bold text-slate-800 mb-1">3</div>
+                  <div className="text-sm text-slate-600">Global Offices</div>
                 </div>
               </div>
             </div>
@@ -307,13 +313,16 @@ const AboutPage = () => {
       </section>
       
       {/* Company History */}
-      <section className="py-16 md:py-24 bg-steel/20 relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-blue-50 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto mb-16 text-center">
-            <h2 className="text-3xl font-heading font-bold text-foreground mb-4">
-              Our Journey
+            <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+              <span className="relative inline-block">
+                Our Journey
+                <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500"></span>
+              </span>
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-slate-600">
               From our humble beginnings to becoming a leading Managed Experience Provider, 
               our story is one of continuous innovation and commitment to excellence.
             </p>
@@ -326,13 +335,16 @@ const AboutPage = () => {
       </section>
       
       {/* Core Values */}
-      <section className="py-16 md:py-24 bg-slate">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto mb-16 text-center">
-            <h2 className="text-3xl font-heading font-bold text-foreground mb-4">
-              Our Core Values
+            <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+              <span className="relative inline-block">
+                Our Core Values
+                <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500"></span>
+              </span>
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-slate-600">
               These principles guide everything we do, from how we design solutions 
               to how we interact with our clients and each other.
             </p>
@@ -352,13 +364,16 @@ const AboutPage = () => {
       </section>
       
       {/* Leadership Team */}
-      <section className="py-16 md:py-24 bg-steel/20">
+      <section className="py-16 md:py-24 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto mb-16 text-center">
-            <h2 className="text-3xl font-heading font-bold text-foreground mb-4">
-              Our Leadership Team
+            <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+              <span className="relative inline-block">
+                Our Leadership Team
+                <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-blue-500"></span>
+              </span>
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-slate-600">
               Meet the experts leading AnnealTech's mission to transform IT experiences 
               through innovation, security, and service excellence.
             </p>
