@@ -1089,6 +1089,7 @@ const CommercialRealEstatePage = () => {
         <SLASection />
         <TestimonialSection />
         <TimelineSection />
+        <ForgedSteelDivider />
         <DownloadSection />
         <FAQSection />
         <CTASection />
