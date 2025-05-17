@@ -52,38 +52,7 @@ const ForgedNumber: React.FC<ForgedNumberProps> = ({ value, label }) => {
         {label}
       </div>
       
-      <style jsx>{`
-        @keyframes float-up {
-          0% {
-            transform: translateY(0px);
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(-20px);
-            opacity: 0;
-          }
-        }
-        
-        @keyframes glow-pulse {
-          0% {
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-          }
-          50% {
-            text-shadow: 0 0 20px rgba(255, 107, 53, 0.8), 0 0 30px rgba(255, 107, 53, 0.6);
-          }
-          100% {
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-          }
-        }
-        
-        .forge-glow {
-          animation: glow-pulse 2s infinite;
-        }
-        
-        .ember {
-          animation: float-up 2s infinite ease-out;
-        }
-      `}</style>
+      {/* Animation styles are added to index.css */}
     </div>
   );
 };
