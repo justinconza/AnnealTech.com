@@ -176,7 +176,7 @@ const Services = () => {
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
             <span className="relative inline-block">
-              Comprehensive Managed IT & Security Solutions
+              Fully Managed IT Experience
               <span className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-[#4a9eff]"></span>
             </span>
           </h2>
