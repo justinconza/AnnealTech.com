@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" width="200" height="150">
+  <!-- AnnealTech 'AT' logo with white text on transparent background -->
+  <style>
+    .logo-text { fill: #ffffff; font-family: 'Arial Black', sans-serif; font-weight: bold; }
+  </style>
+  
+  <!-- 'A' letter -->
+  <path d="M50,120 L30,140 L70,140 L50,120 Z M50,20 L80,100 L65,100 L60,85 L40,85 L35,100 L20,100 L50,20 Z M50,40 L42,70 L58,70 L50,40 Z" class="logo-text" />
+  
+  <!-- 'T' letter -->
+  <path d="M110,40 L110,140 L130,140 L130,40 L155,40 L155,20 L85,20 L85,40 L110,40 Z" class="logo-text" />
+  
+  <!-- Text below -->
+  <text x="50" y="147" text-anchor="middle" class="logo-text" style="font-size: 14px;">AnnealTech</text>
+</svg>
