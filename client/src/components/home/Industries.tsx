@@ -2,15 +2,14 @@ import { Building2, Briefcase, Building, School, Hospital, GraduationCap, Server
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-// Import Swiper components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/modules';
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
-// Import required modules
-import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 // Industry card component with animation
 const IndustryCard = ({ 
@@ -51,17 +50,6 @@ const IndustryCard = ({
 
 // Industries section component
 const Industries = () => {
-  // Import Swiper components
-  const { Swiper, SwiperSlide } = require('swiper/react');
-  // Import Swiper styles
-  import 'swiper/css';
-  import 'swiper/css/pagination';
-  import 'swiper/css/navigation';
-  import 'swiper/css/effect-coverflow';
-  
-  // Import required modules
-  import { Pagination, Navigation, Autoplay, EffectCoverflow } from 'swiper/modules';
-  
   const [swiperRef, setSwiperRef] = useState<any>(null);
   
   // Industries data
@@ -105,7 +93,7 @@ const Industries = () => {
 
   return (
     <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzQTZFQTUiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djLSgwLjYgMC44LTAuMiAwLjgtMC40IDAuOC0wLjYgMC44LTAuOCAwLjgtMSAwLjgtMS4yIDAuOC0xLjQgMC44LTEuNiAwLjgtMS44IDAuOC0yIDBsLTIgMC42LTEuOCAwLjYtMS42IDAuNi0xLjQgMC42LTEuMiAwLjYtMSAwLjYtMC44IDAuNi0wLjYgMC42LTAuNCAwLjYtMC4yIDAuNnYtMS4ybC0yLTAuMnYtMjYuNGwtMi0wLjJ2MjguNGgydjJoMnYybDIgMC4ydjIuNnpNNjIgMHYzNGgtMnYtMzJoLTd2LTJoOXptMCAwIi8+PC9nPjwvZz48L3N2Zz4=')] bg-fixed"></div>
+      <div className="absolute inset-0 bg-circuit"></div>
       
       {/* Futuristic background elements */}
       <div className="absolute -right-20 -top-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
