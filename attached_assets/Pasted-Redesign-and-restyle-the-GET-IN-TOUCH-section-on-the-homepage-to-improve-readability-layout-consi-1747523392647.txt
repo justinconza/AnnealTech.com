@@ -1,0 +1,41 @@
+Redesign and restyle the “GET IN TOUCH” section on the homepage to improve readability, layout consistency, and accessibility while aligning with AnnealTech’s dark-tech forge aesthetic.
+
+1. 📛 Section Heading Block:
+   - Use the same format as other sections:
+     - H2: “GET IN TOUCH” (uppercase, tracking-wide, small font, branded blue `#0d4f86`)
+     - Subheading (P): “Let’s discuss your IT challenges and how AnnealTech can forge a solution for your business.” (or current copy)
+   - Center the heading text, and use white or `text-gray-100` on dark background
+
+2. 🎨 Background + Contrast Fix:
+   - Ensure background color is either:
+     - Solid dark slate (`bg-[#1a1a1a]`)  
+     - Or a gradient/forge-glow with darkened overlay
+   - Overlay a semi-transparent black if needed (`bg-black/60`) to ensure form text stands out
+
+3. 🧾 Form Field Styling:
+   - Inputs and textarea:
+     - Background: `bg-slate-900`
+     - Text: `text-white`
+     - Placeholder: `text-gray-400`
+     - Border: `border border-gray-600` with `focus:border-[#0d4f86]`
+   - Input padding: `px-4 py-3`, rounded corners (`rounded-md`)
+   - Width: Full-width on mobile, side-by-side on desktop if space allows
+
+4. ✅ Button Styling:
+   - Use AnnealTech blue (`bg-[#0d4f86]`) with white text
+   - Hover: slight glow or `hover:bg-blue-700 hover:shadow-lg`
+   - Font: Bold, readable, no all-caps unless styling justifies it
+
+5. 📱 Responsiveness:
+   - Stack fields vertically on mobile
+   - For desktop/tablet, use grid or flex to align name/email on same row if spacing permits
+
+6. 💡 Optional Enhancements:
+   - Add a subtle glowing underline animation to the section heading (`after:content-[""] block w-12 h-1 bg-blue-500 animate-pulse`)
+   - Fade in the section using `scroll-fade` or `animate-fade-up` as user reaches this section
+   - Display a confirmation message below the form upon submission with matching styling
+
+7. 🔒 Accessibility:
+   - Add labels for all inputs
+   - Use `aria-label`, `required` attributes where appropriate
+   - Maintain high color contrast for WCAG compliance
