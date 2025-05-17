@@ -1,89 +1,184 @@
 import { Building2, Briefcase, Building, School, Hospital, GraduationCap, Server } from "lucide-react";
+import { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+// Import Swiper components
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-coverflow';
+// Import required modules
+import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/modules';
 
-// Industry card component
+// Industry card component with animation
 const IndustryCard = ({ 
   icon: Icon, 
   title, 
-  description 
+  description,
+  index 
 }: { 
   icon: React.ElementType; 
   title: string; 
   description: string;
+  index: number;
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg border border-[#EBF1F8] group">
-      <div className="w-12 h-12 rounded-full bg-[#3A6EA5]/10 flex items-center justify-center mb-4 text-[#3A6EA5] group-hover:bg-[#3A6EA5] group-hover:text-white transition-all">
-        <Icon className="w-6 h-6" />
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="bg-white rounded-lg shadow-md p-8 transition-all hover:shadow-xl border border-[#EBF1F8] group hover:translate-y-[-5px] duration-300 h-full"
+    >
+      <div className="w-16 h-16 rounded-full bg-[#3A6EA5]/10 flex items-center justify-center mb-6 text-[#3A6EA5] group-hover:bg-[#3A6EA5] group-hover:text-white transition-all">
+        <Icon className="w-8 h-8" />
       </div>
-      <h3 className="text-xl font-heading font-semibold mb-3 text-slate-800">{title}</h3>
-      <p className="text-slate-600">{description}</p>
-    </div>
+      <h3 className="text-xl font-heading font-semibold mb-4 text-slate-800">{title}</h3>
+      <p className="text-slate-600 mb-6">{description}</p>
+      <div className="pt-4 border-t border-[#EBF1F8]">
+        <Button
+          variant="link"
+          className="text-[#3A6EA5] font-medium p-0 hover:text-[#2D5D94] transition-colors group flex items-center"
+        >
+          <span>Learn more</span>
+          <span className="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+        </Button>
+      </div>
+    </motion.div>
   );
 };
 
 // Industries section component
 const Industries = () => {
+  // Import Swiper components
+  const { Swiper, SwiperSlide } = require('swiper/react');
+  // Import Swiper styles
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+  import 'swiper/css/navigation';
+  import 'swiper/css/effect-coverflow';
+  
+  // Import required modules
+  import { Pagination, Navigation, Autoplay, EffectCoverflow } from 'swiper/modules';
+  
+  const [swiperRef, setSwiperRef] = useState<any>(null);
+  
   // Industries data
   const industries = [
     {
       icon: Building2,
-      title: "Financial Services",
-      description: "Secure compliance-focused IT solutions for banks, credit unions, and financial institutions with strict regulatory requirements."
+      title: "Finance",
+      description: "Secure solutions for banks, credit unions, and financial institutions with compliance-focused cybersecurity."
     },
     {
       icon: Briefcase,
-      title: "Professional Services",
-      description: "Technology solutions for law firms, accounting firms, and consultancies that enhance client service and operational efficiency."
+      title: "Legal",
+      description: "Protecting confidential client data and ensuring regulatory compliance for law firms and legal departments."
     },
     {
       icon: Building,
       title: "Manufacturing",
-      description: "Specialized IT support for manufacturing operations, including supply chain management and production technology systems."
-    },
-    {
-      icon: Hospital,
-      title: "Healthcare",
-      description: "HIPAA-compliant systems and support for medical practices, clinics, and healthcare organizations to secure sensitive patient data."
+      description: "Securing operational technology and IT infrastructure for modern manufacturing environments."
     },
     {
       icon: School,
       title: "Education",
-      description: "Technology infrastructure and support for schools, colleges, and educational institutions to enable modern learning environments."
+      description: "Safeguarding student data and research with comprehensive security solutions for educational institutions."
+    },
+    {
+      icon: Hospital,
+      title: "Healthcare",
+      description: "HIPAA-compliant security services protecting patient data and healthcare operations."
+    },
+    {
+      icon: GraduationCap,
+      title: "Government",
+      description: "Meeting strict security requirements for government agencies with certified solutions."
     },
     {
       icon: Server,
-      title: "Non-Profits",
-      description: "Cost-effective IT solutions for non-profit organizations to maximize impact while maintaining budget-conscious operations."
+      title: "Technology",
+      description: "Advanced protection for software companies, SaaS providers, and technology innovators."
     }
   ];
 
   return (
-    <section className="py-24 bg-white" id="industries">
-      <div className="container mx-auto px-4">
-        {/* Section header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block bg-[#3A6EA5]/10 border border-[#3A6EA5]/20 rounded-full px-4 py-1 mb-4">
-            <span className="text-[#3A6EA5] font-heading text-sm font-medium tracking-wider">INDUSTRIES WE SERVE</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-800 mb-4">
-            Specialized IT Solutions for Your Industry
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzQTZFQTUiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djLSgwLjYgMC44LTAuMiAwLjgtMC40IDAuOC0wLjYgMC44LTAuOCAwLjgtMSAwLjgtMS4yIDAuOC0xLjQgMC44LTEuNiAwLjgtMS44IDAuOC0yIDBsLTIgMC42LTEuOCAwLjYtMS42IDAuNi0xLjQgMC42LTEuMiAwLjYtMSAwLjYtMC44IDAuNi0wLjYgMC42LTAuNCAwLjYtMC4yIDAuNnYtMS4ybC0yLTAuMnYtMjYuNGwtMi0wLjJ2MjguNGgydjJoMnYybDIgMC4ydjIuNnpNNjIgMHYzNGgtMnYtMzJoLTd2LTJoOXptMCAwIi8+PC9nPjwvZz48L3N2Zz4=')] bg-fixed"></div>
+      
+      {/* Futuristic background elements */}
+      <div className="absolute -right-20 -top-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute -left-20 -bottom-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-800 mb-6">
+            <span className="inline-block relative">
+              Industries We Serve
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500"></span>
+            </span>
           </h2>
-          <p className="text-lg text-slate-600">
-            We understand the unique technology challenges and requirements of different industries. 
-            Our specialized teams deliver tailored solutions to meet your specific needs.
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            From healthcare to finance, we deliver tailored cybersecurity solutions across diverse sectors.
           </p>
+        </motion.div>
+
+        <div className="px-4 py-8">
+          <Swiper
+            onSwiper={setSwiperRef}
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            loop={true}
+            slidesPerView={'auto'}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+            }}
+            pagination={{ 
+              clickable: true,
+              dynamicBullets: true
+            }}
+            navigation={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+            className="industries-swiper"
+          >
+            {industries.map((industry, index) => (
+              <SwiperSlide key={index} className="swiper-slide" style={{ width: '340px', maxWidth: '100%' }}>
+                <IndustryCard 
+                  icon={industry.icon}
+                  title={industry.title}
+                  description={industry.description}
+                  index={index}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
         
-        {/* Industries grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industries.map((industry, index) => (
-            <IndustryCard 
-              key={index} 
-              icon={industry.icon} 
-              title={industry.title} 
-              description={industry.description} 
-            />
-          ))}
+        <div className="flex justify-center mt-12">
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="bg-blue-600 text-white py-4 px-8 rounded-md shadow-lg font-medium hover:bg-blue-700 transition duration-300 flex items-center space-x-2 cursor-pointer"
+          >
+            <span>View All Industries</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </motion.div>
         </div>
       </div>
     </section>
