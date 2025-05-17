@@ -214,19 +214,48 @@ const WhatWeDoBest = () => {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden blue-flame-gradient">
-      {/* Animated background elements */}
+    <section className="py-24 relative overflow-hidden interactive-tech-bg">
+      {/* Animated particles and glow spots */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
+        {/* Animated particles */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="particle"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 8 + 4}px`,
+              height: `${Math.random() * 8 + 4}px`,
+              animationDuration: `${Math.random() * 10 + 8}s`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
         
-        {/* Forged flame animations */}
-        <div className="absolute bottom-0 left-1/4 flame">
-          <div className="flame-inner"></div>
-        </div>
-        <div className="absolute bottom-10 right-1/4 flame" style={{ animationDelay: "-1.5s" }}>
-          <div className="flame-inner"></div>
-        </div>
+        {/* Glow spots */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={`glow-${i}`}
+            className="glow-spot"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: i * 0.2 }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 200 + 50}px`,
+              height: `${Math.random() * 200 + 50}px`,
+              animationDuration: `${Math.random() * 4 + 6}s`,
+              animationDelay: `${Math.random() * 2}s`
+            }}
+          />
+        ))}
+        
+        {/* Tech pattern and circuit overlay */}
+        <div className="tech-pattern"></div>
+        <div className="circuit-lines"></div>
         
         {/* Animated lines representing forging */}
         {[...Array(5)].map((_, i) => (
@@ -250,7 +279,7 @@ const WhatWeDoBest = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 interactive-tech-content">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
