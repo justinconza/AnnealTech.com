@@ -92,7 +92,7 @@ const PeopleTech = () => {
       </div>
 
       <div className="container mx-auto px-2 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-8 items-center">
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
           {/* Left column - Text content */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -133,7 +133,7 @@ const PeopleTech = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="bg-[#0a3e6a] hover:bg-[#082d4e] text-white mt-4 px-6 py-5 text-lg group">
+              <Button className="bg-[#3A6EA5] hover:bg-[#305A8A] text-white mt-4 px-6 py-5 text-lg group">
                 <span>Meet Our Team</span>
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
