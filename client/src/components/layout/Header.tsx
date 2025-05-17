@@ -26,7 +26,7 @@ const SubtleHighlight = ({ delay = 0 }) => {
   return (
     <div 
       ref={highlightRef}
-      className="absolute w-12 h-1 bg-[#f37021] rounded-full opacity-0"
+      className="absolute w-12 h-1 bg-[#F05A22] rounded-full opacity-0"
       style={{
         left: `${Math.random() * 80 + 10}%`,
         bottom: '0',
@@ -98,12 +98,12 @@ const Header = () => {
   return (
     <header 
       ref={headerRef}
-      className={`sticky top-0 bg-[#0d4f86] z-50 transition-all duration-300 ${
-        isScrolled ? "shadow-lg shadow-[#0d4f86]/30" : ""
+      className={`sticky top-0 bg-[#0E3F6E] z-50 transition-all duration-300 ${
+        isScrolled ? "shadow-lg shadow-[#0E3F6E]/30" : ""
       }`}
     >
       {/* Subtle highlights container */}
-      <div className="absolute bottom-0 left-0 w-full h-2 overflow-hidden pointer-events-none">
+      <div className="absolute bottom-0 left-0 w-full h-1 overflow-hidden pointer-events-none bg-[#F05A22]/20">
         {sparks.map((id, index) => (
           <SubtleHighlight key={id} delay={index * 100} />
         ))}
@@ -112,14 +112,14 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="group flex items-center">
-            <div className="mr-3 text-[#f37021]">
+            <div className="mr-3 text-[#F05A22]">
               <Hammer className="w-7 h-7 transition-all duration-300" />
             </div>
             <div className="flex flex-col">
               <span className="text-white text-2xl font-bold tracking-wider">
-                Anneal<span className="text-[#f37021]">Tech</span>
+                Anneal<span className="text-[#F05A22]">Tech</span>
               </span>
-              <span className="text-[#e5e5e5] text-xs tracking-wide">
+              <span className="text-[#EBF1F8] text-xs tracking-wide">
                 Forging Technology. Empowering People.
               </span>
             </div>
@@ -133,22 +133,22 @@ const Header = () => {
           <NavLink href="/about">About</NavLink>
           
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-white font-heading hover:text-[#e5e5e5] transition-all relative group py-1 focus:outline-none">
+            <DropdownMenuTrigger className="text-white font-medium hover:text-[#EBF1F8] transition-all relative group py-1 focus:outline-none">
               <span className="flex items-center">
                 Tools
                 <span className="ml-1 inline-block w-2 h-2 border-t-2 border-r-2 border-current transform rotate-45 translate-y-[2px]"></span>
               </span>
-              <span className="absolute bottom-0 left-0 h-0.5 bg-[#f37021] transition-all duration-300 w-0 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 h-0.5 bg-[#F05A22] transition-all duration-300 w-0 group-hover:w-full"></span>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="bg-white border border-[#e5e5e5] text-[#1f1f1f] rounded-md shadow-lg w-56">
-              <DropdownMenuItem className="focus:bg-[#e5e5e5] hover:bg-[#e5e5e5] cursor-pointer">
+            <DropdownMenuContent align="start" className="bg-white border border-[#EBF1F8] text-[#1f1f1f] rounded-md shadow-lg w-56">
+              <DropdownMenuItem className="focus:bg-[#EBF1F8] hover:bg-[#EBF1F8] cursor-pointer">
                 <Link href="/tools" className="flex items-center w-full">
                   <span>Security Tools</span>
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem className="focus:bg-[#e5e5e5] hover:bg-[#e5e5e5] cursor-pointer">
+              <DropdownMenuItem className="focus:bg-[#EBF1F8] hover:bg-[#EBF1F8] cursor-pointer">
                 <Link href="/embedded/tools" className="flex items-center w-full">
-                  <Shield className="mr-2 h-4 w-4 text-[#0d4f86]" />
+                  <Shield className="mr-2 h-4 w-4 text-[#0E3F6E]" />
                   <span>Embeddable Tools Suite</span>
                 </Link>
               </DropdownMenuItem>
@@ -164,7 +164,7 @@ const Header = () => {
           <Link href="/contact">
             <Button 
               variant="default" 
-              className="bg-[#0d4f86] hover:bg-[#f37021] text-white font-medium flex items-center gap-2 group transition-colors duration-300"
+              className="bg-[#0E3F6E] hover:bg-[#F05A22] text-white font-medium flex items-center gap-2 group transition-colors duration-300 shadow-sm"
             >
               <span>Book Demo</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -176,7 +176,7 @@ const Header = () => {
         <Button 
           variant="ghost" 
           size="icon" 
-          className="md:hidden text-white hover:text-[#f37021] hover:bg-transparent"
+          className="md:hidden text-white hover:text-[#F05A22] hover:bg-transparent"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -185,7 +185,7 @@ const Header = () => {
       
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#0a3d68] border-t border-[#f37021]/10 px-4 py-3">
+        <div className="md:hidden bg-[#082C4F] border-t border-[#F05A22]/10 px-4 py-3">
           <nav className="flex flex-col space-y-4">
             <NavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
             <NavLink href="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</NavLink>
@@ -201,9 +201,9 @@ const Header = () => {
                 <Link 
                   href="/embedded/tools" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center text-white font-medium hover:text-[#f37021] transition-all py-1"
+                  className="flex items-center text-white font-medium hover:text-[#F05A22] transition-all py-1"
                 >
-                  <Shield className="mr-2 h-4 w-4 text-[#f37021]" />
+                  <Shield className="mr-2 h-4 w-4 text-[#F05A22]" />
                   <span>Embeddable Tools Suite</span>
                 </Link>
               </div>
@@ -215,7 +215,7 @@ const Header = () => {
             <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
               <Button 
                 variant="default" 
-                className="bg-[#0d4f86] hover:bg-[#f37021] text-white font-medium mt-2 w-full flex items-center justify-center gap-2 transition-colors duration-300"
+                className="bg-[#0E3F6E] hover:bg-[#F05A22] text-white font-medium mt-2 w-full flex items-center justify-center gap-2 transition-colors duration-300 shadow-sm"
               >
                 <span>Book Demo</span>
                 <ArrowUpRight className="w-4 h-4" />

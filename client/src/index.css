@@ -290,43 +290,77 @@ body:has(#embedded-tool-page),
     box-shadow: 0 2px 6px rgba(14, 63, 110, 0.08);
   }
   
-  /* Blue Theme styling for embedded tools */
+  /* AnnealTech Blue Theme styling for embedded tools */
   .blue-theme-scope {
-    --primary: 208 85% 29%;
-    --primary-foreground: 0 0% 100%;
-    --accent: 20 89% 54%;
-    --accent-foreground: 0 0% 100%;
+    --primary: 210 77% 21%; /* #0E3F6E - Corporate Blue */
+    --primary-foreground: 0 0% 100%; /* White */
+    --accent: 24 91% 50%; /* #F05A22 - Vibrant Orange */
+    --accent-foreground: 0 0% 100%; /* White */
   }
   
   .blue-theme-scope .btn-primary {
-    @apply bg-[#0d4f86] hover:bg-[#f37021] text-white transition-colors duration-300;
+    @apply bg-[#0E3F6E] hover:bg-[#F05A22] text-white transition-colors duration-300;
+    box-shadow: 0 1px 3px rgba(14, 63, 110, 0.1);
   }
   
   .blue-theme-scope .text-primary {
-    @apply text-[#0d4f86];
+    @apply text-[#0E3F6E];
   }
   
   .blue-theme-scope .border-theme {
-    @apply border-[#e5e5e5];
+    @apply border-[#EBF1F8];
   }
   
   /* Navigation styling */
   .main-nav {
-    @apply bg-[#0d4f86] text-white sticky top-0 z-50 shadow-md;
+    @apply bg-[#0E3F6E] text-white sticky top-0 z-50;
+    box-shadow: 0 1px 6px rgba(14, 63, 110, 0.15);
   }
   
   /* Footer styling */
   .main-footer {
-    @apply bg-[#434343] text-white pt-12 pb-8;
+    @apply bg-[#0E3F6E] text-white pt-12 pb-8;
   }
   
   /* Call to action sections */
   .cta-section {
-    @apply bg-[#0d4f86] text-white py-16;
+    @apply bg-[#0E3F6E] text-white py-16;
+  }
+  
+  /* Section highlights */
+  .section-highlight {
+    @apply bg-[#EBF1F8] border-l-4 border-[#0E3F6E] py-6 px-8 rounded-r-md;
   }
   
   /* Form elements */
   input, textarea, select {
-    @apply border border-[#e5e5e5] rounded-md px-4 py-2 focus:ring-2 focus:ring-[#0d4f86] focus:border-[#0d4f86] outline-none transition-all;
+    @apply border border-[#EBF1F8] rounded-md px-4 py-2 focus:ring-2 focus:ring-[#0E3F6E]/30 focus:border-[#0E3F6E] outline-none transition-all;
+    background-color: #FFFFFF;
+    color: #1f1f1f;
+  }
+  
+  label {
+    @apply text-[#0E3F6E] font-medium mb-1 block;
+  }
+  
+  /* Tables */
+  table {
+    @apply w-full border-collapse;
+  }
+  
+  thead {
+    @apply bg-[#EBF1F8];
+  }
+  
+  th {
+    @apply text-[#0E3F6E] font-semibold text-left p-3 border-b border-[#EBF1F8];
+  }
+  
+  td {
+    @apply p-3 border-b border-[#EBF1F8] text-[#1f1f1f];
+  }
+  
+  tr:hover {
+    @apply bg-[#EBF1F8]/50;
   }
 }

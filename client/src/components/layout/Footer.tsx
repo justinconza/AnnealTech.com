@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#434343] text-white pt-20 pb-12 relative overflow-hidden border-t border-[#e5e5e5]/10">
+    <footer className="bg-[#0E3F6E] text-white pt-20 pb-12 relative overflow-hidden border-t border-[#EBF1F8]/10">
       {/* Decorative SVG background */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
