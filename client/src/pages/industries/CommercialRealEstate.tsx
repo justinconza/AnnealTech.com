@@ -495,7 +495,75 @@ const ServicesSection = () => {
       {/* Animated background elements */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
-      {/* Glowing orb */}
+      {/* Digital circuit pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <svg
+          width="100%"
+          height="100%"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern
+              id="circuit-pattern"
+              patternUnits="userSpaceOnUse"
+              width="100"
+              height="100"
+              patternTransform="scale(0.6) rotate(0)"
+            >
+              <path
+                d="M50 10 L90 10 L90 50 L50 50 Z M10 50 L50 50 L50 90 L10 90 Z"
+                stroke="#0d4f86"
+                strokeWidth="0.5"
+                fill="none"
+              />
+              <circle cx="50" cy="50" r="2" fill="#4a9eff" />
+              <circle cx="10" cy="10" r="2" fill="#4a9eff" />
+              <circle cx="90" cy="90" r="2" fill="#4a9eff" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#circuit-pattern)" />
+        </svg>
+      </div>
+      
+      {/* Animated floating particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 rounded-full bg-blue-500/30"
+            initial={{
+              x: Math.random() * 100 + "%",
+              y: Math.random() * 100 + "%",
+              scale: Math.random() * 0.5 + 0.5,
+              opacity: Math.random() * 0.5 + 0.1
+            }}
+            animate={{
+              y: [
+                Math.random() * 100 + "%",
+                Math.random() * 100 + "%",
+                Math.random() * 100 + "%"
+              ],
+              x: [
+                Math.random() * 100 + "%",
+                Math.random() * 100 + "%",
+                Math.random() * 100 + "%"
+              ],
+              opacity: [
+                Math.random() * 0.2 + 0.1,
+                Math.random() * 0.5 + 0.3,
+                Math.random() * 0.2 + 0.1
+              ]
+            }}
+            transition={{
+              duration: 15 + Math.random() * 30,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Glowing orbs */}
       <motion.div 
         initial={{ opacity: 0.2 }}
         animate={{ 
@@ -508,6 +576,36 @@ const ServicesSection = () => {
           ease: "easeInOut" 
         }}
         className="absolute top-1/4 -right-40 w-96 h-96 rounded-full bg-[#0d4f86]/20 blur-3xl"
+      ></motion.div>
+      
+      <motion.div 
+        initial={{ opacity: 0.1 }}
+        animate={{ 
+          opacity: [0.1, 0.3, 0.1],
+          scale: [1, 1.2, 1] 
+        }}
+        transition={{ 
+          duration: 15, 
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 5
+        }}
+        className="absolute bottom-1/3 -left-20 w-80 h-80 rounded-full bg-[#0d4f86]/15 blur-3xl"
+      ></motion.div>
+      
+      {/* Animated scan lines */}
+      <motion.div
+        initial={{ opacity: 0, y: 0 }}
+        animate={{ 
+          opacity: [0, 0.03, 0],
+          y: ["0%", "100%", "0%"]
+        }}
+        transition={{ 
+          duration: 8, 
+          repeat: Infinity,
+          ease: "linear" 
+        }}
+        className="absolute inset-0 bg-gradient-to-b from-blue-500/5 via-blue-500/10 to-blue-500/5 h-full w-full"
       ></motion.div>
       
       <div className="container mx-auto px-4 max-w-screen-xl relative z-10">
