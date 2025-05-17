@@ -38,7 +38,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
         
         {/* Content */}
         <h3 className="text-xl font-heading font-semibold mb-3 text-white group-hover:text-white/95">{service.title}</h3>
-        <p className="text-slate-300 mb-5 text-sm flex-grow">
+        <p className="text-white mb-5 text-sm flex-grow">
           {service.description}
         </p>
         
@@ -47,7 +47,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
           <h4 className="text-xs uppercase text-[#4a9eff] font-semibold tracking-wider mb-2">Key Features</h4>
           <ul className="space-y-1">
             {service.features?.map((feature, i) => (
-              <li key={i} className="text-slate-400 text-xs flex items-start">
+              <li key={i} className="text-white text-xs flex items-start">
                 <span className="text-[#4a9eff] mr-1.5 text-xs">✓</span>
                 <span>{feature}</span>
               </li>
