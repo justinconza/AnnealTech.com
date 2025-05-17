@@ -1,766 +1,468 @@
-import { Helmet } from "react-helmet";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 import { 
-  Shield, 
-  MonitorCheck, 
-  Database, 
-  Server, 
-  MailWarning, 
-  Clock,
-  CloudCog,
-  Users,
-  Code,
-  ArrowRight,
-  Headphones,
-  Network,
-  Phone,
-  HardDrive,
-  LineChart,
-  Layers,
-  Lock,
-  BookOpen,
-  FileHeart,
-  Building2
+  ServerCog, Shield, Network, Database, Cloud, Share, 
+  BarChart3, GraduationCap, UserPlus, Presentation, 
+  Scale, BadgeCheck, ShieldAlert, Workflow, ArrowRight 
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Link } from 'wouter';
+import { ServiceCategory } from '@/components/home/WhatWeDoBest';
+import { Button } from '@/components/ui/button';
 
-// Service component
-interface ServiceProps {
+interface ServiceCardProps {
   icon: React.ElementType;
   title: string;
   description: string;
+  category: ServiceCategory;
+  path: string;
   features: string[];
-  tools: string[];
-  id: string;
 }
 
-const Service = ({ icon: Icon, title, description, features, tools, id }: ServiceProps) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ 
+  icon: Icon, 
+  title, 
+  description, 
+  category,
+  path,
+  features
+}) => {
+  // Color map for categories
+  const categoryColors = {
+    communication: '#0D3F6E', // Darker Blue
+    managed: '#0E4D82',
+    professional: '#0E5C98',
+    advisory: '#0F6AAE',
+  };
+  
+  const color = categoryColors[category];
+  
   return (
-    <div id={id} className="mb-16 pt-16 -mt-16">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        <div>
-          <div className="inline-block p-3 bg-accent/10 rounded-lg text-accent mb-4">
-            <Icon className="h-8 w-8" />
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col"
+    >
+      <div className="h-2" style={{ backgroundColor: color }}></div>
+      <div className="p-8 flex-grow">
+        <div className="flex items-start justify-between mb-6">
+          <div 
+            className="w-16 h-16 rounded-lg flex items-center justify-center text-white" 
+            style={{ backgroundColor: color }}
+          >
+            <Icon size={28} />
           </div>
-          
-          <h2 className="text-3xl font-heading font-bold text-foreground mb-4">
-            {title}
-          </h2>
-          
-          <p className="text-lg text-muted-foreground mb-6">
-            {description}
-          </p>
-          
-          <h3 className="text-xl font-heading font-semibold text-foreground mb-3">
-            Key Features
-          </h3>
-          
-          <ul className="space-y-2 mb-8">
+          <div className="p-2 text-sm uppercase tracking-wider font-medium rounded-full bg-blue-50 text-blue-700">
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </div>
+        </div>
+        
+        <h2 className="text-2xl font-heading font-bold mb-4 text-slate-800">{title}</h2>
+        <p className="text-slate-600 mb-6">{description}</p>
+        
+        <div className="mb-6">
+          <h3 className="text-sm uppercase tracking-wider font-medium text-slate-500 mb-3">Key Features</h3>
+          <ul className="space-y-2">
             {features.map((feature, index) => (
               <li key={index} className="flex items-start">
-                <span className="inline-block w-1.5 h-1.5 bg-accent rounded-full mt-2.5 mr-2"></span>
-                <span className="text-muted-foreground">{feature}</span>
+                <span className="text-blue-600 mr-2">✓</span>
+                <span>{feature}</span>
               </li>
             ))}
           </ul>
-          
-          <Button className="bg-accent hover:bg-accent/80 text-white flex items-center gap-2 group">
-            <span>Learn More</span>
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
-        
-        <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
-          <h3 className="text-xl font-heading font-semibold text-foreground mb-4">
-            Technology Stack
-          </h3>
-          
-          <div className="space-y-4">
-            {tools.map((tool, index) => (
-              <div key={index} className="flex justify-between items-center p-3 bg-slate rounded-lg border border-accent/5">
-                <span className="font-medium text-foreground">{tool}</span>
-                <Badge variant="outline" className="bg-transparent border-accent/20 text-accent">
-                  Certified Partner
-                </Badge>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
-    </div>
+      
+      <div className="p-6 border-t border-gray-100 mt-auto">
+        <Link href={path}>
+          <Button className="w-full bg-blue-600 hover:bg-blue-700">
+            <span>Learn More</span>
+            <ArrowRight className="ml-2 w-4 h-4" />
+          </Button>
+        </Link>
+      </div>
+    </motion.div>
   );
 };
 
-// Service categories
-const serviceCategories = [
-  {
-    id: "msp-services",
-    title: "Managed Service Provider (MSP)",
-    description: "Comprehensive IT management and support services that keep your technology running smoothly."
-  },
-  {
-    id: "mssp-services",
-    title: "Managed Security Service Provider (MSSP)",
-    description: "Advanced security solutions that protect your business from evolving cyber threats."
-  },
-  {
-    id: "advisory-services",
-    title: "Advisory & Project Services",
-    description: "Strategic consulting, assessment, and specialized project implementation services."
-  }
-];
+const ServicesPage: React.FC = () => {
+  // Category titles and descriptions
+  const categoryInfo = {
+    communication: {
+      title: "Communication & Data Solutions",
+      description: "Enhance productivity and streamline data management with our enterprise tools and migration services."
+    },
+    managed: {
+      title: "Managed Experience Solutions",
+      description: "Comprehensive IT infrastructure management with predictable pricing and proactive security measures."
+    },
+    professional: {
+      title: "Technology Professional Services",
+      description: "Expert training, staffing, and project management services to elevate your IT capabilities."
+    },
+    advisory: {
+      title: "Advisory Services",
+      description: "Strategic assessments and planning to optimize your IT investments and security posture."
+    }
+  };
 
-// Services data
-const servicesData = [
-  // MSP Services
-  {
-    id: "help-desk",
-    icon: Headphones,
-    title: "Help Desk & Field Services",
-    description: "Complete technical support solution with remote and on-site assistance, available when you need it.",
-    features: [
-      "Tier 1 Help Desk (Remote): 8am-5pm or 24/7 support",
-      "Tier 2 Field Services: Desk-side support for issues unresolvable remotely",
-      "First call resolution for common workstation and peripheral issues",
-      "Password reset, MFA, and identity access assistance",
-      "On-site equipment deployment and local office infrastructure support",
-      "Service delivery within defined SLAs based on priority"
-    ],
-    tools: ["HaloPSA", "TeamViewer", "Microsoft Remote Assistance"],
-    category: "msp-services"
-  },
-  {
-    id: "app-support",
-    icon: Layers,
-    title: "3rd Party Application Support",
-    description: "Specialized support for your mission-critical business applications and vendor management.",
-    features: [
-      "Vendor engagement on your behalf to resolve incidents",
-      "Application monitoring and performance optimization",
-      "Installation, configuration, and troubleshooting",
-      "License management and renewal coordination",
-      "Version upgrade assistance",
-      "Integration support between different applications"
-    ],
-    tools: ["HaloPSA", "NinjaOne", "Microsoft 365"],
-    category: "msp-services"
-  },
-  {
-    id: "identity-management",
-    icon: Users,
-    title: "Identity Management",
-    description: "Secure, efficient management of user identities and access privileges across your organization.",
-    features: [
-      "Joiner, Mover, Leaver (JML) process facilitation",
-      "User provisioning and deprovisioning",
-      "Role-based access control implementation",
-      "Multi-factor authentication management",
-      "Single sign-on configuration",
-      "Appropriate licensing and access to resources"
-    ],
-    tools: ["Microsoft Entra ID (Azure AD)", "Okta", "JumpCloud"],
-    category: "msp-services"
-  },
-  {
-    id: "endpoint-management",
-    icon: MonitorCheck,
-    title: "Endpoint Management & Monitoring",
-    description: "Comprehensive management of all your end-user devices with proactive monitoring and maintenance.",
-    features: [
-      "Proactive performance monitoring of workstations and servers",
-      "Automated maintenance and optimization",
-      "Software deployment and updates",
-      "Security policy enforcement",
-      "Compliance with regulatory and industry best practices",
-      "Detailed reporting and analytics"
-    ],
-    tools: ["NinjaOne", "Microsoft Intune", "Automox"],
-    category: "msp-services"
-  },
-  {
-    id: "modern-workplace",
-    icon: CloudCog,
-    title: "Modern Workplace Solutions",
-    description: "Technology solutions that support current and future work modalities with focus on flexibility and productivity.",
-    features: [
-      "Remote work enablement solutions",
-      "Collaboration tools and platforms",
-      "Data sharing and secure document management",
-      "Office technologies such as AV and peripherals",
-      "Digital workflow implementation",
-      "Cloud-based productivity solutions"
-    ],
-    tools: ["Microsoft 365", "SharePoint", "Teams", "Zoom", "Slack"],
-    category: "msp-services"
-  },
-  {
-    id: "knowledge-training",
-    icon: BookOpen,
-    title: "IT Knowledgebase & Training",
-    description: "Self-service resources and customized training programs that empower your team to be more efficient and security-aware.",
-    features: [
-      "Customer-facing knowledgebase for self-service support",
-      "Comprehensive service catalog documentation",
-      "Security awareness training programs",
-      "Technology adoption training tailored to business needs",
-      "Policy awareness resources",
-      "Role-specific technical guidance"
-    ],
-    tools: ["KnowBe4", "Microsoft Learning Pathways", "Custom Training Portal"],
-    category: "msp-services"
-  },
-  {
-    id: "systems-admin",
-    icon: Server,
-    title: "Server & Systems Administration",
-    description: "Expert management of your server infrastructure and critical business systems.",
-    features: [
-      "Deployment, configuration, and ongoing maintenance of servers",
-      "Support for on-premise and cloud-based infrastructure",
-      "Proactive security patching and updates",
-      "Performance optimization and monitoring",
-      "Capacity planning and scaling",
-      "Backup management and verification"
-    ],
-    tools: ["Microsoft Windows Server", "VMware", "Azure", "AWS"],
-    category: "msp-services"
-  },
-  {
-    id: "network-management",
-    icon: Network,
-    title: "Network Support & Management",
-    description: "Comprehensive management of your networking infrastructure to ensure reliable, secure connectivity.",
-    features: [
-      "LAN & WAN integration and management",
-      "Firewall configuration and maintenance",
-      "Router, switch, and access point management",
-      "Network security implementation",
-      "Performance monitoring and optimization",
-      "Troubleshooting and issue resolution"
-    ],
-    tools: ["Cisco", "Meraki", "Ubiquiti", "SonicWall", "Fortinet"],
-    category: "msp-services"
-  },
-  {
-    id: "telephony",
-    icon: Phone,
-    title: "Telephony & Communications",
-    description: "Unified communications solutions that keep your team connected regardless of location.",
-    features: [
-      "VOIP and analog voice service integration",
-      "Telephony infrastructure deployment and maintenance",
-      "Call routing and management configuration",
-      "Voicemail system management",
-      "Collaboration tools integration",
-      "Mobile device integration"
-    ],
-    tools: ["Microsoft Teams", "RingCentral", "Zoom Phone", "8x8"],
-    category: "msp-services"
-  },
-  {
-    id: "email-hosting",
-    icon: MailWarning,
-    title: "Managed Cloud Email Hosting",
-    description: "Secure, reliable email services with advanced features for business communication.",
-    features: [
-      "Microsoft Exchange (M365) management",
-      "Gmail for Business management",
-      "Email migration and setup",
-      "Spam filtering and security",
-      "Archiving and retention policy implementation",
-      "Mobile device configuration"
-    ],
-    tools: ["Microsoft 365", "Exchange Online", "Google Workspace"],
-    category: "msp-services"
-  },
-  {
-    id: "data-recovery",
-    icon: Database,
-    title: "Data Retention & Disaster Recovery",
-    description: "Comprehensive data protection solutions to safeguard your critical business information.",
-    features: [
-      "Disaster recovery planning customized to business needs",
-      "Data retention policy development and management",
-      "Live and immutable cloud backup solutions",
-      "Rapid data recovery capabilities",
-      "Regular recovery testing and validation",
-      "Compliance with regulatory requirements"
-    ],
-    tools: ["Veeam", "Datto", "Azure Backup", "Rubrik"],
-    category: "msp-services"
-  },
-  {
-    id: "business-continuity",
-    icon: FileHeart,
-    title: "Business Continuity Planning & Execution",
-    description: "Strategic planning and implementation to maintain business operations during disruptions.",
-    features: [
-      "Business continuity plan development",
-      "Crisis response protocols",
-      "Alternative operations planning",
-      "Critical systems identification and prioritization",
-      "Regular testing and simulation exercises",
-      "Post-incident recovery procedures"
-    ],
-    tools: ["Business Continuity Planning Software", "Disaster Recovery Solutions"],
-    category: "msp-services"
-  },
-  
-  // MSSP Services
-  {
-    id: "managed-detection",
-    icon: Shield,
-    title: "Managed Detection & Response (MDR)",
-    description: "24/7 threat monitoring and response services to identify and neutralize security threats.",
-    features: [
-      "Continuous monitoring across all endpoints, identities, and infrastructure",
-      "Real-time threat detection and analysis",
-      "Active threat hunting",
-      "Rapid incident response and remediation",
-      "Forensic investigation of security events",
-      "Regular threat intelligence updates"
-    ],
-    tools: ["SentinelOne", "CrowdStrike", "Microsoft Defender for Endpoint"],
-    category: "mssp-services"
-  },
-  {
-    id: "firewall-management",
-    icon: Lock,
-    title: "Firewall Support & Management",
-    description: "Expert management of your network security perimeter to prevent unauthorized access.",
-    features: [
-      "Firewall configuration and rule management",
-      "Regular security updates and patching",
-      "Traffic monitoring and analysis",
-      "Intrusion prevention system management",
-      "VPN configuration and support",
-      "Security policy enforcement"
-    ],
-    tools: ["Fortinet", "Palo Alto Networks", "Cisco", "SonicWall"],
-    category: "mssp-services"
-  },
-  {
-    id: "security-operations",
-    icon: Clock,
-    title: "Security Operations Center",
-    description: "Dedicated security team monitoring and responding to threats across your IT environment.",
-    features: [
-      "24/7 security monitoring and incident response",
-      "Threat intelligence integration",
-      "Security alert triage and investigation",
-      "Incident response coordination",
-      "Regular security reporting",
-      "Continuous improvement of security posture"
-    ],
-    tools: ["Splunk", "LogRhythm", "QRadar", "AlienVault"],
-    category: "mssp-services"
-  },
-  {
-    id: "endpoint-security",
-    icon: HardDrive,
-    title: "End-Point Security (EDR & AV)",
-    description: "Advanced protection for all endpoints with real-time threat detection and response.",
-    features: [
-      "Next-generation antivirus protection",
-      "Endpoint detection and response (EDR)",
-      "Behavioral analysis and machine learning",
-      "Automated threat containment",
-      "Rollback capabilities for ransomware",
-      "Detailed security reporting"
-    ],
-    tools: ["SentinelOne", "CrowdStrike", "Microsoft Defender for Endpoint"],
-    category: "mssp-services"
-  },
-  {
-    id: "security-information",
-    icon: LineChart,
-    title: "Security Information & Event Management",
-    description: "Comprehensive security event monitoring, correlation, and analysis across your IT environment.",
-    features: [
-      "Log collection and centralization",
-      "Real-time event correlation and analysis",
-      "Anomaly detection and alerting",
-      "Compliance reporting",
-      "Threat intelligence integration",
-      "Incident response workflow management"
-    ],
-    tools: ["Splunk", "LogRhythm", "QRadar", "Microsoft Sentinel"],
-    category: "mssp-services"
-  },
-  {
-    id: "identity-monitoring",
-    icon: Users,
-    title: "Identity Monitoring",
-    description: "Continuous monitoring of user identities and access patterns to detect and prevent unauthorized access.",
-    features: [
-      "Suspicious login detection",
-      "Privilege escalation monitoring",
-      "User behavior analytics",
-      "Identity-based threat detection",
-      "Access reviews and governance",
-      "Compliance reporting"
-    ],
-    tools: ["Microsoft Entra ID Protection", "Okta Identity Protection", "Varonis"],
-    category: "mssp-services"
-  },
-  {
-    id: "email-monitoring",
-    icon: MailWarning,
-    title: "Email Monitoring (Anti-Spam, Anti-Phish)",
-    description: "Advanced email security to protect against phishing, malware, and other email-based threats.",
-    features: [
-      "Spam filtering and prevention",
-      "Phishing attack detection and blocking",
-      "Malicious attachment scanning",
-      "URL analysis and link protection",
-      "Business email compromise protection",
-      "Security awareness training integration"
-    ],
-    tools: ["Mimecast", "Proofpoint", "Microsoft Defender for Office 365"],
-    category: "mssp-services"
-  },
-  {
-    id: "data-loss-prevention",
-    icon: Database,
-    title: "Data Loss Prevention",
-    description: "Technologies and processes to prevent sensitive data exfiltration, whether accidental or malicious.",
-    features: [
-      "Content inspection and classification",
-      "Policy-based controls for sensitive data",
-      "Monitoring of data transfers and communications",
-      "Prevention of unauthorized data sharing",
-      "Incident response for potential data leaks",
-      "Integration with endpoint and cloud security"
-    ],
-    tools: ["Microsoft Purview", "Varonis", "Digital Guardian"],
-    category: "mssp-services"
-  },
-  
-  // Advisory & Project Services
-  {
-    id: "it-leadership",
-    icon: Users,
-    title: "IT Leadership Training",
-    description: "Specialized training to enhance IT leaders' ability to align technology with business goals.",
-    features: [
-      "Live and prerecorded training sessions",
-      "Comprehensive course catalog for IT leaders",
-      "Focus on business alignment and goal delivery",
-      "Skills development for IT management",
-      "Technology strategy and planning education",
-      "Change management and team leadership"
-    ],
-    tools: ["Custom Training Platforms", "Leadership Development Programs"],
-    category: "advisory-services"
-  },
-  {
-    id: "itsm-assessments",
-    icon: LineChart,
-    title: "ITSM Assessments",
-    description: "Comprehensive evaluation of IT Service Management processes to improve service delivery.",
-    features: [
-      "Analysis of existing ITSM processes",
-      "Gap analysis against industry best practices",
-      "Recommendations for service improvement",
-      "Process maturity assessment",
-      "Service level agreement review",
-      "Implementation roadmap development"
-    ],
-    tools: ["ITIL Framework", "Assessment Tools", "Process Mapping Software"],
-    category: "advisory-services"
-  },
-  {
-    id: "tech-assessments",
-    icon: Server,
-    title: "Technology Maturity Assessments",
-    description: "Analysis of your technology stack to identify improvement opportunities and modernization paths.",
-    features: [
-      "Comprehensive technology stack evaluation",
-      "Comparison to current industry standards",
-      "Analysis of on-premise vs. cloud solutions",
-      "Operating system and software version review",
-      "Office technology and conference room capability assessment",
-      "Prioritized recommendations for upgrades"
-    ],
-    tools: ["Assessment Frameworks", "Benchmarking Tools"],
-    category: "advisory-services"
-  },
-  {
-    id: "security-assessments",
-    icon: Shield,
-    title: "Cybersecurity Risk Assessments",
-    description: "Thorough evaluation of your security posture to identify and remediate vulnerabilities.",
-    features: [
-      "Analysis of security gaps and vulnerabilities",
-      "Recommendations for security improvements",
-      "Compliance with regulatory requirements",
-      "Security control effectiveness evaluation",
-      "Risk prioritization guidance",
-      "Implementation planning with minimal business disruption"
-    ],
-    tools: ["Vulnerability Assessment Tools", "Compliance Frameworks", "Risk Analysis Software"],
-    category: "advisory-services"
-  },
-  {
-    id: "itil-strategy",
-    icon: Building2,
-    title: "ITIL Strategy Development",
-    description: "Strategic planning and implementation of ITIL principles to improve IT service delivery.",
-    features: [
-      "ITIL v4 principles application workshop",
-      "Service improvement strategy development",
-      "Alignment of IT organization with customer requirements",
-      "Process optimization and standardization",
-      "Service catalog development",
-      "Implementation planning and change management"
-    ],
-    tools: ["ITIL Framework", "Service Management Tools"],
-    category: "advisory-services"
-  },
-  {
-    id: "data-migrations",
-    icon: Database,
-    title: "Data Migrations",
-    description: "Seamless migration of your data between different platforms and environments.",
-    features: [
-      "Unstructured data migration (files and folders)",
-      "Migration from on-premise to cloud solutions (SharePoint)",
-      "Migration between cloud services (Dropbox, Google Drive, Box, AWS)",
-      "Minimal business disruption during transition",
-      "Data integrity verification",
-      "User training for new environments"
-    ],
-    tools: ["ShareGate", "BitTitan", "AWS Migration Tools", "Azure Migration Tools"],
-    category: "advisory-services"
-  },
-  {
-    id: "talent-acquisition",
-    icon: Users,
-    title: "IT Talent Acquisition",
-    description: "Expert assistance in finding and hiring the right IT talent for your organization.",
-    features: [
-      "Role/job description development",
-      "Candidate vetting and screening",
-      "Interview advisory services",
-      "Career plan strategy development",
-      "Market competitive compensation analysis",
-      "Onboarding guidance and planning"
-    ],
-    tools: ["Recruitment Platforms", "Assessment Tools", "Career Planning Resources"],
-    category: "advisory-services"
-  },
-  {
-    id: "project-management",
-    icon: Clock,
-    title: "Project Management",
-    description: "Professional oversight and coordination for IT projects to ensure successful implementation.",
-    features: [
-      "IT project management for technology deployments",
-      "Change management coordination",
-      "Office moves and relocations",
-      "M&A technology integration activities",
-      "Resource allocation and scheduling",
-      "Budget monitoring and reporting"
-    ],
-    tools: ["Microsoft Project", "Jira", "Asana", "Monday"],
-    category: "advisory-services"
-  }
-];
+  // Detailed services data
+  const services: ServiceCardProps[] = [
+    // Communication & Data Solutions
+    {
+      icon: Cloud,
+      title: "Enterprise Productivity Tools",
+      description: "Implementing tools to enhance organizational productivity and streamline workflows.",
+      category: 'communication',
+      path: "/services/enterprise-productivity-tools",
+      features: [
+        "Microsoft 365 implementation and management",
+        "Collaboration software deployment",
+        "Workflow automation setup",
+        "Custom productivity solution development"
+      ]
+    },
+    {
+      icon: Database,
+      title: "Data Migrations",
+      description: "Seamless transition of data to new platforms with minimal disruption to your business operations.",
+      category: 'communication',
+      path: "/services/data-migrations",
+      features: [
+        "Cross-platform data migration",
+        "Legacy system data extraction",
+        "Cloud migration solutions",
+        "Data integrity verification"
+      ]
+    },
+    
+    // Managed Experience Solutions
+    {
+      icon: ServerCog,
+      title: "Solution Packages",
+      description: "Customized IT solutions tailored to address your specific business needs and challenges.",
+      category: 'managed',
+      path: "/services/solution-packages",
+      features: [
+        "Bundled IT services with predictable pricing",
+        "Scalable to business size and requirements",
+        "Industry-specific solution configurations",
+        "Regular solution updates and improvements"
+      ]
+    },
+    {
+      icon: Network,
+      title: "PC As A Service (PCaaS)",
+      description: "Provision of fully managed PCs with predictable pricing and simplified deployment.",
+      category: 'managed',
+      path: "/services/pcaas",
+      features: [
+        "Hardware procurement and setup",
+        "Ongoing support and maintenance",
+        "Regular upgrades and replacements",
+        "End-user support included"
+      ]
+    },
+    {
+      icon: Share,
+      title: "Service Desk",
+      description: "Comprehensive support services for addressing and resolving IT-related issues promptly.",
+      category: 'managed',
+      path: "/services/service-desk",
+      features: [
+        "24/7 technical support availability",
+        "Multi-channel support options",
+        "Issue tracking and resolution",
+        "Knowledge base and self-service options"
+      ]
+    },
+    {
+      icon: Shield,
+      title: "Cyber Security",
+      description: "Protection against cyber threats through proactive measures and continuous monitoring.",
+      category: 'managed',
+      path: "/services/cyber-security",
+      features: [
+        "Threat detection and prevention",
+        "Security monitoring and alerts",
+        "Vulnerability assessment",
+        "Security policy development and enforcement"
+      ]
+    },
+    
+    // Technology Professional Services
+    {
+      icon: ShieldAlert,
+      title: "Security Awareness Training",
+      description: "Educating employees on cybersecurity best practices to protect against threats.",
+      category: 'professional',
+      path: "/services/security-awareness-training",
+      features: [
+        "Interactive training sessions",
+        "Simulated phishing exercises",
+        "Security policy education",
+        "Ongoing awareness updates"
+      ]
+    },
+    {
+      icon: GraduationCap,
+      title: "IT Leadership Training",
+      description: "Developing leadership skills for IT professionals to drive organizational success.",
+      category: 'professional',
+      path: "/services/it-leadership-training",
+      features: [
+        "IT strategy development",
+        "Team management techniques",
+        "Technology roadmap planning",
+        "IT budget management"
+      ]
+    },
+    {
+      icon: UserPlus,
+      title: "IT Talent Acquisition",
+      description: "Assisting in recruiting skilled IT personnel to build high-performing teams.",
+      category: 'professional',
+      path: "/services/it-talent-acquisition",
+      features: [
+        "IT skills assessment",
+        "Candidate sourcing and screening",
+        "Technical interview support",
+        "Onboarding assistance"
+      ]
+    },
+    {
+      icon: Presentation,
+      title: "Project Management",
+      description: "Overseeing IT projects to ensure timely and successful completion within budget.",
+      category: 'professional',
+      path: "/services/project-management",
+      features: [
+        "Project planning and scoping",
+        "Resource allocation",
+        "Progress tracking and reporting",
+        "Risk management"
+      ]
+    },
+    
+    // Advisory Services
+    {
+      icon: BarChart3,
+      title: "IT Service Management Assessments",
+      description: "Evaluating IT service strategies to improve efficiency and effectiveness.",
+      category: 'advisory',
+      path: "/services/it-service-management",
+      features: [
+        "Service delivery evaluation",
+        "Process efficiency analysis",
+        "Service level agreement review",
+        "Improvement recommendations"
+      ]
+    },
+    {
+      icon: BadgeCheck,
+      title: "Technology Maturity Assessments",
+      description: "Assessing the effectiveness of current technologies to identify improvement opportunities.",
+      category: 'advisory',
+      path: "/services/technology-maturity",
+      features: [
+        "Technology stack analysis",
+        "Digital transformation readiness",
+        "Legacy system evaluation",
+        "Technology roadmap development"
+      ]
+    },
+    {
+      icon: ShieldAlert,
+      title: "Cyber Security Risk Assessments",
+      description: "Identifying and mitigating cybersecurity risks to protect your business assets.",
+      category: 'advisory',
+      path: "/services/security-risk-assessment",
+      features: [
+        "Vulnerability scanning",
+        "Security control evaluation",
+        "Compliance gap analysis",
+        "Risk mitigation planning"
+      ]
+    },
+    {
+      icon: Workflow,
+      title: "ITIL Strategy Development",
+      description: "Crafting ITIL strategies aligned with organizational goals for optimal service delivery.",
+      category: 'advisory',
+      path: "/services/itil-strategy",
+      features: [
+        "ITIL framework implementation",
+        "Service design planning",
+        "Continuous improvement processes",
+        "Service operation optimization"
+      ]
+    }
+  ];
 
-// Services page component
-const Services = () => {
+  // Group services by category
+  const serviceGroups = {
+    communication: services.filter(s => s.category === 'communication'),
+    managed: services.filter(s => s.category === 'managed'),
+    professional: services.filter(s => s.category === 'professional'),
+    advisory: services.filter(s => s.category === 'advisory')
+  };
+
   return (
     <>
       <Helmet>
-        <title>Managed IT & Security Services | AnnealTech</title>
-        <meta name="description" content="Explore AnnealTech's comprehensive managed IT services, cybersecurity solutions, and professional technology services designed to transform your IT infrastructure." />
+        <title>Our Services | AnnealTech</title>
+        <meta name="description" content="AnnealTech offers comprehensive IT services across four main categories: Communication & Data Solutions, Managed Experience Solutions, Technology Professional Services, and Advisory Services." />
+        <meta property="og:title" content="Our Services | AnnealTech" />
+        <meta property="og:description" content="AnnealTech offers comprehensive IT services across four main categories: Communication & Data Solutions, Managed Experience Solutions, Technology Professional Services, and Advisory Services." />
+        <meta property="og:type" content="website" />
       </Helmet>
-      
-      {/* Hero Section */}
-      <section className="py-24 md:py-32 bg-steel relative overflow-hidden">
-        {/* Decorative background */}
-        <div 
-          className="absolute inset-0 z-0 opacity-5" 
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-          aria-hidden="true"
-        ></div>
 
+      <section className="py-20 bg-forging-tech relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-transparent"></div>
+        
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1 mb-6">
-              <span className="text-accent font-heading text-sm font-medium tracking-wider">SERVICES</span>
-            </div>
-            
-            <h1 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Comprehensive Managed IT & Security Solutions
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-800 mb-6">
+              Our Services
             </h1>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Comprehensive IT solutions designed to transform and protect your business technology.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Render each category section */}
+      {Object.entries(categoryInfo).map(([category, info], categoryIndex) => (
+        <section key={category} id={category} className={`py-16 ${categoryIndex % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}>
+          <div className="container mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mb-12"
+            >
+              <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+                {info.title}
+              </h2>
+              <p className="text-lg text-slate-600 max-w-3xl">
+                {info.description}
+              </p>
+            </motion.div>
             
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              We transform your IT infrastructure into a strategic business asset through expert managed services, cybersecurity, and technology solutions.
-            </p>
-          </div>
-        </div>
-      </section>
-      
-      {/* Services Menu */}
-      <section className="py-8 bg-slate sticky top-0 z-30 border-b border-accent/10">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-            {serviceCategories.map((category) => (
-              <a 
-                key={category.id}
-                href={`#${category.id}`}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-accent transition-colors"
-              >
-                {category.title}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* Services Content */}
-      <section className="py-16 md:py-24 bg-slate relative">
-        <div className="container mx-auto px-4">
-          {serviceCategories.map((category) => (
-            <div key={category.id} id={category.id} className="mb-20">
-              {/* Category Header */}
-              <div className="text-center mb-16 max-w-3xl mx-auto pt-24 -mt-16">
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-                  {category.title}
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  {category.description}
-                </p>
-              </div>
-              
-              {/* Category Services */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {servicesData
-                  .filter((service) => service.category === category.id)
-                  .map((service) => (
-                    <div 
-                      key={service.id} 
-                      id={service.id}
-                      className="bg-steel/10 border border-accent/10 rounded-lg overflow-hidden hover:border-accent/20 transition-all group"
-                    >
-                      <div className="p-6">
-                        <div className="inline-block p-3 bg-accent/10 rounded-lg text-accent mb-4">
-                          <service.icon className="h-6 w-6" />
-                        </div>
-                        
-                        <h3 className="text-xl font-heading font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
-                          {service.title}
-                        </h3>
-                        
-                        <p className="text-muted-foreground text-sm mb-4">
-                          {service.description}
-                        </p>
-                        
-                        <h4 className="text-sm font-medium text-foreground mb-3">
-                          Key Features:
-                        </h4>
-                        
-                        <ul className="space-y-2 mb-6">
-                          {service.features.slice(0, 3).map((feature, index) => (
-                            <li key={index} className="flex items-start text-sm">
-                              <span className="inline-block w-1.5 h-1.5 bg-accent rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
-                              <span className="text-muted-foreground">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          className="w-full justify-between border-accent/20 text-accent hover:bg-accent/5"
-                        >
-                          <span>Learn More</span>
-                          <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </div>
-                    </div>
-                  ))}
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+              {serviceGroups[category as ServiceCategory].map((service, index) => (
+                <ServiceCard 
+                  key={`${category}-${index}`}
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  category={service.category}
+                  path={service.path}
+                  features={service.features}
+                />
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-      
-      {/* Case Studies Section */}
-      <section className="py-16 md:py-24 bg-steel/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl font-heading font-bold text-foreground mb-4">
-              Success Stories
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              See how our managed IT and security services have transformed businesses across industries.
-            </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                industry: "Healthcare",
-                title: "Regional Medical Center",
-                result: "Reduced security incidents by 85% while improving compliance with HIPAA requirements."
-              },
-              {
-                industry: "Financial Services",
-                title: "Investment Advisory Firm",
-                result: "Achieved 99.99% uptime and implemented robust disaster recovery with 15-minute recovery time."
-              },
-              {
-                industry: "Manufacturing",
-                title: "Precision Parts Manufacturer",
-                result: "Modernized infrastructure saving $150,000 annually while enhancing operational efficiency."
-              }
-            ].map((study, index) => (
-              <div key={index} className="bg-steel/10 p-6 rounded-lg border border-accent/10 group hover:border-accent/30 transition-all">
-                <div className="mb-3 inline-flex items-center bg-accent/10 px-2 py-1 rounded text-xs font-medium text-accent">
-                  {study.industry}
-                </div>
-                <h3 className="text-xl font-heading font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
-                  {study.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-6">
-                  {study.result}
-                </p>
-                <Button 
-                  variant="outline" 
-                  className="border-accent/20 text-accent hover:bg-accent/10 group-hover:border-accent/40 w-full justify-between"
+        </section>
+      ))}
+
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center justify-between">
+            <div className="mb-8 lg:mb-0 lg:w-2/3">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+                Ready to Transform Your IT Experience?
+              </h2>
+              <p className="text-xl text-blue-100 max-w-2xl">
+                Contact us today to discuss how our comprehensive service offerings can address your specific business needs.
+              </p>
+            </div>
+            <div>
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white text-blue-600 font-bold py-4 px-8 rounded-md shadow-lg transition-all duration-300"
                 >
-                  <span>Read Case Study</span>
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div>
-            ))}
+                  Contact Us Today
+                </motion.button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-      
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-slate">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-steel/20 rounded-lg border border-accent/10 p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
-              Ready to Transform Your IT Infrastructure?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Contact us today to discuss how our expert team can help you achieve your technical goals and secure your business for the future.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button className="bg-accent hover:bg-accent/80 text-white flex items-center gap-2 group">
-                <span>Schedule a Consultation</span>
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="outline" className="border-accent/20 text-accent hover:bg-accent/10">
-                Download Service Catalog
-              </Button>
-            </div>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-heading font-bold text-slate-800 mb-8">
+            Our Service Approach
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="p-6"
+            >
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-4">
+                <span className="text-2xl font-bold">1</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">Assess</h3>
+              <p className="text-slate-600">We thoroughly evaluate your current technology landscape to identify needs and opportunities.</p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="p-6"
+            >
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-4">
+                <span className="text-2xl font-bold">2</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">Design</h3>
+              <p className="text-slate-600">We create customized solutions that align with your business goals and address specific challenges.</p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="p-6"
+            >
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-4">
+                <span className="text-2xl font-bold">3</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">Implement</h3>
+              <p className="text-slate-600">We deploy solutions with minimal disruption, ensuring smooth transition and operational continuity.</p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+              className="p-6"
+            >
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-4">
+                <span className="text-2xl font-bold">4</span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">Support</h3>
+              <p className="text-slate-600">We provide ongoing maintenance and support to ensure optimal performance and address evolving needs.</p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -768,4 +470,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ServicesPage;
