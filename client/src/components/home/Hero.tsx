@@ -78,15 +78,15 @@ const Hero = () => {
             <span className="text-[#3A6EA5] font-heading text-sm font-medium tracking-wider">MANAGED EXPERIENCE PROVIDER</span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight mb-6 tracking-tight">
             <span className="block">
               Forging Technology.
               <span className="text-[#6B9CD1] animate-glow"> Empowering</span>
             </span>
-            <span className="block">People.</span>
+            <span className="block text-white">People.</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-light max-w-3xl">
+          <p className="text-xl md:text-2xl text-white mb-8 font-light max-w-3xl">
             <AnimatedText text="We transform your IT infrastructure into a powerful business asset through expert managed services and cybersecurity solutions." />
           </p>
           
@@ -117,22 +117,22 @@ const Hero = () => {
           </div>
           
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 border-t border-accent/10 pt-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 border-t border-white/10 pt-8">
             <div className="text-center">
-              <div className="text-4xl font-display font-bold text-accent mb-1">15+</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">Years Experience</div>
+              <div className="text-4xl font-display font-bold text-white mb-1">15+</div>
+              <div className="text-sm text-white uppercase tracking-wider">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-display font-bold text-accent mb-1">99.9%</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">Uptime SLA</div>
+              <div className="text-4xl font-display font-bold text-white mb-1">99.9%</div>
+              <div className="text-sm text-white uppercase tracking-wider">Uptime SLA</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-display font-bold text-accent mb-1">24/7</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">Support</div>
+              <div className="text-4xl font-display font-bold text-white mb-1">24/7</div>
+              <div className="text-sm text-white uppercase tracking-wider">Support</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-display font-bold text-accent mb-1">500+</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">Clients</div>
+              <div className="text-4xl font-display font-bold text-white mb-1">500+</div>
+              <div className="text-sm text-white uppercase tracking-wider">Clients</div>
             </div>
           </div>
         </div>
