@@ -227,6 +227,22 @@ body:has(#embedded-tool-page),
     animation: shine 1.5s ease-in-out infinite;
   }
   
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .animate-fade-in-out {
+    animation: fade-in-out 3s ease-in-out forwards;
+  }
+  
   /* AnnealTech theme styling for all components */
   .btn, .button, button[type="submit"], button[type="button"] {
     @apply bg-[#0d4f86] hover:bg-[#f37021] text-white font-medium py-2 px-4 rounded transition-colors duration-300;
