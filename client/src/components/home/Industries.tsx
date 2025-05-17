@@ -106,6 +106,20 @@ const Industries = () => {
         <div className="flame-inner"></div>
       </div>
       
+      {/* Custom styles for white navigation arrows */}
+      <style jsx global>{`
+        .industries-swiper .swiper-button-next,
+        .industries-swiper .swiper-button-prev {
+          color: white;
+        }
+        .industries-swiper .swiper-pagination-bullet {
+          background: rgba(255, 255, 255, 0.7);
+        }
+        .industries-swiper .swiper-pagination-bullet-active {
+          background: white;
+        }
+      `}</style>
+      
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
