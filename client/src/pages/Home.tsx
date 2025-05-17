@@ -11,6 +11,7 @@ import Industries from "@/components/home/Industries";
 import WhatWeDoBest from "@/components/home/WhatWeDoBest";
 import PeopleTech from "@/components/home/PeopleTech";
 import BlogSlider from "@/components/home/BlogSlider";
+import ComparisonSection from "@/components/home/ComparisonSection";
 
 const Home = () => {
   return (
@@ -63,6 +64,7 @@ const Home = () => {
       <Industries />
       <PeopleTech />
       <Services />
+      <ComparisonSection />
       <BlogSlider />
       <About />
       <Testimonials />

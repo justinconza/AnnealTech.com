@@ -1,0 +1,56 @@
+Add a new section to the homepage titled:
+
+  - Heading: “Beyond Traditional IT Support”
+  - Subheading: “See how our Managed Experience approach transforms the typical MSP relationship.”
+
+SECTION OBJECTIVE:
+- Visually compare Traditional MSPs with AnnealTech’s modern Managed Experience approach
+- Educate visitors on how AnnealTech delivers more value, protection, and partnership than standard IT providers
+
+LAYOUT:
+1. Use a **2-column comparison table-style layout**:
+   - Left Column: Traditional MSP
+   - Right Column: AnnealTech
+
+2. Add 5–6 key comparison rows/categories:
+   - **Focus**:  
+     - Traditional: Device uptime  
+     - AnnealTech: User experience & business outcomes
+   - **Security**:  
+     - Traditional: Basic antivirus + firewall  
+     - AnnealTech: Zero trust + behavioral analytics
+   - **Support Model**:  
+     - Traditional: Reactive ticketing  
+     - AnnealTech: 24/7 concierge-style support
+   - **Approach**:  
+     - Traditional: Tools-first  
+     - AnnealTech: Outcome-first strategy
+   - **Proactivity**:  
+     - Traditional: Fix after failure  
+     - AnnealTech: Predict & prevent with intelligent monitoring
+   - **Relationship**:  
+     - Traditional: Vendor  
+     - AnnealTech: Embedded technology partner
+
+3. STYLE:
+   - Use cards or rows with alternating backgrounds (`bg-slate-800`, `bg-slate-900`)
+   - Left column text: muted (`text-gray-400`)
+   - Right column (AnnealTech): bold, colored (use `text-[#0d4f86]` or `text-white` with blue border highlight)
+   - Optional: Add subtle vertical divider line or animated split effect for contrast
+
+4. SECTION HEADING STYLING:
+   - Use the same heading/subheading layout style as “Our Services” or “Partnership Timeline”
+   - Center aligned with `text-white` heading and `text-gray-300` subheading on a dark background (`bg-[#101622]` or `bg-slate-950`)
+
+5. OPTIONAL ENHANCEMENTS:
+   - Add a glowing **AnnealTech icon or branding stamp** near the right column
+   - Fade in each row as it scrolls into view (`scroll-fade`, `animate-fade-up`)
+   - Include a subtle “💡” or “🔥” icon next to AnnealTech entries to indicate innovation or performance edge
+
+6. RESPONSIVENESS:
+   - On mobile, stack each comparison row vertically (Traditional first, AnnealTech second with label above each)
+   - Use responsive padding (`px-4 py-12`) and max-width container
+
+7. ACCESSIBILITY:
+   - Make sure the contrast between rows, dividers, and text is WCAG compliant
+   - Use semantic elements (`<section>`, `<dl>`, `<dt>`, `<dd>`) if table layout is avoided
