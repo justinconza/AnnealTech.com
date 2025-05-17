@@ -685,8 +685,8 @@ const ContactPage = () => {
                         <p className="text-sm text-muted-foreground mb-1">
                           For urgent technical issues (24/7 support):
                         </p>
-                        <a href="tel:+18005559999" className="text-accent hover:underline">
-                          +1 (800) 555-9999
+                        <a href="tel:+15125938001" className="text-accent hover:underline" aria-label="Call our support hotline at 512-593-8001">
+                          512-593-8001
                         </a>
                       </div>
                       
@@ -700,8 +700,8 @@ const ContactPage = () => {
                         <p className="text-sm text-muted-foreground mb-1">
                           For non-urgent technical issues:
                         </p>
-                        <a href="mailto:support@annealtech.com" className="text-accent hover:underline">
-                          support@annealtech.com
+                        <a href="mailto:Services@AnnealTech.com" className="text-accent hover:underline" aria-label="Email our support team at Services@AnnealTech.com">
+                          Services@AnnealTech.com
                         </a>
                       </div>
                       
