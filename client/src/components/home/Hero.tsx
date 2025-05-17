@@ -74,14 +74,14 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="inline-block bg-[#3A6EA5]/10 border border-[#3A6EA5]/20 rounded-full px-4 py-1 mb-6">
-            <span className="text-[#3A6EA5] font-heading text-sm font-medium tracking-wider">MANAGED EXPERIENCE PROVIDER</span>
+          <div className="inline-block bg-white/20 border border-white/40 rounded-full px-5 py-2 mb-6 shadow-sm">
+            <span className="text-white font-heading text-sm font-bold tracking-wider">MANAGED EXPERIENCE PROVIDER</span>
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight mb-6 tracking-tight">
             <span className="block">
               Forging Technology.
-              <span className="text-[#6B9CD1] animate-glow"> Empowering</span>
+              <span className="text-white animate-pulse"> Empowering</span>
             </span>
             <span className="block text-white">People.</span>
           </h1>
