@@ -307,15 +307,16 @@ const ContactPage = () => {
                       type="submit" 
                       className="bg-accent hover:bg-accent/80 text-white font-heading px-8 py-3 w-full md:w-auto flex items-center justify-center gap-2 group"
                       disabled={isSubmitting}
+                      aria-label={isSubmitting ? "Sending your message" : "Send support message"}
                     >
                       {isSubmitting ? "Sending..." : "Send Message"}
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </Button>
                   </form>
                 </Form>
               </TabsContent>
               
-              <TabsContent value="quote" className="bg-steel/10 p-8 rounded-lg border border-accent/10">
+              <TabsContent value="quote" id="quote-tab" className="bg-steel/10 p-8 rounded-lg border border-accent/10" role="tabpanel">
                 <h2 className="text-2xl font-heading font-semibold text-foreground mb-6">
                   Request a Quote
                 </h2>
@@ -460,15 +461,16 @@ const ContactPage = () => {
                       type="submit" 
                       className="bg-accent hover:bg-accent/80 text-white font-heading px-8 py-3 w-full md:w-auto flex items-center justify-center gap-2 group"
                       disabled={isSubmitting}
+                      aria-label={isSubmitting ? "Submitting your request" : "Submit your quote request"}
                     >
                       {isSubmitting ? "Submitting..." : "Request Quote"}
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </Button>
                   </form>
                 </Form>
               </TabsContent>
               
-              <TabsContent value="demo" className="bg-steel/10 p-8 rounded-lg border border-accent/10">
+              <TabsContent value="demo" id="demo-tab" className="bg-steel/10 p-8 rounded-lg border border-accent/10" role="tabpanel">
                 <h2 className="text-2xl font-heading font-semibold text-foreground mb-6">
                   Schedule a Demo
                 </h2>
@@ -662,7 +664,7 @@ const ContactPage = () => {
                 </div>
               </TabsContent>
               
-              <TabsContent value="support" className="bg-steel/10 p-8 rounded-lg border border-accent/10">
+              <TabsContent value="support" id="support-tab" className="bg-steel/10 p-8 rounded-lg border border-accent/10" role="tabpanel">
                 <h2 className="text-2xl font-heading font-semibold text-foreground mb-6">
                   Technical Support
                 </h2>
