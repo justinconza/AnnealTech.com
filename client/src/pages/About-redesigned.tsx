@@ -216,6 +216,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex justify-center"
           >
             <Link href="/contact">
               <Button className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-6 text-lg rounded-md shadow-lg hover:shadow-blue-500/20 flex items-center gap-2 group">
