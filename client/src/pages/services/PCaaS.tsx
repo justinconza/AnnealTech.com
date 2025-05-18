@@ -584,10 +584,105 @@ const PCaaS: React.FC = () => {
         </div>
       </section>
       
-      {/* Who Benefits Section - Redesigned */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0iIzBkNGY4NiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMSI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2Mmg0djRoMnYtNGg0di0yaC00em0wLTMwVjBoLTJ2NGgtNHYyaDR2NGgyVjZoNFY0aC00ek02IDM0di00SDR2NEgwdjJoNHY0aDJ2LTRoNHYtMkg2ek02IDRWMEg0djRIMHYyaDR2NGgyVjZoNFY0SDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
+      {/* Who Benefits Section - Futuristic Dark Blue Background */}
+      <section className="py-20 bg-gradient-to-b from-blue-900 to-[#072749] text-white relative overflow-hidden">
+        {/* Digital circuit pattern background */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0iIzRCOUZGRiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMiI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2Mmg0djRoMnYtNGg0di0yaC00em0wLTMwVjBoLTJ2NGgtNHYyaDR2NGgyVjZoNFY0aC00ek02IDM0di00SDR2NEgwdjJoNHY0aDJ2LTRoNHYtMkg2ek02IDRWMEg0djRIMHYyaDR2NGgyVjZoNFY0SDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
+        
+        {/* Animated particles */}
+        <div className="absolute inset-0">
+          {[...Array(50)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-blue-400"
+              style={{
+                width: `${Math.random() * 3 + 1}px`,
+                height: `${Math.random() * 3 + 1}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.5 + 0.1,
+                boxShadow: `0 0 ${Math.random() * 6 + 2}px ${Math.random() * 3 + 1}px rgba(59, 130, 246, 0.4)`
+              }}
+              animate={{
+                y: [0, -15, 0],
+                opacity: [0.1, 0.3, 0.1]
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Glowing orbs */}
+        <motion.div 
+          className="absolute left-1/4 top-1/3 w-96 h-96 rounded-full bg-blue-500/10 blur-[100px]"
+          animate={{
+            opacity: [0.3, 0.5, 0.3],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        <motion.div 
+          className="absolute right-1/4 bottom-1/4 w-64 h-64 rounded-full bg-blue-400/10 blur-[80px]"
+          animate={{
+            opacity: [0.2, 0.4, 0.2],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
+        
+        {/* Digital grid lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grid-line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#4B9FFF" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#4B9FFF" stopOpacity="1" />
+              <stop offset="100%" stopColor="#4B9FFF" stopOpacity="0.8" />
+            </linearGradient>
+          </defs>
+          <g>
+            <motion.path 
+              d="M0,50 Q250,0 500,50 T1000,50" 
+              stroke="url(#grid-line-gradient)" 
+              strokeWidth="0.5" 
+              fill="none" 
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 3 }}
+            />
+            <motion.path 
+              d="M0,150 Q250,100 500,150 T1000,150" 
+              stroke="url(#grid-line-gradient)" 
+              strokeWidth="0.5" 
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 3, delay: 0.2 }}
+            />
+            <motion.path 
+              d="M0,250 Q250,200 500,250 T1000,250" 
+              stroke="url(#grid-line-gradient)" 
+              strokeWidth="0.5" 
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 3, delay: 0.4 }}
+            />
+          </g>
+        </svg>
         
         {/* Section content */}
         <div className="container mx-auto px-4 relative z-10">
@@ -598,15 +693,15 @@ const PCaaS: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <div className="inline-block p-3 bg-blue-50 rounded-full mb-6">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white">
+            <div className="inline-block p-3 bg-blue-600/30 rounded-full mb-6 backdrop-blur-sm border border-blue-500/20">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white">
                 <Users className="h-7 w-7" />
               </div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-slate-800">
-              Who Benefits From <span className="text-blue-600">PCaaS</span>?
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
+              Who Benefits From <span className="text-blue-300">PCaaS</span>?
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               PCaaS delivers exceptional value across diverse organizational needs
             </p>
           </motion.div>
@@ -621,24 +716,30 @@ const PCaaS: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ 
                   y: -10,
-                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)"
+                  boxShadow: "0 15px 30px -5px rgba(0, 0, 0, 0.5)"
                 }}
-                className="relative bg-white rounded-2xl overflow-hidden border border-blue-100 shadow-lg shadow-blue-50 p-6 flex flex-col items-center text-center"
+                className="relative bg-blue-800/40 backdrop-blur-sm rounded-2xl overflow-hidden border border-blue-400/30 shadow-lg shadow-blue-900/50 p-6 flex flex-col items-center text-center"
               >
-                {/* Background accent */}
-                <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+                {/* Glowing border effect */}
+                <div className="absolute inset-0 rounded-2xl border border-blue-400/40 overflow-hidden">
+                  <div className="absolute inset-0 opacity-30 bg-grid-pattern"></div>
+                </div>
+                
+                {/* Top glow accent */}
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-300"></div>
                 
                 {/* Icon */}
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-4">
-                  <beneficiary.icon className="h-8 w-8 text-blue-600" />
+                <div className="w-16 h-16 rounded-2xl bg-blue-900/70 flex items-center justify-center mb-4 border border-blue-400/30 relative z-10 shadow-inner shadow-blue-950/50">
+                  <beneficiary.icon className="h-8 w-8 text-blue-300" />
+                  <div className="absolute inset-0 rounded-2xl bg-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 
                 {/* Content */}
-                <h3 className="text-lg font-bold text-slate-800 mb-2">{beneficiary.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{beneficiary.description}</p>
+                <h3 className="text-lg font-bold text-white mb-2 relative z-10">{beneficiary.title}</h3>
+                <p className="text-blue-100 text-sm leading-relaxed relative z-10">{beneficiary.description}</p>
                 
-                {/* Hover glow effect */}
-                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                {/* Bottom glow effect */}
+                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-blue-400/20 to-transparent"></div>
               </motion.div>
             ))}
           </div>
@@ -649,11 +750,17 @@ const PCaaS: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="max-w-3xl mx-auto text-center bg-blue-50 rounded-xl p-6 border border-blue-100"
+            className="max-w-3xl mx-auto text-center bg-blue-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/30"
           >
-            <p className="text-slate-700 font-medium">
-              <span className="text-blue-600 font-bold">Did you know?</span> Organizations with PCaaS solutions report up to 28% faster deployment times for new employees and 40% fewer IT support tickets related to device issues.
+            <p className="text-blue-50 font-medium">
+              <span className="text-blue-300 font-bold">Did you know?</span> Organizations with PCaaS solutions report up to 28% faster deployment times for new employees and 40% fewer IT support tickets related to device issues.
             </p>
+            
+            {/* Decorative corner accents */}
+            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-blue-400/60"></div>
+            <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-blue-400/60"></div>
+            <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-blue-400/60"></div>
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-blue-400/60"></div>
           </motion.div>
         </div>
       </section>
