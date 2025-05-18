@@ -414,13 +414,10 @@ const Contact = () => {
               </form>
             </Form>
           </div>
-          
-          {/* Contact information */}
-          <div className="space-y-8">
-            {/* Offices */}
-            <div>
-              <h3 className="text-2xl font-heading font-semibold text-white mb-6">Our Locations</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        </div>
+      </div>
+    </section>
+  );
                 <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
                   <div className="flex items-center gap-2 mb-3">
                     <div className="p-2 rounded-md bg-steel/20 text-accent">
