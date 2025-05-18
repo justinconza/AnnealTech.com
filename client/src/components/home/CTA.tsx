@@ -238,7 +238,7 @@ const CTA = () => {
           transition={{ duration: 0.7 }}
           className="text-center md:text-left"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Strengthen Your IT Security Posture?</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-3xl xl:text-3xl font-bold mb-4">Ready to Strengthen Your IT Security Posture?</h2>
           <p className="mt-4 text-slate-200 max-w-2xl">
             Take our complimentary <strong>Security Culture Maturity Assessment</strong> to discover how your people, policies, and technology stack up against modern cyber threats.
           </p>
