@@ -59,14 +59,29 @@ const SolutionPackages = () => {
 
   const packages = [
     {
+      id: 'security-core',
+      name: "Security Core",
+      icon: Lock,
+      idealFor: "Companies needing essential security coverage and IT management",
+      features: [
+        "Basic endpoint protection",
+        "Patch management",
+        "Email filtering",
+        "Scheduled monitoring",
+        "Business-hours support"
+      ],
+      primary: false,
+      color: 'blue-300'
+    },
+    {
       id: 'business-pro',
       name: "Business Pro",
       icon: Shield,
       idealFor: "Small businesses with basic IT needs & growth plans",
       features: [
+        "Everything in Security Core plus:",
         "24/7 remote support",
-        "Patch management",
-        "Basic endpoint protection",
+        "Enhanced endpoint security",
         "Productivity suite management",
         "Monthly reporting"
       ],
@@ -111,35 +126,38 @@ const SolutionPackages = () => {
     { 
       category: "Support",
       features: [
-        { name: "24/7 Remote Support", businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "Priority Response", businessPro: false, businessProPlus: true, pcaas: true },
-        { name: "On-site Support", businessPro: "add-on", businessProPlus: "add-on", pcaas: true },
+        { name: "Business Hours Support", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "24/7 Remote Support", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Priority Response", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
+        { name: "On-site Support", securityCore: "add-on", businessPro: "add-on", businessProPlus: "add-on", pcaas: true },
       ]
     },
     { 
       category: "Security",
       features: [
-        { name: "Basic Endpoint Protection", businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "Advanced Threat Protection", businessPro: false, businessProPlus: true, pcaas: true },
-        { name: "Managed Detection & Response", businessPro: false, businessProPlus: true, pcaas: true },
-        { name: "Phishing Simulation", businessPro: false, businessProPlus: true, pcaas: true },
+        { name: "Basic Endpoint Protection", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Email Filtering", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Advanced Threat Protection", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
+        { name: "Managed Detection & Response", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
+        { name: "Phishing Simulation", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
       ]
     },
     { 
       category: "Management",
       features: [
-        { name: "Patch Management", businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "Asset Management", businessPro: "basic", businessProPlus: true, pcaas: true },
-        { name: "Lifecycle Management", businessPro: false, businessProPlus: "basic", pcaas: true },
-        { name: "Device Provisioning", businessPro: false, businessProPlus: false, pcaas: true },
+        { name: "Patch Management", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Scheduled Monitoring", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Asset Management", securityCore: false, businessPro: "basic", businessProPlus: true, pcaas: true },
+        { name: "Lifecycle Management", securityCore: false, businessPro: false, businessProPlus: "basic", pcaas: true },
+        { name: "Device Provisioning", securityCore: false, businessPro: false, businessProPlus: false, pcaas: true },
       ]
     },
     { 
       category: "Strategic",
       features: [
-        { name: "Monthly Reporting", businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "Strategic IT Planning", businessPro: false, businessProPlus: true, pcaas: true },
-        { name: "CIO Advisory", businessPro: "add-on", businessProPlus: "add-on", pcaas: "add-on" },
+        { name: "Monthly Reporting", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Strategic IT Planning", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
+        { name: "CIO Advisory", securityCore: "add-on", businessPro: "add-on", businessProPlus: "add-on", pcaas: "add-on" },
       ]
     },
   ];
@@ -378,7 +396,7 @@ const SolutionPackages = () => {
               </p>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
               {packages.map((pkg, index) => (
                 <motion.div
                   key={index}
@@ -620,6 +638,12 @@ const SolutionPackages = () => {
                       <th className="text-left p-4 bg-blue-800/30 rounded-tl-lg">Feature</th>
                       <th className="p-4 bg-blue-800/30">
                         <div className="flex flex-col items-center">
+                          <Lock className="w-5 h-5 text-blue-300 mb-1" />
+                          <span>Security Core</span>
+                        </div>
+                      </th>
+                      <th className="p-4 bg-blue-800/30">
+                        <div className="flex flex-col items-center">
                           <Shield className="w-5 h-5 text-blue-400 mb-1" />
                           <span>Business Pro</span>
                         </div>
@@ -656,6 +680,9 @@ const SolutionPackages = () => {
                                 transition={{ duration: 0.3, delay: featIdx * 0.1 }}
                               >
                                 <td className="p-4 text-left">{feature.name}</td>
+                                <td className="p-4 text-center">
+                                  {renderFeatureStatus(feature.securityCore)}
+                                </td>
                                 <td className="p-4 text-center">
                                   {renderFeatureStatus(feature.businessPro)}
                                 </td>
