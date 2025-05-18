@@ -555,29 +555,10 @@ const ToolsPage = () => {
       {/* Tools Categories Section */}
       <section className="pt-8 pb-16 bg-slate-900">
         <div className="container mx-auto px-4">
-          {/* Category Tabs */}
-          <div className="mb-8">
+          {/* Category Section Removed */}
+          <div>
             <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-              <TabsList className="bg-white py-4 md:py-6 px-2 md:px-3 rounded-xl border border-[#114372]/20 flex flex-wrap justify-center w-full shadow-md items-center">
-                {categories.map((category) => {
-                  const Icon = category.icon;
-                  return (
-                    <TabsTrigger 
-                      key={category.id} 
-                      value={category.id}
-                      className="px-3 md:px-5 py-3 md:py-4 m-1 data-[state=active]:bg-[#0c3f6d] data-[state=active]:text-white hover:bg-[#f0f7ff] text-[#114372] font-medium transition-all duration-200 rounded-lg text-xs sm:text-sm md:text-base"
-                    >
-                      <div className="flex items-center gap-1 md:gap-2">
-                        <Icon className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                        <span className="truncate">{category.label}</span>
-                      </div>
-                    </TabsTrigger>
-                  );
-                })}
-              </TabsList>
-              
-              {/* No filter indicators section - removed */}
-              <div className="mt-4"></div>
+              <div className="mt-2"></div>
               
               {/* Tool Cards */}
               <AnimatePresence mode="wait">
