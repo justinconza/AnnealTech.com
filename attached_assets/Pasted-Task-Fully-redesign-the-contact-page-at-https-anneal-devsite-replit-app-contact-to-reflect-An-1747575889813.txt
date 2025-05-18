@@ -1,0 +1,160 @@
+Task:
+Fully redesign the `/contact` page at https://anneal-devsite.replit.app/contact to reflect AnnealTech’s futuristic, tech-enabled, high-trust brand identity. This contact experience should feel premium, secure, and intuitive — not generic.
+
+It should go far beyond a basic form — incorporating real-time validation, immersive design, key contact channels, embedded CTAs, and social proof to build confidence.
+
+---
+
+🎯 CORE GOALS:
+
+- Visually align with AnnealTech’s immersive branding (dark-light balance, #0d4f86, glows, grids)
+- Provide multiple contact options: form, calendar booking, email, phone, location
+- Feel secure, high-end, and intuitive — no clutter, no friction
+- Reinforce credibility with customer service commitment and response SLAs
+- Mobile-first responsive layout
+
+---
+
+📐 PAGE STRUCTURE:
+
+---
+
+### 1. 🧭 Section: Contact Intro + Trust Statement
+
+**Headline:**  
+> “Let’s Forge Something Stronger Together”
+
+**Subheadline:**  
+> Whether you’re ready to chat now or just exploring, our team is here for you — securely, promptly, and with zero pressure.
+
+**Design:**
+- Full-width header area with subtle animated mesh or glowing lines
+- Text centered, glowing headline effect
+- Include subtle pulsing icon (e.g., chat bubble, secure envelope, lightning bolt)
+
+---
+
+### 2. 📝 Section: Contact Form (High-Converting, Accessible)
+
+**Fields:**
+- Name  
+- Company  
+- Work Email  
+- Phone Number (optional)  
+- Inquiry Type (dropdown: Sales, Support, Partner, General)  
+- Message (textarea)
+
+**UX Features:**
+- Real-time validation and field focus glow  
+- Icon inside input boxes (e.g., user icon in Name field)  
+- Custom success message (not generic)  
+- Spam protection (invisible honeypot or Captcha option)
+
+**CTA Button:**  
+> “Send Message”  
+→ Blue button `#0d4f86`, rounded, glowing border, hover pulse
+
+---
+
+### 3. 📆 Section: Schedule a Call / Book a Demo
+
+**Headline:**  
+> “Want to Talk Now or Schedule a Time?”
+
+**Elements:**
+- Button to open embedded Calendly (or scheduling tool) modal  
+- Alt option: “Prefer email? Just send a quick message here.” (smooth scroll to form)
+
+**CTA Button:**  
+> “Book a Call with Our Team” → Glowing hover, slide-in transition
+
+---
+
+### 4. 📲 Section: Direct Contact Channels
+
+**Design:**  
+Split layout or card layout (desktop = 2–3 columns, mobile = stacked)
+
+**Cards:**
+- 💬 **Live Chat (M-F, 9–6 EST)**  
+  “Get real-time support or answers in minutes.”
+
+- 📧 **Email**  
+  contact@annealtech.com (click to copy or launch email)
+
+- 📞 **Phone Support**  
+  (888) 555-TECH  
+  “Priority call-back in 15 mins for customers”
+
+- 📍 **Location / Coverage Map**  
+  “Serving businesses nationwide from Austin, TX” 
+
+Each card includes:
+- Glowing icon  
+- Brief description  
+- Optional micro-CTA or hover animation
+
+---
+
+### 5. 🧠 Section: FAQ & Support Blurbs (Optional but Powerful)
+
+**Mini-FAQ (3–4 entries):**
+- “How fast do you respond?”  
+  > Within 15 minutes for critical inquiries, 2–4 hours for general.
+
+- “Do you charge for assessments?”  
+  > Never — our audits are 100% free and zero-pressure.
+
+- “Do I have to be a customer to get support?”  
+  > We’re happy to guide prospects, too.
+
+Each FAQ should be toggle-able or accordion style for clean UX.
+
+---
+
+### 6. 🙌 Section: Social Proof / Contact Promise
+
+**Headline:**  
+> “We Respond. We Don’t Spam. We Respect Your Time.”
+
+**Design:**  
+- Centered quote or customer testimonial  
+- Optional logos of organizations served  
+- A brief AnnealTech contact promise:  
+  “We don’t outsource support. Every message is reviewed by a U.S.-based team member.”
+
+---
+
+🎨 DESIGN SYSTEM & BRAND ALIGNMENT:
+
+- **Primary Blue:** `#0d4f86`  
+- **Accent Colors:** White, soft blues, clean greys  
+- **Typography:** Modern sans-serif, semi-bold headers, friendly paragraph text  
+- **Form + Card Styling:**  
+  - Rounded corners  
+  - Glassmorphism or soft background blur  
+  - Hover glow effects on inputs + CTA buttons  
+  - Soft box shadows
+
+- **Animation Suggestions:**
+  - Scroll fade-in for sections  
+  - Pulsing border on CTA hover  
+  - Field glow focus state  
+  - Floating background mesh or circuit SVG behind content
+
+---
+
+📱 MOBILE RESPONSIVENESS:
+
+- Contact form stacks cleanly  
+- Chat, email, and phone cards convert into vertical layout  
+- Buttons have large touch areas  
+- Font adjusts via `clamp()` or breakpoints
+
+---
+
+🔧 OPTIONAL TOOLS / LIBRARIES:
+
+- TailwindCSS for layout and hover effects  
+- AOS.js or GSAP for animation  
+- Lottie or SVG floating background assets  
