@@ -1,0 +1,178 @@
+Task:
+Build a visually compelling, animated, and conversion-focused solutions page for **Security Awareness Training** under AnnealTech’s Technology Professional Services category. This page must emphasize our ability to transform employees into security assets using world-class platforms like KnowBe4 KSAT, Proofpoint PSAT, and Hoxhunt.
+
+The page should use immersive visuals, animated explainer blocks, and strong emotional language around the “human firewall” concept.
+
+---
+
+🎯 PAGE GOALS:
+
+- Establish the importance of human behavior in cybersecurity risk reduction  
+- Position SAT as a core requirement — not an afterthought  
+- Highlight enterprise-grade platform support (KnowBe4, PSAT, Hoxhunt)  
+- Convert users to demo or consult bookings via clear, emotionally charged CTAs  
+
+---
+
+📐 PAGE STRUCTURE & CONTENT:
+
+---
+
+### 1. 🚀 HERO SECTION
+
+**Headline:**  
+> “Train Your People. Harden Your Perimeter.”
+
+**Subheadline:**  
+> Your users are the last line of defense. AnnealTech helps you build a human firewall using the best platforms on the planet.
+
+**Design:**  
+- Animated background: silhouettes of people forming a shield or grid pattern morphing into a firewall  
+- CTA Button: “Get a Human Firewall Assessment” → scrolls to form or triggers scheduler modal
+
+---
+
+### 2. 🔥 WHY THIS MATTERS
+
+**Content Block:**  
+> 94% of successful cyberattacks begin with human error — clicks, attachments, poor judgment. The only scalable solution is **behavioral change**.
+
+Use icons or stat cards:
+- Phishing attacks  
+- Credential reuse  
+- Social engineering  
+- Insider threats  
+- Ransomware triggers  
+
+---
+
+### 3. 🛠 HOW WE DELIVER
+
+Use card grid or step-by-step journey:
+
+#### Step 1: Risk-Based Baseline Assessment  
+We analyze click rates, exposure, attack surface, and user behavior.
+
+#### Step 2: Platform Selection  
+We recommend and configure KnowBe4 KSAT, Proofpoint PSAT, or Hoxhunt based on your org’s culture, risk profile, and integrations.
+
+#### Step 3: Simulation & Training Deployment  
+We launch simulated attacks + auto-enrolled courses based on behavior, role, or risk.
+
+#### Step 4: Ongoing Behavior Reinforcement  
+Custom nudges, policy reminders, micro-training, and phishing programs.
+
+#### Step 5: Reporting & Culture Metrics  
+We deliver risk scoring, leadership summaries, and security culture dashboards.
+
+---
+
+### 4. ⚔️ PLATFORM SUPPORT (SHOWCASE)
+
+Use 3 glowing platform cards with logos, feature bullets, and hover glow:
+
+---
+
+#### 🛡 KnowBe4 KSAT  
+- World’s largest SAT platform  
+- Custom training paths  
+- Smart Groups & Risk Scoring  
+- Vishing, USB, MFA Simulations  
+- Integrates with PhishER & SecurityCoach
+
+---
+
+#### 🧠 Proofpoint PSAT  
+- Targeted attack simulations  
+- Role-based training paths  
+- Industry templates + compliance LMS  
+- Threat Intelligence-backed scenarios
+
+---
+
+#### 🪖 Hoxhunt  
+- Gamified phishing response  
+- Adaptive AI-based training  
+- “Psychology-first” engagement engine  
+- Self-healing learning loops
+
+---
+
+### 5. 🧠 WHAT WE ADD TO THE PLATFORMS
+
+**AnnealTech’s Services Include:**
+- Phishing campaign calendar design  
+- Micro-training copywriting + LMS setup  
+- Departmental culture analysis  
+- CISO dashboard reporting  
+- Automated rule creation + SCIM provisioning
+
+---
+
+### 6. 🎯 WHO THIS IS FOR
+
+Persona blocks or slider:
+- IT Directors with compliance mandates  
+- CISOs reducing click risk  
+- Legal, finance, HR departments  
+- Growing orgs onboarding new hires  
+- MSPs needing SAT as a bundled deliverable
+
+---
+
+### 7. 📊 RESULTS SNAPSHOT
+
+Example card:
+
+> “A 300-user healthcare client reduced click-through rate from 28% to 4% in 90 days using KnowBe4 with AnnealTech’s campaign management.”
+
+Animated count-up metrics:
+- ↓ 70% Average Phishing Susceptibility  
+- ↑ 4x Improvement in Reported Phishing  
+- ↑ 92% Training Completion  
+- ↓ Time-to-click in simulated attacks
+
+---
+
+### 8. 📥 CTA – Build Your Human Firewall Now
+
+**Headline:**  
+> “Let’s Turn Your Team Into Security’s Strongest Layer”
+
+**CTA Button:**  
+> “Request a Custom SAT Strategy”  
+→ Triggers scheduler, contact form, or live demo request
+
+**Background:**  
+Subtle animated line art of users forming perimeter shield or biometric grid
+
+---
+
+🎨 DESIGN SYSTEM:
+
+- **Primary Color:** `#0d4f86`  
+- **Accent Palette:** orange/red glow for phishing → transition to blue firewall  
+- **Typography:**  
+  - Clean sans-serif  
+  - Headline font glow animation  
+- **Effects:**  
+  - Scroll fade-ins  
+  - Hover glow cards  
+  - Lottie animation for phishing → defense transformation
+
+---
+
+📱 MOBILE DESIGN:
+
+- Platform cards stack  
+- Persona slider becomes scrollable  
+- CTA buttons scale with touch targets  
+- Metrics realign vertically
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS or React-style layout  
+- Use scroll animations (GSAP, AOS)  
+- Accessible, lightweight, optimized for all devices
