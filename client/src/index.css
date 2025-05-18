@@ -120,6 +120,11 @@
   }
 }
 
+/* Radial gradient background */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
 /* Animated metric */
 .forge-glow {
   animation: forge-glow 2s ease-in-out infinite;
