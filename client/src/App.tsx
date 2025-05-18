@@ -19,6 +19,9 @@ const ToolEmbedding = lazy(() => import("./pages/ToolEmbedding"));
 const Faq = lazy(() => import("./pages/Faq-new"));
 const Contact = lazy(() => import("./pages/Contact-new"));
 
+// Lazy load service pages
+const PCaaS = lazy(() => import("./pages/services/PCaaS"));
+
 // Lazy load industry-specific pages
 const CommercialRealEstate = lazy(() => import("./pages/industries/CommercialRealEstate"));
 const Legal = lazy(() => import("./pages/industries/Legal"));
@@ -161,6 +164,13 @@ function MainRouter() {
               {() => (
                 <Suspense fallback={<LoadingSpinner />}>
                   <Contact />
+                </Suspense>
+              )}
+            </Route>
+            <Route path="/services/pcaas">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <PCaaS />
                 </Suspense>
               )}
             </Route>
