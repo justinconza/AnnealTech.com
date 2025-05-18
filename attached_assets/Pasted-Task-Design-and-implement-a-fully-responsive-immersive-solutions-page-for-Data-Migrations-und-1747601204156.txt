@@ -1,0 +1,145 @@
+Task:
+Design and implement a fully responsive, immersive solutions page for **Data Migrations** under AnnealTech’s Communication & Data Solutions category. The page should use animated, modern UI/UX styling consistent with previous services pages (like PCaaS and Enterprise Productivity Tools), and provide a seamless walkthrough of why data migrations matter, how AnnealTech executes them, and what results clients can expect.
+
+---
+
+🎯 PAGE GOALS:
+
+- Clearly explain what data migrations are and why they’re mission-critical
+- Reassure prospects of a secure, low-risk, high-visibility process
+- Emphasize AnnealTech’s consultative and methodical migration approach
+- Encourage engagement via CTA for an assessment or consult
+
+---
+
+📐 PAGE STRUCTURE & CONTENT:
+
+---
+
+### 1. 🚀 HERO SECTION
+
+**Headline:**  
+> “Your Data, Moved Safely. Your Business, Uninterrupted.”
+
+**Subheadline:**  
+> We migrate mail, files, apps, and cloud platforms with zero data loss, minimal disruption, and full compliance.
+
+**Design:**  
+- Animated background: flowing data lines or cloud-to-cloud connection graphic  
+- Optional: floating server/cloud icons in motion  
+- CTA Button: “Start Migration Planning” → scrolls to form or opens modal
+
+---
+
+### 2. 💡 WHAT WE MIGRATE
+
+**Short explainer with icons or checklist:**
+- Mail (Exchange, M365, Gmail)  
+- Cloud Storage (SharePoint, Google Drive, OneDrive, Dropbox)  
+- Domain + DNS Services  
+- SaaS Apps (Slack, Zoom, Teams config data, CRM, etc.)
+
+---
+
+### 3. ⚙️ KEY FEATURES & SERVICES (Grid or Accordion)
+
+Each feature should be presented in a glowing card:
+
+- **Email Migrations**  
+  Cutovers or staged transitions from on-prem or hosted platforms to Microsoft 365 or Google Workspace.
+
+- **File Storage Migrations**  
+  Permissions-aware transfer of user files, shared drives, version history, and metadata.
+
+- **Cloud-to-Cloud Transitions**  
+  Migrate between cloud platforms (e.g., Google Workspace → M365) with complete folder structure preservation.
+
+- **DNS + Domain Cutover**  
+  Smooth domain transfers with SPF/DKIM/DMARC retention and MX record coordination.
+
+- **Pre-Migration & Post-Migration Support**  
+  End-user communication, access testing, and phased group cutovers.
+
+**Design:**  
+- Hover glow with icon zoom  
+- Scroll-triggered entrance (GSAP or AOS recommended)
+
+---
+
+### 4. 🔒 HOW WE SECURE YOUR MIGRATION
+
+**Content Block:**
+> Every step of the migration is tracked, permission-aware, encrypted, and verified. No data leaks. No surprises.
+
+Include icons or diagram:
+- Audit Trail  
+- Permissions Mapping  
+- Endpoint Reconnection Support  
+- Dual Factor Re-auth  
+- Full Encryption In Transit
+
+---
+
+### 5. 🧠 WHO BENEFITS FROM THIS SERVICE?
+
+Persona display:
+- Growing teams changing platforms  
+- Acquisitions & divestitures  
+- Compliance-focused orgs  
+- Startups modernizing infrastructure  
+- Law firms, finance, healthcare, education sectors
+
+---
+
+### 6. 📊 SUCCESS SNAPSHOT
+
+> “We migrated 4 years of email + 1.2 TB of files for a 150-user real estate group over a weekend — zero disruption, zero tickets.”
+
+Metrics card:  
+- 100% data retention  
+- <4-hour downtime window  
+- 2x user satisfaction boost post-cutover
+
+---
+
+### 7. 📥 CTA – Plan Your Migration Today
+
+**Headline:**  
+> “Make the Move with Confidence”
+
+**Button:**  
+> “Book a Free Migration Assessment”  
+→ Hover glow, scroll reveal
+
+**Design:**  
+Full-width section with animated cloud or server background (SVG or Lottie)
+
+---
+
+🎨 DESIGN SYSTEM:
+
+- **Primary Color:** `#0d4f86`  
+- **Visual Theme:** digital transfer, flowing paths, safe/secure movement  
+- **Typography:**  
+  - Clean sans-serif  
+  - Large animated headers  
+- **Effects:**  
+  - Card lift on hover  
+  - Scroll-in animations  
+  - Lottie/SVG backgrounds recommended
+
+---
+
+📱 RESPONSIVE LAYOUT:
+
+- Grid collapses into stacked layout  
+- Icons and buttons scale for tap targets  
+- Text and columns wrap with proper hierarchy
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS or React component  
+- Accessible, performant, and clean semantic structure  
+- Smooth integration with other AnnealTech solution pages
