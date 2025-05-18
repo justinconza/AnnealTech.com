@@ -127,7 +127,7 @@ const HeroSection = () => {
   const y = useTransform(scrollYProgress, [0, 0.1], [0, -50]);
   
   return (
-    <section className="relative overflow-hidden min-h-[80vh] flex items-center">
+    <section className="relative overflow-hidden min-h-[70vh] flex items-center py-8">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#072749] to-[#0a3260] z-0">
         {/* Digital pattern overlay */}
