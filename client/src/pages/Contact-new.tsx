@@ -291,7 +291,7 @@ const ContactPage = () => {
               className="text-3xl md:text-5xl font-display font-bold mb-6 relative"
             >
               <span className="relative">
-                Let's Forge Something 
+                Let's Forge Something{" "}
                 <span className="relative">
                   Stronger
                   <motion.span 
