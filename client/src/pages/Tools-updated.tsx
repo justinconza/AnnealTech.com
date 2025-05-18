@@ -635,23 +635,37 @@ const ToolsPage = () => {
         </div>
       </section>
 
-      {/* Support CTA Section - Updated with dark blue text on white background */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        {/* Subtle background pattern */}
+      {/* Support CTA Section - Animated with fire effect when mouse moves */}
+      <section className="py-12 bg-white relative overflow-hidden" id="cta-section">
+        {/* Subtle background pattern with animated fire embers */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-tr from-blue-50 to-white"></div>
           <div className="absolute inset-0 opacity-5 bg-grid-pattern"></div>
-          <motion.div 
-            className="absolute w-[800px] h-[800px] rounded-full bg-blue-500/5 blur-3xl -bottom-400 -right-300"
-            animate={{
-              opacity: [0.05, 0.1, 0.05],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
+          
+          {/* Animated embers/sparks that follow mouse movement */}
+          <div id="fire-container" className="absolute inset-0 pointer-events-none">
+            {[...Array(12)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 rounded-full bg-[#0c3f6d]/30 blur-sm"
+                initial={{ 
+                  x: Math.random() * 100 + "%", 
+                  y: Math.random() * 100 + "%",
+                  opacity: 0
+                }}
+                animate={{ 
+                  opacity: [0, 0.7, 0],
+                  scale: [0.8, 1.2, 0.8]
+                }}
+                transition={{ 
+                  duration: Math.random() * 3 + 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.2
+                }}
+              />
+            ))}
+          </div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -662,35 +676,44 @@ const ToolsPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-blue-900 mb-4">
-                Need Assistance with Our Tools?
+              <h2 className="text-xl md:text-2xl font-heading font-bold text-[#0c3f6d] mb-2">
+                Ready to enhance your security?
               </h2>
-              <p className="text-xl text-blue-900 mb-8 max-w-2xl mx-auto">
-                Our security experts are ready to help you get the most out of our tools and implement comprehensive security solutions.
+              <p className="text-sm md:text-base text-[#3a6489] mb-4 max-w-xl mx-auto">
+                Get expert assistance with implementing these tools in your organization.
               </p>
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 className="inline-block"
               >
                 <Link href="/contact">
                   <Button 
-                    className="bg-[#0a3260] hover:bg-blue-800 text-white font-medium py-6 px-8 text-lg shadow-lg hover:shadow-blue-500/10 rounded-md transition-all flex items-center relative overflow-hidden group">
-                    <span className="relative z-10">Contact Support</span>
-                    <ArrowRight className="ml-2 h-5 w-5 text-white relative z-10 group-hover:translate-x-1 transition-all" />
+                    className="bg-[#0a3260] hover:bg-[#154677] text-white font-medium py-3 px-6 shadow-lg hover:shadow-blue-500/10 rounded-md transition-all flex items-center relative overflow-hidden group">
+                    <span className="relative z-10 text-sm md:text-base">Contact Support</span>
+                    <ArrowRight className="ml-2 h-4 w-4 text-white relative z-10 group-hover:translate-x-1 transition-all" />
                     
-                    {/* Button glow effect */}
-                    <motion.span 
-                      className="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-800 opacity-0 group-hover:opacity-100 transition-opacity"
-                      animate={{
-                        opacity: [0, 0.2, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    ></motion.span>
+                    {/* Animated fire/ember effect on hover */}
+                    <div className="absolute -bottom-2 left-0 w-full h-8 opacity-0 group-hover:opacity-100 transition-opacity">
+                      {[...Array(12)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="absolute bottom-0 w-1 h-3 bg-blue-400/40 rounded-t-full blur-sm"
+                          style={{ left: `${(i * 9) - 2}%` }}
+                          animate={{ 
+                            height: [3, 8, 3],
+                            opacity: [0.2, 0.6, 0.2],
+                            y: [-1, -4, -1]
+                          }}
+                          transition={{ 
+                            duration: 1 + Math.random(),
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: i * 0.1
+                          }}
+                        />
+                      ))}
+                    </div>
                   </Button>
                 </Link>
               </motion.div>
@@ -698,6 +721,42 @@ const ToolsPage = () => {
           </div>
         </div>
       </section>
+      
+      {/* Add script to handle mouse movement for fire effect */}
+      <script dangerouslySetInnerHTML={{ __html: `
+        document.addEventListener('DOMContentLoaded', () => {
+          const ctaSection = document.getElementById('cta-section');
+          const fireContainer = document.getElementById('fire-container');
+          
+          if (ctaSection && fireContainer) {
+            const embers = fireContainer.querySelectorAll('div');
+            
+            ctaSection.addEventListener('mousemove', (e) => {
+              const rect = ctaSection.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              
+              embers.forEach((ember, index) => {
+                // Calculate position with some randomness
+                const offsetX = (index % 2 === 0) ? -20 - (Math.random() * 30) : 20 + (Math.random() * 30);
+                const offsetY = (index % 2 === 0) ? -30 - (Math.random() * 20) : -10 - (Math.random() * 20);
+                
+                // Animate with delay based on index
+                setTimeout(() => {
+                  ember.style.left = (x + offsetX) + 'px';
+                  ember.style.top = (y + offsetY) + 'px';
+                  ember.style.opacity = '0.7';
+                  
+                  // Fade out after animation
+                  setTimeout(() => {
+                    ember.style.opacity = '0';
+                  }, 800);
+                }, index * 50);
+              });
+            });
+          }
+        });
+      ` }} />
 
       {/* Tool Dialog */}
       <Dialog open={openToolId !== null} onOpenChange={() => closeTool()}>
