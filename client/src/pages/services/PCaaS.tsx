@@ -584,21 +584,12 @@ const PCaaS: React.FC = () => {
         </div>
       </section>
       
-      {/* Who Benefits Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-900 to-blue-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-circuit"></div>
+      {/* Who Benefits Section - Redesigned */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0iIzBkNGY4NiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMSI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2Mmg0djRoMnYtNGg0di0yaC00em0wLTMwVjBoLTJ2NGgtNHYyaDR2NGgyVjZoNFY0aC00ek02IDM0di00SDR2NEgwdjJoNHY0aDJ2LTRoNHYtMkg2ek02IDRWMEg0djRIMHYyaDR2NGgyVjZoNFY0SDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
         
-        {/* Blue flame elements */}
-        <div className="absolute bottom-0 right-20 flame" style={{ animationDelay: "-0.5s" }}>
-          <div className="flame-inner"></div>
-        </div>
-        <div className="absolute bottom-0 left-32 flame" style={{ animationDelay: "-1.2s" }}>
-          <div className="flame-inner"></div>
-        </div>
-        <div className="absolute bottom-0 left-1/2 flame" style={{ animationDelay: "-0.8s" }}>
-          <div className="flame-inner"></div>
-        </div>
-        
+        {/* Section content */}
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -607,24 +598,63 @@ const PCaaS: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-              Who Benefits?
+            <div className="inline-block p-3 bg-blue-50 rounded-full mb-6">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white">
+                <Users className="h-7 w-7" />
+              </div>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-slate-800">
+              Who Benefits From <span className="text-blue-600">PCaaS</span>?
             </h2>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               PCaaS delivers exceptional value across diverse organizational needs
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8 mb-10">
             {beneficiaries.map((beneficiary, index) => (
-              <BenefitCard
+              <motion.div
                 key={index}
-                icon={beneficiary.icon}
-                title={beneficiary.title}
-                description={beneficiary.description}
-              />
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ 
+                  y: -10,
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)"
+                }}
+                className="relative bg-white rounded-2xl overflow-hidden border border-blue-100 shadow-lg shadow-blue-50 p-6 flex flex-col items-center text-center"
+              >
+                {/* Background accent */}
+                <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+                
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-4">
+                  <beneficiary.icon className="h-8 w-8 text-blue-600" />
+                </div>
+                
+                {/* Content */}
+                <h3 className="text-lg font-bold text-slate-800 mb-2">{beneficiary.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{beneficiary.description}</p>
+                
+                {/* Hover glow effect */}
+                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </motion.div>
             ))}
           </div>
+          
+          {/* Additional callout */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="max-w-3xl mx-auto text-center bg-blue-50 rounded-xl p-6 border border-blue-100"
+          >
+            <p className="text-slate-700 font-medium">
+              <span className="text-blue-600 font-bold">Did you know?</span> Organizations with PCaaS solutions report up to 28% faster deployment times for new employees and 40% fewer IT support tickets related to device issues.
+            </p>
+          </motion.div>
         </div>
       </section>
       
