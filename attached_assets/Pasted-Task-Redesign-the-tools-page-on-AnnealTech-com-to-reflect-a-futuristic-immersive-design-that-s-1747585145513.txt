@@ -1,0 +1,90 @@
+Task:
+Redesign the `/tools` page on AnnealTech.com to reflect a futuristic, immersive design that showcases our suite of security tools. The page should incorporate advanced animations, interactive elements, and a layout consistent with AnnealTech’s branding.
+
+---
+
+🎯 CORE OBJECTIVES:
+
+- Categorize tools by function (e.g., Email Security, Network Diagnostics, Compliance).
+- Implement interactive elements (e.g., tabs, filters) for intuitive navigation.
+- Enhance user engagement with advanced animations and responsive design.
+- Ensure the design aligns with AnnealTech’s branding: dark/light contrast, blue glows, clean grids, and tech-forward visuals.
+
+---
+
+📐 PAGE STRUCTURE:
+
+1. **Hero Section:**
+   - **Headline:** "AnnealTech Security Tools"
+   - **Subheadline:** "Empowering you with cutting-edge tools to safeguard your digital landscape."
+   - **Design:** Full-width background with animated mesh or glowing lines. Centered text with glowing headline effect.
+
+2. **Tool Categories Navigation:**
+   - **Design:** Horizontal tabs or vertical sidebar listing categories.
+   - **Categories:**
+     - Email Security
+     - Network Diagnostics
+     - Compliance & Assessment
+     - Configuration Utilities
+     - Reporting & Analytics
+
+3. **Tool Cards:**
+   - **Layout:** Grid layout displaying tools under each category.
+   - **Card Design:**
+     - Icon representing the tool.
+     - Tool Name
+     - Brief Description
+     - CTA Button: "Launch Tool" with hover glow effect.
+   - **Interactive Elements:** Hover animations, tooltips with additional info.
+
+4. **Search Functionality:**
+   - **Design:** Prominent search bar above the tool grid.
+   - **Features:** Real-time search suggestions, keyword highlighting.
+
+5. **Call to Action:**
+   - **Headline:** "Need Assistance with Our Tools?"
+   - **CTA Button:** "Contact Support" with hover glow effect.
+   - **Design:** Centered text with animated background elements.
+
+---
+
+🎨 DESIGN ELEMENTS:
+
+- **Colors:**
+  - Primary Blue: `#0d4f86`
+  - Accents: Soft light blues, steel, white-on-dark text
+  - Backgrounds: Deep slate/navy with subtle gradients or animated overlays
+
+- **Typography:**
+  - Bold, modern sans-serif fonts
+  - Large titles with responsive scaling
+  - Clear, readable paragraph and bullet copy
+
+- **Effects & Motion:**
+  - Glassmorphism: blur + shadow + border-radius
+  - Hover glow + slight card lift
+  - Staggered scroll entrance using IntersectionObserver or AOS/GSAP
+  - Background: Use SVG animations, Lottie, or canvas (e.g., animated circuit lines, particles.js)
+
+---
+
+📱 RESPONSIVE DESIGN:
+
+- Fully responsive layout with mobile-first approach
+- Tool cards stack vertically on smaller screens
+- Touch-friendly interactions and appropriately sized tap targets
+
+---
+
+🔧 OPTIONAL TOOLS:
+
+- TailwindCSS for rapid utility classes
+- AOS.js or GSAP for scroll animations
+- Lottie or SVG loop animation for backgrounds
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS or component-based structure (React-friendly if needed)
+- Code should be clean, accessible, and optimized for Replit
