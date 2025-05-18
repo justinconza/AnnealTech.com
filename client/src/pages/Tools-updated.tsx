@@ -558,14 +558,14 @@ const ToolsPage = () => {
           {/* Category Tabs */}
           <div className="mb-12">
             <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-              <TabsList className="bg-white p-2 rounded-xl border border-[#114372]/20 flex flex-wrap gap-2 justify-center w-full shadow-md">
+              <TabsList className="bg-white py-6 px-3 rounded-xl border border-[#114372]/20 flex flex-wrap gap-3 justify-center w-full shadow-md items-center">
                 {categories.map((category) => {
                   const Icon = category.icon;
                   return (
                     <TabsTrigger 
                       key={category.id} 
                       value={category.id}
-                      className="px-5 py-3 data-[state=active]:bg-[#0c3f6d] data-[state=active]:text-white hover:bg-[#f0f7ff] text-[#114372] font-medium transition-all duration-200 rounded-lg"
+                      className="px-5 py-4 data-[state=active]:bg-[#0c3f6d] data-[state=active]:text-white hover:bg-[#f0f7ff] text-[#114372] font-medium transition-all duration-200 rounded-lg"
                     >
                       <div className="flex items-center gap-2">
                         <Icon className="h-4 w-4" />
