@@ -761,32 +761,56 @@ const ConstructionServicesSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-blue-900 to-slate-900 relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-[#072749] to-[#0a3260] relative overflow-hidden">
       {/* Blueprint/circuit background overlay */}
       <div className="absolute inset-0 opacity-20 bg-circuit"></div>
       
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
+      {/* Background particles and animation */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Digital pattern overlay */}
+        <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBzdHJva2U9IiMyMDVkOWUiIHN0cm9rZS13aWR0aD0iLjUiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTAgMTVIMTVWMEgweiIvPjxwYXRoIGQ9Ik0wIDMwSDE1VjE1SDB6Ii8+PHBhdGggZD0iTTAgNDVIMTVWMzBIMHoiLz48cGF0aCBkPSJNMCA2MEgxNVY0NUgweiIvPjxwYXRoIGQ9Ik0xNSAwSDMwVjE1SDE1eiIvPjxwYXRoIGQ9Ik0xNSAxNUgzMFYzMEgxNXoiLz48cGF0aCBkPSJNMTUgMzBIMzBWNDVIMTV6Ii8+PHBhdGggZD0iTTE1IDQ1SDMwVjYwSDE1eiIvPjxwYXRoIGQ9Ik0zMCAwSDQ1VjE1SDMweiIvPjxwYXRoIGQ9Ik0zMCAxNUg0NVYzMEgzMHoiLz48cGF0aCBkPSJNMzAgMzBINDVWNDVIMzB6Ii8+PHBhdGggZD0iTTMwIDQ1SDQ1VjYwSDMweiIvPjxwYXRoIGQ9Ik00NSAwSDYwVjE1SDQ1eiIvPjxwYXRoIGQ9Ik00NSAxNUg2MFYzMEg0NXoiLz48cGF0aCBkPSJNNDUgMzBINjBWNDVINDV6Ii8+PHBhdGggZD0iTTQ1IDQ1SDYwVjYwSDQ1eiIvPjwvZz48L3N2Zz4=')]"></div>
+      
+        {/* Floating orbs */}
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={`glow-${i}`}
-            className="absolute rounded-full bg-blue-400/20 blur-3xl"
+            className="absolute rounded-full bg-blue-400/10 blur-3xl"
             style={{
-              width: `${Math.random() * 400 + 200}px`,
-              height: `${Math.random() * 400 + 200}px`,
+              width: `${Math.random() * 300 + 100}px`,
+              height: `${Math.random() * 300 + 100}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.3 + 0.1
+              opacity: Math.random() * 0.15 + 0.05
             }}
             animate={{
-              x: [0, Math.random() * 50 - 25],
-              y: [0, Math.random() * 50 - 25],
-              opacity: [0.1, 0.3, 0.1]
+              opacity: [0.05, 0.15, 0.05],
+              scale: [0.8, 1.2, 0.8]
             }}
             transition={{
-              duration: Math.random() * 10 + 20,
+              duration: Math.random() * 10 + 15,
               repeat: Infinity,
               ease: "easeInOut"
+            }}
+          />
+        ))}
+        
+        {/* Animated light trails */}
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={`line-${i}`}
+            className="absolute h-[1px] w-full bg-blue-400/30"
+            style={{ 
+              top: `${30 + i * 30}%`,
+              left: "-100%"
+            }}
+            animate={{
+              x: ["0%", "200%"]
+            }}
+            transition={{
+              duration: 15 + i * 5,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 2
             }}
           />
         ))}
