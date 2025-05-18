@@ -238,8 +238,15 @@ const SecurityAwarenessTraining = () => {
         </section>
 
         {/* Why This Matters Section */}
-        <section className="relative bg-gradient-to-b from-blue-950 to-blue-900 py-16 md:py-24">
-          <div className="container mx-auto px-4 md:px-6">
+        <section className="relative bg-white py-16 md:py-24">
+          <div className="absolute inset-0 opacity-10" 
+            style={{
+              backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230d4f86' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+              backgroundSize: '60px 60px'
+            }}
+          ></div>
+          
+          <div className="container mx-auto px-4 md:px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -247,9 +254,9 @@ const SecurityAwarenessTraining = () => {
               transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why This Matters</h2>
-              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                <span className="font-semibold text-blue-300">94% of successful cyberattacks begin with human error</span> — clicks, attachments, poor judgment. The only scalable solution is <span className="font-semibold">behavioral change</span>.
+              <h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Why This Matters</h2>
+              <p className="text-xl text-blue-900 max-w-3xl mx-auto">
+                <span className="font-semibold text-blue-600">94% of successful cyberattacks begin with human error</span> — clicks, attachments, poor judgment. The only scalable solution is <span className="font-semibold text-blue-700">behavioral change</span>.
               </p>
             </motion.div>
 
@@ -267,14 +274,14 @@ const SecurityAwarenessTraining = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="bg-blue-800/30 backdrop-blur-sm border border-blue-700/30 rounded-lg p-6 text-center hover:bg-blue-700/40 transition-all duration-300"
+                  className="bg-white shadow-lg border border-blue-100 rounded-lg p-6 text-center hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="mx-auto w-12 h-12 flex items-center justify-center bg-blue-600/30 rounded-full mb-4">
-                    <item.icon className="h-6 w-6 text-blue-300" />
+                  <div className="mx-auto w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                    <item.icon className="h-6 w-6 text-blue-700" />
                   </div>
-                  <h3 className="font-bold text-lg text-white mb-2">{item.label}</h3>
-                  <p className="text-3xl font-bold text-blue-300 mb-1">{item.stat}</p>
-                  <p className="text-sm text-blue-200">{item.desc}</p>
+                  <h3 className="font-bold text-lg text-blue-800 mb-2">{item.label}</h3>
+                  <p className="text-3xl font-bold text-blue-600 mb-1">{item.stat}</p>
+                  <p className="text-sm text-blue-700">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
