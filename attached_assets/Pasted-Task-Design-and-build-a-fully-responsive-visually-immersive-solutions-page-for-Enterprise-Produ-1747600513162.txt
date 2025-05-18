@@ -1,0 +1,135 @@
+Task:
+Design and build a fully responsive, visually immersive solutions page for **Enterprise Productivity Tools** under AnnealTech’s Communication & Data Solutions category. This page should use the same animated, modern layout system as PCaaS, with scroll-triggered visuals, glowing blue accents, and a heavy focus on the value of secure, unified collaboration tools.
+
+---
+
+🎯 PAGE GOALS:
+
+- Clearly define what Enterprise Productivity Tools encompass (M365, Google Workspace, collaboration stacks)
+- Emphasize secure deployment, governance, and workflow optimization
+- Highlight AnnealTech’s ability to onboard, train, secure, and maintain productivity platforms
+- Reinforce AnnealTech’s commitment to uptime, access control, and user adoption
+
+---
+
+📐 PAGE STRUCTURE & CONTENT:
+
+---
+
+### 1. 🚀 HERO SECTION
+
+**Headline:**  
+> “Productivity Without Compromise.”
+
+**Subheadline:**  
+> We deploy, secure, and optimize Microsoft 365, Google Workspace, and collaboration platforms so your team can move faster — without risk.
+
+**Design:**  
+- Background: animated cloud interface mesh or document icons in motion  
+- Hover particle effects or cursor-tracked glow lines  
+- CTA: “Request Productivity Review” → triggers scheduler or form
+
+---
+
+### 2. 📦 WHAT'S INCLUDED?
+
+**Short Explainer:**  
+> AnnealTech’s productivity suite services help companies roll out and manage enterprise email, calendars, cloud storage, communication platforms, and file access — all with ironclad security and expert support.
+
+---
+
+### 3. ⚙️ CORE FEATURES (3x2 Grid or Tabs)
+
+- **Microsoft 365 + Google Workspace Management**  
+  Licensing, domain setup, permissions, app configuration.
+
+- **Email Security & Encryption**  
+  SPF/DKIM/DMARC alignment, filtering, phishing defense.
+
+- **File & Cloud Storage Governance**  
+  OneDrive, SharePoint, Drive — policy-based controls and auditing.
+
+- **Collaboration Tool Enablement**  
+  Teams, Slack, Zoom setup with access control and SSO integration.
+
+- **User Training & Adoption Workshops**  
+  Onboarding materials, live sessions, LMS modules.
+
+- **Ongoing Support & Change Management**  
+  Help desk access, configuration updates, issue resolution, app rollouts.
+
+**Design Details:**  
+- Hover glow, animated icons, scroll fade-in  
+- Optional accordion toggle for mobile
+
+---
+
+### 4. 🔐 SECURITY & COMPLIANCE ALIGNMENT
+
+**Visual Row:**
+Show how Enterprise Productivity Tools align with:
+- HIPAA
+- FTC Safeguards
+- SOC 2
+- MFA/SSO Security Baselines
+
+---
+
+### 5. 👥 WHO THIS IS FOR
+
+Use persona avatars or icons:
+- HR & Admin Teams  
+- Distributed Remote Teams  
+- Legal & Financial Departments  
+- SMBs Scaling Infrastructure  
+- Startups Moving to Cloud
+
+---
+
+### 6. 🧠 USE CASE SNAPSHOT
+
+> “A legal firm transitioned from Exchange to M365 with zero downtime, trained 100+ staff on Teams, and reduced phishing exposure by 67%.”
+
+---
+
+### 7. 📥 CTA – Unlock Your Team’s Full Potential
+
+**Headline:**  
+> “Let’s Simplify the Tools You Already Rely On.”
+
+**CTA Button:**  
+> “Book Your Productivity Assessment”  
+→ Glowing hover, soft scroll motion
+
+**Background:**  
+Light Lottie animation of tools orbiting around a glowing hub (Teams, Gmail, SharePoint, etc.)
+
+---
+
+🎨 DESIGN SYSTEM:
+
+- **Primary Color:** `#0d4f86`  
+- **Accent Palette:** Sky blue gradients, soft cloud overlays, dark interface edges  
+- **Typography:**  
+  - Sleek modern sans-serif  
+  - Clear hierarchy with animated section headers  
+- **Visuals & Motion:**  
+  - Scroll entrance animations  
+  - Lottie or SVG for background motion  
+  - Soft hover movement for CTAs and icons
+
+---
+
+📱 RESPONSIVE BEHAVIOR:
+
+- Card grid stacks smoothly on mobile  
+- Buttons scale with touch-friendly padding  
+- Tabs or accordions reflow elegantly
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS or component-based layout  
+- Mobile-first, accessible, semantic  
+- Integrate with CMS or static Replit site with optional Webflow export capability

@@ -21,6 +21,7 @@ const Contact = lazy(() => import("./pages/Contact-new"));
 
 // Lazy load service pages
 const PCaaS = lazy(() => import("./pages/services/PCaaS"));
+const EnterpriseProdTools = lazy(() => import("./pages/services/EnterpriseProdTools"));
 
 // Lazy load industry-specific pages
 const CommercialRealEstate = lazy(() => import("./pages/industries/CommercialRealEstate"));
@@ -171,6 +172,13 @@ function MainRouter() {
               {() => (
                 <Suspense fallback={<LoadingSpinner />}>
                   <PCaaS />
+                </Suspense>
+              )}
+            </Route>
+            <Route path="/services/enterprise-productivity-tools">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <EnterpriseProdTools />
                 </Suspense>
               )}
             </Route>
