@@ -616,13 +616,13 @@ const SecurityAwarenessTraining = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="bg-blue-800/20 backdrop-blur-sm border border-blue-700/30 rounded-xl p-6 text-center hover:bg-blue-700/30 transition-all duration-300"
+                  className="bg-blue-800/90 backdrop-blur-sm border border-blue-700/70 rounded-xl p-6 text-center hover:bg-blue-700/90 transition-all duration-300 shadow-lg"
                 >
-                  <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-blue-700/40 mb-4">
-                    <persona.icon className="h-8 w-8 text-blue-300" />
+                  <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-blue-600/60 mb-4">
+                    <persona.icon className="h-8 w-8 text-blue-200" />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">{persona.role}</h3>
-                  <p className="text-blue-200">{persona.description}</p>
+                  <p className="text-blue-100">{persona.description}</p>
                 </motion.div>
               ))}
             </div>
