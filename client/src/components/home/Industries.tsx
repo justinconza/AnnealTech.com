@@ -92,7 +92,7 @@ const Industries = () => {
   ];
 
   return (
-    <section className="-mt-6 pb-16 bg-[#0a1a2e] relative overflow-hidden">
+    <section className="-mt-6 pb-16 bg-[#0a1a2e] relative overflow-hidden flex items-center min-h-[600px]">
       <div className="absolute inset-0 opacity-20 bg-circuit"></div>
       
       {/* Blue flame elements */}
@@ -122,13 +122,13 @@ const Industries = () => {
         `
       }}></style>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 my-auto flex flex-col items-center justify-center">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-8"
+          className="text-center mb-8 max-w-3xl mx-auto"
         >
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-3">
             <span className="inline-block relative">
@@ -141,7 +141,7 @@ const Industries = () => {
           </p>
         </motion.div>
 
-        <div className="px-4 py-4">
+        <div className="px-4 py-4 w-full flex justify-center">
           <Swiper
             onSwiper={setSwiperRef}
             effect={'coverflow'}
@@ -165,7 +165,7 @@ const Industries = () => {
               disableOnInteraction: false,
             }}
             modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-            className="industries-swiper"
+            className="industries-swiper max-w-5xl mx-auto"
           >
             {industries.map((industry, index) => (
               <SwiperSlide key={index} className="swiper-slide" style={{ width: '340px', maxWidth: '100%' }}>
