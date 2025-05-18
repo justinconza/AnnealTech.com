@@ -1,0 +1,42 @@
+Update the homepage layout to visually merge the above blue section with the “Industries We Serve” section directly below it, so there's no visual break or excessive top padding between them.
+
+Objectives:
+- Remove the large top padding at the start of “Industries We Serve”
+- Let the background of “Beyond Traditional IT Support” extend down into the next section to create a continuous flow
+- Ensure both sections feel part of the same visual block, especially on desktop
+
+Instructions:
+
+1. Section Structure:
+   - Wrap both sections in a shared `relative` parent container (if not already)
+   - Use a **shared background** or extend the `bg-slate-900` (or forge glow background) from “Beyond Traditional IT Support” into the “Industries We Serve” section
+   - Optional: Use `isolate` on parent if needed to manage z-index
+
+2. Padding Adjustments:
+   - In the “Industries We Serve” section:
+     - Reduce or remove the top padding (`pt-16`, `mt-12`, etc.)
+     - Use `pt-0` or `pt-4` only if spacing is needed for breathing room
+   - In the “Beyond Traditional IT Support” section:
+     - Ensure bottom padding (`pb-16`) is preserved to avoid text crowding
+
+3. Background Continuity:
+   - Use the same background class (e.g., `bg-slate-900`, `bg-[#101622]`, or animated forge backdrop) across both sections
+   - Alternatively, extend a background `div` absolutely under both blocks (`absolute inset-0 z-0`) for unified glow
+
+4. Visual Continuity:
+   - Ensure no visible border, gap, or shadow is separating the two sections
+   - If using curved separators or SVG waves, remove them or darken to match the shared background
+
+Example:
+```html
+<section class="relative bg-slate-900 text-white">
+  <!-- Beyond Traditional IT Support -->
+  <div class="container mx-auto px-4 py-16">
+    <!-- Comparison content -->
+  </div>
+
+  <!-- Industries We Serve -->
+  <div class="container mx-auto px-4 pt-0 pb-16">
+    <!-- Industry cards or content here -->
+  </div>
+</section>
