@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
@@ -109,12 +109,20 @@ import EmailBreachChecker from "@/components/tools/EmailBreachChecker";
 // Temporary placeholder for tools that will be implemented later
 const PlaceholderTool = ({ onClose }: { onClose: () => void }) => (
   <div className="p-6 text-center">
-    <div className="mb-4 text-blue-500">
-      <AlertTriangle className="h-12 w-12 mx-auto" />
+    <div className="mb-6 text-[#0c3f6d]">
+      <div className="w-20 h-20 rounded-full bg-[#e6f0fa] flex items-center justify-center mx-auto">
+        <AlertTriangle className="h-10 w-10" />
+      </div>
     </div>
-    <h3 className="text-xl font-medium mb-2">Tool Coming Soon</h3>
-    <p className="text-slate-300 mb-6">This tool is currently being developed. Check back soon!</p>
-    <Button variant="outline" onClick={onClose}>Close</Button>
+    <h3 className="text-xl font-medium mb-2 text-[#114372]">Tool Coming Soon</h3>
+    <p className="text-[#3a6489] mb-6">This tool is currently being developed. Check back soon!</p>
+    <Button 
+      variant="outline" 
+      onClick={onClose}
+      className="border-[#114372]/30 text-[#114372] hover:bg-[#f0f7ff] hover:border-[#114372]/50 rounded-lg"
+    >
+      Close
+    </Button>
   </div>
 );
 
@@ -732,14 +740,43 @@ const ToolsPage = () => {
 
       {/* Tool Dialog */}
       <Dialog open={openToolId !== null} onOpenChange={() => closeTool()}>
-        <DialogContent className="max-w-2xl bg-slate-900 border-blue-500/20 text-white">
-          <DialogTitle>Tool Details</DialogTitle>
-          <DialogDescription>
-            Use this tool to analyze potential security threats.
+        <DialogContent className="max-w-2xl bg-white border border-[#114372]/20 text-[#114372] rounded-xl shadow-xl">
+          {/* Corner accents for dialog - similar to cards */}
+          <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#0c3f6d] rounded-tl-xl"></div>
+          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#0c3f6d] rounded-tr-xl"></div>
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#0c3f6d] rounded-bl-xl"></div>
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#0c3f6d] rounded-br-xl"></div>
+          
+          {/* Modal header with icon */}
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-lg bg-[#e6f0fa] flex items-center justify-center text-[#0c3f6d]">
+              {openToolId && allTools.find(t => t.id === openToolId)?.icon && 
+                React.createElement(allTools.find(t => t.id === openToolId)!.icon, { className: "w-5 h-5" })}
+            </div>
+            <DialogTitle className="text-[#114372] font-heading text-xl font-bold m-0">
+              {openToolId ? allTools.find(t => t.id === openToolId)?.title || "Security Tool" : "Security Tool"}
+            </DialogTitle>
+          </div>
+          
+          <DialogDescription className="text-[#3a6489]">
+            Use this tool to analyze potential security threats and vulnerabilities.
           </DialogDescription>
-          {openToolId && ActiveToolComponent && (
-            <ActiveToolComponent onClose={closeTool} />
-          )}
+          
+          <div className="bg-[#f9fbff] p-4 rounded-lg border border-[#114372]/10 my-4">
+            {openToolId && ActiveToolComponent && (
+              <ActiveToolComponent onClose={closeTool} />
+            )}
+          </div>
+          
+          <div className="mt-4 flex justify-end">
+            <Button 
+              variant="outline"
+              onClick={closeTool}
+              className="border-[#114372]/30 text-[#114372] hover:bg-[#f0f7ff] hover:border-[#114372]/50 rounded-lg"
+            >
+              Close
+            </Button>
+          </div>
         </DialogContent>
       </Dialog>
     </>
