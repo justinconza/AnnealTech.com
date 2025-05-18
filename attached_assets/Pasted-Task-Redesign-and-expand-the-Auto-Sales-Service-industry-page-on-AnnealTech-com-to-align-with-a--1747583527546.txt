@@ -1,0 +1,165 @@
+Task:
+Redesign and expand the Auto Sales & Service industry page on AnnealTech.com to align with a futuristic, security-first design language. The page should tell a compelling story of risk, resolution, and resilience while incorporating an immersive tech-driven visual style.
+
+This prompt includes: animated backgrounds, content sections, metric counters, value propositions, and a full-width Tailored Auto Sales & Service Services section with AnnealTech’s real services.
+
+---
+
+🎯 OVERALL GOALS:
+
+- Communicate why auto dealerships and service centers need proactive, SLA-backed IT & cybersecurity
+- Build trust through metrics, service clarity, and visually advanced UI
+- Match the digitally immersive branding of AnnealTech (glows, grids, blues)
+- Improve engagement and conversions with scroll-based animations and CTA hooks
+
+---
+
+📐 SECTION STRUCTURE & CONTENT:
+
+---
+
+### 1. “Industry Risks” Animated Threat Grid
+
+**Headline:**  
+> “Digital Threats Facing Auto Dealerships & Service Centers”
+
+**Visual Style:**  
+- Dark background with animated pulse grid or circuit-style SVG pattern  
+- Glowing borders on hover  
+- Each card animates on scroll
+
+**Cards (3):**
+- *Customer Data Breaches from Phishing Attacks*  
+- *Ransomware Disrupting Dealership Operations*  
+- *Unsecured IoT Devices in Service Bays*
+
+---
+
+### 2. “Why AnnealTech for Auto Sales & Service?” Split Section
+
+**Layout:** 2-columns  
+- Left: visual/animated illustration (connected car, service bay with digital overlay)  
+- Right: value bullets with icons
+
+**Headline:**  
+> “Driving Secure Operations in Automotive Sales & Service”
+
+**Bullet Values:**
+- 24/7 support for dealership management systems  
+- Endpoint protection for sales and service devices  
+- Secure Wi-Fi and network segmentation  
+- Compliance with FTC Safeguards Rule  
+- Staff cybersecurity awareness training
+
+---
+
+### 3. 🚗 **Tailored Auto Sales & Service Services – Full Width Card Grid**
+
+**Section Name:**  
+> “Services Engineered for Automotive Excellence”
+
+**Style Requirements:**
+- Full-width responsive card grid  
+- 2–3 columns (based on screen size), mobile-stack ready  
+- Cards: soft glassmorphism or elevated tile style  
+- Hover glow & subtle lift  
+- Scroll-triggered fade-up animation
+
+**Each card includes:**
+- Icon in glowing blue circle  
+- Title  
+- 1–2 sentence benefit  
+- Optional: key features list or business impact bar  
+- CTA: Learn More → button with slide/pulse
+
+**SERVICES to Include:**
+- Dealership Management System (DMS) Support  
+- Endpoint Threat Protection  
+- Network Security & Segmentation  
+- Compliance & Regulatory Support  
+- 24/7 Remote Support  
+- Security Awareness Training  
+- Backup & Disaster Recovery  
+- Cloud Solutions for Inventory Management  
+- VoIP & Unified Communications  
+- IT Consulting & Strategy
+
+---
+
+### 4. 📊 Results Metrics (Counter Section)
+
+**Headline:**  
+> “Performance Metrics That Drive Confidence”
+
+**Design:**
+- Blue glowing pill counters
+- Scroll-trigger count-up animations
+
+**Metrics to Include:**
+- 99.9% Uptime Guarantee  
+- 15-Minute SLA Response Time  
+- 96% Customer Satisfaction  
+- 40% Reduction in IT-related Downtime
+
+---
+
+### 5. 📥 CTA: Free IT & Cybersecurity Assessment
+
+**Headline:**  
+> “Accelerate Your Dealership's Digital Security”
+
+**Subheadline:**  
+> In just 2 minutes, discover vulnerabilities and areas for improvement in your IT infrastructure.
+
+**Button:**  
+> “Start My Free Assessment” → hover glow, white text on #0d4f86
+
+**Style:**  
+- Dark background with animated mesh, scroll shimmer, or soft motion lines  
+- Font glow on CTA section header  
+- Full-width design, centered content block
+
+---
+
+🎨 DESIGN SYSTEM / AESTHETIC GUIDELINES:
+
+- **Colors:**  
+  - Primary Blue: `#0d4f86`  
+  - Accents: Soft light blues, steel, white-on-dark text  
+  - Backgrounds: Deep slate / navy with subtle gradients or animated overlays
+
+- **Effects & Motion:**  
+  - Glassmorphism: blur + shadow + border-radius  
+  - Hover glow + slight card lift  
+  - Staggered scroll entrance using IntersectionObserver or AOS/GSAP  
+  - Background: Use SVG animations, Lottie, or canvas (e.g., animated circuit lines, particles.js)
+
+- **Typography:**  
+  - Use bold, modern sans-serif fonts  
+  - Large titles (clamp responsive font-scaling)  
+  - Clear, readable paragraph and bullet copy
+
+---
+
+📱 RESPONSIVE BEHAVIOR:
+
+- All sections fully responsive (mobile-first)  
+- Service cards stack vertically with proper spacing  
+- Font size scales naturally  
+- CTA buttons are easy to tap with enough padding
+
+---
+
+🔧 TOOLS TO USE (Optional):
+
+- TailwindCSS for rapid utility classes  
+- AOS.js or GSAP for scroll animations  
+- CountUp.js for animated metric counters  
+- Lottie or SVG loop animation for backgrounds
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS or component-based structure (React-friendly if needed)
+- Code clean, accessible, and optimized for Replit
