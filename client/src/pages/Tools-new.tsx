@@ -100,16 +100,23 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useInViewAnimation } from "@/hooks/use-animations";
 
-// Import tool component forms
-import EmailSecurityForm from "@/components/tools/EmailSecurityForm";
+// Import available tool components
 import QRCodeSecurityForm from "@/components/tools/QRCodeSecurityForm";
-import PhishingDetectionForm from "@/components/tools/PhishingDetectionForm";
-import PasswordStrengthForm from "@/components/tools/PasswordStrengthForm";
-import DomainSecurityForm from "@/components/tools/DomainSecurityForm";
 import ThreatHeatMap from "@/components/tools/ThreatHeatMap";
 import SecurityGapAnalysis from "@/components/tools/SecurityGapAnalysis";
 import EmailBreachChecker from "@/components/tools/EmailBreachChecker";
-import UsernameTracker from "@/components/tools/UsernameTracker";
+
+// Temporary placeholder for tools that will be implemented later
+const PlaceholderTool = ({ onClose }: { onClose: () => void }) => (
+  <div className="p-6 text-center">
+    <div className="mb-4 text-blue-500">
+      <AlertTriangle className="h-12 w-12 mx-auto" />
+    </div>
+    <h3 className="text-xl font-medium mb-2">Tool Coming Soon</h3>
+    <p className="text-slate-300 mb-6">This tool is currently being developed. Check back soon!</p>
+    <Button variant="outline" onClick={onClose}>Close</Button>
+  </div>
+);
 
 // Define the tool categories
 const categories = [
@@ -356,7 +363,16 @@ const ToolsPage = () => {
 
   // Get the active tool component
   const ActiveToolComponent = openToolId 
-    ? allTools.find(tool => tool.id === openToolId)?.component 
+    ? allTools.find(tool => tool.id === openToolId)?.component || (() => (
+      <div className="p-8 text-center">
+        <div className="mb-4 text-blue-500">
+          <AlertTriangle className="h-12 w-12 mx-auto" />
+        </div>
+        <h3 className="text-xl font-medium mb-2">Tool Coming Soon</h3>
+        <p className="text-slate-300 mb-6">This tool is currently being developed. Check back soon!</p>
+        <Button variant="outline" onClick={closeTool}>Close</Button>
+      </div>
+    ))
     : null;
 
   return (

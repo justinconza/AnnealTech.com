@@ -1,0 +1,140 @@
+Task:
+Create individual, feature-rich, interactive service pages for each of AnnealTech’s core solution categories and sub-services. These pages should reflect AnnealTech’s futuristic, immersive UI style — incorporating animations, glowing elements, real-world use cases, client outcomes, pricing tiers (where applicable), and CTA hooks.
+
+These pages should visually match the theming seen in: https://anneal-devsite.replit.app and reflect the solution packages shown in the uploaded chart.
+
+---
+
+🎯 CORE GOALS FOR EACH PAGE:
+
+- Clearly define what the service is
+- Show why it’s needed for modern organizations
+- Visually demonstrate how it fits into one of the core solution packages (Security Core, Business Pro, Business Pro+, PCaaS)
+- Include benefits, features, and visual use cases
+- Incorporate scroll-based animations and tech-forward styling
+- End with an engaging call-to-action
+
+---
+
+📁 SERVICE STRUCTURE OVERVIEW:
+
+### 1. **Communication & Data Solutions**
+- **Enterprise Productivity Tools**
+- **Data Migrations**
+
+### 2. **Managed Experience Solutions**
+- **Solution Packages Overview** *(with interactive matrix like uploaded image)*
+- **PC as a Service (PCaaS)**
+- **Service Desk**
+- **Cybersecurity** *(tie in Endpoint, ITDR, SOC, SAT, Patch Mgmt)*
+
+### 3. **Technology Professional Services**
+- **Security Awareness Training**
+- **IT Leadership Training**
+- **IT Talent Acquisition**
+- **Project Management**
+
+### 4. **Advisory Services**
+- **IT Service Management Assessments**
+- **Technology Maturity Assessments**
+- **Cybersecurity Risk Assessments**
+- **ITIL Strategy Development**
+
+---
+
+📐 PAGE STRUCTURE FOR EACH SERVICE PAGE:
+
+1. **Hero Section**
+   - Bold Title + Tagline
+   - Short paragraph explaining the offering
+   - “Part of Our [Solution Package Name] Tier” badge
+   - Background: animated SVG, mesh lines, or subtle gradient particles
+
+2. **Overview Section**
+   - What is this service?
+   - Why is it critical?
+   - Who benefits (personas)? → Icons or illustrated roles
+
+3. **Feature Breakdown**
+   - 3–6 cards or grid elements with:
+     - Icon
+     - Feature title
+     - 1–2 line explanation
+   - Hover animation: glow + elevation
+
+4. **Package Alignment Section**
+   - Visually show which packages this service is included in (use stylized version of the provided matrix)
+   - Interactive toggle (hover/click to highlight included packages)
+
+5. **Client Use Case / Testimonial Block**
+   - Showcase a brief client story or fictional scenario
+   - Quote, impact metrics, and service stack used
+
+6. **CTA Block**
+   - “Let’s Get Started With [Service Name]”
+   - CTA Button: “Request Consultation” or “See Demo” → hover glow
+   - Optional: Add scheduler embed or contact modal
+
+---
+
+🎨 DESIGN & BRANDING:
+
+- **Primary Color:** `#0d4f86`  
+- **Accent Colors:** Gradient blues, white/glass backgrounds, soft purples for security features
+- **UI Effects:**
+  - Scroll-trigger animations (GSAP/AOS)
+  - Hover glow and tile lift
+  - SVG-based animated backgrounds
+  - Tabbed or accordion sections for optional deeper info
+
+- **Typography:**  
+  - Modern sans-serif, clean and confident  
+  - Responsive scaling for mobile/desktop  
+  - Headlines with glowing/subtle animated styles
+
+---
+
+📱 RESPONSIVE LAYOUT:
+
+- 1-column stacking on mobile
+- Cards and feature grids adapt smoothly
+- CTAs and tooltips easy to tap and read
+
+---
+
+🔧 OPTIONAL TOOLS:
+
+- TailwindCSS or custom class-based layout
+- GSAP / AOS.js for animation triggers
+- CountUp.js or number metrics for use cases
+- Lottie/SVG for background motion
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Each service = one modular HTML/CSS (or React/Vue component) file
+- Top-down semantic structure
+- Reusable "Package Matrix" component across services
+- Fully mobile-optimized, visually consistent across all service pages
+
+---
+
+🧠 EXAMPLE FOR ONE PAGE:
+
+**Page Title:** Cybersecurity  
+**Tagline:** “Beyond Protection — Proactive, Measurable Cyber Resilience”  
+**Included In:** Business Pro, Business Pro+, PCaaS  
+**Core Features:**  
+- Endpoint Protection (MDR + AV)  
+- Identity Security (ITDR)  
+- SOC as a Service  
+- Patch Management  
+- SAT (Security Awareness Training)
+
+**Use Case Box:**  
+“XYZ Auto Group blocked 4 ransomware payloads in Q1 after onboarding AnnealTech’s cybersecurity suite. 22% faster SOC response time. 0 data loss.”
+
+**CTA:**  
+“Start Your Cybersecurity Risk Review Today” → Button opens form or scheduler modal
+
