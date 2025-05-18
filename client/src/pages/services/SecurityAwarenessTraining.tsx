@@ -38,11 +38,11 @@ import {
 } from "@/components/ui/tabs";
 
 import { Button } from '@/components/ui/button';
-import { ServicePageBanner } from '@/components/services/ServicePageBanner';
-import { ServicePageCTA } from '@/components/services/ServicePageCTA';
-import { FloatingParticles } from '@/components/ui/animated-backgrounds';
+import { ServicePageCTA } from '../../components/services/ServicePageCTA';
+import { ServicePageBanner } from '../../components/services/ServicePageBanner';
+import { FloatingParticles } from '../../components/ui/animated-backgrounds';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { AnimatedCounter } from '@/components/ui/animated-counter';
+import { AnimatedCounter } from '../../components/ui/animated-counter';
 
 const SecurityAwarenessTraining = () => {
   const isMobile = useIsMobile();
