@@ -332,11 +332,11 @@ const Contact = () => {
                     name="challenge"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Primary Challenge</FormLabel>
+                        <FormLabel className="text-blue-100 font-medium">Primary Challenge</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger className="bg-gray-50 border-[#0d4f86]/20 text-slate-700">
-                              <SelectValue placeholder="Select a Challenge" />
+                            <SelectTrigger className="bg-blue-900/30 border-blue-400/30 text-white">
+                              <SelectValue placeholder="Select a Challenge" className="text-blue-200/70" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
@@ -360,11 +360,11 @@ const Contact = () => {
                   name="contactTime"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-slate-700">Preferred Contact Time (Optional)</FormLabel>
+                      <FormLabel className="text-blue-100 font-medium">Preferred Contact Time (Optional)</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="bg-gray-50 border-[#0d4f86]/20 text-slate-700">
-                            <SelectValue placeholder="Select Preferred Time" />
+                          <SelectTrigger className="bg-blue-900/30 border-blue-400/30 text-white">
+                            <SelectValue placeholder="Select Preferred Time" className="text-blue-200/70" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -384,11 +384,11 @@ const Contact = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-slate-700">Tell Us About Your Needs</FormLabel>
+                      <FormLabel className="text-blue-100 font-medium">Tell Us About Your Needs</FormLabel>
                       <FormControl>
                         <Textarea 
                           placeholder="Please describe your IT environment, challenges, and what you're looking for..." 
-                          className="resize-none bg-gray-50 border-[#0d4f86]/20 focus:border-[#0d4f86]/50 focus:ring-[#0d4f86]/20 text-slate-700" 
+                          className="resize-none bg-blue-900/30 border-blue-400/30 text-white placeholder:text-blue-200/50 focus:border-blue-400/60 focus:ring-blue-400/20" 
                           rows={5} 
                           {...field} 
                         />
@@ -400,11 +400,16 @@ const Contact = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full px-6 py-6 bg-[#0d4f86] hover:bg-[#0d4f86]/90 text-white font-heading rounded-md transition-all shadow-lg group flex items-center justify-center gap-2"
+                  className="w-full px-8 py-6 bg-blue-400 hover:bg-blue-500 text-blue-900 font-heading font-semibold rounded-md transition-all shadow-lg shadow-blue-500/20 group flex items-center justify-center gap-2 relative overflow-hidden"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Submitting..." : "Submit Inquiry"}
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <span className="relative z-10 flex items-center gap-2">
+                    {isSubmitting ? "Submitting..." : "Submit Inquiry"}
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  
+                  {/* Button highlight effect */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </Button>
               </form>
             </Form>
