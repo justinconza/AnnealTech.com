@@ -285,11 +285,11 @@ const ToolCard = ({
         <div className="absolute -inset-1 bg-blue-600 rounded-xl blur opacity-0 group-hover:opacity-30 transition-all duration-500 group-hover:duration-200"></div>
         
         <CardHeader className="pb-4 relative z-10">
-          <div className="w-14 h-14 rounded-full bg-blue-800 flex items-center justify-center mb-4 text-white group-hover:bg-blue-700 transition-colors duration-300 group-hover:scale-110 transform">
+          <div className="w-14 h-14 rounded-full bg-[#0c3f6d] flex items-center justify-center mb-4 text-white group-hover:bg-[#154677] transition-colors duration-300 group-hover:scale-110 transform">
             <Icon className="w-7 h-7" />
           </div>
-          <CardTitle className="font-heading text-xl mb-2 text-blue-900 font-bold">{title}</CardTitle>
-          <CardDescription className="text-black">
+          <CardTitle className="font-heading text-xl mb-2 text-[#114372] font-bold">{title}</CardTitle>
+          <CardDescription className="text-[#3a6489]">
             {description}
           </CardDescription>
         </CardHeader>
@@ -298,10 +298,10 @@ const ToolCard = ({
           {comingSoon ? (
             <Button 
               variant="outline" 
-              className="w-full border-blue-800 text-blue-800 hover:bg-blue-50 transition-colors" 
+              className="w-full border-[#114372] text-[#114372] hover:bg-slate-50 transition-colors" 
               disabled
             >
-              <span className="text-xs font-medium tracking-wide px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full mr-2">
+              <span className="text-xs font-medium tracking-wide px-2 py-0.5 bg-[#f0f4f8] text-[#114372] rounded-full mr-2">
                 Coming Soon
               </span>
               Launch Tool
@@ -309,20 +309,19 @@ const ToolCard = ({
           ) : (
             <Button 
               variant="default" 
-              className="w-full bg-blue-800 hover:bg-blue-700 text-white transition-all duration-300 relative overflow-hidden group"
+              className="w-full bg-[#0c3f6d] hover:bg-[#154677] text-white transition-all duration-300 relative overflow-hidden group"
               onClick={onOpenTool}
             >
               <span className="relative z-10">Launch Tool</span>
               <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
               
-              {/* Button flame animation */}
-              <span className="absolute bottom-0 left-0 w-full h-0 group-hover:h-full bg-gradient-to-t from-blue-700 to-blue-800 transition-all duration-300"></span>
+              {/* Button hover effect */}
+              <span className="absolute bottom-0 left-0 w-full h-0 group-hover:h-full bg-[#154677] transition-all duration-300"></span>
             </Button>
           )}
         </CardFooter>
         
-        {/* Add animated fiery edge glow effect on hover */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
+        {/* No bottom animation */}
       </Card>
     </motion.div>
   );
@@ -544,14 +543,14 @@ const ToolsPage = () => {
           {/* Category Tabs */}
           <div className="mb-12">
             <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-              <TabsList className="bg-slate-800/50 p-1 rounded-lg border border-blue-500/20 flex flex-wrap gap-1 overflow-x-auto justify-center">
+              <TabsList className="bg-slate-800/50 p-1 rounded-lg border border-[#114372]/20 flex flex-wrap gap-2 justify-center w-full py-4">
                 {categories.map((category) => {
                   const Icon = category.icon;
                   return (
                     <TabsTrigger 
                       key={category.id} 
                       value={category.id}
-                      className="px-4 py-2.5 data-[state=active]:bg-blue-600 data-[state=active]:text-white transition-all duration-200"
+                      className="px-4 py-3 data-[state=active]:bg-[#0c3f6d] data-[state=active]:text-white transition-all duration-200"
                     >
                       <div className="flex items-center gap-2">
                         <Icon className="h-4 w-4" />
