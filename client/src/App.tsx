@@ -28,6 +28,7 @@ const ConstructionPropertyServices = lazy(() => import("./pages/industries/Const
 const MarketingDesign = lazy(() => import("./pages/industries/MarketingDesign"));
 const NonProfit = lazy(() => import("./pages/industries/NonProfit"));
 const Retail = lazy(() => import("./pages/industries/Retail"));
+const AutoSalesService = lazy(() => import("./pages/industries/AutoSalesService"));
 
 // Lazy load embedded tools
 const EmailSecurityEmbedded = lazy(() => import("./pages/embedded/EmailSecurity"));
@@ -118,6 +119,13 @@ function MainRouter() {
               {() => (
                 <Suspense fallback={<LoadingSpinner />}>
                   <Retail />
+                </Suspense>
+              )}
+            </Route>
+            <Route path="/industries/auto-sales-service">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <AutoSalesService />
                 </Suspense>
               )}
             </Route>
