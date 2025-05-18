@@ -617,7 +617,7 @@ const ToolsPage = () => {
       </section>
 
       {/* Support CTA Section - Animated with fire effect when mouse moves */}
-      <section className="py-12 bg-white relative overflow-hidden" id="cta-section">
+      <section className="py-12 bg-white relative overflow-hidden border-t-4 border-[#213b70]" id="cta-section">
         {/* Subtle background pattern with animated fire embers */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-tr from-blue-50 to-white"></div>
