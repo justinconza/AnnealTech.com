@@ -39,7 +39,7 @@ const IndustriesPage: React.FC = () => {
       icon: Building,
       title: "Construction & Property Services",
       description: "Robust IT infrastructure for construction management, property maintenance tracking, and field service operations.",
-      path: "/industries/construction-property",
+      path: "/industries/construction-property-services",
       bgColor: "#0D3F6E" // Dark Blue
     },
     {
