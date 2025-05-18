@@ -396,21 +396,20 @@ const IndustriesPage: React.FC = () => {
             transition={{ duration: 0.7 }}
             className="text-center mb-12"
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="inline-block bg-blue-500/20 border border-blue-400/30 rounded-full px-4 py-1 mb-6"
-            >
-              <span className="text-blue-200 font-heading text-sm font-medium tracking-wider">SPECIALIZED SOLUTIONS</span>
-            </motion.div>
-            
             <motion.h1 
               className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 relative inline-block"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}
             >
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className="block bg-blue-500/20 border border-blue-400/30 rounded-full px-4 py-1 mb-6 text-sm font-medium tracking-wider"
+              >
+                <span className="text-blue-200 font-heading">SPECIALIZED SOLUTIONS</span>
+              </motion.div>
               <span className="relative">
                 Industries We Empower
                 <motion.span 
@@ -438,23 +437,7 @@ const IndustriesPage: React.FC = () => {
             </motion.p>
           </motion.div>
           
-          {/* Animated scroll indicator */}
-          <motion.div 
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <div className="flex flex-col items-center">
-              <span className="text-sm text-blue-200 mb-2">Explore</span>
-              <div className="w-6 h-10 border-2 border-blue-300 rounded-full flex justify-center">
-                <motion.div 
-                  className="w-1.5 h-1.5 bg-blue-300 rounded-full mt-2"
-                  animate={{ y: [0, 15, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </div>
-            </div>
-          </motion.div>
+
         </div>
       </section>
 
