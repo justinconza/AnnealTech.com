@@ -792,7 +792,7 @@ const RetailServicesSection = () => {
     {
       title: "Security Consulting",
       description: "Expert guidance on retail-specific security strategies, compliance requirements, and technology planning.",
-      icon: Briefcase,
+      icon: ShieldCheck,
       features: ["PCI DSS compliance support", "Security architecture design", "Risk assessment"]
     }
   ];

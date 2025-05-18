@@ -12,7 +12,7 @@ import Footer from "@/components/layout/Footer";
 
 // Lazy load pages
 const Services = lazy(() => import("./pages/Services"));
-const Industries = lazy(() => import("./pages/Industries"));
+const Industries = lazy(() => import("./pages/Industries-new"));
 const About = lazy(() => import("./pages/About"));
 const Tools = lazy(() => import("./pages/Tools"));
 const ToolEmbedding = lazy(() => import("./pages/ToolEmbedding"));
