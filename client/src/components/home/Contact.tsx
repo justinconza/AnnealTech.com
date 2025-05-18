@@ -54,24 +54,24 @@ const ContactOption = ({
   actionHref: string 
 }) => {
   return (
-    <Card className="bg-steel/20 border border-accent/10 hover:border-accent/20 transition-all group">
+    <Card className="bg-white border border-[#0d4f86]/10 hover:border-[#0d4f86]/30 hover:shadow-lg transition-all group rounded-lg">
       <CardContent className="p-6">
         <div className="flex flex-col h-full">
-          <div className="mb-4 p-3 rounded-lg bg-slate w-12 h-12 flex items-center justify-center text-accent">
+          <div className="mb-4 p-3 rounded-lg bg-[#0d4f86]/10 w-12 h-12 flex items-center justify-center text-[#0d4f86]">
             <Icon className="h-6 w-6" />
           </div>
           
-          <h3 className="text-xl font-heading font-semibold mb-2 text-foreground group-hover:text-accent transition-colors">
+          <h3 className="text-xl font-heading font-semibold mb-2 text-slate-800 group-hover:text-[#0d4f86] transition-colors">
             {title}
           </h3>
           
-          <p className="text-muted-foreground text-sm mb-6 flex-grow">
+          <p className="text-slate-600 text-sm mb-6 flex-grow">
             {description}
           </p>
           
           <a 
             href={actionHref} 
-            className="text-accent font-medium inline-flex items-center text-sm hover:underline mt-auto group-hover:translate-x-1 transition-transform"
+            className="text-[#0d4f86] font-medium inline-flex items-center text-sm hover:underline mt-auto group-hover:translate-x-1 transition-transform"
           >
             {actionLabel}
             <ArrowRight className="ml-1 h-4 w-4" />
@@ -128,35 +128,46 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-slate relative">
-      {/* Decorative background pattern */}
+    <section id="contact" className="py-24 md:py-32 bg-white relative">
+      {/* Security-themed decorative background pattern */}
       <div 
         className="absolute inset-0 z-0 opacity-5" 
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%230d4f86' stroke-width='0.5'%3E%3Cpath d='M50 5L20 27.5v40L50 95l30-27.5v-40L50 5z'/%3E%3Cpath d='M50 12L25 30.5v35L50 88l25-22.5v-35L50 12z'/%3E%3Cpath d='M50 20L32 35v30l18 20 18-20V35L50 20z'/%3E%3Ccircle cx='50' cy='50' r='25' /%3E%3Ccircle cx='50' cy='50' r='15' /%3E%3Ccircle cx='50' cy='50' r='5' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '150px 150px',
+          backgroundPosition: 'center'
         }}
         aria-hidden="true"
+      ></div>
+      
+      {/* Network node connections */}
+      <div 
+        className="absolute inset-0 z-0 opacity-5" 
+        style={{
+          backgroundImage: "radial-gradient(circle at 20px 20px, rgba(13, 79, 134, 0.4) 2px, transparent 0), radial-gradient(circle at 40px 70px, rgba(13, 79, 134, 0.4) 2px, transparent 0), radial-gradient(circle at 70px 40px, rgba(13, 79, 134, 0.4) 2px, transparent 0)",
+          backgroundSize: "100px 100px"
+        }}
       ></div>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <div className="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1 mb-4">
-            <span className="text-white font-heading text-sm font-medium tracking-wider">GET IN TOUCH</span>
+          <div className="inline-block bg-[#0d4f86]/10 border border-[#0d4f86]/20 rounded-full px-4 py-1 mb-4">
+            <span className="text-[#0d4f86] font-heading text-sm font-medium tracking-wider">GET IN TOUCH</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-800 mb-4">
             Let's Discuss Your IT Needs
           </h2>
           
-          <p className="text-lg text-white/90 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             Contact our team today to explore how we can strengthen your IT infrastructure,
             improve security, and provide the managed services your business needs.
           </p>
         </div>
         
         {/* Contact options */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 max-w-5xl mx-auto">
           <ContactOption 
             icon={Shield}
             title="Security Assessment"
@@ -184,8 +195,8 @@ const Contact = () => {
         
         <div className="grid grid-cols-1 gap-12 items-center max-w-4xl mx-auto">
           {/* Contact form */}
-          <div className="bg-steel/10 p-8 rounded-lg border border-accent/10">
-            <h3 className="text-2xl font-heading font-semibold text-white mb-6">Contact Us</h3>
+          <div className="bg-white p-8 rounded-lg border border-[#0d4f86]/10 shadow-lg">
+            <h3 className="text-2xl font-heading font-semibold text-slate-800 mb-6">Contact Us</h3>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -195,9 +206,9 @@ const Contact = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground">Full Name</FormLabel>
+                        <FormLabel className="text-slate-700">Full Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="John Smith" className="bg-slate border-accent/20" {...field} />
+                          <Input placeholder="John Smith" className="bg-gray-50 border-[#0d4f86]/20 focus:border-[#0d4f86]/50 focus:ring-[#0d4f86]/20" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -208,9 +219,9 @@ const Contact = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground">Email Address</FormLabel>
+                        <FormLabel className="text-slate-700">Email Address</FormLabel>
                         <FormControl>
-                          <Input placeholder="email@example.com" className="bg-slate border-accent/20" {...field} />
+                          <Input placeholder="email@example.com" className="bg-gray-50 border-[#0d4f86]/20 focus:border-[#0d4f86]/50 focus:ring-[#0d4f86]/20" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -224,9 +235,9 @@ const Contact = () => {
                     name="company"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground">Company Name</FormLabel>
+                        <FormLabel className="text-slate-700">Company Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your Company" className="bg-slate border-accent/20" {...field} />
+                          <Input placeholder="Your Company" className="bg-gray-50 border-[#0d4f86]/20 focus:border-[#0d4f86]/50 focus:ring-[#0d4f86]/20" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -237,9 +248,9 @@ const Contact = () => {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground">Phone Number (Optional)</FormLabel>
+                        <FormLabel className="text-slate-700">Phone Number (Optional)</FormLabel>
                         <FormControl>
-                          <Input placeholder="+1 (123) 456-7890" className="bg-slate border-accent/20" {...field} />
+                          <Input placeholder="+1 (123) 456-7890" className="bg-gray-50 border-[#0d4f86]/20 focus:border-[#0d4f86]/50 focus:ring-[#0d4f86]/20" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -253,10 +264,10 @@ const Contact = () => {
                     name="service"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground">Service Interest</FormLabel>
+                        <FormLabel className="text-slate-700">Service Interest</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger className="bg-slate border-accent/20">
+                            <SelectTrigger className="bg-gray-50 border-[#0d4f86]/20 text-slate-700">
                               <SelectValue placeholder="Select a Service" />
                             </SelectTrigger>
                           </FormControl>
@@ -281,10 +292,10 @@ const Contact = () => {
                     name="challenge"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-foreground">Primary Challenge</FormLabel>
+                        <FormLabel className="text-slate-700">Primary Challenge</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger className="bg-slate border-accent/20">
+                            <SelectTrigger className="bg-gray-50 border-[#0d4f86]/20 text-slate-700">
                               <SelectValue placeholder="Select a Challenge" />
                             </SelectTrigger>
                           </FormControl>
