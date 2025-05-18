@@ -252,7 +252,7 @@ const FinancialThreatsSection = () => {
   }));
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-slate-900 to-blue-900 relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-900 to-blue-800 relative overflow-hidden">
       {/* Digital vault background animation */}
       <div className="absolute inset-0">
         {/* Circuit grid lines */}
