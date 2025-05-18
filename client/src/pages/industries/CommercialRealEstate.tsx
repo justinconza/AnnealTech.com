@@ -24,15 +24,15 @@ import {
   RefreshCw,
   HardDrive,
   Smartphone,
-  Graduation,
+  GraduationCap,
   PieChart,
   Timer
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "wouter";
 
-// Components for the CRE industry page
+// Hero Section (Keeping the original hero section as requested)
 const HeroSection = () => {
   return (
     <div className="relative overflow-hidden min-h-[600px]">
@@ -581,7 +581,7 @@ const TailoredServicesSection = () => {
     {
       title: "Software Training",
       description: "Customized training programs helping staff maximize software investments.",
-      icon: Graduation,
+      icon: GraduationCap,
       features: ["Role-specific materials", "Live and recorded sessions", "Performance tracking"]
     },
   ];
@@ -674,9 +674,9 @@ const TailoredServicesSection = () => {
                   ))}
                 </div>
                 
-                <a href="#learn-more" className="inline-flex items-center text-blue-300 hover:text-blue-100 transition-colors font-medium text-sm group-hover:translate-x-1 transition-transform">
+                <a href="#learn-more" className="inline-flex items-center text-blue-300 hover:text-blue-100 transition-colors font-medium text-sm">
                   Learn More
-                  <ArrowRight className="ml-1.5 h-4 w-4 group-hover:ml-2.5 transition-all" />
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
                 </a>
               </div>
             </motion.div>
@@ -716,13 +716,7 @@ const ResultsMetricsSection = () => {
     }
   ];
   
-  // Setup counting animation ref for each metric
-  const countRefs = useRef<any[]>([]);
-  
-  useEffect(() => {
-    countRefs.current = countRefs.current.slice(0, metrics.length);
-  }, [metrics.length]);
-  
+  // Setup counting animation
   const [countStarted, setCountStarted] = useState(false);
   
   return (
@@ -733,7 +727,8 @@ const ResultsMetricsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0, onAnimationComplete: () => setCountStarted(true) }}
+          whileInView={{ opacity: 1, y: 0 }}
+          onViewportEnter={() => setCountStarted(true)}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
@@ -768,8 +763,6 @@ const ResultsMetricsSection = () => {
                 
                 <h3 className="text-4xl font-heading font-bold mb-1 flex justify-center items-baseline">
                   <motion.span
-                    ref={el => countRefs.current[index] = el}
-                    initial={{ opacity: 1 }}
                     animate={countStarted ? { opacity: [1, 0.5, 1] } : {}}
                     transition={{ duration: 2, repeat: 0 }}
                   >
