@@ -558,14 +558,14 @@ const ToolsPage = () => {
           {/* Category Tabs */}
           <div className="mb-8">
             <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-              <TabsList className="bg-white py-4 md:py-6 px-2 md:px-3 rounded-xl border border-[#114372]/20 flex flex-wrap gap-2 md:gap-3 justify-center w-full shadow-md items-center">
+              <TabsList className="bg-white py-4 md:py-6 px-2 md:px-3 rounded-xl border border-[#114372]/20 flex flex-wrap justify-center w-full shadow-md items-center">
                 {categories.map((category) => {
                   const Icon = category.icon;
                   return (
                     <TabsTrigger 
                       key={category.id} 
                       value={category.id}
-                      className="px-3 md:px-5 py-3 md:py-4 data-[state=active]:bg-[#0c3f6d] data-[state=active]:text-white hover:bg-[#f0f7ff] text-[#114372] font-medium transition-all duration-200 rounded-lg text-xs sm:text-sm md:text-base"
+                      className="px-3 md:px-5 py-3 md:py-4 m-1 data-[state=active]:bg-[#0c3f6d] data-[state=active]:text-white hover:bg-[#f0f7ff] text-[#114372] font-medium transition-all duration-200 rounded-lg text-xs sm:text-sm md:text-base"
                     >
                       <div className="flex items-center gap-1 md:gap-2">
                         <Icon className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
@@ -576,47 +576,8 @@ const ToolsPage = () => {
                 })}
               </TabsList>
               
-              {/* Filter Indicators */}
-              <div className="mt-6 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Filter className="h-4 w-4 text-[#114372]" />
-                  <span className="text-sm text-[#3a6489] font-medium">
-                    {searchQuery 
-                      ? `Search results for "${searchQuery}"` 
-                      : `Viewing: ${categories.find(c => c.id === activeCategory)?.label || 'All Tools'}`
-                    }
-                  </span>
-                  
-                  {searchQuery && (
-                    <Badge variant="outline" className="ml-2 border-[#114372]/20 text-[#114372] bg-white">
-                      {filteredTools.length} {filteredTools.length === 1 ? 'result' : 'results'}
-                    </Badge>
-                  )}
-                </div>
-                
-                {/* Quick action buttons */}
-                <div className="flex items-center gap-2">
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    className="border-[#114372]/30 text-[#114372] hover:bg-[#f0f7ff] hover:border-[#114372]/50 rounded-lg"
-                    onClick={() => setActiveCategory("all")}
-                  >
-                    Show All
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    className="border-[#114372]/30 text-[#114372] hover:bg-[#f0f7ff] hover:border-[#114372]/50 rounded-lg"
-                    onClick={() => {
-                      setActiveCategory("all");
-                      setSearchQuery("");
-                    }}
-                  >
-                    Reset Filters
-                  </Button>
-                </div>
-              </div>
+              {/* No filter indicators section - removed */}
+              <div className="mt-4"></div>
               
               {/* Tool Cards */}
               <AnimatePresence mode="wait">
