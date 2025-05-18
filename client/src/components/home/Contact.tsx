@@ -320,10 +320,10 @@ const Contact = () => {
                   name="contactTime"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">Preferred Contact Time (Optional)</FormLabel>
+                      <FormLabel className="text-slate-700">Preferred Contact Time (Optional)</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="bg-slate border-accent/20">
+                          <SelectTrigger className="bg-gray-50 border-[#0d4f86]/20 text-slate-700">
                             <SelectValue placeholder="Select Preferred Time" />
                           </SelectTrigger>
                         </FormControl>
@@ -344,11 +344,11 @@ const Contact = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">Tell Us About Your Needs</FormLabel>
+                      <FormLabel className="text-slate-700">Tell Us About Your Needs</FormLabel>
                       <FormControl>
                         <Textarea 
                           placeholder="Please describe your IT environment, challenges, and what you're looking for..." 
-                          className="resize-none bg-slate border-accent/20" 
+                          className="resize-none bg-gray-50 border-[#0d4f86]/20 focus:border-[#0d4f86]/50 focus:ring-[#0d4f86]/20 text-slate-700" 
                           rows={5} 
                           {...field} 
                         />
@@ -360,7 +360,7 @@ const Contact = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full px-6 py-6 bg-accent hover:bg-accent/80 text-white font-heading rounded-md transition-all shadow-lg group flex items-center justify-center gap-2"
+                  className="w-full px-6 py-6 bg-[#0d4f86] hover:bg-[#0d4f86]/90 text-white font-heading rounded-md transition-all shadow-lg group flex items-center justify-center gap-2"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Submitting..." : "Submit Inquiry"}
