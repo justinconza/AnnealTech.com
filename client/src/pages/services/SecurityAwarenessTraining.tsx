@@ -238,11 +238,31 @@ const SecurityAwarenessTraining = () => {
         </section>
 
         {/* Why This Matters Section */}
-        <section className="relative bg-white py-16 md:py-24">
+        <section className="relative bg-gradient-to-br from-slate-50 to-blue-50 py-16 md:py-24 overflow-hidden">
+          {/* Digital circuit pattern background */}
           <div className="absolute inset-0 opacity-10" 
             style={{
-              backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230d4f86' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-              backgroundSize: '60px 60px'
+              backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%230d4f86' fill-opacity='0.25' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+              backgroundSize: '100px 100px'
+            }}
+          ></div>
+          
+          {/* Digital lines overlay */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0" 
+              style={{
+                backgroundImage: "linear-gradient(0deg, transparent 24%, rgba(13, 79, 134, 0.7) 25%, rgba(13, 79, 134, 0.7) 26%, transparent 27%, transparent 74%, rgba(13, 79, 134, 0.7) 75%, rgba(13, 79, 134, 0.7) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(13, 79, 134, 0.7) 25%, rgba(13, 79, 134, 0.7) 26%, transparent 27%, transparent 74%, rgba(13, 79, 134, 0.7) 75%, rgba(13, 79, 134, 0.7) 76%, transparent 77%, transparent)",
+                backgroundSize: '100px 100px'
+              }}
+            ></div>
+          </div>
+          
+          {/* Digital dots */}
+          <div className="absolute inset-0 opacity-20" 
+            style={{
+              backgroundImage: "radial-gradient(#0d4f86 1px, transparent 2px), radial-gradient(#0d4f86 1px, transparent 2px)",
+              backgroundPosition: "0 0, 25px 25px",
+              backgroundSize: "50px 50px"
             }}
           ></div>
           
@@ -393,6 +413,21 @@ const SecurityAwarenessTraining = () => {
                 </motion.div>
               ))}
             </div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="mt-10 text-center"
+            >
+              <div className="inline-block bg-blue-700/30 backdrop-blur-sm border border-blue-600/20 rounded-lg py-3 px-6 text-blue-100">
+                <span className="flex items-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-blue-300" />
+                  <span className="text-lg">And many other platforms</span>
+                </span>
+              </div>
+            </motion.div>
           </div>
         </section>
 
