@@ -16,7 +16,7 @@ const Industries = lazy(() => import("./pages/Industries"));
 const About = lazy(() => import("./pages/About"));
 const Tools = lazy(() => import("./pages/Tools"));
 const ToolEmbedding = lazy(() => import("./pages/ToolEmbedding"));
-const Faq = lazy(() => import("./pages/Faq"));
+const Faq = lazy(() => import("./pages/Faq-new"));
 const Contact = lazy(() => import("./pages/Contact-new"));
 
 // Lazy load industry-specific pages

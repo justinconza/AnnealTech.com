@@ -1,0 +1,169 @@
+Task:
+Redesign and expand the Non-Profit industry page on AnnealTech.com using a clean, secure, mission-aligned visual theme. **Do not alter the top hero section** — preserve its layout, content, and visual identity. Begin all new content *below* the hero.
+
+This page must reflect the unique needs of nonprofit organizations: limited resources, sensitive donor and constituent data, hybrid teams, and strict compliance mandates — all while maintaining a compassionate, professional aesthetic.
+
+---
+
+🎯 OVERALL GOALS:
+
+- Address risks nonprofits face from outdated tech, phishing, and unmanaged devices
+- Reinforce AnnealTech’s role as a security-first, budget-aware partner
+- Use immersive design (glows, soft grids, scroll animations) without losing warmth
+- Align content and layout with AnnealTech’s trusted, human-first approach
+
+---
+
+📐 SECTION STRUCTURE & CONTENT:
+
+---
+
+### 1. “The Stakes Are High When Trust Is Your Currency” – Risk Grid
+
+**Headline:**  
+> “Nonprofits Are Being Targeted — and Many Are Unprepared”
+
+**Design:**
+- Background: soft mesh animation or data waves  
+- Scroll-animated card tiles (3), glowing hover effects
+
+**Example Risk Tiles:**
+- *Donor Data Breach*  
+  Phishing and poor access control expose personal donor info.
+- *Volunteer Devices Without Oversight*  
+  Unmonitored access creates unmanaged risk across networks.
+- *Downtime During Fundraising Campaigns*  
+  Website outages or email failures cost donations and trust.
+
+---
+
+### 2. “Why AnnealTech for Non-Profits?” – Split Section
+
+**Headline:**  
+> “Technology That Enables Your Mission, Not Distracts From It”
+
+**Left Side:**  
+Visual: animated donation dashboard, shield over heart icon, volunteer devices
+
+**Right Side:**  
+Bullet list with icons:
+- 24/7 help desk for lean internal teams  
+- Device & user management across hybrid staff and volunteers  
+- Donor and constituent data encryption  
+- Phishing defense & training for high-risk inboxes  
+- Affordable compliance-aligned solutions (HIPAA, PCI, etc.)
+
+---
+
+### 3. 🧰 Tailored Non-Profit Services – Full-Width Card Grid
+
+**Section Title:**  
+> “Secure. Scalable. Mission-Focused IT Services.”
+
+**Design:**
+- Full-width responsive card grid (3 columns desktop, 1 column mobile)  
+- Rounded cards, glassmorphism design, glowing icons  
+- Scroll-triggered fade-in animation
+
+**Each Card Includes:**
+- Icon in glowing circle  
+- Title  
+- 1–2 sentence explanation of value to nonprofits  
+- Optional CTA: “Learn More →”
+
+**Services to Include:**
+- 24/7 Remote Support  
+- Endpoint Security for Staff and Volunteer Devices  
+- Patch Management & Device Visibility  
+- Cloud File Sharing and Document Collaboration  
+- Phishing Simulation & Awareness Training  
+- Donor Data Protection & Access Controls  
+- Website & Application Security Monitoring  
+- Backup & Recovery for Donor + Program Records  
+- Strategic Nonprofit IT Consulting  
+- Affordable Licensing & Budget-Conscious Solutions
+
+---
+
+### 4. 📊 Results & Trust Metrics – Performance Highlights
+
+**Headline:**  
+> “We Help Nonprofits Stay Focused on What Matters Most”
+
+**Metrics (Animated with CountUp.js):**
+- 99.9% Uptime During Fundraising or Events  
+- 15-Minute SLA for Critical Support Issues  
+- 91% Reduction in Staff-Related Phishing Risks  
+- 96% Satisfaction with Remote Support Speed  
+- 30–50% Average IT Cost Reduction vs In-House
+
+**Design:**
+- Glowing blue pill counters  
+- Icons: heart lock, donation chart, timer, shield  
+- Background: soft tech pattern with transparency overlay
+
+---
+
+### 5. 📥 Final CTA – Free Nonprofit IT Readiness Assessment
+
+**Headline:**  
+> “Let’s Strengthen the Backbone of Your Mission”
+
+**Subheadline:**  
+> In just 2 minutes, we’ll show you how to eliminate risk, save money, and secure your donor data — without draining your team.
+
+**CTA Button:**  
+> “Schedule My Free Nonprofit IT Assessment”  
+→ Hover glow, white on #0d4f86, scroll-triggered entrance
+
+**Design:**
+- Full-width CTA block  
+- Optional background: animated nodes, abstract globe, or mesh  
+- Glow animation on headline and CTA hover
+
+---
+
+🎨 DESIGN SYSTEM / VISUAL THEMING:
+
+**Primary Blue:** `#0d4f86`  
+**Accent Palette:** Light gradients, soft whites, glows  
+**Backgrounds:**  
+- Warm slate with tech overlays  
+- Blueprint mesh or flowing data paths (low distraction)
+
+**Effects:**
+- Glassmorphism card style  
+- Hover glow and gentle elevation  
+- Scroll animation (fade, lift, staggered reveal)  
+- Lottie/SVG animation for visual cues (hearts, shields, documents)
+
+**Typography:**
+- Bold, modern sans-serif  
+- Gentle rhythm and spacing for readability  
+- Responsive font scaling
+
+---
+
+📱 RESPONSIVE DESIGN:
+
+- All content stacks cleanly  
+- Card grid adapts (3 → 2 → 1 columns)  
+- CTA and metrics retain mobile spacing  
+- Buttons remain easy to tap
+
+---
+
+🔧 OPTIONAL TOOLS:
+
+- TailwindCSS  
+- AOS or GSAP for scroll triggers  
+- CountUp.js for metrics  
+- LottieFiles or custom SVG background animations
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS or React-style layout (Replit compatible)  
+- Hero section must remain 100% unchanged  
+- Output must be clean, responsive, and accessible
