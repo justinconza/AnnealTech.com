@@ -1,0 +1,95 @@
+Task:
+Redesign the `/about` page on AnnealTech.com to reflect a futuristic, immersive design that showcases our company's mission, values, and team. The page should incorporate advanced animations, interactive elements, and a layout consistent with AnnealTech’s branding.
+
+---
+
+🎯 CORE OBJECTIVES:
+
+- Communicate AnnealTech's mission to align IT and business goals.
+- Highlight the company's values, team expertise, and unique approach.
+- Implement interactive elements (e.g., animations, hover effects) for enhanced user engagement.
+- Ensure the design aligns with AnnealTech’s branding: dark/light contrast, blue glows, clean grids, and tech-forward visuals.
+
+---
+
+📐 PAGE STRUCTURE:
+
+1. **Hero Section:**
+   - **Headline:** "Forging Technology • Empowering People"
+   - **Subheadline:** "At AnnealTech, we bridge the gap between IT and business to drive meaningful organizational change."
+   - **Design:** Full-width background with animated mesh or glowing lines. Centered text with glowing headline effect.
+
+2. **Our Why:**
+   - **Content:** 
+     - Discuss the challenges IT leaders face in meeting growing business demands with limited resources.
+     - Emphasize the frustration business leaders experience when IT appears to be a barrier rather than an enabler.
+     - Highlight the transformative power of aligning business and technology goals.
+   - **Design:** Two-column layout with text and accompanying illustrative graphics or icons.
+
+3. **Our Approach:**
+   - **Content:**
+     - Explain the origin of the term "anneal" and its relevance to the company's philosophy.
+     - Describe how AnnealTech aims to create IT organizations that are strong, resilient, and adaptable.
+   - **Design:** Visual representation of the annealing process metaphor applied to IT and business alignment.
+
+4. **Our Team:**
+   - **Content:**
+     - Introduce the team as seasoned professionals with decades of experience in IT, business administration, and professional development.
+     - Mention the team's diverse backgrounds, from small businesses to global enterprises.
+     - Note the company's base in Austin, Texas, and operations throughout North America.
+   - **Design:** Interactive team member profiles with hover effects revealing bios and areas of expertise.
+
+5. **Our Methodology:**
+   - **Content:**
+     - Emphasize the commitment to empowering clients rather than creating dependency.
+     - Outline the mission to enable meaningful, practical changes that align IT and business objectives.
+     - Describe the team's composition of leaders, advisors, educators, and technical experts.
+   - **Design:** Infographic or flowchart illustrating the methodology and client engagement process.
+
+6. **Call to Action:**
+   - **Headline:** "Ready to Align Your IT and Business Goals?"
+   - **CTA Button:** "Contact Us" with hover glow effect.
+   - **Design:** Centered text with animated background elements.
+
+---
+
+🎨 DESIGN ELEMENTS:
+
+- **Colors:**
+  - Primary Blue: `#0d4f86`
+  - Accents: Soft light blues, steel, white-on-dark text
+  - Backgrounds: Deep slate/navy with subtle gradients or animated overlays
+
+- **Typography:**
+  - Bold, modern sans-serif fonts
+  - Large titles with responsive scaling
+  - Clear, readable paragraph and bullet copy
+
+- **Effects & Motion:**
+  - Glassmorphism: blur + shadow + border-radius
+  - Hover glow + slight card lift
+  - Staggered scroll entrance using IntersectionObserver or AOS/GSAP
+  - Background: Use SVG animations, Lottie, or canvas (e.g., animated circuit lines, particles.js)
+
+---
+
+📱 RESPONSIVE DESIGN:
+
+- Fully responsive layout with mobile-first approach
+- Team member profiles stack vertically on smaller screens
+- Touch-friendly interactions and appropriately sized tap targets
+
+---
+
+🔧 OPTIONAL TOOLS:
+
+- TailwindCSS for rapid utility classes
+- AOS.js or GSAP for scroll animations
+- Lottie or SVG loop animation for backgrounds
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS or component-based structure (React-friendly if needed)
+- Code should be clean, accessible, and optimized for Replit
