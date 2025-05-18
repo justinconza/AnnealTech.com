@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Hammer, ArrowUpRight, Shield } from "lucide-react";
+import { Menu, X, ArrowUpRight, Shield } from "lucide-react";
+import { AnnealTechLogo } from "@/components/ui/logo";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -112,8 +113,8 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="group flex items-center">
-            <div className="mr-3 text-[#3A6EA5]">
-              <Hammer className="w-7 h-7 transition-all duration-300" />
+            <div className="mr-3">
+              <AnnealTechLogo width={28} height={28} className="transition-all duration-300" />
             </div>
             <div className="flex flex-col">
               <span className="text-white text-2xl font-bold tracking-wider">
