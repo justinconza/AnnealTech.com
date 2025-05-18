@@ -62,13 +62,13 @@ const SolutionPackages = () => {
       id: 'security-core',
       name: "Security Core",
       icon: Lock,
-      idealFor: "Companies needing essential security coverage and IT management",
+      idealFor: "Companies needing essential security coverage",
       features: [
-        "Basic endpoint protection",
-        "Patch management",
-        "Email filtering",
-        "Scheduled monitoring",
-        "Business-hours support"
+        "✅ Endpoint Security – MDR & AV",
+        "❌ Remote Workstation Support",
+        "❌ Identity Security – ITDR",
+        "❌ Security Awareness Training",
+        "❌ 24/7 Security Operations Center"
       ],
       primary: false,
       color: 'blue-300'
@@ -79,11 +79,11 @@ const SolutionPackages = () => {
       icon: Shield,
       idealFor: "Small businesses with basic IT needs & growth plans",
       features: [
-        "Everything in Security Core plus:",
-        "24/7 remote support",
-        "Enhanced endpoint security",
-        "Productivity suite management",
-        "Monthly reporting"
+        "✅ Remote Workstation Support (8 am – 5 pm)",
+        "✅ Identity Security – ITDR",
+        "✅ Endpoint Security – MDR & AV",
+        "✅ Security Awareness Training",
+        "✅ 24/7 Security Operations Center"
       ],
       primary: false,
       color: 'blue-400'
@@ -94,12 +94,11 @@ const SolutionPackages = () => {
       icon: Zap,
       idealFor: "Scaling orgs that require deeper security and compliance",
       features: [
-        "Everything in Business Pro plus:",
-        "Managed detection & response",
-        "Phishing simulation + SAT",
-        "Asset management + reporting",
-        "Secure email gateway",
-        "Monthly strategic check-ins"
+        "✅ Remote Workstation Support (24/7)",
+        "✅ Identity Security – ITDR",
+        "✅ Endpoint Security – MDR & AV",
+        "✅ Security Awareness Training",
+        "✅ 24/7 Security Operations Center"
       ],
       primary: true,
       color: 'blue-500'
@@ -110,12 +109,11 @@ const SolutionPackages = () => {
       icon: Cpu,
       idealFor: "Organizations seeking fully managed hardware & endpoint lifecycle",
       features: [
-        "Everything in Business Pro+ plus:",
-        "Device provisioning",
-        "Hardware support + replacement",
-        "Lifecycle refresh",
-        "Secure disposal & asset return",
-        "Fixed per-device billing"
+        "✅ Remote Workstation Support (24/7)",
+        "✅ Identity Security – ITDR",
+        "✅ Endpoint Security – MDR & AV",
+        "✅ Security Awareness Training",
+        "✅ Complete Workstation Solution"
       ],
       primary: false,
       color: 'blue-600'
@@ -126,38 +124,32 @@ const SolutionPackages = () => {
     { 
       category: "Support",
       features: [
-        { name: "Business Hours Support", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "24/7 Remote Support", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
-        { name: "Priority Response", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
-        { name: "On-site Support", securityCore: "add-on", businessPro: "add-on", businessProPlus: "add-on", pcaas: true },
+        { name: "Remote Workstation Support (Business Hours)", securityCore: false, businessPro: true, businessProPlus: false, pcaas: false },
+        { name: "Remote Workstation Support (24/7)", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
       ]
     },
     { 
       category: "Security",
       features: [
-        { name: "Basic Endpoint Protection", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "Email Filtering", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "Advanced Threat Protection", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
-        { name: "Managed Detection & Response", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
-        { name: "Phishing Simulation", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
+        { name: "Endpoint Security – MDR & AV", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Identity Security – ITDR", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Security Awareness Training", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "24/7 Security Operations Center", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
       ]
     },
     { 
       category: "Management",
       features: [
-        { name: "Patch Management", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "Scheduled Monitoring", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "Asset Management", securityCore: false, businessPro: "basic", businessProPlus: true, pcaas: true },
-        { name: "Lifecycle Management", securityCore: false, businessPro: false, businessProPlus: "basic", pcaas: true },
-        { name: "Device Provisioning", securityCore: false, businessPro: false, businessProPlus: false, pcaas: true },
+        { name: "Patch Management", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Business App Education", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Asset Management & Disposal", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "Complete Workstation Solution", securityCore: false, businessPro: false, businessProPlus: false, pcaas: true },
       ]
     },
     { 
       category: "Strategic",
       features: [
-        { name: "Monthly Reporting", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "Strategic IT Planning", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
-        { name: "CIO Advisory", securityCore: "add-on", businessPro: "add-on", businessProPlus: "add-on", pcaas: "add-on" },
+        { name: "Advisory & Consulting", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
       ]
     },
   ];
