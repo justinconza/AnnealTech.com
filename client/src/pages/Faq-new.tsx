@@ -444,15 +444,15 @@ const FaqPage = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
             <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-              <div className="mb-8">
-                <TabsList className="w-full bg-blue-900/30 p-1 rounded-lg border border-blue-500/20 flex flex-wrap">
+              <div className="mb-12">
+                <TabsList className="w-full bg-blue-900/30 p-3 rounded-lg border border-blue-500/20 flex flex-wrap gap-1">
                   {categories.map((category) => {
                     const Icon = category.icon;
                     return (
                       <TabsTrigger 
                         key={category.id} 
                         value={category.id}
-                        className="flex-1 md:flex-none data-[state=active]:bg-blue-600 data-[state=active]:text-white py-3 px-4 rounded-md transition-all duration-200"
+                        className="flex-1 md:flex-none data-[state=active]:bg-blue-600 data-[state=active]:text-white py-4 px-6 rounded-md transition-all duration-200"
                       >
                         <div className="flex items-center justify-center gap-2">
                           <Icon className="h-4 w-4" />
