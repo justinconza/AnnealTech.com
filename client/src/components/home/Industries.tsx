@@ -122,7 +122,7 @@ const Industries = () => {
         `
       }}></style>
       
-      <div className="container mx-auto px-4 relative z-10 my-auto flex flex-col items-center justify-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative z-10 my-auto flex flex-col items-center justify-center">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -186,7 +186,7 @@ const ParticleBackground = () => {
 
 const CTA = () => {
   return (
-    <section className="relative w-full py-20 bg-gradient-to-br from-[#0d4f86] to-black text-white overflow-hidden">
+    <section className="relative w-full py-12 bg-gradient-to-br from-[#0d4f86] to-black text-white overflow-hidden">
       {/* Particle background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <ParticleBackground />
@@ -231,7 +231,7 @@ const CTA = () => {
       />
       
       {/* Foreground Content */}
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 px-6 md:px-12 max-w-7xl mx-auto">
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 px-6 md:px-12 max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
