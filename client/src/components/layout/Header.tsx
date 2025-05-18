@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ArrowUpRight, Shield } from "lucide-react";
-import { AnnealTechLogo } from "@/components/ui/AnnealTechLogo";
+import { AnnealTechLogo } from "@/components/ui/AnnealTechHostedLogo";
 import {
   DropdownMenu,
   DropdownMenuContent,
