@@ -1,0 +1,128 @@
+Task:
+Redesign and expand the Retail industry page on AnnealTech.com to align with a futuristic, security-first design language. The page should tell a compelling story of risk, resolution, and resilience while incorporating an immersive tech-driven visual style.
+
+This prompt includes: animated backgrounds, content sections, metric counters, value propositions, and a full-width Tailored Retail Services section with AnnealTech’s real services.
+
+---
+
+🎯 OVERALL GOALS:
+
+- Communicate why retail businesses need proactive, SLA-backed IT & cybersecurity
+- Build trust through metrics, service clarity, and visually advanced UI
+- Match the digitally immersive branding of AnnealTech (glows, grids, blues)
+- Improve engagement and conversions with scroll-based animations and CTA hooks
+
+---
+
+📐 SECTION STRUCTURE & CONTENT:
+
+---
+
+### 1. “Retail Risks” Animated Threat Grid
+
+**Headline:**  
+> “Hidden IT Threats in Retail Operations”
+
+**Visual Style:**  
+- Dark background with animated pulse grid or circuit-style SVG pattern  
+- Glowing borders on hover  
+- Each card animates on scroll
+
+**Cards (3):**
+- *POS Systems Are Prime Targets for Cyber Attacks*  
+- *Customer Data Breaches Can Erode Trust Instantly*  
+- *Downtime During Peak Hours Leads to Revenue Loss*
+
+---
+
+### 2. “Why AnnealTech for Retail?” Split Section
+
+**Layout:** 2-columns  
+- Left: visual/animated illustration (retail store with digital overlays, POS systems, or customer data visualization)  
+- Right: value bullets with icons
+
+**Headline:**  
+> “Tailored IT & Cybersecurity Solutions for Retail Businesses”
+
+**Bullet Values:**
+- Real-time support for multi-location operations  
+- Secure and compliant payment processing  
+- Comprehensive endpoint protection  
+- Employee cybersecurity training  
+- SLA-backed uptime & patching
+
+---
+
+### 3. 💡 Tailored Retail Services – Full Width Card Grid
+
+**Section Name:**  
+> “Tailored Services That Power Secure Retail Operations”
+
+**Style Requirements:**
+- Full-width responsive card grid  
+- 2–3 columns (based on screen size), mobile-stack ready  
+- Cards: soft glassmorphism or elevated tile style  
+- Hover glow & subtle lift  
+- Scroll-triggered fade-up animation
+
+**Each card includes:**
+- Icon in glowing blue circle  
+- Title  
+- 1–2 sentence benefit  
+- Optional: key features list or business impact bar  
+- CTA: Learn More → button with slide/pulse
+
+**SERVICES to Include:**
+- 24/7 Remote Workstation Support  
+- Identity Security (ITDR)  
+- Endpoint Threat Protection  
+- Security Awareness Training  
+- Live Monitoring & SOC Coverage  
+- Rapid Patch & Update Management  
+- Asset Management  
+- Device Lifecycle  
+- Software Training  
+- Security Consulting
+
+---
+
+### 4. 🧠 Results Metrics (Counter Section)
+
+**Headline:**  
+> “Delivering Tangible Results for Retail Clients”
+
+**Design:**
+- Blue glowing pill counters
+- Scroll-trigger count-up animations
+
+**Metrics to Include:**
+- 99.9% Uptime Guarantee  
+- 15-Minute SLA Response Time  
+- 96% Customer Satisfaction  
+- 37% Average Downtime Reduction
+
+---
+
+### 5. 📥 CTA: Free Retail IT Risk Assessment
+
+**Headline:**  
+> “Secure Your Retail Business Today”
+
+**Subheadline:**  
+> In just 2 minutes, identify vulnerabilities and enhance your IT infrastructure.
+
+**Button:**  
+> “Start My Free Assessment” → hover glow, white text on #0d4f86
+
+**Style:**  
+- Dark background with animated mesh, scroll shimmer, or soft motion lines  
+- Font glow on CTA section header  
+- Full-width design, centered content block
+
+---
+
+🎨 DESIGN SYSTEM / AESTHETIC GUIDELINES:
+
+- **Colors:**  
+  - Primary Blue: `#0d4f86`  
+  - Accents: Soft light blues, steel, white-on-dark text  
