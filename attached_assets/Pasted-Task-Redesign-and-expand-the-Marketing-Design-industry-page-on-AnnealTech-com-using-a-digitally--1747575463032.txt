@@ -1,0 +1,171 @@
+Task:
+Redesign and expand the Marketing & Design industry page on AnnealTech.com using a digitally creative, high-tech visual theme. Keep the **top hero section exactly as-is** — no edits to layout, content, or visuals. All new content begins below the hero section.
+
+The goal is to position AnnealTech as the IT and cybersecurity partner for fast-paced, remote-hybrid, deadline-driven creative teams that rely on cloud platforms, shared assets, and client collaboration tools.
+
+---
+
+🎯 OVERALL GOALS:
+
+- Address the key pain points for creative agencies and marketing teams: system downtime, asset loss, slow file sharing, client data exposure, and compliance blind spots
+- Demonstrate AnnealTech’s proactive role in uptime, access control, and collaboration enablement
+- Use sleek, animated, digitally inspired design to match the creative energy of the industry
+- Reinforce AnnealTech’s brand consistency (blue palette, glowing effects, dark-light contrast)
+
+---
+
+📐 SECTION STRUCTURE & CONTENT:
+
+---
+
+### 1. “Creative Teams Can’t Afford IT Delays” – Risk Tile Grid
+
+**Headline:**  
+> “When Tech Lags, Projects Suffer — and So Do Client Relationships.”
+
+**Style:**
+- Animated background: floating design elements, abstract nodes, or motion gradients  
+- 3 card tiles with scroll-triggered entrance  
+- Glowing hover with slight lift
+
+**Example Risks:**
+- *Lost Access to Shared Asset Libraries*  
+  Downtime during campaigns delays client delivery.
+- *Unsecured Creative Portals*  
+  Poor permissions or open links expose client data.
+- *Slow File Transfer Across Offices or Contractors*  
+  Without optimized cloud sync, creativity stalls.
+
+---
+
+### 2. “Why AnnealTech for Creatives?” – Split Section
+
+**Headline:**  
+> “Speed, Security, and Sync for Every Creative Stack”
+
+**Left Side:**  
+Animated visual: creative tools orbiting a secure cloud, or designer workstation with a glowing lock overlay
+
+**Right Side:**  
+5 value bullets (with icons):
+- 24/7 help desk for time-sensitive deadlines  
+- Accelerated cloud asset sharing  
+- Endpoint protection for all creative devices  
+- Secure access for freelancers & contractors  
+- SLA-backed performance & collaboration uptime
+
+---
+
+### 3. 🎨 Tailored Creative Services – Full-Width Card Grid
+
+**Section Title:**  
+> “Built to Support Your Creative Flow and Client Confidence”
+
+**Design:**
+- Full-width, 3-column responsive card grid  
+- Rounded cards, soft glowing icon header, hover elevation  
+- Glassmorphism effect (blur + blue accent borders)
+
+**Each Card Includes:**
+- Icon in glowing circle  
+- Title (Service Name)  
+- 1–2 sentence benefit with creative use-case context  
+- Optional CTA: “Learn More →”
+
+**Services to Include:**
+- 24/7 Remote Support  
+- Endpoint & Device Security (Mac/PC friendly)  
+- Cloud File Sync Optimization (Google Drive, Dropbox, Adobe CC)  
+- Identity Access Control for Clients & Contractors  
+- Secure Email & Link Sharing  
+- Patch & Device Update Scheduling  
+- Software-Specific Help Desk (Figma, Adobe, Canva, etc.)  
+- Backup + Version Control for Shared Assets  
+- Security Awareness Training for Marketing Teams  
+- Performance Monitoring for Remote Collaboration Tools
+
+---
+
+### 4. 📊 Metrics Section – Performance Stats for Creative Workflows
+
+**Headline:**  
+> “Trust the Infrastructure Behind Award-Winning Campaigns”
+
+**Metrics with animated counter effect (CountUp.js):**
+- 99.9% Uptime Across Creative Collaboration Tools  
+- 15-Minute Response for Critical Issues  
+- 70% Faster File Access Across Remote Locations  
+- 92% Reduction in “Lost Asset” Support Tickets  
+- 95% Staff Satisfaction with System Speed Post-Onboarding
+
+**Design:**
+- Neon-accented pill-style counters  
+- Icons: brush+shield, file cloud, stopwatch, checkmark badge  
+- Background: flowing data lines or glowing geometric shapes
+
+---
+
+### 5. 📥 Final CTA – Schedule Creative Risk Audit
+
+**Headline:**  
+> “Protect the Deadlines That Define Your Reputation”
+
+**Subheadline:**  
+> We’ll evaluate your systems for creative asset loss, downtime risks, and cloud sync performance — no cost, no commitment.
+
+**CTA Button:**  
+> “Schedule My Free Creative Risk Assessment”  
+→ Hover glow, smooth scroll trigger, white-on-blue button (#0d4f86)
+
+**Design:**
+- Full-width CTA section  
+- Subtle animated background (e.g., wave pulse, floating layers)  
+- CTA centered, card layout or full bleed
+
+---
+
+🎨 DESIGN SYSTEM / THEMING:
+
+**Primary Color:** `#0d4f86`  
+**Accent Palette:** Gradient blues, neon edge white/blue  
+**Backgrounds:**  
+- Gradient tech wave  
+- Floating shapes or particle clouds  
+- Soft digital backlight or grid mesh behind sections
+
+**UI Effects:**
+- Glassmorphism for cards  
+- Soft glow borders  
+- Animated entrance (AOS or GSAP)  
+- Hover motion on buttons, icons, tiles
+
+**Typography:**
+- Modern, design-forward sans-serif  
+- Use clamp() or media queries for responsive scaling  
+- Bold titles with soft subtitle contrast
+
+---
+
+📱 RESPONSIVE DESIGN:
+
+- All elements mobile-first and touch-friendly  
+- Cards and metrics stack cleanly with preserved hierarchy  
+- Font and icon sizing scale gracefully  
+- CTA always fully visible and thumb-tappable
+
+---
+
+🔧 TOOLS (Optional):
+
+- TailwindCSS  
+- GSAP or AOS.js for animation  
+- CountUp.js for metrics  
+- Lottie/SVG animation for floating shapes or design bursts
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Clean HTML + CSS or component-based structure  
+- Ensure hero section is left **100% unchanged**  
+- Deliver modular, accessible, performance-optimized code
