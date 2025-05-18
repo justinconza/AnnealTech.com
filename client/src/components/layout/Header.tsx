@@ -133,20 +133,19 @@ const Header = () => {
           <NavLink href="/services">Services</NavLink>
           <NavLink href="/industries">Industries</NavLink>
           <NavLink href="/about">About</NavLink>
-          <NavLink href="/tools">Security Tools</NavLink>
           <NavLink href="/faq">FAQ</NavLink>
           <NavLink href="/contact">Contact</NavLink>
         </nav>
         
-        {/* Contact Button (Desktop) */}
+        {/* Security Tools Button (Desktop) */}
         <div className="hidden md:block">
-          <Link href="/contact">
+          <Link href="/tools">
             <Button 
               variant="default" 
               className="bg-[#0E3F6E] hover:bg-[#3A6EA5] text-white font-medium flex items-center gap-2 group transition-colors duration-300 shadow-sm"
             >
-              <span>Contact Us</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <span>Security Tools</span>
+              <Shield className="w-4 h-4" />
             </Button>
           </Link>
         </div>
@@ -178,13 +177,13 @@ const Header = () => {
             <NavLink href="/faq" onClick={() => setIsMobileMenuOpen(false)}>FAQ</NavLink>
             <NavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</NavLink>
             
-            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/tools" onClick={() => setIsMobileMenuOpen(false)}>
               <Button 
                 variant="default" 
                 className="bg-[#0E3F6E] hover:bg-[#3A6EA5] text-white font-medium mt-2 w-full flex items-center justify-center gap-2 transition-colors duration-300 shadow-sm"
               >
-                <span>Contact Us</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <span>Security Tools</span>
+                <Shield className="w-4 h-4" />
               </Button>
             </Link>
           </nav>
