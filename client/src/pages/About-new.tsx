@@ -129,9 +129,20 @@ const HeroSection = () => {
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-blue-950 z-0">
-        {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-10 bg-grid-pattern"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#072749] to-[#0a3260] z-0">
+        {/* Digital pattern overlay */}
+        <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBzdHJva2U9IiMyMDVkOWUiIHN0cm9rZS13aWR0aD0iLjUiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTAgMTVIMTVWMEgweiIvPjxwYXRoIGQ9Ik0wIDMwSDE1VjE1SDB6Ii8+PHBhdGggZD0iTTAgNDVIMTVWMzBIMHoiLz48cGF0aCBkPSJNMCA2MEgxNVY0NUgweiIvPjxwYXRoIGQ9Ik0xNSAwSDMwVjE1SDE1eiIvPjxwYXRoIGQ9Ik0xNSAxNUgzMFYzMEgxNXoiLz48cGF0aCBkPSJNMTUgMzBIMzBWNDVIMTV6Ii8+PHBhdGggZD0iTTE1IDQ1SDMwVjYwSDE1eiIvPjxwYXRoIGQ9Ik0zMCAwSDQ1VjE1SDMweiIvPjxwYXRoIGQ9Ik0zMCAxNUg0NVYzMEgzMHoiLz48cGF0aCBkPSJNMzAgMzBINDVWNDVIMzB6Ii8+PHBhdGggZD0iTTMwIDQ1SDQ1VjYwSDMweiIvPjxwYXRoIGQ9Ik00NSAwSDYwVjE1SDQ1eiIvPjxwYXRoIGQ9Ik00NSAxNUg2MFYzMEg0NXoiLz48cGF0aCBkPSJNNDUgMzBINjBWNDVINDV6Ii8+PHBhdGggZD0iTTQ1IDQ1SDYwVjYwSDQ1eiIvPjwvZz48L3N2Zz4=')]"></div>
+        
+        {/* Animated blue flames */}
+        <div className="absolute bottom-0 right-20 flame" style={{ animationDelay: "-0.5s" }}>
+          <div className="flame-inner"></div>
+        </div>
+        <div className="absolute bottom-0 left-32 flame" style={{ animationDelay: "-1.2s" }}>
+          <div className="flame-inner"></div>
+        </div>
+        <div className="absolute bottom-0 left-1/2 flame" style={{ animationDelay: "-0.8s" }}>
+          <div className="flame-inner"></div>
+        </div>
         
         {/* Animated mesh gradients */}
         <div className="absolute inset-0">
@@ -163,22 +174,27 @@ const HeroSection = () => {
           />
         </div>
         
-        {/* Glowing dots */}
-        <div className="absolute inset-0">
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden">
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-blue-400 rounded-full"
+              className="absolute w-1 h-1 bg-blue-300 rounded-full"
               initial={{ 
-                x: `${Math.random() * 100}%`, 
-                y: `${Math.random() * 100}%`,
-                opacity: Math.random() * 0.5 + 0.3
+                opacity: Math.random() * 0.5 + 0.3,
+                x: Math.random() * 100 + "%", 
+                y: Math.random() * 100 + "%"
               }}
               animate={{ 
+                y: [
+                  Math.random() * 100 + "%", 
+                  Math.random() * 20 + 40 + "%", 
+                  Math.random() * 100 + "%"
+                ],
                 opacity: [0.3, 0.7, 0.3]
               }}
               transition={{ 
-                duration: Math.random() * 2 + 2,
+                duration: Math.random() * 10 + 20,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
@@ -188,7 +204,7 @@ const HeroSection = () => {
         
         {/* Digital circuit lines */}
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#3b82f6" strokeWidth="0.5" opacity="0.2">
+          <g stroke="#3b82f6" strokeWidth="0.5" opacity="0.3">
             {[...Array(5)].map((_, i) => (
               <motion.path
                 key={i}
@@ -785,57 +801,63 @@ const ApproachSection = () => {
 // Team Section
 const TeamSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-950 to-slate-900 text-white relative overflow-hidden">
-      {/* Matrix-like digital rain */}
+    <section className="py-20 bg-gradient-to-b from-[#072749] to-[#0a3260] text-white relative overflow-hidden">
+      {/* Digital pattern overlay */}
       <div className="absolute inset-0">
-        {/* Vertical lines of code */}
-        {[...Array(20)].map((_, i) => (
+        <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBzdHJva2U9IiMyMDVkOWUiIHN0cm9rZS13aWR0aD0iLjUiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTAgMTVIMTVWMEgweiIvPjxwYXRoIGQ9Ik0wIDMwSDE1VjE1SDB6Ii8+PHBhdGggZD0iTTAgNDVIMTVWMzBIMHoiLz48cGF0aCBkPSJNMCA2MEgxNVY0NUgweiIvPjxwYXRoIGQ9Ik0xNSAwSDMwVjE1SDE1eiIvPjxwYXRoIGQ9Ik0xNSAxNUgzMFYzMEgxNXoiLz48cGF0aCBkPSJNMTUgMzBIMzBWNDVIMTV6Ii8+PHBhdGggZD0iTTE1IDQ1SDMwVjYwSDE1eiIvPjxwYXRoIGQ9Ik0zMCAwSDQ1VjE1SDMweiIvPjxwYXRoIGQ9Ik0zMCAxNUg0NVYzMEgzMHoiLz48cGF0aCBkPSJNMzAgMzBINDVWNDVIMzB6Ii8+PHBhdGggZD0iTTMwIDQ1SDQ1VjYwSDMweiIvPjxwYXRoIGQ9Ik00NSAwSDYwVjE1SDQ1eiIvPjxwYXRoIGQ9Ik00NSAxNUg2MFYzMEg0NXoiLz48cGF0aCBkPSJNNDUgMzBINjBWNDVINDV6Ii8+PHBhdGggZD0iTTQ1IDQ1SDYwVjYwSDQ1eiIvPjwvZz48L3N2Zz4=')]"></div>
+        
+        {/* Animated data waves */}
+        {[...Array(3)].map((_, i) => (
           <motion.div
-            key={i}
-            className="absolute top-0 h-full overflow-hidden"
+            key={`wave-${i}`}
+            className="absolute h-[1px] w-full bg-blue-400/30"
             style={{ 
-              left: `${(i * 5) + Math.random() * 3}%`,
-              width: '1px',
-              opacity: Math.random() * 0.3 + 0.1
+              top: `${30 + i * 30}%`,
+              left: "-100%"
             }}
-          >
-            <motion.div
-              className="w-full h-16 bg-gradient-to-b from-blue-400 to-transparent"
-              animate={{ 
-                y: ['-100%', '1000%']
-              }}
-              transition={{ 
-                duration: Math.random() * 20 + 15,
-                repeat: Infinity,
-                ease: "linear",
-                delay: Math.random() * 5
-              }}
-            />
-          </motion.div>
+            animate={{
+              x: ["0%", "200%"]
+            }}
+            transition={{
+              duration: 15 + i * 5,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 2
+            }}
+          />
         ))}
         
-        {/* Pulsing radial gradients */}
+        {/* Digital glow effects */}
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={`glow-${i}`}
-            className="absolute rounded-full bg-blue-500/10 blur-3xl"
+            className="absolute rounded-full bg-blue-400/10 blur-3xl"
             style={{
               width: `${Math.random() * 300 + 100}px`,
               height: `${Math.random() * 300 + 100}px`,
               left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.15 + 0.05
             }}
             animate={{
-              opacity: [0.1, 0.2, 0.1],
-              scale: [1, 1.2, 1],
+              opacity: [0.05, 0.15, 0.05],
+              scale: [0.8, 1.2, 0.8]
             }}
             transition={{
-              duration: Math.random() * 10 + 10,
+              duration: Math.random() * 10 + 15,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
         ))}
+        
+        {/* Blue flame elements */}
+        <div className="absolute bottom-0 right-20 flame" style={{ animationDelay: "-0.5s" }}>
+          <div className="flame-inner"></div>
+        </div>
+        <div className="absolute bottom-0 left-32 flame" style={{ animationDelay: "-1.2s" }}>
+          <div className="flame-inner"></div>
+        </div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -870,21 +892,21 @@ const TeamSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col group">
+                <div className="bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl border border-blue-200 hover:shadow-blue-500/10 transition-all duration-300 h-full flex flex-col group">
                   <div className="relative">
                     <img 
                       src={member.image} 
                       alt={member.name} 
                       className="w-full h-64 object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900 to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300"></div>
                     <div className="absolute bottom-0 left-0 w-full p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
                       <p className="text-sm">{member.bio}</p>
                     </div>
                   </div>
                   
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-lg font-heading font-semibold text-slate-800 mb-1">{member.name}</h3>
+                  <div className="p-6 flex-1 flex flex-col bg-gradient-to-br from-white to-blue-50">
+                    <h3 className="text-lg font-heading font-semibold text-blue-900 mb-1">{member.name}</h3>
                     <p className="text-blue-600 mb-4">{member.role}</p>
                     
                     <div className="mt-auto">
@@ -893,7 +915,7 @@ const TeamSection = () => {
                         {member.expertise.map((skill, i) => (
                           <span 
                             key={i} 
-                            className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full"
+                            className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full border border-blue-200"
                           >
                             {skill}
                           </span>
