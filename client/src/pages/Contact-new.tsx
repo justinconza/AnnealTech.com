@@ -381,15 +381,13 @@ const ContactPage = () => {
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   {/* Honeypot field - Hidden from users but can be filled by bots */}
-                  <div className="hidden">
-                    <input
-                      type="text"
-                      name="honeypot"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      {...form.register("honeypot")}
-                    />
-                  </div>
+                  <input 
+                    type="text"
+                    className="hidden"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    {...form.register("honeypot")}
+                  />
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField
