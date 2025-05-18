@@ -1,0 +1,163 @@
+Task:
+Redesign and expand the Legal Industry page on AnnealTech.com using a digitally immersive, security-forward design system. Keep the top hero section exactly as it is — this includes its layout, visuals, headline, and animation. All new content should begin *below* the hero.
+
+The goal is to clearly explain the unique IT and security needs of law firms, using a premium, future-ready aesthetic aligned with AnnealTech’s brand style.
+
+---
+
+🎯 OVERALL GOALS:
+
+- Demonstrate how law firms are vulnerable to cyber risks, downtime, and compliance issues
+- Position AnnealTech as the human-first, SLA-backed solution to these challenges
+- Incorporate scroll-triggered animations, glowing visuals, and interactive content blocks
+- Mirror the immersive branding seen across AnnealTech (blues, glows, clean typography)
+- Drive conversions through benefit-led content and trust-building metrics
+
+---
+
+📐 SECTION STRUCTURE & CONTENT:
+
+---
+
+### 1. “Risks Law Firms Can’t Ignore” – Animated Threat Grid
+
+**Headline:**  
+> “Cyber Risks Are Rising. Is Your Practice Prepared?”
+
+**Style:**
+- Dark background with a soft pulse grid or vertical flowing mesh  
+- 3 glowing tile cards, scroll-triggered animations (fade or zoom-in)  
+- Hover effects with lift + glowing borders
+
+**Example Cards:**
+- *Client Confidentiality Breaches*  
+  Phishing and ransomware now target legal inboxes daily.
+- *Downtime During Active Litigation*  
+  Disrupted access to evidence or systems can cost a case.
+- *Compliance Gaps and Audit Failures*  
+  Most firms lack the controls needed for HIPAA, ABA, or regional mandates.
+
+---
+
+### 2. “Why AnnealTech for Legal Firms?” – Split Value Section
+
+**Headline:**  
+> “Built for the Pace, Pressure, and Privacy of Law”
+
+**Left Side:**  
+Illustration or animation: scales of justice over cyber mesh, or animated case file with lock icon.
+
+**Right Side:**  
+5 value bullets with icons:
+- SLA-Backed Help Desk with Rapid Response  
+- Email, Document & Access Protection  
+- Compliance-First System Monitoring  
+- End-to-End Device & User Management  
+- Staff Training for Legal-Specific Threats
+
+---
+
+### 3. 🧰 Full-Width Legal Services Grid
+
+**Section Title:**  
+> “Tailored IT Services for Law Firms & Legal Teams”
+
+**Design Requirements:**
+- Full-width section  
+- Responsive 3-column grid layout on desktop (2 or 1 column on tablet/mobile)  
+- Animated entrance (staggered scroll)  
+- Each card with:
+  - Glowing icon in a circle  
+  - Bold title  
+  - Short paragraph showing legal relevance  
+  - Optional CTA button (Learn More)
+
+**Services to Include (aligned to legal needs):**
+- 24/7 Remote IT Support  
+- Identity & Access Security  
+- Endpoint Protection  
+- Email Filtering & Encryption  
+- Secure File Access & Collaboration  
+- Patch & Vulnerability Management  
+- Security Awareness Training (Phishing, Insider Threats)  
+- Compliance & Audit Readiness (HIPAA, ABA)  
+- Device Lifecycle Management  
+- Legal IT Consulting (Growth, Scaling, Policy)
+
+---
+
+### 4. 📊 Metrics That Build Trust – Results Section
+
+**Headline:**  
+> “Our Legal Clients See Results”
+
+**Design:**
+- Glowing blue stat counters with pill-shaped containers  
+- Scroll-based count-up animation
+
+**Metrics (from SLAs + legal relevance):**
+- 99.9% System Uptime Guarantee  
+- 15-Minute Critical Issue SLA  
+- 75%+ First Contact Resolution  
+- 90%+ Staff Compliance Training Completion  
+- 4-Hour Guaranteed Recovery for Critical Files
+
+---
+
+### 5. 📥 Final CTA: Schedule a Legal Risk Review
+
+**Headline:**  
+> “Let’s Secure What Matters Most — Your Clients.”
+
+**Subheadline:**  
+> Find hidden vulnerabilities, identify quick wins, and simplify compliance in just 15 minutes.
+
+**CTA Button:**  
+> “Start My Free Legal Assessment” → Hover glow, rounded edges, white on #0d4f86
+
+**Design:**
+- Full-width section  
+- Dark mesh or circuit grid background  
+- Header uses glow font or animated underline
+- Button animated on hover (pulse, slide, or glow)
+
+---
+
+🎨 DESIGN SYSTEM & THEME:
+
+- **Primary Color:** `#0d4f86`  
+- **Supporting Palette:** Light blues, slate, off-white  
+- **Font:** Modern sans-serif (bold, clean, accessible)  
+- **Effects:**
+  - Glassmorphism tiles  
+  - Icon hover glow  
+  - Soft borders and depth shadows  
+  - Scroll animations (fade-in, zoom-up)  
+  - Animated backgrounds (mesh, circuits, or light waveforms via SVG/Lottie)
+
+---
+
+📱 RESPONSIVE DESIGN:
+
+- Service cards stack vertically on mobile  
+- Font sizes adjust with clamp or media queries  
+- CTA buttons retain large tap targets  
+- Icons scale smoothly on all breakpoints
+
+---
+
+🔧 OPTIONAL TOOLS / LIBRARIES:
+
+- TailwindCSS (recommended)  
+- AOS.js or GSAP for scroll animation  
+- CountUp.js for metric animation  
+- Lottie/SVG for lightweight background movement
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS (or React-style components if applicable)  
+- **Top hero section must remain untouched**  
+- All new sections should smoothly follow hero layout  
+- Code should be accessible, clean, and mobile-first optimized

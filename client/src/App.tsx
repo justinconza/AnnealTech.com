@@ -21,6 +21,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 
 // Lazy load industry-specific pages
 const CommercialRealEstate = lazy(() => import("./pages/industries/CommercialRealEstate"));
+const Legal = lazy(() => import("./pages/industries/Legal"));
 
 // Lazy load embedded tools
 const EmailSecurityEmbedded = lazy(() => import("./pages/embedded/EmailSecurity"));
@@ -62,6 +63,13 @@ function MainRouter() {
               {() => (
                 <Suspense fallback={<LoadingSpinner />}>
                   <CommercialRealEstate />
+                </Suspense>
+              )}
+            </Route>
+            <Route path="/industries/legal">
+              {() => (
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Legal />
                 </Suspense>
               )}
             </Route>
