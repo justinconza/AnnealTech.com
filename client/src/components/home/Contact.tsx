@@ -2,9 +2,8 @@ import { useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { CalendarClock, Linkedin, Twitter, Facebook, Youtube, Clock, Mail, Phone, MapPin, ArrowRight, Shield, Server, Database } from "lucide-react";
+import { CalendarClock, ArrowRight, Shield, Server } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -364,14 +363,14 @@ const Contact = () => {
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger className="bg-blue-900/30 border-blue-400/30 text-white">
-                            <SelectValue placeholder="Select Preferred Time" className="text-blue-200/70" />
+                            <SelectValue placeholder="Select a Time" className="text-blue-200/70" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="morning">Morning (8AM - 12PM)</SelectItem>
-                          <SelectItem value="afternoon">Afternoon (12PM - 4PM)</SelectItem>
-                          <SelectItem value="evening">Evening (4PM - 6PM)</SelectItem>
-                          <SelectItem value="any">Any Time</SelectItem>
+                          <SelectItem value="morning">Morning (9am - 12pm)</SelectItem>
+                          <SelectItem value="afternoon">Afternoon (12pm - 5pm)</SelectItem>
+                          <SelectItem value="evening">Evening (5pm - 8pm)</SelectItem>
+                          <SelectItem value="anytime">Anytime</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -384,161 +383,31 @@ const Contact = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-blue-100 font-medium">Tell Us About Your Needs</FormLabel>
+                      <FormLabel className="text-blue-100 font-medium">Your Message</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Please describe your IT environment, challenges, and what you're looking for..." 
-                          className="resize-none bg-blue-900/30 border-blue-400/30 text-white placeholder:text-blue-200/50 focus:border-blue-400/60 focus:ring-blue-400/20" 
-                          rows={5} 
+                          placeholder="Please describe your IT needs or questions..." 
+                          className="bg-blue-900/30 border-blue-400/30 text-white placeholder:text-blue-200/50 min-h-[120px] focus:border-blue-400/60 focus:ring-blue-400/20" 
                           {...field} 
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-blue-200" />
                     </FormItem>
                   )}
                 />
                 
                 <Button 
                   type="submit" 
-                  className="w-full px-8 py-6 bg-blue-400 hover:bg-blue-500 text-blue-900 font-heading font-semibold rounded-md transition-all shadow-lg shadow-blue-500/20 group flex items-center justify-center gap-2 relative overflow-hidden"
+                  className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white font-medium py-3 rounded-lg relative overflow-hidden group"
                   disabled={isSubmitting}
                 >
-                  <span className="relative z-10 flex items-center gap-2">
-                    {isSubmitting ? "Submitting..." : "Submit Inquiry"}
-                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
+                  {isSubmitting ? "Sending..." : "Send Message"}
                   
                   {/* Button highlight effect */}
                   <span className="absolute inset-0 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </Button>
               </form>
             </Form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-                <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="p-2 rounded-md bg-steel/20 text-accent">
-                      <MapPin className="h-5 w-5" />
-                    </div>
-                    <h4 className="font-heading font-semibold text-lg">Headquarters</h4>
-                  </div>
-                  <address className="not-italic text-muted-foreground">
-                    1234 Innovation Drive<br />
-                    Suite 500<br />
-                    San Francisco, CA 94105<br />
-                    United States
-                  </address>
-                  <div className="mt-4">
-                    <a href="tel:+14155550123" className="text-accent hover:text-accent/80 flex items-center transition-colors">
-                      <Phone className="mr-2 h-4 w-4" />
-                      +1 (415) 555-0123
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="p-2 rounded-md bg-steel/20 text-accent">
-                      <MapPin className="h-5 w-5" />
-                    </div>
-                    <h4 className="font-heading font-semibold text-lg">East Coast Office</h4>
-                  </div>
-                  <address className="not-italic text-muted-foreground">
-                    567 Technology Square<br />
-                    Floor 8<br />
-                    Boston, MA 02139<br />
-                    United States
-                  </address>
-                  <div className="mt-4">
-                    <a href="tel:+16175550198" className="text-accent hover:text-accent/80 flex items-center transition-colors">
-                      <Phone className="mr-2 h-4 w-4" />
-                      +1 (617) 555-0198
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Support information */}
-            <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
-              <h3 className="text-xl font-heading font-semibold text-white mb-4">Contact Information</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-md bg-steel/20 text-accent">
-                    <Mail className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-foreground">Email Us</div>
-                    <a href="mailto:info@annealtech.com" className="text-accent hover:text-accent/80 transition-colors text-sm">
-                      info@annealtech.com
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-md bg-steel/20 text-accent">
-                    <Phone className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-foreground">Call Us</div>
-                    <a href="tel:+18005551234" className="text-accent hover:text-accent/80 transition-colors text-sm">
-                      +1 (800) 555-1234 (Toll Free)
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-md bg-steel/20 text-accent">
-                    <Clock className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-foreground">Business Hours</div>
-                    <div className="text-muted-foreground text-sm">
-                      Monday - Friday: 8:00 AM - 6:00 PM EST
-                    </div>
-                    <div className="text-accent text-sm font-medium mt-1">
-                      24/7 Support Available for Clients
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-md bg-steel/20 text-accent">
-                    <Database className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-foreground">Emergency Support</div>
-                    <div className="text-muted-foreground text-sm">
-                      For existing clients with urgent issues
-                    </div>
-                    <a href="tel:+18005559999" className="text-accent hover:text-accent/80 transition-colors text-sm">
-                      +1 (800) 555-9999
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Social media */}
-              <div className="mt-6 pt-6 border-t border-accent/10">
-                <div className="flex space-x-4">
-                  <a href="#" className="p-2 rounded-full border border-accent/20 text-accent hover:bg-accent/10 transition-colors" aria-label="LinkedIn">
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="p-2 rounded-full border border-accent/20 text-accent hover:bg-accent/10 transition-colors" aria-label="Twitter">
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="p-2 rounded-full border border-accent/20 text-accent hover:bg-accent/10 transition-colors" aria-label="Facebook">
-                    <Facebook className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="p-2 rounded-full border border-accent/20 text-accent hover:bg-accent/10 transition-colors" aria-label="YouTube">
-                    <Youtube className="h-5 w-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
