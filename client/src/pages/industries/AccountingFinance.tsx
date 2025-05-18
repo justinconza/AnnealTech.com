@@ -252,9 +252,12 @@ const FinancialThreatsSection = () => {
   }));
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-900 to-blue-800 relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-[#072749] to-[#0a3260] relative overflow-hidden">
       {/* Digital vault background animation */}
       <div className="absolute inset-0">
+        {/* Digital circuit pattern overlay */}
+        <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBzdHJva2U9IiMxYTRkOGEiIHN0cm9rZS13aWR0aD0iLjUiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTUgMTBINDB2NDBoLTM1eiIvPjxwYXRoIGQ9Ik0yMCAyMEgwdjIwaDIweiIvPjxwYXRoIGQ9Ik01MCA1MEgzMHYtMjBoMjB6Ii8+PHBhdGggZD0iTTUwIDBIMzB2MjBoMjB6Ii8+PHBhdGggZD0iTTIwIDYwSDB2LTIwaDIweiIvPjxwYXRoIGQ9Ik02MCAxMEg0MHY0MGgyMHoiLz48L2c+PC9zdmc+')]"></div>
+      
         {/* Circuit grid lines */}
         {gridLines.map((line) => (
           <motion.div
@@ -277,11 +280,35 @@ const FinancialThreatsSection = () => {
           />
         ))}
         
+        {/* Digital glow effects */}
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={`glow-${i}`}
+            className="absolute rounded-full bg-blue-400/10 blur-3xl"
+            style={{
+              width: `${Math.random() * 300 + 100}px`,
+              height: `${Math.random() * 300 + 100}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.15 + 0.05
+            }}
+            animate={{
+              opacity: [0.05, 0.15, 0.05],
+              scale: [0.8, 1.2, 0.8]
+            }}
+            transition={{
+              duration: Math.random() * 10 + 15,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+        
         {/* Pulse waves */}
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={`pulse-${i}`}
-            className="absolute left-1/2 top-1/2 rounded-full border border-blue-400/30"
+            className="absolute left-1/2 top-1/2 rounded-full border border-blue-400/20"
             style={{
               width: 10,
               height: 10,
