@@ -294,11 +294,11 @@ const ToolCard = ({
         )}
         
         <CardHeader className="pb-4">
-          <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-4 text-blue-400 group-hover:text-blue-300 group-hover:bg-blue-500/20 transition-colors duration-300">
+          <div className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center mb-4 text-white group-hover:text-white group-hover:bg-blue-500/30 transition-colors duration-300">
             <Icon className="w-7 h-7" />
           </div>
-          <CardTitle className="font-heading text-xl mb-2 text-white group-hover:text-blue-100 transition-colors duration-300">{title}</CardTitle>
-          <CardDescription className="text-slate-300/90 group-hover:text-slate-200 transition-colors">
+          <CardTitle className="font-heading text-xl mb-2 text-white font-bold group-hover:text-blue-100 transition-colors duration-300">{title}</CardTitle>
+          <CardDescription className="text-white/90 group-hover:text-white transition-colors">
             {description}
           </CardDescription>
         </CardHeader>
