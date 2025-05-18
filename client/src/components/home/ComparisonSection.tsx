@@ -130,7 +130,7 @@ const ComparisonSection = () => {
         {/* Comparison Table */}
         <div className="max-w-4xl mx-auto">
           {/* Column Headers - Desktop */}
-          <div className="hidden lg:grid grid-cols-9 mb-8 px-4">
+          <div className="hidden lg:grid grid-cols-9 mb-8 max-w-4xl mx-auto">
             <div className="col-span-3 bg-slate-800/60 rounded-tl-lg rounded-bl-lg p-4 border-l-2 border-y border-slate-700 shadow-md">
               <h3 className="text-xl font-medium text-[#213b70] uppercase tracking-wide">Category</h3>
             </div>
