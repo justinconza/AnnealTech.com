@@ -313,7 +313,7 @@ const EnterpriseProdTools = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-blue-500/50 text-blue-100 hover:bg-blue-800/50"
+                  className="border-blue-500/50 bg-white text-black hover:bg-blue-50 hover:text-blue-900"
                 >
                   View Service Details
                 </Button>
