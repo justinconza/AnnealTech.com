@@ -119,6 +119,20 @@ const Industries = () => {
         .industries-swiper .swiper-pagination-bullet-active {
           background: white;
         }
+        .industries-swiper {
+          margin: 0 auto !important;
+          position: relative !important;
+          left: 0 !important;
+          right: 0 !important;
+          transform: translateX(0) !important;
+          overflow: visible;
+          width: 100% !important;
+        }
+        .industries-swiper .swiper-wrapper {
+          margin: 0 auto !important;
+          display: flex !important;
+          justify-content: center !important;
+        }
         `
       }}></style>
       
@@ -141,7 +155,7 @@ const Industries = () => {
           </p>
         </motion.div>
 
-        <div className="w-full max-w-6xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto flex justify-center">
           <Swiper
             onSwiper={setSwiperRef}
             effect={'coverflow'}
