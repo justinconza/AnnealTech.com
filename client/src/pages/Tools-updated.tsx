@@ -281,15 +281,15 @@ const ToolCard = ({
       className="h-full"
     >
       <Card className="bg-white border-0 h-full flex flex-col shadow-lg transition-all duration-300 overflow-hidden relative group">
-        {/* Blue fiery glow effect */}
-        <div className="absolute -inset-1 bg-blue-600 rounded-xl blur opacity-0 group-hover:opacity-30 transition-all duration-500 group-hover:duration-200 animate-pulse"></div>
+        {/* Blue fiery glow effect - no animation */}
+        <div className="absolute -inset-1 bg-blue-600 rounded-xl blur opacity-0 group-hover:opacity-30 transition-all duration-500 group-hover:duration-200"></div>
         
         <CardHeader className="pb-4 relative z-10">
           <div className="w-14 h-14 rounded-full bg-blue-800 flex items-center justify-center mb-4 text-white group-hover:bg-blue-700 transition-colors duration-300 group-hover:scale-110 transform">
             <Icon className="w-7 h-7" />
           </div>
           <CardTitle className="font-heading text-xl mb-2 text-blue-900 font-bold">{title}</CardTitle>
-          <CardDescription className="text-blue-800">
+          <CardDescription className="text-black">
             {description}
           </CardDescription>
         </CardHeader>
