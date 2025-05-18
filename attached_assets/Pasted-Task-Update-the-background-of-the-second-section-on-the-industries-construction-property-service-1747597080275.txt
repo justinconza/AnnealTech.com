@@ -1,0 +1,47 @@
+Task:
+Update the background of the second section on the `/industries/construction-property-services` page (specifically the section with the headline “Your Sites Are Moving Fast. Is Your Technology Keeping Up?”) to match the visual style of the homepage hero section — with an interactive, subtle digital blue background.
+
+---
+
+🎯 GOALS:
+
+- Visually match the homepage hero section’s theme while keeping this section easy to read
+- Use a **blue digital-inspired SVG or Lottie animation background**
+- Background should respond slightly to **mouse movement (parallax or drift effect)**
+- The animation should be **subtle and not aggressive** (avoid high motion distractions)
+- Must work across devices — degrade gracefully on mobile (static fallback or reduced interactivity)
+
+---
+
+🎨 DESIGN DETAILS:
+
+- **Color Base:** AnnealTech blue (`#0d4f86`) as dominant glow/accent
+- **Style:** Digital mesh, network lines, glowing nodes, or abstract tech particles
+- **Behavior:**
+  - Interactive with mouse on desktop (slow, smooth parallax drift or cursor trails)
+  - Lightweight SVG or canvas animation preferred
+  - Static or low-motion background on mobile
+
+---
+
+🔧 IMPLEMENTATION OPTIONS:
+
+- Use a **Lottie animation** (JSON-based) or **SVG background** set to absolute with `pointer-events: none`
+- Use **Mousemove** event listener (with `requestAnimationFrame`) to create subtle depth/parallax on vector or gradient layers
+- Example Lottie types: "cyber mesh", "blue network grid", "subtle wave particles"
+
+---
+
+📱 RESPONSIVE BEHAVIOR:
+
+- Desktop: animated + interactive
+- Mobile: either static background image or lower motion Lottie version (if supported)
+- Keep text highly readable (ensure contrast and layer blur if necessary)
+
+---
+
+📤 OUTPUT:
+
+- Modular HTML + CSS or component-based injection
+- Replace only the second section background — leave all content and layout intact
+- Should align fluidly with the rest of the page scroll behavior and branding
