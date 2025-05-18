@@ -133,30 +133,7 @@ const Header = () => {
           <NavLink href="/services">Services</NavLink>
           <NavLink href="/industries">Industries</NavLink>
           <NavLink href="/about">About</NavLink>
-          
-          <DropdownMenu>
-            <DropdownMenuTrigger className="text-white font-medium hover:text-[#EBF1F8] transition-all relative group py-1 focus:outline-none">
-              <span className="flex items-center">
-                Tools
-                <span className="ml-1 inline-block w-2 h-2 border-t-2 border-r-2 border-current transform rotate-45 translate-y-[2px]"></span>
-              </span>
-              <span className="absolute bottom-0 left-0 h-0.5 bg-[#3A6EA5] transition-all duration-300 w-0 group-hover:w-full"></span>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="bg-white border border-[#EBF1F8] text-[#1f1f1f] rounded-md shadow-lg w-56">
-              <DropdownMenuItem className="focus:bg-[#EBF1F8] hover:bg-[#EBF1F8] cursor-pointer">
-                <Link href="/tools" className="flex items-center w-full">
-                  <span>Security Tools</span>
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="focus:bg-[#EBF1F8] hover:bg-[#EBF1F8] cursor-pointer">
-                <Link href="/embedded/tools" className="flex items-center w-full">
-                  <Shield className="mr-2 h-4 w-4 text-[#0E3F6E]" />
-                  <span>Embeddable Tools Suite</span>
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          
+          <NavLink href="/tools">Security Tools</NavLink>
           <NavLink href="/faq">FAQ</NavLink>
           <NavLink href="/contact">Contact</NavLink>
         </nav>
@@ -168,7 +145,7 @@ const Header = () => {
               variant="default" 
               className="bg-[#0E3F6E] hover:bg-[#3A6EA5] text-white font-medium flex items-center gap-2 group transition-colors duration-300 shadow-sm"
             >
-              <span>Book Demo</span>
+              <span>Contact Us</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Button>
           </Link>
@@ -194,23 +171,9 @@ const Header = () => {
             <NavLink href="/industries" onClick={() => setIsMobileMenuOpen(false)}>Industries</NavLink>
             <NavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>About</NavLink>
             
-            {/* Tools Section with Submenu */}
-            <div className="py-1">
-              <div className="text-white font-medium mb-2">Tools</div>
-              <div className="ml-4 space-y-3">
-                <NavLink href="/tools" onClick={() => setIsMobileMenuOpen(false)}>
-                  Security Tools
-                </NavLink>
-                <Link 
-                  href="/embedded/tools" 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center text-white font-medium hover:text-[#3A6EA5] transition-all py-1"
-                >
-                  <Shield className="mr-2 h-4 w-4 text-[#3A6EA5]" />
-                  <span>Embeddable Tools Suite</span>
-                </Link>
-              </div>
-            </div>
+            <NavLink href="/tools" onClick={() => setIsMobileMenuOpen(false)}>
+              Security Tools
+            </NavLink>
             
             <NavLink href="/faq" onClick={() => setIsMobileMenuOpen(false)}>FAQ</NavLink>
             <NavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</NavLink>
@@ -220,7 +183,7 @@ const Header = () => {
                 variant="default" 
                 className="bg-[#0E3F6E] hover:bg-[#3A6EA5] text-white font-medium mt-2 w-full flex items-center justify-center gap-2 transition-colors duration-300 shadow-sm"
               >
-                <span>Book Demo</span>
+                <span>Contact Us</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Button>
             </Link>
