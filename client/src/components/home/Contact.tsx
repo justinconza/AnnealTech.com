@@ -142,14 +142,14 @@ const Contact = () => {
         {/* Section header */}
         <div className="max-w-2xl mx-auto text-center mb-16">
           <div className="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1 mb-4">
-            <span className="text-accent font-heading text-sm font-medium tracking-wider">GET IN TOUCH</span>
+            <span className="text-white font-heading text-sm font-medium tracking-wider">GET IN TOUCH</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
             Let's Discuss Your IT Needs
           </h2>
           
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-white/90 max-w-3xl mx-auto">
             Contact our team today to explore how we can strengthen your IT infrastructure,
             improve security, and provide the managed services your business needs.
           </p>
@@ -185,7 +185,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Contact form */}
           <div className="bg-steel/10 p-8 rounded-lg border border-accent/10">
-            <h3 className="text-2xl font-heading font-semibold text-foreground mb-6">Contact Us</h3>
+            <h3 className="text-2xl font-heading font-semibold text-white mb-6">Contact Us</h3>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -363,7 +363,7 @@ const Contact = () => {
           <div className="space-y-8">
             {/* Offices */}
             <div>
-              <h3 className="text-2xl font-heading font-semibold text-foreground mb-6">Our Locations</h3>
+              <h3 className="text-2xl font-heading font-semibold text-white mb-6">Our Locations</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
                   <div className="flex items-center gap-2 mb-3">
@@ -411,7 +411,7 @@ const Contact = () => {
             
             {/* Support information */}
             <div className="bg-steel/10 p-6 rounded-lg border border-accent/10">
-              <h3 className="text-xl font-heading font-semibold text-foreground mb-4">Contact Information</h3>
+              <h3 className="text-xl font-heading font-semibold text-white mb-4">Contact Information</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-md bg-steel/20 text-accent">
