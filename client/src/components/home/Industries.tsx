@@ -28,22 +28,39 @@ const IndustryCard = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-white rounded-lg shadow-md p-8 transition-all hover:shadow-xl border border-[#EBF1F8] group hover:translate-y-[-5px] duration-300 h-full"
+      whileHover={{ y: -8 }}
+      className="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-2xl hover:shadow-blue-500/20 border border-[#EBF1F8] group duration-300 h-full flex flex-col relative overflow-hidden"
     >
-      <div className="w-16 h-16 rounded-full bg-[#3A6EA5]/10 flex items-center justify-center mb-6 text-[#3A6EA5] group-hover:bg-[#3A6EA5] group-hover:text-white transition-all">
-        <Icon className="w-8 h-8" />
+      {/* Background pattern */}
+      <div className="absolute top-0 right-0 w-32 h-32 opacity-5 bg-circuit transform rotate-45 -translate-x-16 -translate-y-16"></div>
+      
+      {/* Corner accent */}
+      <div className="absolute top-0 right-0 w-16 h-16">
+        <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+          <div className="absolute top-0 right-0 transform translate-x-[8px] translate-y-[-8px] rotate-45 bg-[#0d4f86] w-[16px] h-[32px]"></div>
+        </div>
       </div>
-      <h3 className="text-xl font-heading font-semibold mb-4 text-slate-800">{title}</h3>
-      <p className="text-slate-600 mb-6">{description}</p>
-      <div className="pt-4 border-t border-[#EBF1F8]">
+      
+      {/* Icon container with enhanced hover effect */}
+      <div className="w-16 h-16 rounded-full bg-[#3A6EA5]/10 flex items-center justify-center mb-6 text-[#3A6EA5] group-hover:bg-[#3A6EA5] group-hover:text-white transition-all group-hover:shadow-md group-hover:shadow-blue-500/40 relative z-10">
+        <Icon className="w-8 h-8 transition-transform group-hover:scale-110" />
+      </div>
+      
+      <h3 className="text-xl font-heading font-semibold mb-4 text-slate-800 group-hover:text-[#0d4f86] transition-colors">{title}</h3>
+      <p className="text-slate-600 mb-6 flex-grow">{description}</p>
+      
+      <div className="pt-4 border-t border-[#EBF1F8] mt-auto">
         <Button
           variant="link"
-          className="text-[#3A6EA5] font-medium p-0 hover:text-[#2D5D94] transition-colors group flex items-center"
+          className="text-[#3A6EA5] font-medium p-0 hover:text-[#0d4f86] transition-colors flex items-center group/link"
         >
           <span>Learn more</span>
-          <span className="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+          <span className="ml-2 group-hover/link:translate-x-2 transition-transform">&rarr;</span>
         </Button>
       </div>
+      
+      {/* Bottom glow effect on hover */}
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
     </motion.div>
   );
 };
@@ -106,32 +123,76 @@ const Industries = () => {
         <div className="flame-inner"></div>
       </div>
       
-      {/* Custom styles for white navigation arrows */}
+      {/* Custom styles for industry scroller */}
       <style dangerouslySetInnerHTML={{
         __html: `
         .industries-swiper .swiper-button-next,
         .industries-swiper .swiper-button-prev {
           color: white;
+          background-color: rgba(13, 79, 134, 0.5);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
         }
+        
+        .industries-swiper .swiper-button-next:hover,
+        .industries-swiper .swiper-button-prev:hover {
+          background-color: rgba(13, 79, 134, 0.8);
+          box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+        }
+        
+        .industries-swiper .swiper-button-next:after,
+        .industries-swiper .swiper-button-prev:after {
+          font-size: 18px;
+          font-weight: bold;
+        }
+        
         .industries-swiper .swiper-pagination-bullet {
           background: rgba(255, 255, 255, 0.7);
+          transition: all 0.3s ease;
         }
+        
         .industries-swiper .swiper-pagination-bullet-active {
           background: white;
+          transform: scale(1.2);
         }
+        
         .industries-swiper {
           margin: 0 auto !important;
-          position: relative !important;
-          left: 0 !important;
-          right: 0 !important;
-          transform: translateX(0) !important;
-          overflow: visible;
           width: 100% !important;
+          padding: 20px 40px !important;
         }
+        
         .industries-swiper .swiper-wrapper {
-          margin: 0 auto !important;
+          align-items: stretch !important;
           display: flex !important;
-          justify-content: center !important;
+        }
+        
+        .industries-swiper .swiper-slide {
+          height: auto !important;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+        
+        .industries-swiper .swiper-slide-active {
+          transform: scale(1.05);
+          z-index: 10;
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+          .industries-swiper .swiper-button-next,
+          .industries-swiper .swiper-button-prev {
+            display: flex !important;
+          }
+          
+          .industries-swiper .swiper-slide-active {
+            transform: none;
+          }
         }
         `
       }}></style>
@@ -162,12 +223,29 @@ const Industries = () => {
             grabCursor={true}
             centeredSlides={true}
             loop={true}
-            slidesPerView={'auto'}
+            slidesPerView={3}
+            initialSlide={Math.floor(industries.length / 2)}
+            spaceBetween={20}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 10
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 20
+              }
+            }}
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
               depth: 100,
               modifier: 2.5,
+              slideShadows: false
             }}
             pagination={{ 
               clickable: true,
@@ -175,14 +253,14 @@ const Industries = () => {
             }}
             navigation={true}
             autoplay={{
-              delay: 3000,
+              delay: 4000,
               disableOnInteraction: false,
             }}
             modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-            className="industries-swiper mx-auto"
+            className="industries-swiper mx-auto py-10"
           >
             {industries.map((industry, index) => (
-              <SwiperSlide key={index} className="swiper-slide flex justify-center" style={{ width: '340px', maxWidth: '100%' }}>
+              <SwiperSlide key={index} className="swiper-slide flex justify-center" style={{ width: '340px', maxWidth: '100%', height: 'auto' }}>
                 <IndustryCard 
                   icon={industry.icon}
                   title={industry.title}
