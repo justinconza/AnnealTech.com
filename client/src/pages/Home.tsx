@@ -42,7 +42,7 @@ const Home = () => {
               "description": "Managed Experience Provider (MEP) delivering enterprise-grade IT, cybersecurity, and technology solutions.",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "1234 Innovation Drive, Suite 500",
+                "streetAddress": "IDK... Logan's house?",
                 "addressLocality": "San Francisco",
                 "addressRegion": "CA",
                 "postalCode": "94105",
