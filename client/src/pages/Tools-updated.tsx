@@ -280,16 +280,22 @@ const ToolCard = ({
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className="h-full"
     >
-      <Card className="bg-white border-0 h-full flex flex-col shadow-lg transition-all duration-300 overflow-hidden relative group">
-        {/* Blue fiery glow effect - no animation */}
-        <div className="absolute -inset-1 bg-blue-600 rounded-xl blur opacity-0 group-hover:opacity-30 transition-all duration-500 group-hover:duration-200"></div>
+      <Card className="bg-white border border-[#114372]/10 h-full flex flex-col shadow-xl transition-all duration-300 overflow-hidden relative group rounded-xl backdrop-blur-sm hover:shadow-[0_0_25px_rgba(17,67,114,0.15)]">
+        {/* Subtle gradient overlay on hover */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] to-[#f0f7ff] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+        
+        {/* Futuristic corner accents */}
+        <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-[#0c3f6d] rounded-tl-lg"></div>
+        <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-[#0c3f6d] rounded-tr-lg"></div>
+        <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-[#0c3f6d] rounded-bl-lg"></div>
+        <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-[#0c3f6d] rounded-br-lg"></div>
         
         <CardHeader className="pb-4 relative z-10">
-          <div className="w-14 h-14 rounded-full bg-[#0c3f6d] flex items-center justify-center mb-4 text-white group-hover:bg-[#154677] transition-colors duration-300 group-hover:scale-110 transform">
-            <Icon className="w-7 h-7" />
+          <div className="w-16 h-16 rounded-xl bg-[#0c3f6d] flex items-center justify-center mb-4 text-white group-hover:bg-[#154677] transition-colors duration-300 group-hover:scale-105 transform shadow-lg">
+            <Icon className="w-8 h-8" />
           </div>
-          <CardTitle className="font-heading text-xl mb-2 text-[#114372] font-bold">{title}</CardTitle>
-          <CardDescription className="text-[#3a6489]">
+          <CardTitle className="font-heading text-xl mb-2 text-[#114372] font-bold group-hover:translate-x-1 transition-transform duration-300">{title}</CardTitle>
+          <CardDescription className="text-[#3a6489] font-medium">
             {description}
           </CardDescription>
         </CardHeader>
@@ -309,14 +315,15 @@ const ToolCard = ({
           ) : (
             <Button 
               variant="default" 
-              className="w-full bg-[#0c3f6d] hover:bg-[#154677] text-white transition-all duration-300 relative overflow-hidden group"
+              className="w-full bg-[#0c3f6d] hover:bg-[#154677] text-white transition-all duration-300 relative overflow-hidden group rounded-lg"
               onClick={onOpenTool}
             >
-              <span className="relative z-10">Launch Tool</span>
+              <span className="relative z-10 font-medium">Launch Tool</span>
               <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
               
-              {/* Button hover effect */}
-              <span className="absolute bottom-0 left-0 w-full h-0 group-hover:h-full bg-[#154677] transition-all duration-300"></span>
+              {/* Button hover effect with digital pattern */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iLjUiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTAgMTVIMTVWMEgweiIvPjxwYXRoIGQ9Ik0wIDMwSDE1VjE1SDB6Ii8+PHBhdGggZD0iTTAgNDVIMTVWMzBIMHoiLz48cGF0aCBkPSJNMCA2MEgxNVY0NUgweiIvPjxwYXRoIGQ9Ik0xNSAwSDMwVjE1SDE1eiIvPjxwYXRoIGQ9Ik0xNSAxNUgzMFYzMEgxNXoiLz48cGF0aCBkPSJNMTUgMzBIMzBWNDVIMTV6Ii8+PHBhdGggZD0iTTE1IDQ1SDMwVjYwSDE1eiIvPjxwYXRoIGQ9Ik0zMCAwSDQ1VjE1SDMweiIvPjxwYXRoIGQ9Ik0zMCAxNUg0NVYzMEgzMHoiLz48cGF0aCBkPSJNMzAgMzBINDVWNDVIMzB6Ii8+PHBhdGggZD0iTTMwIDQ1SDQ1VjYwSDMweiIvPjxwYXRoIGQ9Ik00NSAwSDYwVjE1SDQ1eiIvPjxwYXRoIGQ9Ik00NSAxNUg2MFYzMEg0NXoiLz48cGF0aCBkPSJNNDUgMzBINjBWNDVINDV6Ii8+PHBhdGggZD0iTTQ1IDQ1SDYwVjYwSDQ1eiIvPjwvZz48L3N2Zz4=')]"></div>
+              <span className="absolute bottom-0 left-0 w-full h-0 group-hover:h-full bg-[#154677] transition-all duration-300 z-0"></span>
             </Button>
           )}
         </CardFooter>
@@ -543,14 +550,14 @@ const ToolsPage = () => {
           {/* Category Tabs */}
           <div className="mb-12">
             <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-              <TabsList className="bg-slate-800/50 p-1 rounded-lg border border-[#114372]/20 flex flex-wrap gap-2 justify-center w-full py-4">
+              <TabsList className="bg-white p-2 rounded-xl border border-[#114372]/20 flex flex-wrap gap-2 justify-center w-full shadow-md">
                 {categories.map((category) => {
                   const Icon = category.icon;
                   return (
                     <TabsTrigger 
                       key={category.id} 
                       value={category.id}
-                      className="px-4 py-3 data-[state=active]:bg-[#0c3f6d] data-[state=active]:text-white transition-all duration-200"
+                      className="px-5 py-3 data-[state=active]:bg-[#0c3f6d] data-[state=active]:text-white hover:bg-[#f0f7ff] text-[#114372] font-medium transition-all duration-200 rounded-lg"
                     >
                       <div className="flex items-center gap-2">
                         <Icon className="h-4 w-4" />
@@ -564,8 +571,8 @@ const ToolsPage = () => {
               {/* Filter Indicators */}
               <div className="mt-6 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Filter className="h-4 w-4 text-slate-400" />
-                  <span className="text-sm text-slate-300">
+                  <Filter className="h-4 w-4 text-[#114372]" />
+                  <span className="text-sm text-[#3a6489] font-medium">
                     {searchQuery 
                       ? `Search results for "${searchQuery}"` 
                       : `Viewing: ${categories.find(c => c.id === activeCategory)?.label || 'All Tools'}`
@@ -573,7 +580,7 @@ const ToolsPage = () => {
                   </span>
                   
                   {searchQuery && (
-                    <Badge variant="outline" className="ml-2 border-blue-500/20 text-slate-300">
+                    <Badge variant="outline" className="ml-2 border-[#114372]/20 text-[#114372] bg-white">
                       {filteredTools.length} {filteredTools.length === 1 ? 'result' : 'results'}
                     </Badge>
                   )}
@@ -584,7 +591,7 @@ const ToolsPage = () => {
                   <Button 
                     variant="outline" 
                     size="sm"
-                    className="border-blue-500/20 text-slate-300 hover:text-blue-300 hover:border-blue-500/40"
+                    className="border-[#114372]/30 text-[#114372] hover:bg-[#f0f7ff] hover:border-[#114372]/50 rounded-lg"
                     onClick={() => setActiveCategory("all")}
                   >
                     Show All
@@ -592,7 +599,7 @@ const ToolsPage = () => {
                   <Button 
                     variant="outline" 
                     size="sm"
-                    className="border-blue-500/20 text-slate-300 hover:text-blue-300 hover:border-blue-500/40"
+                    className="border-[#114372]/30 text-[#114372] hover:bg-[#f0f7ff] hover:border-[#114372]/50 rounded-lg"
                     onClick={() => {
                       setActiveCategory("all");
                       setSearchQuery("");
