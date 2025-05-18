@@ -256,7 +256,7 @@ const CTA = () => {
           whileTap={{ scale: 0.98 }}
         >
           <span className="relative z-10 inline-flex items-center">
-            Start the Free Assessment 
+            Begin Your Assessment 
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </span>
           <span className="absolute inset-0 z-0 bg-white group-hover:bg-[#0d4f86] transition-colors"></span>
