@@ -512,99 +512,178 @@ const PCaaS: React.FC = () => {
         {/* Digital circuit pattern background */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0iIzRCOUZGRiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMiI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2Mmg0djRoMnYtNGg0di0yaC00em0wLTMwVjBoLTJ2NGgtNHYyaDR2NGgyVjZoNFY0aC00ek02IDM0di00SDR2NEgwdjJoNHY0aDJ2LTRoNHYtMkg2ek02IDRWMEg0djRIMHYyaDR2NGgyVjZoNFY0SDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
         
-        {/* Animated particles */}
+        {/* Digital circuit animation */}
         <div className="absolute inset-0">
-          {[...Array(50)].map((_, i) => (
+          {/* Horizontal lines */}
+          {[...Array(8)].map((_, i) => (
             <motion.div
-              key={i}
-              className="absolute rounded-full bg-blue-400"
+              key={`h-line-${i}`}
+              className="absolute h-[1px] bg-gradient-to-r from-transparent via-blue-400/60 to-transparent"
               style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                opacity: Math.random() * 0.5 + 0.1,
-                boxShadow: `0 0 ${Math.random() * 6 + 2}px ${Math.random() * 3 + 1}px rgba(59, 130, 246, 0.4)`
+                top: `${12 + i * 12}%`,
+                left: '0',
+                right: '0',
               }}
               animate={{
-                y: [0, -15, 0],
-                opacity: [0.1, 0.3, 0.1]
+                opacity: [0.1, 0.4, 0.1],
+                scaleX: [0.8, 1, 0.8],
               }}
               transition={{
-                duration: Math.random() * 10 + 10,
+                duration: 8,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
+                delay: i * 0.5,
+              }}
+            />
+          ))}
+          
+          {/* Vertical lines */}
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={`v-line-${i}`}
+              className="absolute w-[1px] bg-gradient-to-b from-transparent via-blue-400/60 to-transparent"
+              style={{
+                left: `${8 + i * 7}%`,
+                top: '0',
+                bottom: '0',
+              }}
+              animate={{
+                opacity: [0.1, 0.3, 0.1],
+                scaleY: [0.7, 1, 0.7],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.3,
+              }}
+            />
+          ))}
+          
+          {/* Data pulse effects - circular */}
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={`pulse-${i}`}
+              className="absolute rounded-full bg-blue-400"
+              style={{
+                width: '4px',
+                height: '4px',
+                left: `${15 + (i % 5) * 18}%`,
+                top: `${20 + Math.floor(i / 5) * 25}%`,
+              }}
+              animate={{
+                scale: [1, 3, 1],
+                opacity: [0.7, 0, 0.7],
+                boxShadow: [
+                  '0 0 0px 0px rgba(59, 130, 246, 0.4)',
+                  '0 0 8px 2px rgba(59, 130, 246, 0.6)',
+                  '0 0 0px 0px rgba(59, 130, 246, 0.4)'
+                ]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.6,
+                times: [0, 0.5, 1]
               }}
             />
           ))}
         </div>
         
-        {/* Glowing orbs */}
+        {/* Digital nodes with connection lines */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(12)].map((_, i) => {
+            const x1 = 5 + Math.random() * 90;
+            const y1 = 5 + Math.random() * 90;
+            const x2 = 5 + Math.random() * 90;
+            const y2 = 5 + Math.random() * 90;
+            
+            return (
+              <React.Fragment key={`node-connection-${i}`}>
+                {/* Node 1 */}
+                <motion.div
+                  className="absolute w-2 h-2 rounded-full bg-blue-300/80"
+                  style={{
+                    left: `${x1}%`,
+                    top: `${y1}%`,
+                    boxShadow: '0 0 5px 2px rgba(59, 130, 246, 0.4)'
+                  }}
+                  animate={{
+                    opacity: [0.3, 0.8, 0.3],
+                    scale: [1, 1.2, 1]
+                  }}
+                  transition={{
+                    duration: 2 + Math.random() * 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: i * 0.2
+                  }}
+                />
+              
+                {/* Connection line */}
+                <motion.svg
+                  className="absolute inset-0 z-0 opacity-30"
+                  style={{ overflow: 'visible' }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.3 }}
+                  transition={{ duration: 1, delay: i * 0.3 }}
+                >
+                  <motion.line
+                    x1={`${x1}%`}
+                    y1={`${y1}%`}
+                    x2={`${x2}%`}
+                    y2={`${y2}%`}
+                    stroke="url(#blue-line-gradient)"
+                    strokeWidth="1"
+                    strokeDasharray="5,5"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 2, delay: i * 0.3 }}
+                  />
+                </motion.svg>
+              </React.Fragment>
+            );
+          })}
+        </div>
+        
+        {/* Background glow effects */}
         <motion.div 
-          className="absolute left-1/4 bottom-1/3 w-96 h-96 rounded-full bg-blue-500/10 blur-[100px]"
+          className="absolute left-1/3 top-1/2 w-[40vw] h-[40vw] rounded-full bg-blue-500/5 blur-[120px]"
           animate={{
-            opacity: [0.3, 0.5, 0.3],
-            scale: [1, 1.1, 1]
+            opacity: [0.2, 0.4, 0.2],
+            scale: [0.8, 1.2, 0.8]
           }}
           transition={{
-            duration: 8,
+            duration: 15,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         
         <motion.div 
-          className="absolute right-1/4 top-1/4 w-64 h-64 rounded-full bg-blue-400/10 blur-[80px]"
+          className="absolute right-1/3 bottom-1/3 w-[30vw] h-[30vw] rounded-full bg-blue-400/5 blur-[100px]"
           animate={{
-            opacity: [0.2, 0.4, 0.2],
-            scale: [1, 1.2, 1]
+            opacity: [0.1, 0.3, 0.1],
+            scale: [1, 1.5, 1]
           }}
           transition={{
-            duration: 10,
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 2
+            delay: 5
           }}
         />
         
-        {/* Animated grid lines */}
-        <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+        {/* SVG definitions and patterns */}
+        <svg className="absolute inset-0 w-full h-full opacity-0" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="features-grid-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="blue-line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#4B9FFF" stopOpacity="0.8" />
               <stop offset="50%" stopColor="#4B9FFF" stopOpacity="1" />
               <stop offset="100%" stopColor="#4B9FFF" stopOpacity="0.8" />
             </linearGradient>
           </defs>
-          <g>
-            <motion.path 
-              d="M0,80 Q250,30 500,80 T1000,80" 
-              stroke="url(#features-grid-gradient)" 
-              strokeWidth="0.5" 
-              fill="none" 
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 3 }}
-            />
-            <motion.path 
-              d="M0,180 Q250,130 500,180 T1000,180" 
-              stroke="url(#features-grid-gradient)" 
-              strokeWidth="0.5" 
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 3, delay: 0.2 }}
-            />
-            <motion.path 
-              d="M0,280 Q250,230 500,280 T1000,280" 
-              stroke="url(#features-grid-gradient)" 
-              strokeWidth="0.5" 
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 3, delay: 0.4 }}
-            />
-          </g>
         </svg>
         
         <div className="container mx-auto px-4 relative z-10">
