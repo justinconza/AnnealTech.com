@@ -92,33 +92,41 @@ const BlogSlider = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-16 bg-gradient-to-b from-[#0a1a35] to-[#081428] relative overflow-hidden"
+      className="py-16 bg-gradient-to-b from-gray-50 to-gray-100 relative overflow-hidden"
     >
-      {/* Interactive digital background elements */}
-      <div className="absolute inset-0 opacity-30" 
+      {/* Futuristic white/gray texture background */}
+      <div className="absolute inset-0 opacity-40" 
         style={{
-          backgroundImage: "radial-gradient(circle at 25px 25px, rgba(90, 142, 197, 0.15) 2px, transparent 0), radial-gradient(circle at 75px 75px, rgba(90, 142, 197, 0.15) 2px, transparent 0)",
+          backgroundImage: "radial-gradient(circle at 25px 25px, rgba(100, 100, 100, 0.1) 2px, transparent 0), radial-gradient(circle at 75px 75px, rgba(120, 120, 120, 0.1) 2px, transparent 0)",
           backgroundSize: "30px 30px"
+        }}
+      ></div>
+      
+      {/* Circuit pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23000000' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
         }}
       ></div>
       
       {/* Animated particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-white"
+            className="absolute rounded-full bg-gray-400"
             initial={{
               width: Math.random() * 3 + 1,
               height: Math.random() * 3 + 1,
               x: `${Math.random() * 100}%`,
               y: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.3 + 0.1
+              opacity: Math.random() * 0.1 + 0.05
             }}
             animate={{
               x: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
               y: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
-              opacity: [0.1, 0.3, 0.1],
+              opacity: [0.05, 0.1, 0.05],
             }}
             transition={{
               duration: 20 + Math.random() * 30,
@@ -134,7 +142,7 @@ const BlogSlider = () => {
       <motion.div 
         className="absolute w-[200%] h-[200%] pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(90, 142, 197, 0.1) 0%, transparent 50%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(180, 180, 180, 0.15) 0%, transparent 50%)',
           left: `${mousePosition.x * 100 - 100}%`,
           top: `${mousePosition.y * 100 - 100}%`
         }}
@@ -143,13 +151,13 @@ const BlogSlider = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section title */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4">
             <span className="inline-block relative">
               Latest IT Insights
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-white"></span>
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-gray-400"></span>
             </span>
           </h2>
-          <p className="text-lg text-blue-100 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Stay updated with the latest trends and solutions in IT management and cybersecurity
           </p>
         </div>
@@ -161,13 +169,13 @@ const BlogSlider = () => {
             <Button
               variant="outline"
               size="icon"
-              className={`rounded-full bg-[#0a1a35] border-white/30 shadow-md hover:bg-[#0d2347] transition-all ${
+              className={`rounded-full bg-white border-gray-300 shadow-md hover:bg-gray-100 transition-all ${
                 currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               onClick={prevSlide}
               disabled={currentIndex === 0}
             >
-              <ArrowLeft className="h-5 w-5 text-white" />
+              <ArrowLeft className="h-5 w-5 text-gray-600" />
             </Button>
           </div>
           
@@ -175,13 +183,13 @@ const BlogSlider = () => {
             <Button
               variant="outline"
               size="icon"
-              className={`rounded-full bg-[#0a1a35] border-white/30 shadow-md hover:bg-[#0d2347] transition-all ${
+              className={`rounded-full bg-white border-gray-300 shadow-md hover:bg-gray-100 transition-all ${
                 currentIndex === maxIndex ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               onClick={nextSlide}
               disabled={currentIndex === maxIndex}
             >
-              <ArrowRight className="h-5 w-5 text-white" />
+              <ArrowRight className="h-5 w-5 text-gray-600" />
             </Button>
           </div>
 
@@ -231,7 +239,7 @@ const BlogSlider = () => {
         {/* View all button */}
         <div className="text-center mt-10">
           <Link href="/blog">
-            <Button className="bg-white hover:bg-blue-50 text-[#0a1a35] px-6 py-2 rounded-md shadow-md hover:shadow-lg transition-all font-medium border border-white/10">
+            <Button className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-2 rounded-md shadow-md hover:shadow-lg transition-all font-medium border border-gray-700">
               View All Articles
             </Button>
           </Link>
