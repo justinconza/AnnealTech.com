@@ -1,0 +1,79 @@
+Implement advanced, automated SEO optimization across the entire website to ensure maximum visibility, indexability, and structured performance in search engines.
+
+Objectives:
+1. Sitewide SEO metadata and Open Graph control
+2. Structured data (Schema.org) for key page types
+3. Automated sitemap and robots.txt generation
+4. SEO-friendly routing and canonicalization
+5. Automatic metadata population for future pages
+
+---
+
+1. 🧱 HTML Head Management
+- Create a shared head layout component (e.g., `SeoHead.jsx` or `seo-head.ejs`)
+- Inject the following dynamically per page:
+  - `<title>` (fallback: `{{ page.title || site.name }}`)
+  - `<meta name="description">` (auto-generated or per-page)
+  - `<meta name="robots">` (default `index, follow`)
+  - Open Graph & Twitter card tags
+  - `<link rel="canonical">` (automatically generate from current URL)
+  - `<meta name="viewport" content="width=device-width, initial-scale=1">`
+
+---
+
+2. 📚 Structured Data (JSON-LD)
+- Inject Schema.org JSON-LD into head using dynamic template
+- Support types:
+  - `WebSite` with `SearchAction` (`@type: "WebSite"`)
+  - `Organization` with AnnealTech name, logo, social links
+  - For blog posts or industry pages: `Article` or `Service`
+  - Location-specific pages: `LocalBusiness` if applicable
+- Auto-fill variables (name, URL, image, description) from config or CMS
+
+---
+
+3. 🗺️ Sitemap & Robots.txt
+- Create an Express route or build-time script that auto-generates:
+  - `/sitemap.xml` based on dynamic routes or file structure
+  - `/robots.txt` with default:
+    ```
+    User-agent: *
+    Allow: /
+    Sitemap: https://www.annealtech.com/sitemap.xml
+    ```
+
+---
+
+4. 🔗 URL Structure & Canonicalization
+- Use clean, hyphenated, lowercase slugs (e.g., `/services/cloud-security`)
+- Auto-add canonical `<link>` on every page to avoid duplicate content issues
+- Optionally add rel=“prev” and “next” for paginated content
+
+---
+
+5. 🔄 Automatic SEO Updates on New Pages
+- Integrate SEO defaults into page template system:
+  - Any new page should inherit `SeoHead` with dynamic `<title>`, `<meta>`, OG tags, canonical
+- Set fallback values in a site-wide SEO config file (`seo.config.js` or `.json`)
+- Optional: Add support for frontmatter (`--- title: "..." description: "..." ---`) if using static generation
+
+---
+
+6. 🔍 Performance & Indexing Validation
+- Add `<meta name="google-site-verification" content="..." />`
+- Setup 404 handling and redirects
+- Add `hreflang` if targeting multiple regions/languages
+- Ensure Lighthouse SEO score is consistently 95+
+
+---
+
+7. ✨ Bonus (if blog or CMS used):
+- Automatically generate OG images per page (via Cloudinary, Vercel OG, or static)
+- Inject readable breadcrumbs with `BreadcrumbList` JSON-LD
+
+---
+
+Final Deliverable:
+- Fully SEO-optimized site scaffold with reusable components
+- Automation logic for future pages
+- Validated output via Google Rich Results Test, Lighthouse, and schema validator
