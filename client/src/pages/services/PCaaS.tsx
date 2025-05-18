@@ -507,9 +507,105 @@ const PCaaS: React.FC = () => {
         </div>
       </section>
       
-      {/* Key Features & Benefits Section */}
-      <section className="py-16 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-50"></div>
+      {/* Key Features & Benefits Section - Futuristic Dark Blue */}
+      <section className="py-16 bg-gradient-to-b from-[#072749] to-blue-900 text-white relative overflow-hidden">
+        {/* Digital circuit pattern background */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0iIzRCOUZGRiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMiI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2Mmg0djRoMnYtNGg0di0yaC00em0wLTMwVjBoLTJ2NGgtNHYyaDR2NGgyVjZoNFY0aC00ek02IDM0di00SDR2NEgwdjJoNHY0aDJ2LTRoNHYtMkg2ek02IDRWMEg0djRIMHYyaDR2NGgyVjZoNFY0SDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
+        
+        {/* Animated particles */}
+        <div className="absolute inset-0">
+          {[...Array(50)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-blue-400"
+              style={{
+                width: `${Math.random() * 3 + 1}px`,
+                height: `${Math.random() * 3 + 1}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.5 + 0.1,
+                boxShadow: `0 0 ${Math.random() * 6 + 2}px ${Math.random() * 3 + 1}px rgba(59, 130, 246, 0.4)`
+              }}
+              animate={{
+                y: [0, -15, 0],
+                opacity: [0.1, 0.3, 0.1]
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Glowing orbs */}
+        <motion.div 
+          className="absolute left-1/4 bottom-1/3 w-96 h-96 rounded-full bg-blue-500/10 blur-[100px]"
+          animate={{
+            opacity: [0.3, 0.5, 0.3],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        <motion.div 
+          className="absolute right-1/4 top-1/4 w-64 h-64 rounded-full bg-blue-400/10 blur-[80px]"
+          animate={{
+            opacity: [0.2, 0.4, 0.2],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
+        
+        {/* Animated grid lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="features-grid-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#4B9FFF" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#4B9FFF" stopOpacity="1" />
+              <stop offset="100%" stopColor="#4B9FFF" stopOpacity="0.8" />
+            </linearGradient>
+          </defs>
+          <g>
+            <motion.path 
+              d="M0,80 Q250,30 500,80 T1000,80" 
+              stroke="url(#features-grid-gradient)" 
+              strokeWidth="0.5" 
+              fill="none" 
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 3 }}
+            />
+            <motion.path 
+              d="M0,180 Q250,130 500,180 T1000,180" 
+              stroke="url(#features-grid-gradient)" 
+              strokeWidth="0.5" 
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 3, delay: 0.2 }}
+            />
+            <motion.path 
+              d="M0,280 Q250,230 500,280 T1000,280" 
+              stroke="url(#features-grid-gradient)" 
+              strokeWidth="0.5" 
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 3, delay: 0.4 }}
+            />
+          </g>
+        </svg>
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -519,23 +615,55 @@ const PCaaS: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-slate-800">
-              Key Features & Benefits
+            <div className="inline-block p-3 bg-blue-600/30 rounded-full mb-6 backdrop-blur-sm border border-blue-500/20">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white">
+                <Server className="h-7 w-7" />
+              </div>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
+              Key Features & <span className="text-blue-300">Benefits</span>
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               Comprehensive services that transform how you procure, deploy, and manage your endpoint devices
             </p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <FeatureCard
+              <motion.div
                 key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-                index={index}
-              />
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ 
+                  y: -10,
+                  boxShadow: "0 15px 30px -5px rgba(0, 0, 0, 0.5)"
+                }}
+                className="relative bg-blue-800/40 backdrop-blur-sm rounded-xl overflow-hidden border border-blue-400/30 shadow-lg shadow-blue-900/50 p-6 h-full"
+              >
+                {/* Glowing border effect */}
+                <div className="absolute inset-0 rounded-xl border border-blue-400/40 overflow-hidden">
+                  <div className="absolute inset-0 opacity-30 bg-grid-pattern"></div>
+                </div>
+                
+                {/* Background corner accent */}
+                <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden">
+                  <div className="absolute top-0 right-0 transform translate-x-[16px] translate-y-[-16px] rotate-45 bg-blue-500/20 w-[20px] h-[40px]"></div>
+                </div>
+                
+                <div className="flex items-center gap-4 mb-5 relative z-10">
+                  <div className="w-12 h-12 rounded-lg bg-blue-900/60 flex items-center justify-center border border-blue-400/30 shadow-inner shadow-blue-950/50">
+                    <feature.icon size={24} className="text-blue-300" />
+                  </div>
+                  <h3 className="text-xl font-heading font-semibold text-white">{feature.title}</h3>
+                </div>
+                
+                <p className="text-blue-100 pl-16 relative z-10">{feature.description}</p>
+                
+                {/* Bottom gradient */}
+                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-blue-400/20 to-transparent"></div>
+              </motion.div>
             ))}
           </div>
         </div>
