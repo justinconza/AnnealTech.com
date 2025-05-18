@@ -275,7 +275,7 @@ const ComparisonSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-center mt-16"
+          className="text-center mt-16 pb-20"
         >
           <a 
             href="/services" 
