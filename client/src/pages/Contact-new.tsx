@@ -633,10 +633,11 @@ const ContactPage = () => {
                 >
                   <button
                     onClick={scrollToForm}
-                    className="flex items-center gap-2 text-[#0d4f86] font-medium hover:text-[#0a4270] transition-colors"
+                    className="flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium px-6 py-3 rounded-lg transition-colors shadow"
                   >
+                    <Mail className="w-5 h-5 text-gray-600" />
                     Prefer email? Send a quick message
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </motion.div>
               </div>
