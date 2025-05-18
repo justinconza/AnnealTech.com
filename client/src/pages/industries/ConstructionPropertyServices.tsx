@@ -263,9 +263,12 @@ const FieldRisksSection = () => {
   }));
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-blue-900 to-blue-800 relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-[#072749] to-[#0a3260] relative overflow-hidden">
       {/* Blueprint mesh background animation */}
       <div className="absolute inset-0">
+        {/* Blueprint overlay pattern */}
+        <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBzdHJva2U9IiMxYTRkOGEiIHN0cm9rZS13aWR0aD0iLjUiIGZpbGw9Im5vbmUiPjxwYXRoIGQ9Ik0wIDAgaDEwMCB2MTAwIGgtMTAwIHoiLz48cGF0aCBkPSJNMjUgMCB2MTAwIi8+PHBhdGggZD0iTTUwIDAgdjEwMCIvPjxwYXRoIGQ9Ik03NSAwIHYxMDAiLz48cGF0aCBkPSJNMCAyNSBoMTAwIi8+PHBhdGggZD0iTTAgNTAgaDEwMCIvPjxwYXRoIGQ9Ik0wIDc1IGgxMDAiLz48Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSIzIi8+PGNpcmNsZSBjeD0iNzUiIGN5PSI3NSIgcj0iMyIvPjwvZz48L3N2Zz4=')]"></div>
+      
         {/* Blueprint grid lines */}
         {gridLines.map((line) => (
           <motion.div
@@ -284,6 +287,30 @@ const FieldRisksSection = () => {
               duration: line.animationDuration,
               repeat: Infinity,
               ease: "linear"
+            }}
+          />
+        ))}
+        
+        {/* Digital glow effects */}
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={`glow-${i}`}
+            className="absolute rounded-full bg-blue-400/10 blur-3xl"
+            style={{
+              width: `${Math.random() * 300 + 100}px`,
+              height: `${Math.random() * 300 + 100}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.15 + 0.05
+            }}
+            animate={{
+              opacity: [0.05, 0.15, 0.05],
+              scale: [0.8, 1.2, 0.8]
+            }}
+            transition={{
+              duration: Math.random() * 10 + 15,
+              repeat: Infinity,
+              ease: "easeInOut"
             }}
           />
         ))}
