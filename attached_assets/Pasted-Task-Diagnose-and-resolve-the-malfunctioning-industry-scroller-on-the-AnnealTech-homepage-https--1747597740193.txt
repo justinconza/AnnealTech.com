@@ -1,0 +1,89 @@
+Task:
+Diagnose and resolve the malfunctioning industry scroller on the AnnealTech homepage (https://anneal-devsite.replit.app/). The scroller should display industry cards in a responsive, interactive carousel format consistent with AnnealTech’s branding.
+
+---
+
+🎯 CORE OBJECTIVES:
+
+- Ensure the scroller displays all industry cards correctly.
+- Implement responsive design for optimal viewing on all devices.
+- Incorporate interactive elements (e.g., hover effects, navigation controls).
+- Align the scroller's design with AnnealTech’s branding: dark/light contrast, blue glows, clean grids, and tech-forward visuals.
+
+---
+
+🔍 DIAGNOSTIC STEPS:
+
+1. **Inspect the Scroller Element:**
+   - Use browser developer tools to examine the scroller's HTML and CSS.
+   - Verify that the scroller's container is present in the DOM and that it has the correct styles applied.
+
+2. **Check for JavaScript Errors:**
+   - Open the browser console to look for any JavaScript errors that might be preventing the scroller from initializing or functioning properly.
+
+3. **Review Plugin or Library Integration:**
+   - If a third-party library (e.g., Swiper.js, Slick Carousel) is used, ensure it is correctly integrated and initialized.
+
+4. **Test in Different Browsers:**
+   - Check if the scroller issue persists across different browsers to rule out browser-specific problems.
+
+---
+
+📐 IMPLEMENTATION GUIDELINES:
+
+- **Structure:**
+  - Use a `<div>` container with a class like `.industry-scroller` to house the industry cards.
+  - Each industry card should be a child `<div>` with appropriate classes for styling and interactivity.
+
+- **Styling:**
+  - Apply CSS to create a horizontal scrolling effect with smooth transitions.
+  - Use media queries to adjust the number of visible cards based on screen size.
+
+- **Interactivity:**
+  - Implement navigation controls (e.g., previous/next buttons) for manual scrolling.
+  - Add hover effects to industry cards for enhanced user engagement.
+
+- **Accessibility:**
+  - Ensure that the scroller is navigable via keyboard for accessibility compliance.
+
+---
+
+🎨 DESIGN ELEMENTS:
+
+- **Colors:**
+  - Primary Blue: `#0d4f86`
+  - Accents: Soft light blues, steel, white-on-dark text
+  - Backgrounds: Deep slate/navy with subtle gradients or animated overlays
+
+- **Typography:**
+  - Bold, modern sans-serif fonts
+  - Large titles with responsive scaling
+  - Clear, readable paragraph and bullet copy
+
+- **Effects & Motion:**
+  - Hover glow + slight card lift
+  - Smooth scrolling animations
+  - Responsive adjustments for different screen sizes
+
+---
+
+📱 RESPONSIVE DESIGN:
+
+- Fully responsive layout with mobile-first approach
+- Industry cards stack vertically or adjust in size on smaller screens
+- Touch-friendly interactions and appropriately sized tap targets
+
+---
+
+🔧 OPTIONAL TOOLS:
+
+- TailwindCSS for rapid utility classes
+- Swiper.js or Slick Carousel for advanced carousel functionality
+- AOS.js or GSAP for scroll animations
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS or component-based structure (React-friendly if needed)
+- Code should be clean, accessible, and optimized for Replit

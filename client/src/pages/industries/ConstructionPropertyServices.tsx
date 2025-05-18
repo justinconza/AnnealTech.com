@@ -251,147 +251,32 @@ const FieldRisksSection = () => {
       icon: Clock
     }
   ];
-  
-  // Reference to the section for mouse movement tracking
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
-  // Handle mouse movement for parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (sectionRef.current) {
-        const { left, top, width, height } = sectionRef.current.getBoundingClientRect();
-        const x = (e.clientX - left) / width;
-        const y = (e.clientY - top) / height;
-        setMousePosition({ x, y });
-      }
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-  
-  // Define particle type
-  interface Particle {
-    id: number;
-    size: number;
-    x: number;
-    y: number;
-    opacity: number;
-    speed: number;
-  }
-  
-  // Dynamic particles for interactive background
-  const particles = useMemo<Particle[]>(() => {
-    return Array.from({ length: 40 }, (_, i) => ({
-      id: i,
-      size: Math.random() * 3 + 1,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      opacity: Math.random() * 0.5 + 0.1,
-      speed: Math.random() * 20 + 15
-    }));
-  }, []);
+
+  // Static blue particles for background
+  const staticParticles = Array.from({ length: 40 }, (_, i) => ({
+    id: i,
+    size: Math.floor(Math.random() * 3) + 1,
+    x: Math.floor(Math.random() * 100),
+    y: Math.floor(Math.random() * 100),
+    opacity: (Math.random() * 0.5 + 0.1).toFixed(2),
+    shadow: Math.floor(Math.random() * 6) + 2
+  }));
 
   return (
-    <section 
-      ref={sectionRef} 
-      className="py-16 md:py-24 bg-gradient-to-b from-[#0d4f86] to-[#072749] relative overflow-hidden"
-    >
-      {/* Interactive digital background */}
+    <section className="py-16 md:py-24 bg-gradient-to-b from-[#0d4f86] to-[#072749] relative overflow-hidden">
+      {/* Static digital background */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Base gradient overlay */}
-        <div 
-          className="absolute inset-0 bg-gradient-radial from-[#0d4f86]/50 to-[#072749]/80"
-          style={{
-            transform: `translate(${(mousePosition.x - 0.5) * -20}px, ${(mousePosition.y - 0.5) * -20}px)`,
-            transition: 'transform 0.5s ease-out'
-          }}
-        ></div>
+        <div className="absolute inset-0 bg-gradient-radial from-[#0d4f86]/50 to-[#072749]/80"></div>
         
         {/* Digital circuit pattern */}
-        <div 
-          className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0iIzRCOUZGRiIgc3Ryb2tlLXdpZHRoPSIwLjUiPjxwYXRoIGQ9Ik0zNiAzNHYtNGgtMnY0aC00djJoNHY0aDJ2LTRoNHYtMmgtNHptMC0zMFYwaC0ydjRoLTR2Mmg0djRoMlY2aDRWNGgtNHpNNiAzNHYtNEg0djRIMHYyaDR2NGgydi00aDR2LTJINnpNNiA0VjBINHY0SDB2Mmg0djRoMlY2aDRWNEg2eiIvPjwvZz48L2c+PC9zdmc+')]"
-          style={{
-            transform: `translate(${(mousePosition.x - 0.5) * -10}px, ${(mousePosition.y - 0.5) * -10}px)`,
-            transition: 'transform 0.8s ease-out'
-          }}
-        ></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0iIzRCOUZGRiIgc3Ryb2tlLXdpZHRoPSIwLjUiPjxwYXRoIGQ9Ik0zNiAzNHYtNGgtMnY0aC00djJoNHY0aDJ2LTRoNHYtMmgtNHptMC0zMFYwaC0ydjRoLTR2Mmg0djRoMlY2aDRWNGgtNHpNNiAzNHYtNEg0djRIMHYyaDR2NGgydi00aDR2LTJINnpNNiA0VjBINHY0SDB2Mmg0djRoMlY2aDRWNEg2eiIvPjwvZz48L2c+PC9zdmc+')]"></div>
         
-        {/* Floating particles */}
-        {particles.map((particle: Particle) => (
-          <motion.div
-            key={particle.id}
-            className="absolute rounded-full bg-blue-400"
-            style={{
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              opacity: particle.opacity,
-              boxShadow: `0 0 ${particle.size * 2}px ${particle.size}px rgba(59, 130, 246, 0.3)`
-            }}
-            animate={{
-              x: [
-                (mousePosition.x - 0.5) * -30, 
-                (mousePosition.x - 0.5) * -15, 
-                (mousePosition.x - 0.5) * -30
-              ],
-              y: [
-                (mousePosition.y - 0.5) * -30, 
-                (mousePosition.y - 0.5) * -15, 
-                (mousePosition.y - 0.5) * -30
-              ],
-              opacity: [particle.opacity, particle.opacity * 1.5, particle.opacity]
-            }}
-            transition={{
-              duration: particle.speed,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        ))}
+        {/* Static glowing orbs */}
+        <div className="absolute left-1/4 top-1/3 w-96 h-96 rounded-full bg-[#0d4f86]/20 blur-[100px]"></div>
+        <div className="absolute right-1/4 bottom-1/4 w-64 h-64 rounded-full bg-[#3A6EA5]/15 blur-[80px]"></div>
         
-        {/* Glowing orbs */}
-        <motion.div 
-          className="absolute left-1/4 top-1/3 w-96 h-96 rounded-full bg-[#0d4f86]/20 blur-[100px]"
-          style={{
-            x: (mousePosition.x - 0.5) * -40,
-            y: (mousePosition.y - 0.5) * -40,
-          }}
-          animate={{
-            opacity: [0.3, 0.5, 0.3],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        <motion.div 
-          className="absolute right-1/4 bottom-1/4 w-64 h-64 rounded-full bg-[#3A6EA5]/15 blur-[80px]"
-          style={{
-            x: (mousePosition.x - 0.5) * -20,
-            y: (mousePosition.y - 0.5) * -20,
-          }}
-          animate={{
-            opacity: [0.2, 0.4, 0.2],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
-        
-        {/* Network lines */}
+        {/* Static network lines */}
         <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="network-line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -400,12 +285,7 @@ const FieldRisksSection = () => {
               <stop offset="100%" stopColor="#0d4f86" stopOpacity="0.8" />
             </linearGradient>
           </defs>
-          <g
-            style={{
-              transform: `translate(${(mousePosition.x - 0.5) * -5}px, ${(mousePosition.y - 0.5) * -5}px)`,
-              transition: 'transform 1s ease-out'
-            }}
-          >
+          <g>
             <path d="M0,50 Q250,0 500,50 T1000,50" stroke="url(#network-line-gradient)" strokeWidth="0.5" fill="none" />
             <path d="M0,150 Q250,100 500,150 T1000,150" stroke="url(#network-line-gradient)" strokeWidth="0.5" fill="none" />
             <path d="M0,250 Q250,200 500,250 T1000,250" stroke="url(#network-line-gradient)" strokeWidth="0.5" fill="none" />
@@ -413,6 +293,24 @@ const FieldRisksSection = () => {
             <path d="M0,450 Q250,400 500,450 T1000,450" stroke="url(#network-line-gradient)" strokeWidth="0.5" fill="none" />
           </g>
         </svg>
+        
+        {/* Static particle dots */}
+        <div className="absolute inset-0">
+          {staticParticles.map((particle) => (
+            <div
+              key={particle.id}
+              className="absolute rounded-full bg-blue-400"
+              style={{
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                left: `${particle.x}%`,
+                top: `${particle.y}%`,
+                opacity: particle.opacity,
+                boxShadow: `0 0 ${particle.shadow}px ${particle.size}px rgba(59, 130, 246, 0.3)`
+              }}
+            />
+          ))}
+        </div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
