@@ -1,0 +1,163 @@
+Task:
+Redesign and expand the Construction & Property Services industry page on AnnealTech.com using a digitally immersive, security-first design language. **The top hero section should remain untouched** — do not modify its layout, content, or visuals. All updates begin below the hero.
+
+This page must clearly speak to GCs, project managers, superintendents, and back-office leaders managing complex jobsites, mobile workforces, property data, and distributed technologies.
+
+---
+
+🎯 OVERALL GOALS:
+
+- Emphasize how construction & property service companies rely on uptime, mobile support, and real-time file access
+- Highlight vulnerabilities from decentralized job sites and unsecured endpoints
+- Show how AnnealTech proactively solves field-to-HQ IT gaps
+- Visually match AnnealTech’s immersive branding (tech grids, blue glows, dark canvas)
+
+---
+
+📐 SECTION STRUCTURE & CONTENT:
+
+---
+
+### 1. “IT Gaps in the Field Create Real-World Risks” – Threat Grid
+
+**Headline:**  
+> “Your Sites Are Moving Fast. Is Your Technology Keeping Up?”
+
+**Style:**
+- Background: animated blueprint mesh or digital scaffolding (SVG/Lottie)  
+- 3 responsive cards, animated on scroll  
+- Hover glow + soft card lift
+
+**Card Examples:**
+- *Disconnected Field Devices*  
+  Poor Wi-Fi and unmanaged tablets leave gaps in control.
+- *Unpatched Laptops = Easy Targets*  
+  Outdated devices are entry points for data theft.
+- *Lost Productivity from Downtime*  
+  When a platform fails, your jobsite halts with it.
+
+---
+
+### 2. “Why AnnealTech for Construction Teams?” – Split Section
+
+**Headline:**  
+> “Stability and Security Across Every Jobsite and Office”
+
+**Left Side:**  
+Visual: animated project site map, tablet-on-tripod, or remote access dashboard
+
+**Right Side:**  
+5 value bullets:
+- 24/7 support for office and field teams  
+- Secure remote access to project data  
+- Device tracking across mobile workers  
+- Endpoint protection for rugged environments  
+- SLA-driven response during active projects
+
+---
+
+### 3. 🧰 Tailored Construction IT Services – Full-Width Card Grid
+
+**Section Title:**  
+> “Solutions Built for the Pace of Property and Construction Work”
+
+**Design:**
+- Full-width responsive grid (3 columns on desktop, stack on mobile)  
+- Glowing icon, short description, scroll-animated fade-in  
+- Glassmorphism-style card design with blue-glow accents
+
+**Each card includes:**
+- Icon in glowing circle  
+- Bold service name  
+- 1–2 sentence benefit related to construction/property ops  
+- Optional CTA: “Learn More →”
+
+**Services to Include:**
+- 24/7 Remote & Field Support  
+- Patch Management (Field Device Scheduling)  
+- Endpoint Security Across Sites  
+- Identity & Role-Based Access Controls  
+- Mobile Device Management  
+- Cloud-Based File Access for Jobsite Teams  
+- Phishing Simulation & Safety Awareness  
+- Compliance & Risk Review (OSHA, vendor systems)  
+- Contractor & Vendor Onboarding Support  
+- IT Consulting for Expansion or New Sites
+
+---
+
+### 4. 📊 Field-Proven Metrics – Results Section
+
+**Headline:**  
+> “We Keep Crews Connected and Projects Protected”
+
+**Scroll-Animated Metric Counters:**
+- 99.9% Uptime Across Distributed Sites  
+- 15-Minute Critical Issue SLA  
+- 4-Hour Resolution for Field-Based Devices  
+- 75% Reduction in Repeated IT Issues  
+- 96% Client Satisfaction Rate
+
+**Design:**
+- Glowing blue counter pills  
+- Icons: hard hat, antenna, folder lock, mobile device  
+- Background: blueprint layer or animated data grid
+
+---
+
+### 5. 📥 Final CTA – Free Field Risk Assessment
+
+**Headline:**  
+> “Prevent Jobsite Downtime Before It Happens”
+
+**Subheadline:**  
+> In just 2 minutes, get a personalized review of your field device risk, uptime gaps, and mobile access challenges.
+
+**CTA Button:**  
+> “Start My Free Field Assessment” → Glow hover, white text on #0d4f86
+
+**Design:**
+- Full-width CTA block  
+- Background: blueprint CAD pattern, animated lines, or rugged UI frame  
+- Font animation on section title  
+- Button center-aligned, responsive
+
+---
+
+🎨 DESIGN SYSTEM / THEMING:
+
+**Primary Color:** `#0d4f86`  
+**Accent Colors:** Lighter blues, glowing white  
+**Backgrounds:** Dark slate or blueprint tech texture  
+**Visual Elements:**
+- Glassmorphism cards  
+- Soft neon borders on hover  
+- Scroll-triggered fades/lifts  
+- Background motion using Lottie or canvas-based elements
+
+---
+
+📱 RESPONSIVE DESIGN:
+
+- Grid collapses on mobile  
+- Touch-friendly buttons  
+- Icons scale cleanly  
+- Metrics wrap into 2 rows if needed  
+- CTA is always mobile-readable
+
+---
+
+🔧 OPTIONAL TOOLS:
+
+- TailwindCSS for utility-first design  
+- AOS.js / GSAP for scroll animations  
+- CountUp.js for counters  
+- Lottie or SVG animation for blueprint motion
+
+---
+
+📤 OUTPUT FORMAT:
+
+- HTML + CSS (or React component structure)  
+- **Top hero section must remain 100% untouched**  
+- All code should be clean, semantic, and accessible
