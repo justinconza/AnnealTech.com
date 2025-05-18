@@ -1,0 +1,87 @@
+Task:
+Redesign the `/faq` page at https://anneal-devsite.replit.app/faq to reflect AnnealTech’s immersive, tech-forward branding. The page should feature categorized, interactive FAQs with enhanced search functionality. All references to "MEP" should be updated to "MXP" to align with current terminology.
+
+---
+
+🎯 CORE OBJECTIVES:
+
+- Organize FAQs into clear categories for improved navigation.
+- Implement interactive elements (e.g., accordions, tabs) for a user-friendly experience.
+- Enhance search functionality to allow users to find answers quickly.
+- Ensure the design aligns with AnnealTech’s branding: dark/light contrast, blue glows, clean grids, and tech-forward visuals.
+- Update all instances of "MEP" to "MXP".
+
+---
+
+📐 PAGE STRUCTURE:
+
+1. **Hero Section:**
+   - **Headline:** "Frequently Asked Questions"
+   - **Subheadline:** "Find answers to common questions about AnnealTech’s services and solutions."
+   - **Design:** Full-width background with subtle animated mesh or glowing lines. Centered text with glowing headline effect.
+
+2. **Search Functionality:**
+   - **Design:** Prominent search bar below the hero section.
+   - **Features:** Real-time search suggestions, keyword highlighting, and filtering by category.
+
+3. **FAQ Categories:**
+   - **Design:** Tabs or accordion-style layout for each category.
+   - **Categories:**
+     - General
+     - Services
+     - Security
+     - MXP (formerly MEP)
+     - Support
+
+4. **FAQ Items:**
+   - **Design:** Each question expands to reveal the answer upon click.
+   - **Features:** Smooth animations, glowing borders on hover, and icons indicating expandable content.
+
+5. **Contact Prompt:**
+   - **Design:** Full-width call-to-action section at the bottom.
+   - **Content:** "Still have questions? Contact our support team for assistance."
+   - **CTA Button:** "Contact Support" with hover glow effect.
+
+---
+
+🎨 DESIGN ELEMENTS:
+
+- **Colors:**
+  - Primary Blue: `#0d4f86`
+  - Accents: Soft light blues, steel, white-on-dark text
+  - Backgrounds: Deep slate/navy with subtle gradients or animated overlays
+
+- **Typography:**
+  - Bold, modern sans-serif fonts
+  - Large titles with responsive scaling
+  - Clear, readable paragraph and bullet copy
+
+- **Effects & Motion:**
+  - Glassmorphism: blur + shadow + border-radius
+  - Hover glow + slight card lift
+  - Staggered scroll entrance using IntersectionObserver or AOS/GSAP
+  - Background: Use SVG animations, Lottie, or canvas (e.g., animated circuit lines, particles.js)
+
+---
+
+📱 RESPONSIVE DESIGN:
+
+- Fully responsive layout with mobile-first approach
+- Accordion-style FAQs for mobile devices
+- Touch-friendly interactions and appropriately sized tap targets
+
+---
+
+🔧 OPTIONAL TOOLS:
+
+- TailwindCSS for rapid utility classes
+- AOS.js or GSAP for scroll animations
+- Lottie or SVG loop animation for backgrounds
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS or component-based structure (React-friendly if needed)
+- Code should be clean, accessible, and optimized for Replit
+- Ensure all instances of "MEP" are updated to "MXP"
