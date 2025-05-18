@@ -64,11 +64,11 @@ const SolutionPackages = () => {
       icon: Lock,
       idealFor: "Companies needing essential security coverage",
       features: [
-        "✅ Endpoint Security – MDR & AV",
-        "❌ Remote Workstation Support",
-        "❌ Identity Security – ITDR",
-        "❌ Security Awareness Training",
-        "❌ 24/7 Security Operations Center"
+        "Endpoint Security – MDR & AV",
+        "Essential security protection",
+        "Core malware defense",
+        "Basic threat monitoring",
+        "Simplified security management"
       ],
       primary: false,
       color: 'blue-300'
@@ -79,11 +79,11 @@ const SolutionPackages = () => {
       icon: Shield,
       idealFor: "Small businesses with basic IT needs & growth plans",
       features: [
-        "✅ Remote Workstation Support (8 am – 5 pm)",
-        "✅ Identity Security – ITDR",
-        "✅ Endpoint Security – MDR & AV",
-        "✅ Security Awareness Training",
-        "✅ 24/7 Security Operations Center"
+        "Remote Workstation Support (8 am – 5 pm)",
+        "Identity Security – ITDR",
+        "Endpoint Security – MDR & AV",
+        "Security Awareness Training",
+        "24/7 Security Operations Center"
       ],
       primary: false,
       color: 'blue-400'
@@ -94,11 +94,11 @@ const SolutionPackages = () => {
       icon: Zap,
       idealFor: "Scaling orgs that require deeper security and compliance",
       features: [
-        "✅ Remote Workstation Support (24/7)",
-        "✅ Identity Security – ITDR",
-        "✅ Endpoint Security – MDR & AV",
-        "✅ Security Awareness Training",
-        "✅ 24/7 Security Operations Center"
+        "Remote Workstation Support (24/7)",
+        "Identity Security – ITDR",
+        "Endpoint Security – MDR & AV",
+        "Security Awareness Training",
+        "24/7 Security Operations Center"
       ],
       primary: true,
       color: 'blue-500'
@@ -109,11 +109,11 @@ const SolutionPackages = () => {
       icon: Cpu,
       idealFor: "Organizations seeking fully managed hardware & endpoint lifecycle",
       features: [
-        "✅ Remote Workstation Support (24/7)",
-        "✅ Identity Security – ITDR",
-        "✅ Endpoint Security – MDR & AV",
-        "✅ Security Awareness Training",
-        "✅ Complete Workstation Solution"
+        "Remote Workstation Support (24/7)",
+        "Complete Workstation Solution",
+        "Asset Management & Disposal",
+        "Hardware Lifecycle Management",
+        "Full-spectrum security integration"
       ],
       primary: false,
       color: 'blue-600'
