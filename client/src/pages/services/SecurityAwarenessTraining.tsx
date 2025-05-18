@@ -434,8 +434,8 @@ const SecurityAwarenessTraining = () => {
               transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Platform Support</h2>
-              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Platform Support</h2>
+              <p className="text-xl text-blue-900 max-w-3xl mx-auto">
                 We implement and manage best-in-class security awareness platforms to fit your organizational needs.
               </p>
             </motion.div>
