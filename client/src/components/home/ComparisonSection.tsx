@@ -42,7 +42,7 @@ const ComparisonSection = () => {
   ];
 
   return (
-    <section className="py-20 relative bg-gradient-to-b from-slate-900 to-[#0a1a2e] overflow-hidden">
+    <section id="beyond-traditional-it" className="pt-20 pb-0 relative bg-gradient-to-b from-slate-900 to-[#0a1a2e] overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         {/* Circuit pattern */}

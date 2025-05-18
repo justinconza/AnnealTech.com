@@ -61,10 +61,12 @@ const Home = () => {
       {/* Main page sections */}
       <Hero />
       <WhatWeDoBest />
-      <Industries />
+      <div className="shared-bg-section bg-gradient-to-b from-slate-900 to-[#0a1a2e]">
+        <ComparisonSection />
+        <Industries />
+      </div>
       <PeopleTech />
       <Services />
-      <ComparisonSection />
       <BlogSlider />
       <About />
       <Testimonials />
