@@ -291,7 +291,7 @@ const ToolCard = ({
         <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-[#0c3f6d] rounded-br-lg"></div>
         
         <CardHeader className="pb-4 relative z-10">
-          <div className="w-16 h-16 rounded-xl bg-[#0c3f6d] flex items-center justify-center mb-4 text-white group-hover:bg-[#154677] transition-colors duration-300 group-hover:scale-105 transform shadow-lg">
+          <div className="w-16 h-16 rounded-xl bg-[#e6f0fa] flex items-center justify-center mb-4 text-[#0c3f6d] group-hover:bg-[#d5e7f7] transition-colors duration-300 group-hover:scale-105 transform shadow-lg">
             <Icon className="w-8 h-8" />
           </div>
           <CardTitle className="font-heading text-xl mb-2 text-[#114372] font-bold group-hover:translate-x-1 transition-transform duration-300">{title}</CardTitle>
