@@ -310,38 +310,30 @@ const SecurityAwarenessTraining = () => {
 
         {/* How We Deliver Section */}
         <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950 py-16 md:py-24 overflow-hidden">
-          {/* Hexagonal security pattern */}
+          {/* Digital circuit pattern background */}
           <div className="absolute inset-0 opacity-10" 
             style={{
-              backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%234299e1' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-              backgroundSize: '24px 42px'
+              backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%230d4f86' fill-opacity='0.25' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+              backgroundSize: '100px 100px'
             }}
           ></div>
           
-          {/* Cybersecurity lock grid */}
-          <div className="absolute inset-0 opacity-5" 
-            style={{
-              backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30 30 0zm22.9 27.1l-15 15-15-15 15-15 15 15zM14.1 27.1l-7.2 7.2-7.2-7.2 7.2-7.2 7.2 7.2zM45.9 27.1l-7.2 7.2-7.2-7.2 7.2-7.2 7.2 7.2zM30 45.9l-7.2 7.2-7.2-7.2 7.2-7.2 7.2 7.2zM30 14.1l-7.2-7.2-7.2 7.2 7.2 7.2 7.2-7.2zM52.8 45.9l-7.2-7.2-7.2 7.2 7.2 7.2 7.2-7.2zM52.8 14.1l-7.2-7.2-7.2 7.2 7.2 7.2 7.2-7.2zM14.1 45.9l7.2 7.2 7.2-7.2-7.2-7.2-7.2 7.2zM14.1 14.1l7.2-7.2 7.2 7.2-7.2 7.2-7.2-7.2z' fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E\")",
-              backgroundSize: '60px 60px'
-            }}
-          ></div>
-          
-          {/* Digital code overlay */}
-          <div className="absolute inset-0 opacity-10">
+          {/* Digital lines overlay */}
+          <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0" 
               style={{
-                backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                backgroundImage: "linear-gradient(0deg, transparent 24%, rgba(13, 79, 134, 0.7) 25%, rgba(13, 79, 134, 0.7) 26%, transparent 27%, transparent 74%, rgba(13, 79, 134, 0.7) 75%, rgba(13, 79, 134, 0.7) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(13, 79, 134, 0.7) 25%, rgba(13, 79, 134, 0.7) 26%, transparent 27%, transparent 74%, rgba(13, 79, 134, 0.7) 75%, rgba(13, 79, 134, 0.7) 76%, transparent 77%, transparent)",
                 backgroundSize: '100px 100px'
               }}
             ></div>
           </div>
           
-          {/* Dynamic gradient overlay based on mouse position */}
-          <div 
-            className="absolute inset-0 z-0 opacity-40"
+          {/* Digital dots */}
+          <div className="absolute inset-0 opacity-20" 
             style={{
-              backgroundImage: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, rgba(59, 130, 246, 0.6), rgba(30, 58, 138, 0.1))`,
-              backgroundSize: '120% 120%'
+              backgroundImage: "radial-gradient(#0d4f86 1px, transparent 2px), radial-gradient(#0d4f86 1px, transparent 2px)",
+              backgroundPosition: "0 0, 25px 25px",
+              backgroundSize: "50px 50px"
             }}
           ></div>
          
@@ -390,7 +382,7 @@ const SecurityAwarenessTraining = () => {
         </section>
 
         {/* Platform Support Section */}
-        <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950 py-16 md:py-24 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-slate-50 to-blue-50 py-16 md:py-24 overflow-hidden">
           {/* Hexagonal security pattern */}
           <div className="absolute inset-0 opacity-10" 
             style={{
