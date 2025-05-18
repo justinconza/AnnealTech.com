@@ -445,7 +445,7 @@ const FaqPage = () => {
           <div className="max-w-5xl mx-auto">
             <Tabs value={activeCategory} onValueChange={setActiveCategory}>
               <div className="mb-8">
-                <TabsList className="w-full bg-blue-900/30 p-1 rounded-lg border border-blue-500/20 overflow-x-auto flex flex-nowrap whitespace-nowrap md:flex-wrap">
+                <TabsList className="w-full bg-blue-900/30 p-1 rounded-lg border border-blue-500/20 flex flex-wrap">
                   {categories.map((category) => {
                     const Icon = category.icon;
                     return (
