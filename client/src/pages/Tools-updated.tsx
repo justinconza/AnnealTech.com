@@ -553,23 +553,23 @@ const ToolsPage = () => {
       </section>
 
       {/* Tools Categories Section */}
-      <section className="pt-8 pb-24 bg-slate-900">
+      <section className="pt-8 pb-16 bg-slate-900">
         <div className="container mx-auto px-4">
           {/* Category Tabs */}
-          <div className="mb-12">
+          <div className="mb-8">
             <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-              <TabsList className="bg-white py-6 px-3 rounded-xl border border-[#114372]/20 flex flex-wrap gap-3 justify-center w-full shadow-md items-center">
+              <TabsList className="bg-white py-4 md:py-6 px-2 md:px-3 rounded-xl border border-[#114372]/20 flex flex-wrap gap-2 md:gap-3 justify-center w-full shadow-md items-center">
                 {categories.map((category) => {
                   const Icon = category.icon;
                   return (
                     <TabsTrigger 
                       key={category.id} 
                       value={category.id}
-                      className="px-5 py-4 data-[state=active]:bg-[#0c3f6d] data-[state=active]:text-white hover:bg-[#f0f7ff] text-[#114372] font-medium transition-all duration-200 rounded-lg"
+                      className="px-3 md:px-5 py-3 md:py-4 data-[state=active]:bg-[#0c3f6d] data-[state=active]:text-white hover:bg-[#f0f7ff] text-[#114372] font-medium transition-all duration-200 rounded-lg text-xs sm:text-sm md:text-base"
                     >
-                      <div className="flex items-center gap-2">
-                        <Icon className="h-4 w-4" />
-                        <span>{category.label}</span>
+                      <div className="flex items-center gap-1 md:gap-2">
+                        <Icon className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                        <span className="truncate">{category.label}</span>
                       </div>
                     </TabsTrigger>
                   );
