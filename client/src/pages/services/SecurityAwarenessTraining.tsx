@@ -229,7 +229,7 @@ const SecurityAwarenessTraining = () => {
                 Your users are the last line of defense. AnnealTech helps you build a human firewall using the best platforms on the planet.
               </p>
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg">
-                Get a Human Firewall Assessment
+                Improving Organizational Security Culture
               </Button>
             </motion.div>
           </div>
