@@ -182,7 +182,7 @@ const Contact = () => {
           />
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 gap-12 items-center max-w-4xl mx-auto">
           {/* Contact form */}
           <div className="bg-steel/10 p-8 rounded-lg border border-accent/10">
             <h3 className="text-2xl font-heading font-semibold text-white mb-6">Contact Us</h3>
