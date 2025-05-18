@@ -92,7 +92,7 @@ const Industries = () => {
   ];
 
   return (
-    <section className="-mt-6 pb-16 bg-[#0a1a2e] relative overflow-hidden flex items-center min-h-[600px]">
+    <section className="pt-12 pb-16 bg-[#0a1a2e] relative overflow-hidden flex items-center min-h-[600px]">
       <div className="absolute inset-0 opacity-20 bg-circuit"></div>
       
       {/* Blue flame elements */}
