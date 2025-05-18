@@ -1,0 +1,73 @@
+Create a full-width homepage CTA section titled “Ready to Strengthen Your IT Security Posture?” with the following goals:
+
+✅ Full-width layout, no container padding boundaries  
+✅ High contrast text + strong conversion focus  
+✅ Animated forge-themed background (particles or subtle glow)  
+✅ Responsive for mobile/tablet/desktop  
+✅ Link to external assessment tool
+
+---
+
+🔤 Text Content:
+- **Title (H2):** Ready to Strengthen Your IT Security Posture?
+- **Subtitle:** Take our complimentary Security Culture Maturity Assessment to discover how your people, policies, and technology stack up against modern cyber threats.
+- **CTA Button:** Start the Free Assessment →
+- **Link Target:** https://security-culture.replit.app/assessment
+
+---
+
+💡 Design & Layout Instructions:
+
+1. **Section Styling:**
+   - `w-full`, `py-20`, `relative`, `overflow-hidden`
+   - `bg-black` or `bg-gradient-to-br from-[#0d4f86] to-black`
+   - No `max-w` container — it should span the full viewport width
+
+2. **Animated Particle Background:**
+   - Use `tsparticles` or similar canvas-based animation in `absolute inset-0 z-0`
+   - Color: `#0d4f86`, moderate particle movement, subtle links
+
+3. **Text Block:**
+   - `relative z-10 text-white text-center md:text-left`
+   - Title: `text-3xl md:text-4xl font-bold`
+   - Description: `text-base md:text-lg text-slate-200 max-w-2xl mx-auto md:mx-0 mt-4`
+
+4. **CTA Button:**
+   - Style: `bg-white text-[#0d4f86] font-semibold px-6 py-3 rounded-md`
+   - Hover: invert to `bg-[#0d4f86] text-white`
+   - Add `target="_blank"` + `rel="noopener noreferrer"`
+
+5. **Responsive Layout:**
+   - Mobile: Stack heading + button vertically, center-aligned
+   - Desktop: Use flex-row layout, content on left, button on right
+
+6. **Optional Enhancements:**
+   - Add `scroll-fade` or `animate-fade-up` on content
+   - Include a glowing vertical line or edge glow on the left border
+   - Slight pulsing border or glow effect around CTA button
+
+---
+
+🔧 HTML + Tailwind Snippet (Structure):
+
+```html
+<section class="relative w-full py-20 bg-black text-white overflow-hidden">
+  <!-- Particle Background -->
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <canvas id="particles-bg" class="w-full h-full"></canvas>
+  </div>
+
+  <!-- Foreground Content -->
+  <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="text-center md:text-left">
+      <h2 class="text-3xl md:text-4xl font-bold">Ready to Strengthen Your IT Security Posture?</h2>
+      <p class="mt-4 text-slate-200 max-w-2xl">
+        Take our complimentary <strong>Security Culture Maturity Assessment</strong> to discover how your people, policies, and technology stack up against modern cyber threats.
+      </p>
+    </div>
+    <a href="https://security-culture.replit.app/assessment" target="_blank" rel="noopener noreferrer"
+       class="bg-white text-[#0d4f86] px-6 py-3 rounded-md font-semibold hover:bg-[#0d4f86] hover:text-white transition">
+      Start the Free Assessment →
+    </a>
+  </div>
+</section>
