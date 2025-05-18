@@ -136,7 +136,7 @@ const allTools = [
     description: "Analyze email headers to detect spoofing, authentication issues, and security vulnerabilities.",
     icon: Mail,
     category: "email",
-    component: EmailSecurityForm,
+    component: PlaceholderTool,
     featured: true,
   },
   {
@@ -145,7 +145,7 @@ const allTools = [
     description: "Analyze email content to identify potential phishing attempts and social engineering tactics.",
     icon: AlertTriangle,
     category: "email",
-    component: PhishingDetectionForm,
+    component: PlaceholderTool,
   },
   {
     id: "email-breach-checker",
@@ -161,7 +161,7 @@ const allTools = [
     description: "Check domain security configurations including DNS records, SSL certificates, and open ports.",
     icon: Globe,
     category: "network",
-    component: DomainSecurityForm,
+    component: PlaceholderTool,
     featured: true,
   },
   {
@@ -178,7 +178,7 @@ const allTools = [
     description: "Evaluate password strength and get recommendations for more secure passwords.",
     icon: Lock,
     category: "config",
-    component: PasswordStrengthForm,
+    component: PlaceholderTool,
     featured: true,
   },
   {
@@ -204,7 +204,7 @@ const allTools = [
     description: "Track usernames across multiple platforms and discover digital footprints.",
     icon: UserSearch,
     category: "reporting",
-    component: UsernameTracker,
+    component: PlaceholderTool,
   },
   {
     id: "network-traffic-analyzer",
