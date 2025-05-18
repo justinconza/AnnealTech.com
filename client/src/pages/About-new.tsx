@@ -785,8 +785,60 @@ const ApproachSection = () => {
 // Team Section
 const TeamSection = () => {
   return (
-    <section className="py-20 bg-slate-50">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-gradient-to-br from-blue-950 to-slate-900 text-white relative overflow-hidden">
+      {/* Matrix-like digital rain */}
+      <div className="absolute inset-0">
+        {/* Vertical lines of code */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute top-0 h-full overflow-hidden"
+            style={{ 
+              left: `${(i * 5) + Math.random() * 3}%`,
+              width: '1px',
+              opacity: Math.random() * 0.3 + 0.1
+            }}
+          >
+            <motion.div
+              className="w-full h-16 bg-gradient-to-b from-blue-400 to-transparent"
+              animate={{ 
+                y: ['-100%', '1000%']
+              }}
+              transition={{ 
+                duration: Math.random() * 20 + 15,
+                repeat: Infinity,
+                ease: "linear",
+                delay: Math.random() * 5
+              }}
+            />
+          </motion.div>
+        ))}
+        
+        {/* Pulsing radial gradients */}
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={`glow-${i}`}
+            className="absolute rounded-full bg-blue-500/10 blur-3xl"
+            style={{
+              width: `${Math.random() * 300 + 100}px`,
+              height: `${Math.random() * 300 + 100}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`
+            }}
+            animate={{
+              opacity: [0.1, 0.2, 0.1],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <motion.h2 
@@ -794,7 +846,7 @@ const TeamSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-heading font-bold text-slate-800 mb-4"
+              className="text-3xl md:text-4xl font-heading font-bold text-white mb-4"
             >
               Our Team
             </motion.h2>
@@ -803,7 +855,7 @@ const TeamSection = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl text-slate-600 max-w-3xl mx-auto"
+              className="text-xl text-blue-100 max-w-3xl mx-auto"
             >
               Seasoned professionals with decades of experience in IT, business administration, and professional development.
             </motion.p>
@@ -880,8 +932,40 @@ const TeamSection = () => {
 // Values Section
 const ValuesSection = () => {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-gradient-to-b from-slate-900 to-blue-950 text-white relative overflow-hidden">
+      {/* Digital circuit background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBzdHJva2U9IiMyMDVkOWUiIHN0cm9rZS13aWR0aD0iLjUiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTAgMTVIMTVWMEgweiIvPjxwYXRoIGQ9Ik0wIDMwSDE1VjE1SDB6Ii8+PHBhdGggZD0iTTAgNDVIMTVWMzBIMHoiLz48cGF0aCBkPSJNMCA2MEgxNVY0NUgweiIvPjxwYXRoIGQ9Ik0xNSAwSDMwVjE1SDE1eiIvPjxwYXRoIGQ9Ik0xNSAxNUgzMFYzMEgxNXoiLz48cGF0aCBkPSJNMTUgMzBIMzBWNDVIMTV6Ii8+PHBhdGggZD0iTTE1IDQ1SDMwVjYwSDE1eiIvPjxwYXRoIGQ9Ik0zMCAwSDQ1VjE1SDMweiIvPjxwYXRoIGQ9Ik0zMCAxNUg0NVYzMEgzMHoiLz48cGF0aCBkPSJNMzAgMzBINDVWNDVIMzB6Ii8+PHBhdGggZD0iTTMwIDQ1SDQ1VjYwSDMweiIvPjxwYXRoIGQ9Ik00NSAwSDYwVjE1SDQ1eiIvPjxwYXRoIGQ9Ik00NSAxNUg2MFYzMEg0NXoiLz48cGF0aCBkPSJNNDUgMzBINjBWNDVINDV6Ii8+PHBhdGggZD0iTTQ1IDQ1SDYwVjYwSDQ1eiIvPjwvZz48L3N2Zz4=')]"></div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1.5 h-1.5 bg-blue-400 rounded-full"
+              initial={{ 
+                x: `${Math.random() * 100}%`, 
+                y: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.7 + 0.3
+              }}
+              animate={{ 
+                y: [
+                  `${Math.random() * 100}%`, 
+                  `${Math.random() * 100}%`
+                ],
+                opacity: [0.3, 0.7, 0.3]
+              }}
+              transition={{ 
+                duration: Math.random() * 10 + 20,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <motion.h2 
@@ -889,7 +973,7 @@ const ValuesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-heading font-bold text-slate-800 mb-4"
+              className="text-3xl md:text-4xl font-heading font-bold text-white mb-4"
             >
               Our Values
             </motion.h2>
@@ -898,7 +982,7 @@ const ValuesSection = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl text-slate-600 max-w-3xl mx-auto"
+              className="text-xl text-blue-100 max-w-3xl mx-auto"
             >
               The principles that guide every aspect of our work and relationships.
             </motion.p>
@@ -937,8 +1021,60 @@ const ValuesSection = () => {
 // Methodology Section
 const MethodologySection = () => {
   return (
-    <section className="py-20 bg-slate-50">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-gradient-to-tl from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden">
+      {/* Hexagonal grid background */}
+      <div className="absolute inset-0">
+        <svg width="100%" height="100%" className="absolute inset-0" opacity="0.1">
+          <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
+            <path d="M25 0 L50 14.4 L50 28.9 L25 43.4 L0 28.9 L0 14.4 Z" fill="none" stroke="#3b82f6" strokeWidth="1" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#hexagons)" />
+        </svg>
+        
+        {/* Animated connection lines */}
+        <svg className="absolute inset-0" width="100%" height="100%">
+          <g>
+            {[...Array(5)].map((_, i) => (
+              <motion.path
+                key={i}
+                d={`M${Math.random() * 100} ${Math.random() * 100} Q ${Math.random() * 100} ${Math.random() * 100}, ${Math.random() * 100} ${Math.random() * 100}`}
+                stroke="#3b82f6"
+                strokeWidth="0.5"
+                fill="none"
+                initial={{ pathLength: 0, opacity: 0.1 + (Math.random() * 0.2) }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: Math.random() * 5 + 5, repeat: Infinity, repeatType: "loop" }}
+              />
+            ))}
+          </g>
+        </svg>
+        
+        {/* Animated flashes */}
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-blue-400"
+            style={{
+              width: '2px',
+              height: '2px',
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`
+            }}
+            animate={{
+              opacity: [0, 1, 0],
+              scale: [0, 3, 0]
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              repeatDelay: Math.random() * 8 + 4,
+              ease: "easeOut"
+            }}
+          />
+        ))}
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <motion.h2 
@@ -946,7 +1082,7 @@ const MethodologySection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-heading font-bold text-slate-800 mb-4"
+              className="text-3xl md:text-4xl font-heading font-bold text-white mb-4"
             >
               Our Methodology
             </motion.h2>
@@ -955,7 +1091,7 @@ const MethodologySection = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl text-slate-600 max-w-3xl mx-auto"
+              className="text-xl text-blue-100 max-w-3xl mx-auto"
             >
               We're committed to empowering clients rather than creating dependency. Our approach enables meaningful, practical changes that align IT and business objectives.
             </motion.p>
