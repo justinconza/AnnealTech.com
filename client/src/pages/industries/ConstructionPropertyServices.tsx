@@ -34,7 +34,18 @@ import {
   FileX,
   AlertCircle,
   CloudOff,
-  HelpCircle
+  HelpCircle,
+  Hammer,
+  Tablet,
+  WifiOff,
+  HardHat,
+  Map,
+  Locate,
+  Wrench,
+  Briefcase,
+  UserPlus,
+  Share2,
+  Wifi
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -134,7 +145,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="inline-block bg-blue-400 border border-blue-300 rounded-full px-4 py-1 mb-4"
               >
-                <span className="text-blue-900 font-heading text-sm font-medium tracking-wider">ACCOUNTING & FINANCE</span>
+                <span className="text-blue-900 font-heading text-sm font-medium tracking-wider">CONSTRUCTION & PROPERTY SERVICES</span>
               </motion.div>
               
               <motion.h1 
@@ -143,7 +154,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="text-3xl md:text-5xl font-display font-bold mb-4"
               >
-                Delivering Secure, Compliant IT for Financial Operations
+                Field-Ready IT Solutions for Construction & Property Teams
               </motion.h1>
               
               <motion.p 
@@ -152,7 +163,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.6, delay: 0.7 }}
                 className="text-xl text-blue-100 mb-6"
               >
-                AnnealTech protects your financial data while ensuring reliable uptime for critical accounting systems – all with compliance-ready security.
+                AnnealTech delivers seamless technology support for construction teams with distributed sites, mobile workforces, and real-time collaboration needs.
               </motion.p>
               
               <motion.div 
@@ -164,9 +175,9 @@ const HeroSection = () => {
               >
                 <Button 
                   className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-6 text-lg shadow-lg hover:shadow-blue-600/25 rounded-md transition-all flex items-center space-x-2"
-                  aria-label="Get your free financial IT risk assessment"
+                  aria-label="Get your free jobsite IT assessment"
                 >
-                  <span>Get Your Free Financial IT Assessment</span>
+                  <span>Get Your Free Jobsite IT Assessment</span>
                   <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
                 </Button>
               </motion.div>
@@ -180,8 +191,8 @@ const HeroSection = () => {
             >
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                  alt="Financial professional working with secure data" 
+                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                  alt="Construction site with digital technology integration" 
                   className="rounded-lg shadow-2xl"
                 />
                 <motion.div 
@@ -192,11 +203,11 @@ const HeroSection = () => {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                      <ShieldCheck className="h-5 w-5 text-blue-600" />
+                      <HardHat className="h-5 w-5 text-blue-600" />
                     </div>
                     <div>
-                      <p className="text-blue-900 font-medium">Compliance Ready</p>
-                      <p className="text-sm text-blue-900">SOC, PCI, GLBA</p>
+                      <p className="text-blue-900 font-medium">Field-Ready IT</p>
+                      <p className="text-sm text-blue-900">24/7 Support</p>
                     </div>
                   </div>
                 </motion.div>
@@ -209,7 +220,7 @@ const HeroSection = () => {
                 >
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
-                    <p className="text-sm font-medium">99.9% Uptime</p>
+                    <p className="text-sm font-medium">15-Min Response</p>
                   </div>
                 </motion.div>
               </div>
@@ -221,27 +232,27 @@ const HeroSection = () => {
   );
 };
 
-// 1. "Financial Operations Are a Target" Section - Threat Grid
-const FinancialThreatsSection = () => {
+// 1. "IT Gaps in the Field Create Real-World Risks" Section
+const FieldRisksSection = () => {
   const threats = [
     {
-      title: "Ransomware Threats to Financial Data",
-      description: "Accounting platforms are among the most targeted systems by sophisticated threat actors.",
-      icon: FileX
+      title: "Disconnected Field Devices",
+      description: "Poor Wi-Fi and unmanaged tablets leave gaps in control and communication across job sites.",
+      icon: WifiOff
     },
     {
-      title: "Downtime During Payroll or Reconciliation",
-      description: "Minutes of delay can cascade into massive trust loss and operational disruption.",
-      icon: CloudOff
+      title: "Unpatched Laptops = Easy Targets",
+      description: "Outdated devices are entry points for data theft, putting project plans and client information at risk.",
+      icon: Laptop
     },
     {
-      title: "Compliance Failure Penalties",
-      description: "SOX, GLBA, PCI-DSS violations can carry six to seven figure fines and reputational damage.",
-      icon: AlertCircle
+      title: "Lost Productivity from Downtime",
+      description: "When a platform fails, your jobsite halts with it, causing costly delays and contractor frustration.",
+      icon: Clock
     }
   ];
   
-  // Animated circuit grid elements for background
+  // Blueprint grid animation elements for the background
   const gridLines = Array.from({ length: 20 }, (_, i) => ({
     id: i,
     orientation: i % 2 === 0 ? "horizontal" : "vertical",
@@ -253,9 +264,9 @@ const FinancialThreatsSection = () => {
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-slate-900 to-blue-900 relative overflow-hidden">
-      {/* Digital vault background animation */}
+      {/* Blueprint mesh background animation */}
       <div className="absolute inset-0">
-        {/* Circuit grid lines */}
+        {/* Blueprint grid lines */}
         {gridLines.map((line) => (
           <motion.div
             key={line.id}
@@ -277,32 +288,15 @@ const FinancialThreatsSection = () => {
           />
         ))}
         
-        {/* Pulse waves */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={`pulse-${i}`}
-            className="absolute left-1/2 top-1/2 rounded-full border border-blue-400/30"
-            style={{
-              width: 10,
-              height: 10,
-              marginLeft: -5,
-              marginTop: -5
-            }}
-            animate={{
-              width: ["10px", "100vw"],
-              height: ["10px", "100vw"],
-              marginLeft: ["-5px", "-50vw"],
-              marginTop: ["-5px", "-50vw"],
-              opacity: [0.4, 0]
-            }}
-            transition={{
-              duration: 6,
-              delay: i * 2,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        ))}
+        {/* Blueprint scaffolding elements */}
+        <svg width="100%" height="100%" className="absolute inset-0 opacity-10" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#4B9FFF" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -314,7 +308,7 @@ const FinancialThreatsSection = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-4xl font-heading font-bold text-white mb-6"
           >
-            Data Breaches, Downtime, and Compliance Gaps Are Costing Firms Millions
+            Your Sites Are Moving Fast. Is Your Technology Keeping Up?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -323,7 +317,7 @@ const FinancialThreatsSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl text-blue-100 max-w-3xl mx-auto"
           >
-            Financial operations face escalating cybersecurity threats, regulatory scrutiny, and client expectations
+            Construction teams face unique technology challenges that can impact productivity and security
           </motion.p>
         </div>
         
@@ -338,7 +332,7 @@ const FinancialThreatsSection = () => {
               whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
               className="bg-blue-900/30 backdrop-blur-sm p-6 rounded-lg border border-blue-500/20 shadow-lg hover:shadow-blue-500/10 hover:border-blue-500/40 transition-all duration-300 h-full"
             >
-              <div className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center mb-5 text-blue-400">
+              <div className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center mb-5 text-red-400">
                 <threat.icon className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-heading font-semibold mb-3 text-white">
@@ -355,33 +349,33 @@ const FinancialThreatsSection = () => {
   );
 };
 
-// 2. "Why AnnealTech for Finance?" - Split Section
+// 2. "Why AnnealTech for Construction Teams?" - Split Section
 const ValuePropositionSection = () => {
   const valueProps = [
     {
-      title: "99.9% uptime during tax season or audit events",
-      description: "We ensure your critical financial systems remain operational during your busiest periods.",
-      icon: Server
+      title: "24/7 support for office and field teams",
+      description: "Around-the-clock IT assistance for both headquarters staff and mobile workers at job sites.",
+      icon: Users
     },
     {
-      title: "Real-time monitoring of accounting infrastructure",
-      description: "Continuous surveillance of your financial applications and data storage systems.",
-      icon: Eye
+      title: "Secure remote access to project data",
+      description: "Protected connections to project files, plans, and documentation from any location.",
+      icon: Lock
     },
     {
-      title: "SOC-backed alerting + file protection",
-      description: "Enterprise-grade security operations monitoring with rapid incident response.",
+      title: "Device tracking across mobile workers",
+      description: "Monitor and manage all company hardware regardless of location or job site assignment.",
+      icon: Locate
+    },
+    {
+      title: "Endpoint protection for rugged environments",
+      description: "Specialized security solutions for devices operating in demanding construction settings.",
       icon: Shield
     },
     {
-      title: "Staff phishing & data handling training",
-      description: "Regular security awareness training customized for financial professionals.",
-      icon: GraduationCap
-    },
-    {
-      title: "Audit-ready documentation & reporting support",
-      description: "Comprehensive logging and reporting to satisfy regulatory requirements.",
-      icon: FileCheck
+      title: "SLA-driven response during active projects",
+      description: "Guaranteed response times when technology issues could impact critical project timelines.",
+      icon: Clock
     }
   ];
 
@@ -392,7 +386,7 @@ const ValuePropositionSection = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Left column - Animated digital vault illustration */}
+          {/* Left column - Animated project site visualization */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -403,21 +397,21 @@ const ValuePropositionSection = () => {
             <div className="bg-gradient-to-br from-blue-900/10 to-blue-600/30 p-8 rounded-2xl relative overflow-hidden">
               <div className="relative z-10">
                 <div className="w-full aspect-square max-w-md mx-auto relative">
-                  {/* Digital vault / financial security SVG animation */}
+                  {/* Construction site map / project visualization SVG */}
                   <svg 
                     viewBox="0 0 200 200" 
                     fill="none" 
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-full h-full"
                   >
-                    {/* Background grid */}
+                    {/* Blueprint grid background */}
                     <motion.g
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 0.2 }}
                       viewport={{ once: true }}
                       transition={{ duration: 1 }}
                     >
-                      {/* Grid lines */}
+                      {/* Blueprint grid pattern */}
                       {[...Array(10)].map((_, i) => (
                         <line 
                           key={`h-line-${i}`}
@@ -443,15 +437,11 @@ const ValuePropositionSection = () => {
                       ))}
                     </motion.g>
                     
-                    {/* Digital vault/safe outline */}
-                    <motion.rect
-                      x="50"
-                      y="50"
-                      width="100"
-                      height="100"
-                      rx="5"
+                    {/* Construction site outline */}
+                    <motion.path
+                      d="M40 40 h120 v120 h-120 z"
                       stroke="#0d4f86"
-                      strokeWidth="3"
+                      strokeWidth="2"
                       fill="none"
                       initial={{ pathLength: 0 }}
                       whileInView={{ pathLength: 1 }}
@@ -459,128 +449,153 @@ const ValuePropositionSection = () => {
                       transition={{ duration: 1.5, ease: "easeInOut" }}
                     />
                     
-                    {/* Vault dial */}
-                    <motion.circle
-                      cx="100"
-                      cy="80"
-                      r="20"
+                    {/* Building elements */}
+                    <motion.rect
+                      x="60"
+                      y="60"
+                      width="80"
+                      height="40"
                       stroke="#0d4f86"
                       strokeWidth="2"
-                      fill="none"
+                      fill="#0d4f86"
+                      fillOpacity="0.1"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 1.5 }}
                     />
                     
-                    {/* Dial indicators */}
-                    {[...Array(12)].map((_, i) => (
-                      <motion.line
-                        key={`dial-${i}`}
-                        x1={100 + 16 * Math.cos(i * Math.PI / 6)}
-                        y1={80 + 16 * Math.sin(i * Math.PI / 6)}
-                        x2={100 + 20 * Math.cos(i * Math.PI / 6)}
-                        y2={80 + 20 * Math.sin(i * Math.PI / 6)}
-                        stroke="#0d4f86"
-                        strokeWidth="1.5"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.1, delay: 1.6 + i * 0.05 }}
-                      />
-                    ))}
-                    
-                    {/* Dial pointer */}
-                    <motion.line
-                      x1="100"
-                      y1="80"
-                      x2="100"
-                      y2="65"
-                      stroke="#0d4f86"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ 
-                        opacity: 1,
-                        rotate: [0, 270, 180, 90, 0]
-                      }}
-                      viewport={{ once: true }}
-                      transition={{ 
-                        opacity: { duration: 0.5, delay: 2 },
-                        rotate: { duration: 3, delay: 2.2, ease: "easeInOut" }
-                      }}
-                      style={{ transformOrigin: "100px 80px" }}
-                    />
-                    
-                    {/* Vault handle */}
-                    <motion.path
-                      d="M160 100 h15 v20 h-15"
-                      stroke="#0d4f86"
-                      strokeWidth="3"
-                      fill="none"
+                    {/* Construction crane */}
+                    <motion.g
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 1.7 }}
-                    />
+                      transition={{ duration: 0.5, delay: 2 }}
+                    >
+                      <line x1="150" y1="120" x2="150" y2="50" stroke="#0d4f86" strokeWidth="2" />
+                      <line x1="150" y1="50" x2="100" y2="50" stroke="#0d4f86" strokeWidth="2" />
+                      <line x1="150" y1="55" x2="130" y2="55" stroke="#0d4f86" strokeWidth="1.5" />
+                      <line x1="150" y1="60" x2="140" y2="70" stroke="#0d4f86" strokeWidth="1.5" />
+                    </motion.g>
                     
-                    {/* Financial document stack */}
+                    {/* Tablet/Device on site */}
                     <motion.g
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 2.5 }}
                     >
-                      <rect x="75" y="110" width="50" height="6" fill="#0d4f86" opacity="0.3" />
-                      <rect x="75" y="118" width="50" height="6" fill="#0d4f86" opacity="0.4" />
-                      <rect x="75" y="126" width="50" height="6" fill="#0d4f86" opacity="0.5" />
+                      <rect x="85" y="110" width="30" height="22" rx="2" stroke="#0d4f86" strokeWidth="1.5" fill="#0d4f86" fillOpacity="0.2" />
+                      <rect x="88" y="113" width="24" height="14" rx="1" stroke="#0d4f86" strokeWidth="0.5" fill="#0d4f86" fillOpacity="0.3" />
                     </motion.g>
                     
-                    {/* Lock icon */}
+                    {/* Signal beacons / wifi points */}
                     <motion.g
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 3 }}
                     >
-                      <rect x="95" y="140" width="10" height="15" rx="2" fill="#0d4f86" />
-                      <path d="M90 140 v-5 a10 10 0 0 1 20 0 v5" stroke="#0d4f86" strokeWidth="2" fill="none" />
+                      <circle cx="50" cy="50" r="5" fill="#0d4f86" fillOpacity="0.3" />
+                      <circle cx="150" cy="150" r="5" fill="#0d4f86" fillOpacity="0.3" />
+                      <circle cx="50" cy="150" r="5" fill="#0d4f86" fillOpacity="0.3" />
                     </motion.g>
                     
-                    {/* Shield animation */}
-                    <motion.path
-                      d="M30 100 L50 85 L70 100 L50 115 Z"
-                      stroke="#0d4f86"
-                      strokeWidth="2"
-                      fill="none"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 3.2 }}
-                    />
+                    {/* Signal waves */}
+                    {[...Array(3)].map((_, i) => (
+                      <motion.circle
+                        key={`signal-wave-1-${i}`}
+                        cx="50"
+                        cy="50"
+                        r={5 + i * 5}
+                        stroke="#0d4f86"
+                        strokeWidth="0.5"
+                        fill="none"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ 
+                          opacity: [0, 0.5, 0]
+                        }}
+                        viewport={{ once: true }}
+                        transition={{ 
+                          duration: 2,
+                          delay: 3.2 + i * 0.2,
+                          repeat: Infinity,
+                          repeatDelay: 3
+                        }}
+                      />
+                    ))}
                     
+                    {/* Connect devices with dashed lines */}
                     <motion.path
-                      d="M150 100 L170 85 L190 100 L170 115 Z"
+                      d="M55 55 L85 110 M155 150 L115 110 M55 150 L85 110"
                       stroke="#0d4f86"
-                      strokeWidth="2"
-                      fill="none"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 3.4 }}
-                    />
-                    
-                    {/* Secure connection */}
-                    <motion.path
-                      d="M70 100 L90 100 M110 100 L130 100 M190 100 Q195 160 150 180 Q100 200 50 180 Q5 160 10 100"
-                      stroke="#0d4f86"
-                      strokeWidth="1.5"
-                      strokeDasharray="5 3"
-                      fill="none"
+                      strokeWidth="1"
+                      strokeDasharray="3 2"
                       initial={{ pathLength: 0, opacity: 0 }}
-                      whileInView={{ pathLength: 1, opacity: 0.6 }}
+                      whileInView={{ pathLength: 1, opacity: 0.8 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 2, delay: 3.6 }}
+                      transition={{ duration: 1.5, delay: 3.5 }}
+                    />
+                    
+                    {/* Data flow animation */}
+                    <motion.circle
+                      cx="70"
+                      cy="82"
+                      r="2"
+                      fill="#0d4f86"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ 
+                        opacity: [0, 1, 0],
+                        x: [0, 15, 0],
+                        y: [0, 28, 0],
+                      }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatDelay: 1,
+                        delay: 4
+                      }}
+                    />
+                    
+                    <motion.circle
+                      cx="135"
+                      cy="130"
+                      r="2"
+                      fill="#0d4f86"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ 
+                        opacity: [0, 1, 0],
+                        x: [0, -20, 0],
+                        y: [0, -20, 0],
+                      }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatDelay: 1,
+                        delay: 4.5
+                      }}
+                    />
+                    
+                    <motion.circle
+                      cx="70"
+                      cy="130"
+                      r="2"
+                      fill="#0d4f86"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ 
+                        opacity: [0, 1, 0],
+                        x: [0, 15, 0],
+                        y: [0, -20, 0],
+                      }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatDelay: 1,
+                        delay: 5
+                      }}
                     />
                   </svg>
                   
@@ -588,7 +603,7 @@ const ValuePropositionSection = () => {
                   <motion.div
                     className="absolute inset-0 rounded-full bg-blue-500 blur-3xl"
                     animate={{ 
-                      opacity: [0.05, 0.1, 0.05],
+                      opacity: [0.1, 0.15, 0.1],
                       scale: [0.8, 1, 0.8]
                     }}
                     transition={{ 
@@ -602,7 +617,7 @@ const ValuePropositionSection = () => {
               </div>
               
               {/* Subtle background pattern */}
-              <div className="absolute inset-0 opacity-10 bg-circuit"></div>
+              <div className="absolute inset-0 opacity-10 bg-blueprint"></div>
             </div>
           </motion.div>
           
@@ -615,10 +630,10 @@ const ValuePropositionSection = () => {
               transition={{ duration: 0.5 }}
             >
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-800 mb-6">
-                Compliance. Continuity. Confidence.
+                Stability and Security Across Every Jobsite and Office
               </h2>
               <p className="text-lg text-slate-600 mb-8">
-                AnnealTech delivers specialized IT solutions for accounting and finance firms, combining seamless operational support with audit-ready security measures.
+                AnnealTech delivers specialized IT solutions that bridge the gap between construction headquarters and distributed job sites, enabling real-time collaboration and protection.
               </p>
             </motion.div>
             
@@ -653,74 +668,74 @@ const ValuePropositionSection = () => {
   );
 };
 
-// 3. Tailored Accounting & Finance Services Section - Full-width card grid
-const FinanceServicesSection = () => {
+// 3. Tailored Construction IT Services - Full-width card grid
+const ConstructionServicesSection = () => {
   const services = [
     {
-      title: "24/7 Remote IT Support",
-      description: "Around-the-clock assistance for accounting teams, especially during critical tax seasons and filing deadlines.",
+      title: "24/7 Remote & Field Support",
+      description: "Around-the-clock assistance for construction teams, whether at headquarters or on active job sites.",
       icon: HelpCircle,
-      features: ["Live technician support", "Priority issue handling", "Extended hours during tax season"]
-    },
-    {
-      title: "Endpoint Protection & Threat Response",
-      description: "Comprehensive security for all workstations with financial data, ensuring sensitive client information remains protected.",
-      icon: Shield,
-      features: ["Real-time threat detection", "Data loss prevention", "Advanced anti-malware"]
+      features: ["Remote troubleshooting", "On-site emergency response", "Multi-channel support"]
     },
     {
       title: "Patch Management",
-      description: "Strategic updating of critical financial systems to ensure security without disrupting operations during critical periods.",
+      description: "Strategic updating of field devices to maintain security without disrupting active projects.",
       icon: RefreshCw,
-      features: ["Scheduled maintenance", "Compatibility testing", "Zero-downtime updates"]
+      features: ["Off-hours scheduling", "Job-site awareness", "Compatibility testing"]
     },
     {
-      title: "Secure Cloud Document Storage & Access",
-      description: "Encrypted, compliant storage solutions for financial documents with controlled access privileges.",
-      icon: Database,
-      features: ["Encryption at rest & in transit", "Retention policies", "Secure client portals"]
+      title: "Endpoint Security Across Sites",
+      description: "Comprehensive protection for all devices from trailers to headquarters to prevent data breaches.",
+      icon: Shield,
+      features: ["Real-time monitoring", "Threat detection", "Policy enforcement"]
     },
     {
-      title: "Email Filtering & Encryption",
-      description: "Advanced protection against financial fraud attempts with secure communication channels for sensitive information.",
-      icon: FileCheck,
-      features: ["Phishing protection", "Automatic DLP scanning", "Secure message delivery"]
-    },
-    {
-      title: "Access Control & Identity Management",
-      description: "Role-based permissions ensuring proper data access for accountants, auditors, and clients.",
+      title: "Identity & Role-Based Access Controls",
+      description: "Granular permissions ensuring the right team members have access to appropriate resources.",
       icon: Key,
-      features: ["Multi-factor authentication", "Role-based access", "Audit logging"]
+      features: ["Role-based permissions", "Project-specific access", "Secure authentication"]
     },
     {
-      title: "Compliance-Aware Backup & Recovery",
-      description: "Data protection meeting financial industry regulations with rapid, verified restoration capabilities.",
-      icon: HardDrive,
-      features: ["Immutable backups", "Point-in-time recovery", "Compliance validation"]
+      title: "Mobile Device Management",
+      description: "Complete lifecycle support for tablets, phones, and laptops used in rough construction environments.",
+      icon: Smartphone,
+      features: ["Remote wiping", "App management", "Location tracking"]
     },
     {
-      title: "Security Awareness Training",
-      description: "Customized education on security risks specifically targeting financial professionals.",
-      icon: BookOpen,
-      features: ["Finance-specific phishing simulations", "Compliance modules", "Quarterly refreshers"]
+      title: "Cloud-Based File Access for Jobsite Teams",
+      description: "Secure platforms enabling real-time collaboration on plans and specifications across locations.",
+      icon: Share2,
+      features: ["Large file optimization", "Offline accessibility", "Version control"]
     },
     {
-      title: "Financial Application Support",
-      description: "Specialized assistance for accounting software like QuickBooks, Sage, Xero, and custom ERP systems.",
-      icon: Laptop,
-      features: ["Software deployment", "Integration support", "Performance optimization"]
+      title: "Phishing Simulation & Safety Awareness",
+      description: "Custom security training for construction personnel to prevent social engineering attacks.",
+      icon: GraduationCap,
+      features: ["Construction-specific scenarios", "Mobile-friendly training", "Compliance tracking"]
     },
     {
-      title: "Audit Support & Documentation",
-      description: "Comprehensive IT documentation and reporting to simplify regulatory compliance efforts.",
-      icon: FileText,
-      features: ["Control documentation", "Audit trail access", "Compliance reporting"]
+      title: "Compliance & Risk Review",
+      description: "Assessment of IT systems against industry standards including OSHA and vendor requirements.",
+      icon: FileCheck,
+      features: ["Regulatory alignment", "Risk mitigation", "Documentation support"]
+    },
+    {
+      title: "Contractor & Vendor Onboarding Support",
+      description: "Streamlined process for providing secure access to project resources for temporary personnel.",
+      icon: UserPlus,
+      features: ["Temporary access management", "Fast provisioning", "Resource limitation"]
+    },
+    {
+      title: "IT Consulting for Expansion or New Sites",
+      description: "Strategic guidance for technology deployment when opening new field offices or job sites.",
+      icon: Building,
+      features: ["Site connectivity assessment", "Hardware procurement", "Environmental considerations"]
     }
   ];
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-br from-blue-900 to-slate-900 relative overflow-hidden">
-      {/* Circuit background overlay */}
+      {/* Blueprint/circuit background overlay */}
       <div className="absolute inset-0 opacity-20 bg-circuit"></div>
       
       {/* Animated background elements */}
@@ -759,7 +774,7 @@ const FinanceServicesSection = () => {
             transition={{ duration: 0.7 }}
             className="text-3xl md:text-4xl font-heading font-bold text-white mb-4"
           >
-            IT Services Designed for Accountants and Finance Teams
+            Solutions Built for the Pace of Property and Construction Work
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -768,7 +783,7 @@ const FinanceServicesSection = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-xl text-blue-100"
           >
-            Comprehensive IT solutions tailored for the unique demands of financial operations and compliance requirements
+            Comprehensive IT services designed for the unique challenges of construction operations
           </motion.p>
         </div>
         
@@ -819,37 +834,37 @@ const FinanceServicesSection = () => {
   );
 };
 
-// 4. Performance Metrics Section - Trust-Building Stats
+// 4. Field-Proven Metrics - Results Section
 const ResultsMetricsSection = () => {
   const metrics = [
     {
       value: "99.9%",
-      label: "Uptime During Peak Filing Seasons",
-      icon: Server,
+      label: "Uptime Across Distributed Sites",
+      icon: Wifi,
       suffix: ""
     },
     {
       value: "15",
-      label: "Minute Critical Response SLA",
+      label: "Minute Critical Issue SLA",
       icon: Clock,
       suffix: "-min"
     },
     {
-      value: "90",
-      label: "Training Completion Rates for Staff Security Programs",
-      icon: CheckIcon,
-      suffix: "%+"
-    },
-    {
       value: "4",
-      label: "Hour Data Recovery SLA for Financial Systems",
-      icon: HardDrive,
+      label: "Hour Resolution for Field-Based Devices",
+      icon: Smartphone,
       suffix: "-hour"
     },
     {
       value: "75",
-      label: "First Contact Resolution Rate",
-      icon: Zap,
+      label: "Reduction in Repeated IT Issues",
+      icon: RefreshCw,
+      suffix: "%"
+    },
+    {
+      value: "96",
+      label: "Client Satisfaction Rate",
+      icon: CheckIcon,
       suffix: "%"
     }
   ];
@@ -860,33 +875,7 @@ const ResultsMetricsSection = () => {
   return (
     <section className="py-16 md:py-20 bg-white relative overflow-hidden">
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-5 bg-grid-pattern pointer-events-none"></div>
-      
-      {/* Data pulse lines */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={`pulse-line-${i}`}
-            className="absolute h-[1px] bg-gradient-to-r from-transparent via-blue-400 to-transparent"
-            style={{
-              width: '100%',
-              top: `${Math.random() * 100}%`,
-              opacity: 0.1,
-              left: 0
-            }}
-            animate={{
-              x: ['-100%', '100%'],
-              opacity: [0, 0.2, 0]
-            }}
-            transition={{
-              duration: Math.random() * 15 + 10,
-              repeat: Infinity,
-              ease: "linear",
-              delay: i * 2
-            }}
-          />
-        ))}
-      </div>
+      <div className="absolute inset-0 opacity-5 bg-blueprint pointer-events-none"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -898,10 +887,10 @@ const ResultsMetricsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-800 mb-3">
-            We Help You Meet Deadlines Without Compromising Security
+            We Keep Crews Connected and Projects Protected
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Our performance guarantees are designed specifically for the unique demands of financial operations
+            Our performance metrics show how we deliver reliable IT support that keeps up with the fast pace of construction
           </p>
         </motion.div>
         
@@ -948,37 +937,42 @@ const ResultsMetricsSection = () => {
   );
 };
 
-// 5. Final CTA Section - Free Financial Systems Risk Assessment
-const FinancialRiskAssessmentCTA = () => {
+// 5. Final CTA - Free Field Risk Assessment
+const FieldRiskAssessmentCTA = () => {
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-blue-900 to-slate-900 text-white relative overflow-hidden">
-      {/* Digital security background */}
-      <div className="absolute inset-0 opacity-10 bg-circuit"></div>
+      {/* Blueprint background */}
+      <div className="absolute inset-0 opacity-20">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#4B9FFF" strokeWidth="0.5" />
+            </pattern>
+            <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+              <rect width="100" height="100" fill="url(#smallGrid)" />
+              <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#4B9FFF" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
       
-      {/* Digital pulse animation */}
+      {/* Animated blueprint lines */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(3)].map((_, i) => (
           <motion.div
-            key={`pulse-${i}`}
-            className="absolute left-1/2 top-1/2 rounded-full border border-blue-400/30"
-            style={{
-              width: 10,
-              height: 10,
-              marginLeft: -5,
-              marginTop: -5
-            }}
+            key={`line-${i}`}
+            className="absolute h-[2px] w-full bg-blue-400/30"
+            style={{ top: `${30 + i * 30}%` }}
             animate={{
-              width: ["10px", "100vw"],
-              height: ["10px", "100vw"],
-              marginLeft: ["-5px", "-50vw"],
-              marginTop: ["-5px", "-50vw"],
-              opacity: [0.4, 0]
+              x: ["-100%", "100%"],
+              opacity: [0.1, 0.3, 0.1]
             }}
             transition={{
-              duration: 8,
-              delay: i * 2.5,
+              duration: 15 + i * 5,
               repeat: Infinity,
-              ease: "easeOut"
+              ease: "linear",
+              delay: i * 2
             }}
           />
         ))}
@@ -1021,7 +1015,7 @@ const FinancialRiskAssessmentCTA = () => {
             transition={{ duration: 0.7 }}
             className="text-3xl md:text-4xl font-heading font-bold mb-4"
           >
-            Protect Your Practice. Elevate Your Uptime.
+            Prevent Jobsite Downtime Before It Happens
           </motion.h2>
           
           <motion.p 
@@ -1031,7 +1025,7 @@ const FinancialRiskAssessmentCTA = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto"
           >
-            In just 2 minutes, we'll identify gaps in uptime, data security, compliance, and access control for your financial operations.
+            In just 2 minutes, get a personalized review of your field device risk, uptime gaps, and mobile access challenges.
           </motion.p>
           
           <motion.div 
@@ -1045,7 +1039,7 @@ const FinancialRiskAssessmentCTA = () => {
             <Button 
               className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-5 text-lg font-medium shadow-lg hover:shadow-blue-500/25 rounded-md transition-all flex items-center relative overflow-hidden group"
             >
-              <span className="relative z-10">Schedule My Free Risk Review</span>
+              <span className="relative z-10">Start My Free Field Assessment</span>
               <ArrowRight className="ml-2 h-5 w-5 relative z-10" />
               
               {/* Button glow effect */}
@@ -1068,28 +1062,28 @@ const FinancialRiskAssessmentCTA = () => {
   );
 };
 
-// Main Accounting & Finance Industry page component
-const AccountingFinancePage = () => {
+// Main Construction & Property Services Industry page component
+const ConstructionPropertyServicesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Accounting & Finance IT Services | AnnealTech</title>
+        <title>Construction & Property IT Services | AnnealTech</title>
         <meta 
           name="description" 
-          content="AnnealTech delivers specialized IT solutions for accounting and finance firms with compliance-ready security, 99.9% uptime SLA, and secure financial data protection."
+          content="AnnealTech delivers specialized IT solutions for construction teams with field-ready support, secure job site connectivity, and mobile device management."
         />
         <meta 
           property="og:title" 
-          content="Accounting & Finance IT Services | AnnealTech" 
+          content="Construction & Property IT Services | AnnealTech" 
         />
         <meta 
           property="og:description" 
-          content="Secure your financial operations with IT services built for accountants. We provide compliance-ready security and reliable systems for financial firms."
+          content="IT solutions built for construction sites. Prevent downtime, secure remote devices, and enable real-time collaboration across distributed teams."
         />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://annealtech.com/industries/accounting-finance" />
+        <link rel="canonical" href="https://annealtech.com/industries/construction-property-services" />
       </Helmet>
       
       {/* Skip to main content link for screen readers */}
@@ -1099,14 +1093,14 @@ const AccountingFinancePage = () => {
       
       <main id="main-content">
         <HeroSection />
-        <FinancialThreatsSection />
+        <FieldRisksSection />
         <ValuePropositionSection />
-        <FinanceServicesSection />
+        <ConstructionServicesSection />
         <ResultsMetricsSection />
-        <FinancialRiskAssessmentCTA />
+        <FieldRiskAssessmentCTA />
       </main>
     </>
   );
 };
 
-export default AccountingFinancePage;
+export default ConstructionPropertyServicesPage;
