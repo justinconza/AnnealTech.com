@@ -576,7 +576,7 @@ const ContactPage = () => {
       </section>
       
       {/* Schedule a Call / Book a Demo Section */}
-      <section className="py-16 md:py-20 bg-white relative overflow-hidden">
+      <section className="py-10 md:py-12 bg-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-5 bg-grid-pattern"></div>
         
         <div className="container mx-auto px-4 relative z-10">
