@@ -661,10 +661,10 @@ const ToolsPage = () => {
               {/* Text content aligned left */}
               <div className="text-left md:max-w-md">
                 <h2 className="text-xl md:text-2xl font-heading font-bold text-[#0c3f6d] mb-2">
-                  Ready to enhance your security?
+                  Need assistance with our Tools?
                 </h2>
                 <p className="text-sm md:text-base text-[#3a6489]">
-                  Get expert assistance with implementing these tools in your organization.
+                  Our IT security experts can help customize these solutions for your specific business needs.
                 </p>
               </div>
               
