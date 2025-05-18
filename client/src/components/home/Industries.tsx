@@ -92,7 +92,7 @@ const Industries = () => {
   ];
 
   return (
-    <section className="pt-12 pb-16 bg-[#0a1a2e] relative overflow-hidden flex items-center min-h-[600px]">
+    <section className="pt-12 pb-16 bg-[#0a1a2e] relative overflow-hidden flex items-center justify-center min-h-[600px]">
       <div className="absolute inset-0 opacity-20 bg-circuit"></div>
       
       {/* Blue flame elements */}
@@ -122,7 +122,7 @@ const Industries = () => {
         `
       }}></style>
       
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative z-10 my-auto flex flex-col items-center justify-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative z-10 my-auto flex flex-col items-center justify-center w-full">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -141,7 +141,7 @@ const Industries = () => {
           </p>
         </motion.div>
 
-        <div className="px-4 py-4 w-full flex justify-center">
+        <div className="w-full max-w-6xl mx-auto">
           <Swiper
             onSwiper={setSwiperRef}
             effect={'coverflow'}
@@ -165,10 +165,10 @@ const Industries = () => {
               disableOnInteraction: false,
             }}
             modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-            className="industries-swiper max-w-5xl mx-auto"
+            className="industries-swiper mx-auto"
           >
             {industries.map((industry, index) => (
-              <SwiperSlide key={index} className="swiper-slide" style={{ width: '340px', maxWidth: '100%' }}>
+              <SwiperSlide key={index} className="swiper-slide flex justify-center" style={{ width: '340px', maxWidth: '100%' }}>
                 <IndustryCard 
                   icon={industry.icon}
                   title={industry.title}
