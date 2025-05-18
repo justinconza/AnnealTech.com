@@ -127,7 +127,7 @@ const SolutionPackages = () => {
       category: "Support",
       features: [
         { name: "Business Hours Support", securityCore: true, businessPro: true, businessProPlus: true, pcaas: true },
-        { name: "24/7 Remote Support", securityCore: false, businessPro: true, businessProPlus: true, pcaas: true },
+        { name: "24/7 Remote Support", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
         { name: "Priority Response", securityCore: false, businessPro: false, businessProPlus: true, pcaas: true },
         { name: "On-site Support", securityCore: "add-on", businessPro: "add-on", businessProPlus: "add-on", pcaas: true },
       ]
@@ -609,15 +609,15 @@ const SolutionPackages = () => {
               onValueChange={setActiveTab}
             >
               <div className="flex justify-center mb-8">
-                <TabsList className="bg-blue-800/50 border border-blue-400/30 backdrop-blur-sm">
-                  <TabsTrigger value="all" className="data-[state=active]:bg-blue-400 data-[state=active]:text-blue-900">
+                <TabsList className="bg-blue-800/50 border border-blue-400/30 backdrop-blur-sm text-white">
+                  <TabsTrigger value="all" className="text-white data-[state=active]:bg-blue-400 data-[state=active]:text-blue-900">
                     All Features
                   </TabsTrigger>
                   {featureMatrix.map((category, idx) => (
                     <TabsTrigger 
                       key={idx} 
                       value={category.category.toLowerCase()}
-                      className="data-[state=active]:bg-blue-400 data-[state=active]:text-blue-900"
+                      className="text-white data-[state=active]:bg-blue-400 data-[state=active]:text-blue-900"
                     >
                       {category.category}
                     </TabsTrigger>
