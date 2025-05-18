@@ -220,13 +220,22 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <motion.div style={{ opacity, y }} className="container mx-auto px-4 relative z-10 py-20">
+      <motion.div style={{ opacity, y }} className="container mx-auto px-4 relative z-10 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center max-w-3xl mx-auto"
         >
+          <motion.div 
+            className="mb-5 text-sm text-blue-200 bg-blue-600/20 border border-blue-500/20 p-3 rounded-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            Redesign the `/about` page on AnnealTech.com to reflect a futuristic, immersive design that showcases our company's mission, values, and team. The page incorporates advanced animations, interactive elements, and a layout consistent with AnnealTech's branding.
+          </motion.div>
+          
           <motion.h1 
             className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 relative inline-block"
             initial={{ opacity: 0 }}
@@ -540,33 +549,51 @@ const WhySection = () => {
 // Our Approach Section
 const ApproachSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-900 to-blue-950 text-white relative overflow-hidden">
-      {/* Background pattern overlay */}
-      <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBzdHJva2U9IiMyMDVkOWUiIHN0cm9rZS13aWR0aD0iLjUiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTAgMTVIMTVWMEgweiIvPjxwYXRoIGQ9Ik0wIDMwSDE1VjE1SDB6Ii8+PHBhdGggZD0iTTAgNDVIMTVWMzBIMHoiLz48cGF0aCBkPSJNMCA2MEgxNVY0NUgweiIvPjxwYXRoIGQ9Ik0xNSAwSDMwVjE1SDE1eiIvPjxwYXRoIGQ9Ik0xNSAxNUgzMFYzMEgxNXoiLz48cGF0aCBkPSJNMTUgMzBIMzBWNDVIMTV6Ii8+PHBhdGggZD0iTTE1IDQ1SDMwVjYwSDE1eiIvPjxwYXRoIGQ9Ik0zMCAwSDQ1VjE1SDMweiIvPjxwYXRoIGQ9Ik0zMCAxNUg0NVYzMEgzMHoiLz48cGF0aCBkPSJNMzAgMzBINDVWNDVIMzB6Ii8+PHBhdGggZD0iTTMwIDQ1SDQ1VjYwSDMweiIvPjxwYXRoIGQ9Ik00NSAwSDYwVjE1SDQ1eiIvPjxwYXRoIGQ9Ik00NSAxNUg2MFYzMEg0NXoiLz48cGF0aCBkPSJNNDUgMzBINjBWNDVINDV6Ii8+PHBhdGggZD0iTTQ1IDQ1SDYwVjYwSDQ1eiIvPjwvZz48L3N2Zz4=')]"></div>
-      
-      {/* Digital glow effects */}
-      {[...Array(5)].map((_, i) => (
-        <motion.div
-          key={`glow-${i}`}
-          className="absolute rounded-full bg-blue-400/10 blur-3xl"
-          style={{
-            width: `${Math.random() * 300 + 100}px`,
-            height: `${Math.random() * 300 + 100}px`,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            opacity: Math.random() * 0.15 + 0.05
-          }}
-          animate={{
-            opacity: [0.05, 0.15, 0.05],
-            scale: [0.8, 1.2, 0.8]
-          }}
-          transition={{
-            duration: Math.random() * 10 + 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      ))}
+    <section className="py-20 bg-gradient-to-b from-[#072749] to-[#0a3260] text-white relative overflow-hidden">
+      {/* Background from homepage */}
+      <div className="absolute inset-0">
+        {/* Digital pattern overlay */}
+        <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBzdHJva2U9IiMyMDVkOWUiIHN0cm9rZS13aWR0aD0iLjUiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTAgMTVIMTVWMEgweiIvPjxwYXRoIGQ9Ik0wIDMwSDE1VjE1SDB6Ii8+PHBhdGggZD0iTTAgNDVIMTVWMzBIMHoiLz48cGF0aCBkPSJNMCA2MEgxNVY0NUgweiIvPjxwYXRoIGQ9Ik0xNSAwSDMwVjE1SDE1eiIvPjxwYXRoIGQ9Ik0xNSAxNUgzMFYzMEgxNXoiLz48cGF0aCBkPSJNMTUgMzBIMzBWNDVIMTV6Ii8+PHBhdGggZD0iTTE1IDQ1SDMwVjYwSDE1eiIvPjxwYXRoIGQ9Ik0zMCAwSDQ1VjE1SDMweiIvPjxwYXRoIGQ9Ik0zMCAxNUg0NVYzMEgzMHoiLz48cGF0aCBkPSJNMzAgMzBINDVWNDVIMzB6Ii8+PHBhdGggZD0iTTMwIDQ1SDQ1VjYwSDMweiIvPjxwYXRoIGQ9Ik00NSAwSDYwVjE1SDQ1eiIvPjxwYXRoIGQ9Ik00NSAxNUg2MFYzMEg0NXoiLz48cGF0aCBkPSJNNDUgMzBINjBWNDVINDV6Ii8+PHBhdGggZD0iTTQ1IDQ1SDYwVjYwSDQ1eiIvPjwvZz48L3N2Zz4=')]"></div>
+        
+        {/* Animated blue flames */}
+        <div className="absolute bottom-0 right-20 flame" style={{ animationDelay: "-0.5s" }}>
+          <div className="flame-inner"></div>
+        </div>
+        <div className="absolute bottom-0 left-32 flame" style={{ animationDelay: "-1.2s" }}>
+          <div className="flame-inner"></div>
+        </div>
+        <div className="absolute bottom-0 left-1/2 flame" style={{ animationDelay: "-0.8s" }}>
+          <div className="flame-inner"></div>
+        </div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-300 rounded-full"
+              initial={{ 
+                opacity: Math.random() * 0.5 + 0.3,
+                x: Math.random() * 100 + "%", 
+                y: Math.random() * 100 + "%"
+              }}
+              animate={{ 
+                y: [
+                  Math.random() * 100 + "%", 
+                  Math.random() * 20 + 40 + "%", 
+                  Math.random() * 100 + "%"
+                ],
+                opacity: [0.3, 0.7, 0.3]
+              }}
+              transition={{ 
+                duration: Math.random() * 10 + 20,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
