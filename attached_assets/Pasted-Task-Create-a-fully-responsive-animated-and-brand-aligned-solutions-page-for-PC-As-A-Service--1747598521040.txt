@@ -1,0 +1,145 @@
+Task:
+Create a fully responsive, animated, and brand-aligned solutions page for **PC As A Service (PCaaS)** at AnnealTech.com. This page should reflect a futuristic, polished, and human-first aesthetic, consistent with the design patterns across AnnealTech’s `/services` page — including animated hero sections, feature blocks, and trust-building call-to-actions.
+
+---
+
+🎯 PAGE GOALS:
+
+- Clearly explain what PCaaS is and why it matters to modern organizations
+- Show how it fits into AnnealTech’s Managed Experience stack and Solution Packages
+- Use interactive animations, scroll effects, and a compelling layout
+- Reinforce AnnealTech's brand values: secure, scalable, and empowering
+
+---
+
+📐 PAGE STRUCTURE & CONTENT:
+
+---
+
+### 1. 🚀 HERO SECTION (Dynamic & Motion-Responsive)
+
+**Headline:**  
+> “Streamlined Devices. Secure Endpoints. One Monthly Price.”
+
+**Subheadline:**  
+> AnnealTech’s PC as a Service (PCaaS) delivers pre-configured, secure, fully managed devices to your workforce — with support, recovery, and refresh included.
+
+**Design:**  
+- Full-width section  
+- Background: animated digital mesh or device grid pattern  
+- Optional mouse-follow glow effect  
+- CTA Button: “Talk to an Expert” → triggers modal or links to contact page
+
+---
+
+### 2. 💡 WHAT IS PCAAS?
+
+**Short Explainer Section:**  
+> PCaaS is a modern endpoint lifecycle service that bundles hardware, software, support, and lifecycle management into a predictable monthly cost — so your team can focus on work, not workstations.
+
+**Design:**  
+- Two-column layout with animation (e.g., floating device illustrations, lifecycle icons)
+
+---
+
+### 3. 🔐 KEY FEATURES & BENEFITS
+
+Create a **3x2 animated grid** or **tabbed layout**, each card containing:
+
+- **Pre-Configured Endpoint Deployment**  
+  Devices ship pre-imaged, policy-compliant, and provisioned to user specs.
+
+- **Real-Time Support & Monitoring**  
+  24/7 help desk, endpoint telemetry, performance & patch visibility.
+
+- **Lifecycle Management & Refresh**  
+  Refresh cycles, secure disposal, and RMA/replacement handling — no extra contracts.
+
+- **Data Security & Encryption**  
+  Full disk encryption, remote wipe capabilities, device lockout protection.
+
+- **Predictable Per-Device Billing**  
+  One cost covers hardware, software stack, support, and management.
+
+- **Asset Tracking & Reporting**  
+  Monitor inventory, usage patterns, and performance metrics in real time.
+
+**Effects:**  
+- Hover glow & slight card elevation  
+- Scroll fade-up with delay stagger
+
+---
+
+### 4. 🧩 SOLUTION PACKAGE ALIGNMENT
+
+**Matrix or visual callout:**  
+Show how PCaaS fits into:
+- ✅ Business Pro  
+- ✅ Business Pro+  
+- ✅ PCaaS Tier
+
+Optional: mini embedded matrix image or interactive hover badge system
+
+---
+
+### 5. 🧠 WHO BENEFITS?
+
+Create horizontal persona slider or icon list for:
+- Remote-first teams  
+- Field workers  
+- High-growth orgs  
+- Security-sensitive verticals (Legal, Finance, Healthcare)  
+- SMBs seeking predictable cost structure
+
+---
+
+### 6. 📊 CASE STUDY SNAPSHOT (Optional)
+
+> “A Florida-based CRE firm reduced endpoint downtime by 42% and eliminated hardware replacement contracts with AnnealTech’s PCaaS rollout.”
+
+Include metrics + small image/avatar
+
+---
+
+### 7. 📥 CTA – Ready to Transform Your Endpoint Strategy?
+
+**Headline:**  
+> “Say Goodbye to Break-Fix. Let’s Deploy Better.”
+
+**Button:**  
+> “Request PCaaS Consultation”  
+→ Hover glow, open scheduler modal or contact page
+
+**Background:**  
+Glowing circuit background or device mesh visual, Lottie animation or SVG recommended
+
+---
+
+🎨 DESIGN SYSTEM:
+
+- **Primary Color:** `#0d4f86`  
+- **Accents:** Gradient blues, light overlay glows  
+- **Effects:**  
+  - Glassmorphism for feature cards  
+  - Lottie or SVG background animations  
+  - AOS.js or GSAP for staggered scroll reveals
+
+- **Typography:**  
+  - Clean sans-serif, responsive scaling  
+  - Section headers with font glow on scroll
+
+---
+
+📱 RESPONSIVE DESIGN:
+
+- Hero text scales with clamp()  
+- Grid stacks into vertical layout on mobile  
+- CTA button tap targets enlarged for phones
+
+---
+
+📤 OUTPUT FORMAT:
+
+- Modular HTML/CSS or React-friendly structure  
+- Each section styled with reusable classes  
+- Semantic, accessible, responsive, and SEO-optimized
