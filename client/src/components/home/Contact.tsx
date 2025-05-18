@@ -54,28 +54,33 @@ const ContactOption = ({
   actionHref: string 
 }) => {
   return (
-    <Card className="bg-white border border-[#0d4f86]/10 hover:border-[#0d4f86]/30 hover:shadow-lg transition-all group rounded-lg">
-      <CardContent className="p-6">
+    <Card className="bg-blue-900/30 backdrop-blur-sm border border-blue-400/20 hover:border-blue-400/40 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 group rounded-xl overflow-hidden">
+      <CardContent className="p-0">
         <div className="flex flex-col h-full">
-          <div className="mb-4 p-3 rounded-lg bg-[#0d4f86]/10 w-12 h-12 flex items-center justify-center text-[#0d4f86]">
-            <Icon className="h-6 w-6" />
+          {/* Top blue accent border */}
+          <div className="h-1 w-full bg-gradient-to-r from-blue-400/20 via-blue-400/70 to-blue-400/20"></div>
+          
+          <div className="p-7">
+            <div className="mb-5 p-3 rounded-full bg-blue-400/20 w-14 h-14 flex items-center justify-center text-blue-100">
+              <Icon className="h-7 w-7" />
+            </div>
+            
+            <h3 className="text-xl font-heading font-semibold mb-3 text-white group-hover:text-blue-200 transition-colors">
+              {title}
+            </h3>
+            
+            <p className="text-blue-100/80 text-base mb-6 flex-grow leading-relaxed">
+              {description}
+            </p>
+            
+            <a 
+              href={actionHref} 
+              className="text-blue-200 font-medium inline-flex items-center text-sm hover:text-white mt-auto group-hover:translate-x-1 transition-all"
+            >
+              {actionLabel}
+              <ArrowRight className="ml-1.5 h-4 w-4 group-hover:ml-2.5 transition-all" />
+            </a>
           </div>
-          
-          <h3 className="text-xl font-heading font-semibold mb-2 text-slate-800 group-hover:text-[#0d4f86] transition-colors">
-            {title}
-          </h3>
-          
-          <p className="text-slate-600 text-sm mb-6 flex-grow">
-            {description}
-          </p>
-          
-          <a 
-            href={actionHref} 
-            className="text-[#0d4f86] font-medium inline-flex items-center text-sm hover:underline mt-auto group-hover:translate-x-1 transition-transform"
-          >
-            {actionLabel}
-            <ArrowRight className="ml-1 h-4 w-4" />
-          </a>
         </div>
       </CardContent>
     </Card>
@@ -128,39 +133,52 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-white relative">
-      {/* Security-themed decorative background pattern */}
-      <div 
-        className="absolute inset-0 z-0 opacity-5" 
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%230d4f86' stroke-width='0.5'%3E%3Cpath d='M50 5L20 27.5v40L50 95l30-27.5v-40L50 5z'/%3E%3Cpath d='M50 12L25 30.5v35L50 88l25-22.5v-35L50 12z'/%3E%3Cpath d='M50 20L32 35v30l18 20 18-20V35L50 20z'/%3E%3Ccircle cx='50' cy='50' r='25' /%3E%3Ccircle cx='50' cy='50' r='15' /%3E%3Ccircle cx='50' cy='50' r='5' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '150px 150px',
-          backgroundPosition: 'center'
-        }}
-        aria-hidden="true"
-      ></div>
+    <section id="contact" className="py-24 md:py-36 bg-gradient-to-br from-[#0a1a2e] to-[#0d4f86] relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-circuit opacity-10"></div>
       
-      {/* Network node connections */}
-      <div 
-        className="absolute inset-0 z-0 opacity-5" 
-        style={{
-          backgroundImage: "radial-gradient(circle at 20px 20px, rgba(13, 79, 134, 0.4) 2px, transparent 0), radial-gradient(circle at 40px 70px, rgba(13, 79, 134, 0.4) 2px, transparent 0), radial-gradient(circle at 70px 40px, rgba(13, 79, 134, 0.4) 2px, transparent 0)",
-          backgroundSize: "100px 100px"
-        }}
-      ></div>
+      {/* Floating shield elements */}
+      <div className="absolute left-10 top-1/4 md:left-20 z-0">
+        <svg className="w-16 h-16 md:w-24 md:h-24 text-blue-300/20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+        </svg>
+      </div>
+      
+      <div className="absolute right-10 bottom-1/4 md:right-20 z-0">
+        <svg className="w-16 h-16 md:w-24 md:h-24 text-blue-300/20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+        </svg>
+      </div>
+      
+      {/* Digital circuit lines */}
+      <div className="absolute inset-0 z-0 opacity-10">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M0,0 L100,100" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
+          <path d="M100,0 L0,100" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
+          <path d="M50,0 L50,100" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
+          <path d="M0,50 L100,50" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
+        </svg>
+      </div>
+      
+      {/* Glowing orbs */}
+      <div className="absolute -left-20 top-1/3 w-48 h-48 rounded-full bg-blue-400/10 blur-[80px]"></div>
+      <div className="absolute -right-20 bottom-1/3 w-48 h-48 rounded-full bg-blue-400/10 blur-[80px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <div className="inline-block bg-[#0d4f86]/10 border border-[#0d4f86]/20 rounded-full px-4 py-1 mb-4">
-            <span className="text-[#0d4f86] font-heading text-sm font-medium tracking-wider">GET IN TOUCH</span>
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center justify-center bg-blue-400/20 backdrop-blur-sm border border-blue-400/30 rounded-full px-5 py-1.5 mb-6">
+            <span className="text-white font-heading text-sm font-medium tracking-wider">GET IN TOUCH</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-800 mb-4">
-            Let's Discuss Your IT Needs
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">
+            <span className="relative inline-block">
+              Let's Discuss Your IT Needs
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-blue-400/70"></span>
+            </span>
           </h2>
           
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed">
             Contact our team today to explore how we can strengthen your IT infrastructure,
             improve security, and provide the managed services your business needs.
           </p>
@@ -193,10 +211,16 @@ const Contact = () => {
           />
         </div>
         
-        <div className="grid grid-cols-1 gap-12 items-center max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 gap-16 items-center max-w-4xl mx-auto">
           {/* Contact form */}
-          <div className="bg-white p-8 rounded-lg border border-[#0d4f86]/10 shadow-lg">
-            <h3 className="text-2xl font-heading font-semibold text-slate-800 mb-6">Contact Us</h3>
+          <div className="bg-blue-950/50 backdrop-blur-md p-10 rounded-xl border border-blue-400/30 shadow-xl relative overflow-hidden">
+            {/* Glowing corner accent */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-400/20 blur-[60px] -mr-8 -mt-8 rounded-full"></div>
+            
+            <h3 className="text-2xl font-heading font-bold text-white mb-8 relative">
+              <span className="relative z-10">Contact Us</span>
+              <span className="absolute bottom-0 left-0 w-12 h-1 bg-blue-400"></span>
+            </h3>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -206,11 +230,15 @@ const Contact = () => {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Full Name</FormLabel>
+                        <FormLabel className="text-blue-100 font-medium">Full Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="John Smith" className="bg-gray-50 border-[#0d4f86]/20 focus:border-[#0d4f86]/50 focus:ring-[#0d4f86]/20" {...field} />
+                          <Input 
+                            placeholder="John Smith" 
+                            className="bg-blue-900/30 border-blue-400/30 text-white placeholder:text-blue-200/50 focus:border-blue-400/60 focus:ring-blue-400/20" 
+                            {...field} 
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-blue-200" />
                       </FormItem>
                     )}
                   />
@@ -219,11 +247,15 @@ const Contact = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Email Address</FormLabel>
+                        <FormLabel className="text-blue-100 font-medium">Email Address</FormLabel>
                         <FormControl>
-                          <Input placeholder="email@example.com" className="bg-gray-50 border-[#0d4f86]/20 focus:border-[#0d4f86]/50 focus:ring-[#0d4f86]/20" {...field} />
+                          <Input 
+                            placeholder="email@example.com" 
+                            className="bg-blue-900/30 border-blue-400/30 text-white placeholder:text-blue-200/50 focus:border-blue-400/60 focus:ring-blue-400/20" 
+                            {...field} 
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-blue-200" />
                       </FormItem>
                     )}
                   />
@@ -235,11 +267,15 @@ const Contact = () => {
                     name="company"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Company Name</FormLabel>
+                        <FormLabel className="text-blue-100 font-medium">Company Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your Company" className="bg-gray-50 border-[#0d4f86]/20 focus:border-[#0d4f86]/50 focus:ring-[#0d4f86]/20" {...field} />
+                          <Input 
+                            placeholder="Your Company" 
+                            className="bg-blue-900/30 border-blue-400/30 text-white placeholder:text-blue-200/50 focus:border-blue-400/60 focus:ring-blue-400/20" 
+                            {...field} 
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-blue-200" />
                       </FormItem>
                     )}
                   />
@@ -248,11 +284,15 @@ const Contact = () => {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Phone Number (Optional)</FormLabel>
+                        <FormLabel className="text-blue-100 font-medium">Phone Number (Optional)</FormLabel>
                         <FormControl>
-                          <Input placeholder="+1 (123) 456-7890" className="bg-gray-50 border-[#0d4f86]/20 focus:border-[#0d4f86]/50 focus:ring-[#0d4f86]/20" {...field} />
+                          <Input 
+                            placeholder="+1 (123) 456-7890" 
+                            className="bg-blue-900/30 border-blue-400/30 text-white placeholder:text-blue-200/50 focus:border-blue-400/60 focus:ring-blue-400/20" 
+                            {...field} 
+                          />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-blue-200" />
                       </FormItem>
                     )}
                   />
@@ -264,11 +304,11 @@ const Contact = () => {
                     name="service"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700">Service Interest</FormLabel>
+                        <FormLabel className="text-blue-100 font-medium">Service Interest</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger className="bg-gray-50 border-[#0d4f86]/20 text-slate-700">
-                              <SelectValue placeholder="Select a Service" />
+                            <SelectTrigger className="bg-blue-900/30 border-blue-400/30 text-white">
+                              <SelectValue placeholder="Select a Service" className="text-blue-200/70" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
