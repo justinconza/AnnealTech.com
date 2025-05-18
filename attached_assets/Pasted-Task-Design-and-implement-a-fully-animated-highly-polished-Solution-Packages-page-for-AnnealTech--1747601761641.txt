@@ -1,0 +1,159 @@
+Task:
+Design and implement a fully animated, highly polished Solution Packages page for AnnealTech.com. This page should break down and compare each core package (Business Pro, Business Pro+, and PCaaS), showing features included, intended audiences, pricing logic (if applicable), and CTAs. The layout must use futuristic, glowing UI elements consistent with AnnealTech’s design system.
+
+---
+
+🎯 GOALS:
+
+- Position solution packages as bundled value offerings  
+- Showcase what's included in each tier clearly and beautifully  
+- Use immersive visuals and interaction to increase engagement  
+- Help visitors easily match their business needs to the correct package  
+- Drive conversion via strong CTAs and consult scheduling
+
+---
+
+📐 PAGE STRUCTURE & CONTENT:
+
+---
+
+### 1. 🚀 HERO SECTION
+
+**Headline:**  
+> “Tailored IT Packages, Built to Scale With You”
+
+**Subheadline:**  
+> Choose the support, protection, and strategic enablement level that fits your business — and let AnnealTech manage the rest.
+
+**Design:**  
+- Animated background with blueprint grid, floating plan tiers, or glowing boxes  
+- CTA Button: “Get Package Recommendations” (leads to form or scrolls to quiz)
+
+---
+
+### 2. 📦 PACKAGE OVERVIEW SECTION
+
+Animated 3-column layout with responsive collapse. Each column = a package card:
+
+---
+
+#### 🧊 Business Pro  
+**Ideal for:** Small businesses with basic IT needs & growth plans  
+**Includes:**
+- 24/7 remote support  
+- Patch management  
+- Basic endpoint protection  
+- Productivity suite management  
+- Monthly reporting
+
+---
+
+#### 🔷 Business Pro+  
+**Ideal for:** Scaling orgs that require deeper security and compliance  
+**Includes everything in Business Pro plus:**
+- Managed detection & response  
+- Phishing simulation + SAT  
+- Asset management + reporting  
+- Secure email gateway  
+- Monthly strategic check-ins
+
+---
+
+#### 🚀 PCaaS  
+**Ideal for:** Organizations seeking fully managed hardware & endpoint lifecycle  
+**Includes everything in Business Pro+ plus:**
+- Device provisioning  
+- Hardware support + replacement  
+- Lifecycle refresh  
+- Secure disposal & asset return  
+- Fixed per-device billing
+
+---
+
+**Design Details:**
+- Glowing blue borders and package icons  
+- Hover animations: slight lift, card glow  
+- Animated toggle or matrix to highlight "Included" features (animated checkmarks)
+
+---
+
+### 3. 🧠 FEATURE COMPARISON MATRIX
+
+**Purpose:**  
+Visually show which features are included per package.
+
+**Design:**
+- Left-hand column: feature list  
+- Top row: packages  
+- Matrix cells: checkmarks, “Add-On”, or empty  
+- Animate row on scroll or toggle on hover/click
+
+**Optional:**  
+Allow column hover or mobile swipe to compare each plan in detail
+
+---
+
+### 4. 📊 WHO BENEFITS?
+
+Use iconographic personas or slider for:
+- Founders scaling IT  
+- CFOs managing OpEx  
+- Compliance teams  
+- Office managers needing plug-and-play IT  
+- CTOs offloading endpoint management
+
+---
+
+### 5. 🧩 WHAT’S CUSTOMIZABLE?
+
+**Content Block:**
+> While our packages are standardized, we can customize coverage for orgs with unique compliance, legacy tech, or vendor needs.
+
+Optional modal or FAQ dropdown with:
+- Add-on services  
+- A la carte pricing  
+- Assessment inclusion
+
+---
+
+### 6. 📥 CTA: Book a Package Consultation
+
+**Headline:**  
+> “Let’s Find the Right Package for You”
+
+**Button:**  
+> “Schedule My Consultation”  
+→ modal scheduler or contact form
+
+**Background:**  
+Animated blueprint or rotating 3D package cube (Lottie or SVG-based)
+
+---
+
+🎨 VISUAL SYSTEM:
+
+- **Colors:** Primary Blue: `#0d4f86`, white overlays, black/slate backgrounds  
+- **Visuals:**  
+  - Glassmorphism cards  
+  - Matrix grid glowing checkmarks  
+  - Lottie/SVG package icons or floating tier cubes  
+- **Effects:**  
+  - Scroll reveals  
+  - Hover glow  
+  - Toggle sliders
+
+---
+
+📱 RESPONSIVE STRUCTURE:
+
+- Package columns collapse to vertical  
+- Matrix becomes swipeable or accordion-style on mobile  
+- CTA buttons large and thumb-friendly
+
+---
+
+📤 OUTPUT FORMAT:
+
+- HTML/CSS or modular React-style layout  
+- Each package and matrix cell uses reusable components  
+- Accessible, fast-loading, and mobile-optimized
