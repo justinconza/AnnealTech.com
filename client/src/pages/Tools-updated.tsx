@@ -650,23 +650,29 @@ const ToolsPage = () => {
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
+              className="flex flex-col md:flex-row items-center justify-between gap-6"
             >
-              <h2 className="text-xl md:text-2xl font-heading font-bold text-[#0c3f6d] mb-2">
-                Ready to enhance your security?
-              </h2>
-              <p className="text-sm md:text-base text-[#3a6489] mb-4 max-w-xl mx-auto">
-                Get expert assistance with implementing these tools in your organization.
-              </p>
+              {/* Text content aligned left */}
+              <div className="text-left md:max-w-md">
+                <h2 className="text-xl md:text-2xl font-heading font-bold text-[#0c3f6d] mb-2">
+                  Ready to enhance your security?
+                </h2>
+                <p className="text-sm md:text-base text-[#3a6489]">
+                  Get expert assistance with implementing these tools in your organization.
+                </p>
+              </div>
+              
+              {/* Button aligned right */}
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="inline-block"
+                className="shrink-0"
               >
                 <Link href="/contact">
                   <Button 
