@@ -512,163 +512,161 @@ const PCaaS: React.FC = () => {
         {/* Digital circuit pattern background */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0iIzRCOUZGRiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMiI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2Mmg0djRoMnYtNGg0di0yaC00em0wLTMwVjBoLTJ2NGgtNHYyaDR2NGgyVjZoNFY0aC00ek02IDM0di00SDR2NEgwdjJoNHY0aDJ2LTRoNHYtMkg2ek02IDRWMEg0djRIMHYyaDR2NGgyVjZoNFY0SDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
         
-        {/* Digital circuit animation */}
+        {/* Digital circuit animation - Subtle version */}
         <div className="absolute inset-0">
-          {/* Horizontal lines */}
-          {[...Array(8)].map((_, i) => (
+          {/* Horizontal lines - fewer and more subtle */}
+          {[...Array(5)].map((_, i) => (
             <motion.div
               key={`h-line-${i}`}
-              className="absolute h-[1px] bg-gradient-to-r from-transparent via-blue-400/60 to-transparent"
+              className="absolute h-[1px] bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"
               style={{
-                top: `${12 + i * 12}%`,
+                top: `${18 + i * 18}%`,
                 left: '0',
                 right: '0',
               }}
               animate={{
-                opacity: [0.1, 0.4, 0.1],
-                scaleX: [0.8, 1, 0.8],
+                opacity: [0.05, 0.2, 0.05],
+                scaleX: [0.9, 1, 0.9],
+              }}
+              transition={{
+                duration: 15,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 1.2,
+              }}
+            />
+          ))}
+          
+          {/* Vertical lines - fewer and more subtle */}
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={`v-line-${i}`}
+              className="absolute w-[1px] bg-gradient-to-b from-transparent via-blue-400/30 to-transparent"
+              style={{
+                left: `${16 + i * 14}%`,
+                top: '0',
+                bottom: '0',
+              }}
+              animate={{
+                opacity: [0.05, 0.15, 0.05],
+                scaleY: [0.85, 1, 0.85],
+              }}
+              transition={{
+                duration: 18,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.8,
+              }}
+            />
+          ))}
+          
+          {/* Data pulse effects - fewer and slower */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={`pulse-${i}`}
+              className="absolute rounded-full bg-blue-400"
+              style={{
+                width: '3px',
+                height: '3px',
+                left: `${20 + (i % 4) * 20}%`,
+                top: `${25 + Math.floor(i / 4) * 30}%`,
+              }}
+              animate={{
+                scale: [1, 2, 1],
+                opacity: [0.4, 0, 0.4],
+                boxShadow: [
+                  '0 0 0px 0px rgba(59, 130, 246, 0.2)',
+                  '0 0 6px 1px rgba(59, 130, 246, 0.3)',
+                  '0 0 0px 0px rgba(59, 130, 246, 0.2)'
+                ]
               }}
               transition={{
                 duration: 8,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: i * 0.5,
-              }}
-            />
-          ))}
-          
-          {/* Vertical lines */}
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={`v-line-${i}`}
-              className="absolute w-[1px] bg-gradient-to-b from-transparent via-blue-400/60 to-transparent"
-              style={{
-                left: `${8 + i * 7}%`,
-                top: '0',
-                bottom: '0',
-              }}
-              animate={{
-                opacity: [0.1, 0.3, 0.1],
-                scaleY: [0.7, 1, 0.7],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.3,
-              }}
-            />
-          ))}
-          
-          {/* Data pulse effects - circular */}
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={`pulse-${i}`}
-              className="absolute rounded-full bg-blue-400"
-              style={{
-                width: '4px',
-                height: '4px',
-                left: `${15 + (i % 5) * 18}%`,
-                top: `${20 + Math.floor(i / 5) * 25}%`,
-              }}
-              animate={{
-                scale: [1, 3, 1],
-                opacity: [0.7, 0, 0.7],
-                boxShadow: [
-                  '0 0 0px 0px rgba(59, 130, 246, 0.4)',
-                  '0 0 8px 2px rgba(59, 130, 246, 0.6)',
-                  '0 0 0px 0px rgba(59, 130, 246, 0.4)'
-                ]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.6,
+                delay: i * 1.5,
                 times: [0, 0.5, 1]
               }}
             />
           ))}
         </div>
         
-        {/* Digital nodes with connection lines */}
+        {/* Digital nodes with connection lines - fewer and more static */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(12)].map((_, i) => {
-            const x1 = 5 + Math.random() * 90;
-            const y1 = 5 + Math.random() * 90;
-            const x2 = 5 + Math.random() * 90;
-            const y2 = 5 + Math.random() * 90;
+          {[...Array(6)].map((_, i) => {
+            // Fixed positions for stability
+            const positions = [
+              { x1: 15, y1: 20, x2: 35, y2: 40 },
+              { x1: 75, y1: 30, x2: 55, y2: 50 },
+              { x1: 25, y1: 70, x2: 45, y2: 60 },
+              { x1: 85, y1: 65, x2: 65, y2: 80 },
+              { x1: 40, y1: 15, x2: 60, y2: 25 },
+              { x1: 30, y1: 85, x2: 50, y2: 75 },
+            ];
+            
+            const { x1, y1, x2, y2 } = positions[i];
             
             return (
               <React.Fragment key={`node-connection-${i}`}>
-                {/* Node 1 */}
+                {/* Node */}
                 <motion.div
-                  className="absolute w-2 h-2 rounded-full bg-blue-300/80"
+                  className="absolute w-1.5 h-1.5 rounded-full bg-blue-300/60"
                   style={{
                     left: `${x1}%`,
                     top: `${y1}%`,
-                    boxShadow: '0 0 5px 2px rgba(59, 130, 246, 0.4)'
+                    boxShadow: '0 0 4px 1px rgba(59, 130, 246, 0.3)'
                   }}
                   animate={{
-                    opacity: [0.3, 0.8, 0.3],
-                    scale: [1, 1.2, 1]
+                    opacity: [0.2, 0.6, 0.2],
+                    scale: [1, 1.1, 1]
                   }}
                   transition={{
-                    duration: 2 + Math.random() * 3,
+                    duration: 8 + i * 2,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: i * 0.2
+                    delay: i * 0.5
                   }}
                 />
               
                 {/* Connection line */}
-                <motion.svg
-                  className="absolute inset-0 z-0 opacity-30"
-                  style={{ overflow: 'visible' }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.3 }}
-                  transition={{ duration: 1, delay: i * 0.3 }}
-                >
-                  <motion.line
+                <svg className="absolute inset-0 z-0 opacity-10" style={{ overflow: 'visible' }}>
+                  <line
                     x1={`${x1}%`}
                     y1={`${y1}%`}
                     x2={`${x2}%`}
                     y2={`${y2}%`}
-                    stroke="url(#blue-line-gradient)"
-                    strokeWidth="1"
-                    strokeDasharray="5,5"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 2, delay: i * 0.3 }}
+                    stroke="#4B9FFF"
+                    strokeWidth="0.5"
+                    strokeDasharray="4,6"
                   />
-                </motion.svg>
+                </svg>
               </React.Fragment>
             );
           })}
         </div>
         
-        {/* Background glow effects */}
+        {/* Background glow effects - more subtle */}
         <motion.div 
-          className="absolute left-1/3 top-1/2 w-[40vw] h-[40vw] rounded-full bg-blue-500/5 blur-[120px]"
+          className="absolute left-1/3 top-1/2 w-[40vw] h-[40vw] rounded-full bg-blue-500/3 blur-[120px]"
           animate={{
-            opacity: [0.2, 0.4, 0.2],
-            scale: [0.8, 1.2, 0.8]
+            opacity: [0.1, 0.2, 0.1],
+            scale: [0.9, 1.1, 0.9]
           }}
           transition={{
-            duration: 15,
+            duration: 25,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         
         <motion.div 
-          className="absolute right-1/3 bottom-1/3 w-[30vw] h-[30vw] rounded-full bg-blue-400/5 blur-[100px]"
+          className="absolute right-1/3 bottom-1/3 w-[30vw] h-[30vw] rounded-full bg-blue-400/3 blur-[100px]"
           animate={{
-            opacity: [0.1, 0.3, 0.1],
-            scale: [1, 1.5, 1]
+            opacity: [0.05, 0.15, 0.05],
+            scale: [1, 1.2, 1]
           }}
           transition={{
-            duration: 20,
+            duration: 30,
             repeat: Infinity,
             ease: "easeInOut",
             delay: 5
