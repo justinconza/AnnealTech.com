@@ -193,7 +193,6 @@ const allTools = [
     icon: ShieldAlert,
     category: "compliance",
     component: SecurityGapAnalysis,
-    featured: true,
   },
   {
     id: "username-tracker",
@@ -259,7 +258,6 @@ interface ToolCardProps {
   icon: React.ElementType;
   title: string;
   description: string;
-  featured?: boolean;
   comingSoon?: boolean;
   onOpenTool: () => void;
 }
@@ -270,7 +268,6 @@ const ToolCard = ({
   icon: Icon, 
   title, 
   description,
-  featured = false,
   comingSoon = false,
   onOpenTool 
 }: ToolCardProps) => {
@@ -625,7 +622,6 @@ const ToolsPage = () => {
                           icon={tool.icon}
                           title={tool.title}
                           description={tool.description}
-                          featured={tool.featured}
                           comingSoon={tool.comingSoon}
                           onOpenTool={() => openTool(tool.id)}
                         />
