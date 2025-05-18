@@ -444,7 +444,7 @@ const FaqPage = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
             <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-              <div className="mb-12">
+              <div className="mb-20 py-4">
                 <TabsList className="w-full bg-blue-900/30 p-3 rounded-lg border border-blue-500/20 flex flex-wrap gap-1">
                   {categories.map((category) => {
                     const Icon = category.icon;
