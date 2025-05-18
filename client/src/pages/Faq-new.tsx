@@ -445,18 +445,18 @@ const FaqPage = () => {
           <div className="max-w-5xl mx-auto">
             <Tabs value={activeCategory} onValueChange={setActiveCategory}>
               <div className="mb-20 py-4">
-                <TabsList className="w-full bg-blue-900/30 p-3 rounded-lg border border-blue-500/20 flex flex-wrap gap-1">
+                <TabsList className="w-full bg-blue-900/30 p-2 md:p-3 rounded-lg border border-blue-500/20 flex justify-between">
                   {categories.map((category) => {
                     const Icon = category.icon;
                     return (
                       <TabsTrigger 
                         key={category.id} 
                         value={category.id}
-                        className="flex-1 md:flex-none data-[state=active]:bg-blue-600 data-[state=active]:text-white py-4 px-6 rounded-md transition-all duration-200"
+                        className="flex-auto data-[state=active]:bg-blue-600 data-[state=active]:text-white py-2 md:py-3 px-2 md:px-4 rounded-md transition-all duration-200 text-xs md:text-sm"
                       >
-                        <div className="flex items-center justify-center gap-2">
-                          <Icon className="h-4 w-4" />
-                          <span>{category.label}</span>
+                        <div className="flex items-center justify-center gap-1 md:gap-2">
+                          <Icon className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                          <span className="truncate">{category.label}</span>
                         </div>
                       </TabsTrigger>
                     );
