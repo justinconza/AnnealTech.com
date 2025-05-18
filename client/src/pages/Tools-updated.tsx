@@ -137,7 +137,6 @@ const allTools = [
     icon: Mail,
     category: "email",
     component: PlaceholderTool,
-    featured: true,
   },
   {
     id: "phishing-detection",
@@ -162,7 +161,6 @@ const allTools = [
     icon: Globe,
     category: "network",
     component: PlaceholderTool,
-    featured: true,
   },
   {
     id: "qrcode-security",
@@ -179,7 +177,6 @@ const allTools = [
     icon: Lock,
     category: "config",
     component: PlaceholderTool,
-    featured: true,
   },
   {
     id: "threat-intelligence",
@@ -286,31 +283,28 @@ const ToolCard = ({
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className="h-full"
     >
-      <Card className="bg-gradient-to-br from-slate-800/80 to-slate-900/90 border border-blue-500/20 h-full flex flex-col shadow-lg hover:shadow-blue-500/5 hover:border-blue-500/30 transition-all duration-300 overflow-hidden relative group">
-        {featured && (
-          <div className="absolute -right-12 top-5 bg-blue-600 text-white px-10 py-1 rotate-45 text-xs font-medium z-10">
-            Featured
-          </div>
-        )}
+      <Card className="bg-white border-0 h-full flex flex-col shadow-lg transition-all duration-300 overflow-hidden relative group">
+        {/* Blue fiery glow effect */}
+        <div className="absolute -inset-1 bg-blue-600 rounded-xl blur opacity-0 group-hover:opacity-30 transition-all duration-500 group-hover:duration-200 animate-pulse"></div>
         
-        <CardHeader className="pb-4">
-          <div className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center mb-4 text-white group-hover:text-white group-hover:bg-blue-500/30 transition-colors duration-300">
+        <CardHeader className="pb-4 relative z-10">
+          <div className="w-14 h-14 rounded-full bg-blue-800 flex items-center justify-center mb-4 text-white group-hover:bg-blue-700 transition-colors duration-300 group-hover:scale-110 transform">
             <Icon className="w-7 h-7" />
           </div>
-          <CardTitle className="font-heading text-xl mb-2 text-white font-bold group-hover:text-blue-100 transition-colors duration-300">{title}</CardTitle>
-          <CardDescription className="text-white/90 group-hover:text-white transition-colors">
+          <CardTitle className="font-heading text-xl mb-2 text-blue-900 font-bold">{title}</CardTitle>
+          <CardDescription className="text-blue-800">
             {description}
           </CardDescription>
         </CardHeader>
         
-        <CardFooter className="pt-2 mt-auto">
+        <CardFooter className="pt-2 mt-auto relative z-10">
           {comingSoon ? (
             <Button 
               variant="outline" 
-              className="w-full border-blue-500/20 text-slate-300 hover:bg-blue-950/30 hover:text-blue-200 transition-colors" 
+              className="w-full border-blue-800 text-blue-800 hover:bg-blue-50 transition-colors" 
               disabled
             >
-              <span className="text-xs font-medium tracking-wide px-2 py-0.5 bg-blue-500/20 rounded-full mr-2">
+              <span className="text-xs font-medium tracking-wide px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full mr-2">
                 Coming Soon
               </span>
               Launch Tool
@@ -318,17 +312,20 @@ const ToolCard = ({
           ) : (
             <Button 
               variant="default" 
-              className="w-full bg-blue-600 hover:bg-blue-500 text-white group-hover:shadow-lg group-hover:shadow-blue-500/10 transition-all duration-300"
+              className="w-full bg-blue-800 hover:bg-blue-700 text-white transition-all duration-300 relative overflow-hidden group"
               onClick={onOpenTool}
             >
-              Launch Tool
-              <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <span className="relative z-10">Launch Tool</span>
+              <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
+              
+              {/* Button flame animation */}
+              <span className="absolute bottom-0 left-0 w-full h-0 group-hover:h-full bg-gradient-to-t from-blue-700 to-blue-800 transition-all duration-300"></span>
             </Button>
           )}
         </CardFooter>
         
-        {/* Animated border effect */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+        {/* Add animated fiery edge glow effect on hover */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
       </Card>
     </motion.div>
   );
