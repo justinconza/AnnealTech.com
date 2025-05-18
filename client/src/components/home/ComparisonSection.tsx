@@ -104,7 +104,7 @@ const ComparisonSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="text-4xl md:text-5xl font-heading font-bold text-[#d8e6f3] mb-6 relative"
+            className="text-4xl md:text-5xl font-heading font-bold text-[#213b70] mb-6 relative"
           >
             Beyond Traditional IT Support
             <motion.div 
@@ -121,7 +121,7 @@ const ComparisonSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-xl text-[#a7c6e9] mt-8 max-w-2xl mx-auto"
+            className="text-xl text-[#192c54] mt-8 max-w-2xl mx-auto"
           >
             See how our Managed Experience approach transforms the typical MSP relationship.
           </motion.p>
@@ -130,26 +130,26 @@ const ComparisonSection = () => {
         {/* Comparison Table */}
         <div className="max-w-4xl mx-auto">
           {/* Column Headers - Desktop */}
-          <div className="hidden lg:grid grid-cols-9 mb-6 px-4">
-            <div className="col-span-3">
-              <h3 className="text-xl font-medium text-[#a7c6e9]">Category</h3>
+          <div className="hidden lg:grid grid-cols-9 mb-8 px-4">
+            <div className="col-span-3 bg-slate-800/60 rounded-tl-lg rounded-bl-lg p-4 border-l-2 border-y border-slate-700 shadow-md">
+              <h3 className="text-xl font-medium text-[#213b70] uppercase tracking-wide">Category</h3>
             </div>
-            <div className="col-span-3">
+            <div className="col-span-3 bg-slate-800/60 p-4 border-y border-slate-700 shadow-md">
               <div className="flex items-center">
-                <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center mr-2 shadow-inner shadow-slate-600">
-                  <span className="text-[#d8e6f3] text-xs font-medium">T</span>
+                <div className="w-9 h-9 rounded-full bg-[#192c54] flex items-center justify-center mr-3 shadow-inner">
+                  <span className="text-[#5a8ec5] text-sm font-bold">T</span>
                 </div>
-                <h3 className="text-lg font-medium text-[#d8e6f3]">Traditional MSP</h3>
+                <h3 className="text-lg font-medium text-[#213b70]">Traditional MSP</h3>
               </div>
             </div>
-            <div className="col-span-3">
+            <div className="col-span-3 bg-[#3a6ea5] p-4 rounded-tr-lg rounded-br-lg border-r-2 border-y border-[#5a8ec5]/50 shadow-md">
               <div className="flex items-center">
-                <div className="w-8 h-8 rounded-full bg-[#3a6ea5] flex items-center justify-center mr-2 shadow-inner shadow-[#5a8ec5]/50">
-                  <span className="text-white text-xs font-medium">A</span>
+                <div className="w-9 h-9 rounded-full bg-[#204a79] flex items-center justify-center mr-3 shadow-inner border border-[#5a8ec5]/30">
+                  <span className="text-white text-sm font-bold">A</span>
                 </div>
                 <h3 className="text-lg font-medium text-white relative">
                   AnnealTech
-                  <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-[#5a8ec5] to-transparent"></span>
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-white to-transparent"></span>
                 </h3>
               </div>
             </div>
@@ -157,15 +157,15 @@ const ComparisonSection = () => {
           
           {/* Mobile Headers */}
           <div className="lg:hidden grid grid-cols-2 gap-4 mb-6">
-            <div className="bg-slate-800 rounded-lg p-3 flex items-center justify-center shadow-lg">
-              <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center mr-2 shadow-inner">
-                <span className="text-[#d8e6f3] text-xs font-medium">T</span>
+            <div className="bg-slate-800/80 rounded-xl p-3 flex items-center justify-center shadow-lg border border-slate-700">
+              <div className="w-7 h-7 rounded-full bg-[#192c54] flex items-center justify-center mr-2 shadow-inner">
+                <span className="text-[#5a8ec5] text-xs font-bold">T</span>
               </div>
-              <h3 className="text-sm font-medium text-[#d8e6f3]">Traditional MSP</h3>
+              <h3 className="text-sm font-medium text-[#213b70]">Traditional MSP</h3>
             </div>
-            <div className="bg-[#3a6ea5] rounded-lg p-3 flex items-center justify-center border border-[#5a8ec5]/50 shadow-lg shadow-blue-900/30">
-              <div className="w-6 h-6 rounded-full bg-[#204a79] flex items-center justify-center mr-2 shadow-inner">
-                <span className="text-white text-xs font-medium">A</span>
+            <div className="bg-[#3a6ea5] rounded-xl p-3 flex items-center justify-center border border-[#5a8ec5]/50 shadow-lg">
+              <div className="w-7 h-7 rounded-full bg-[#204a79] flex items-center justify-center mr-2 shadow-inner border border-[#5a8ec5]/30">
+                <span className="text-white text-xs font-bold">A</span>
               </div>
               <h3 className="text-sm font-medium text-white">AnnealTech</h3>
             </div>
@@ -193,14 +193,14 @@ const ComparisonSection = () => {
                 <div className={`grid grid-cols-9 rounded-xl overflow-hidden ${idx % 2 === 0 ? 'bg-slate-800' : 'bg-slate-800/80'} border border-slate-700 hover:border-[#5a8ec5]/70 transition-all duration-300 shadow-xl`}>
                   {/* Category */}
                   <div className="col-span-3 p-5 flex items-center border-r border-slate-700 bg-slate-800/90">
-                    <h4 className="text-[#d8e6f3] font-medium text-lg">{item.category}</h4>
+                    <h4 className="text-[#213b70] font-medium text-lg">{item.category}</h4>
                   </div>
                   
                   {/* Traditional MSP Side */}
                   <div className="col-span-3 p-5 flex items-center border-r border-slate-700 bg-slate-800">
                     <div className="flex">
                       <AlertCircle className="h-5 w-5 text-[#5a8ec5] mr-3 flex-shrink-0" />
-                      <p className="text-[#a7c6e9]">{item.traditional}</p>
+                      <p className="text-[#192c54]">{item.traditional}</p>
                     </div>
                   </div>
                   
@@ -248,8 +248,8 @@ const ComparisonSection = () => {
                     <div className="p-4 bg-slate-800 flex items-start">
                       <AlertCircle className="h-5 w-5 text-[#5a8ec5] mr-2 mt-0.5 flex-shrink-0" />
                       <div>
-                        <div className="mb-2 text-xs text-[#d8e6f3] uppercase tracking-wider font-medium md:hidden">Traditional MSP</div>
-                        <p className="text-[#a7c6e9] text-sm">{item.traditional}</p>
+                        <div className="mb-2 text-xs text-[#213b70] uppercase tracking-wider font-medium md:hidden">Traditional MSP</div>
+                        <p className="text-[#192c54] text-sm">{item.traditional}</p>
                       </div>
                     </div>
                     
