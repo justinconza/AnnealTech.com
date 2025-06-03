@@ -82,9 +82,29 @@ const IndustriesPage: React.FC = () => {
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <section className="py-20 bg-circuit relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-transparent"></div>
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+        {/* Animated mesh background */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" 
+            style={{
+              backgroundImage: "linear-gradient(0deg, transparent 24%, rgba(59, 130, 246, 0.1) 25%, rgba(59, 130, 246, 0.1) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.1) 75%, rgba(59, 130, 246, 0.1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(59, 130, 246, 0.1) 25%, rgba(59, 130, 246, 0.1) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.1) 75%, rgba(59, 130, 246, 0.1) 76%, transparent 77%, transparent)",
+              backgroundSize: '80px 80px'
+            }}
+          ></div>
+        </div>
+
+        {/* Subtle particle dots */}
+        <div className="absolute inset-0 opacity-30" 
+          style={{
+            backgroundImage: "radial-gradient(#3b82f6 1px, transparent 2px), radial-gradient(#3b82f6 1px, transparent 2px)",
+            backgroundPosition: "0 0, 40px 40px",
+            backgroundSize: "80px 80px"
+          }}
+        ></div>
+
+        {/* Glow highlights */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div 
@@ -93,10 +113,10 @@ const IndustriesPage: React.FC = () => {
             transition={{ duration: 0.7 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-800 mb-6">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
               Industries We Serve
             </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               AnnealTech caters to a diverse range of industries, providing tailored IT solutions to meet specific sector needs.
             </p>
           </motion.div>
@@ -152,8 +172,16 @@ const IndustriesPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-blue-50">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-gradient-to-br from-slate-100 to-slate-50 relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-5" 
+          style={{
+            backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%230d4f86' fill-opacity='0.6' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+            backgroundSize: '100px 100px'
+          }}
+        ></div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-800 mb-6">
               How We Serve Your Industry
@@ -168,28 +196,28 @@ const IndustriesPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="bg-white p-8 rounded-lg shadow-md"
+              className="bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-slate-200/50"
             >
               <h3 className="text-xl font-bold text-blue-600 mb-4">Industry Expertise</h3>
-              <p>Our specialists understand your industry's unique technology requirements and compliance needs.</p>
+              <p className="text-slate-700">Our specialists understand your industry's unique technology requirements and compliance needs.</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="bg-white p-8 rounded-lg shadow-md"
+              className="bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-slate-200/50"
             >
               <h3 className="text-xl font-bold text-blue-600 mb-4">Customized Solutions</h3>
-              <p>We create technology solutions designed specifically for your industry's workflows and challenges.</p>
+              <p className="text-slate-700">We create technology solutions designed specifically for your industry's workflows and challenges.</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.3 }}
-              className="bg-white p-8 rounded-lg shadow-md"
+              className="bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-slate-200/50"
             >
               <h3 className="text-xl font-bold text-blue-600 mb-4">Ongoing Support</h3>
-              <p>As your industry evolves, we provide continuous support and solution updates to keep you ahead.</p>
+              <p className="text-slate-700">As your industry evolves, we provide continuous support and solution updates to keep you ahead.</p>
             </motion.div>
           </div>
         </div>
