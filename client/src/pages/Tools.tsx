@@ -2413,10 +2413,10 @@ const ToolsPage = () => {
       
       {/* Email Security Analyzer Dialog */}
       <Dialog open={activeDialog === "email-security"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[700px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[700px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">Email Security Analyzer</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">Email Security Analyzer</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Analyze email headers to identify potential security issues, validate authentication mechanisms, and detect spoofing attempts.
             </DialogDescription>
           </DialogHeader>
@@ -2426,10 +2426,10 @@ const ToolsPage = () => {
       
       {/* Phishing Detection Dialog */}
       <Dialog open={activeDialog === "phishing-detection"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[700px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[700px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">Phishing Detection Tool</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">Phishing Detection Tool</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Analyze suspicious emails or URLs for signs of phishing, including deceptive tactics, suspicious links, and spoofing techniques.
             </DialogDescription>
           </DialogHeader>
@@ -2439,10 +2439,10 @@ const ToolsPage = () => {
       
       {/* Password Strength Dialog */}
       <Dialog open={activeDialog === "password-strength"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[600px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[600px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">Password Strength Tester</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">Password Strength Tester</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Evaluate the strength of your password against common cracking techniques and get recommendations for improvement.
             </DialogDescription>
           </DialogHeader>
@@ -2452,10 +2452,10 @@ const ToolsPage = () => {
       
       {/* Domain Security Scanner Dialog */}
       <Dialog open={activeDialog === "domain-security"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[600px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[600px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">Domain Security Scanner</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">Domain Security Scanner</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Analyze domain security configurations including HTTPS implementation, HSTS, DNS security, and common domain-based threats.
             </DialogDescription>
           </DialogHeader>
@@ -2465,10 +2465,10 @@ const ToolsPage = () => {
       
       {/* Security Risk Assessment Dialog */}
       <Dialog open={activeDialog === "risk-assessment"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[800px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[800px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">Security Risk Calculator</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">Security Risk Calculator</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Answer questions about your IT infrastructure to receive a customized security risk score and improvement recommendations.
             </DialogDescription>
           </DialogHeader>
@@ -2478,10 +2478,10 @@ const ToolsPage = () => {
       
       {/* QR Code Security Analyzer Dialog */}
       <Dialog open={activeDialog === "qrcode-security"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[700px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[700px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">QR Code Security Analyzer</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">QR Code Security Analyzer</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Scan or enter a QR code URL to analyze for security threats, malicious links, and domain reputation.
             </DialogDescription>
           </DialogHeader>
@@ -2491,10 +2491,10 @@ const ToolsPage = () => {
       
       {/* Security Threat Heat Map Dialog */}
       <Dialog open={activeDialog === "threat-heatmap"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[1000px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[1000px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">Security Threat Heat Map</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">Security Threat Heat Map</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Visualize global cyber threats in real-time with our advanced threat intelligence map.
             </DialogDescription>
           </DialogHeader>
@@ -2504,10 +2504,10 @@ const ToolsPage = () => {
       
       {/* Username & Social Media Tracker Dialog */}
       <Dialog open={activeDialog === "username-tracking"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[800px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[800px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">Username & Social Media Tracker</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">Username & Social Media Tracker</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Track usernames across multiple social platforms to discover digital footprints and assess privacy risks.
             </DialogDescription>
           </DialogHeader>
@@ -2532,10 +2532,10 @@ const ToolsPage = () => {
       
       {/* AI Security Gap Analysis Dialog */}
       <Dialog open={activeDialog === "security-gap-analysis"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[800px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[800px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">AI Security Gap Analysis</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">AI Security Gap Analysis</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Get a comprehensive AI-powered analysis of your organization's security gaps and actionable recommendations.
             </DialogDescription>
           </DialogHeader>
@@ -2545,10 +2545,10 @@ const ToolsPage = () => {
       
       {/* Email Breach Checker Dialog */}
       <Dialog open={activeDialog === "email-breach-check"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[800px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[800px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">Email Breach Checker</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">Email Breach Checker</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Check if your email address or domain has been compromised in known data breaches and get security recommendations.
             </DialogDescription>
           </DialogHeader>
@@ -2558,10 +2558,10 @@ const ToolsPage = () => {
       
       {/* Premium Tool Gated Access Dialog */}
       <Dialog open={activeDialog === "premium"} onOpenChange={closeDialog}>
-        <DialogContent className="sm:max-w-[600px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[600px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl">Premium Tool Access</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="font-heading text-2xl text-slate-800">Premium Tool Access</DialogTitle>
+            <DialogDescription className="text-slate-600">
               Get access to our premium security tools by completing a quick registration.
             </DialogDescription>
           </DialogHeader>
@@ -2574,13 +2574,13 @@ const ToolsPage = () => {
         open={embedToolInfo.open} 
         onOpenChange={(open) => !open && setEmbedToolInfo(prev => ({...prev, open: false}))}
       >
-        <DialogContent className="sm:max-w-[700px] bg-steel border-accent/20 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[700px] bg-white border-slate-200 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-heading text-2xl flex items-center">
-              <Share2 className="w-5 h-5 mr-2 text-accent" />
+            <DialogTitle className="font-heading text-2xl flex items-center text-slate-800">
+              <Share2 className="w-5 h-5 mr-2 text-blue-600" />
               Embed {embedToolInfo.name}
             </DialogTitle>
-            <DialogDescription>
+            <DialogDescription className="text-slate-600">
               Add this security tool to your own website with these embedding instructions.
             </DialogDescription>
           </DialogHeader>
